@@ -1,3 +1,5 @@
 {
-  "name": "registration"
+	"name": "registration",
+	"version": "1.0.0",
+	"private": true
 }

@@ -6,8 +6,5 @@
 	"author": "Oleksandr Kosevych <rn.cruger@gmail.com>",
 	"workspaces": [
 		"packages/*"
-	],
-	"dependencies": {
-		"typescript": "^3.8.3"
-	}
+	]
 }
