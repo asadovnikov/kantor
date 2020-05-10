@@ -117,3 +117,6 @@ dev.keys.js
 *.local
 docs/
 .env.*
+
+out/
+packages/shop/aws/pipe.sh

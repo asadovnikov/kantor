@@ -1,0 +1,9 @@
+pages
+public
+styles
+components
+node_modules
+.next
+DockerFile
+bit.js
+aws

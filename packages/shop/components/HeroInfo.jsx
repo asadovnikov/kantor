@@ -11,7 +11,9 @@ export const HeroInfo = () => {
 				</p>
 			</div>
 
-			<a className='btn btn-light btn-wide btn-pill shadow-soft transition-3d-hover mb-2 mb-sm-0 mr-4' href='#'>
+			<a
+				className='btn btn-light btn-wide btn-pill shadow-soft transition-3d-hover mb-2 mb-sm-0 mr-4'
+				href='account/register'>
 				Get Started
 			</a>
 		</>
