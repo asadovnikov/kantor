@@ -1,0 +1,10 @@
+{
+	"name": "register_transaction_dbevent",
+	"version": "1.0.0",
+	"description": "register transaction handler",
+	"main": "index.js",
+	"author": "akosevych",
+	"dependencies": {
+		"uuid": "^8.1.0"
+	}
+}

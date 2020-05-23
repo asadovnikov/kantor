@@ -1,0 +1,8 @@
+{
+	"name": "resolve_customer",
+	"version": "1.0.0",
+	"description": "Resolve customer handler",
+	"main": "index.js",
+	"author": "akosevych",
+	"license": "MIT"
+}

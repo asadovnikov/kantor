@@ -1,0 +1,270 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  packages
+
+  Sample SAM Template for packages
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 3
+    Tracing: Active
+#https://github.com/heitorlessa/api-lambda-stripe-charge/
+ChargeStripeApiWebhook:
+  Type: AWS::Serverless::Api
+  Properties:
+    Cors:
+      AllowHeaders: "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'"
+      AllowOrigin: !Ref CorsOrigin
+      MaxAge: "'3600'"
+      AllowMethods: "'OPTIONS,POST'"
+    EndpointConfiguration: REGIONAL
+    StageName: prod    
+Resources:
+  StagingCommittedTransactionsTable:
+    Type: 'AWS::DynamoDB::Table'
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: tr_id
+          AttributeType: S
+        - AttributeName: timestamp
+          AttributeType: N
+        - AttributeName: Firstname
+          AttributeType: S
+        - AttributeName: Surname
+          AttributeType: S
+        - AttributeName: StreetLine1
+          AttributeType: S
+        - AttributeName: City
+          AttributeType: S
+        - AttributeName: PostalCode
+          AttributeType: N
+        - AttributeName: StateProvince
+          AttributeType: S
+        - AttributeName: Country
+          AttributeType: S
+        - AttributeName: Email
+          AttributeType: S
+        - AttributeName: FiatCurrency
+          AttributeType: S
+        - AttributeName: FiatAmount
+          AttributeType: N
+      KeySchema:
+        - AttributeName: tr_id
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      StreamSpecification:
+        StreamViewType: NEW_AND_OLD_IMAGES
+      TableName: StagingCommittedTransactions
+    CommittedTransactionsTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: tr_id
+            AttributeType: S
+          - AttributeName: timestamp
+            AttributeType: N
+          - AttributeName: Firstname
+            AttributeType: S
+          - AttributeName: Surname
+            AttributeType: S
+          - AttributeName: StreetLine1
+            AttributeType: S
+          - AttributeName: City
+            AttributeType: S
+          - AttributeName: PostalCode
+            AttributeType: N
+          - AttributeName: StateProvince
+            AttributeType: S
+          - AttributeName: Country
+            AttributeType: S
+          - AttributeName: Email
+            AttributeType: S
+          - AttributeName: FiatCurrency
+            AttributeType: S
+          - AttributeName: FiatAmount
+            AttributeType: N
+        KeySchema:
+          - AttributeName: tr_id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
+        StreamSpecification:
+          StreamViewType: NEW_AND_OLD_IMAGES
+        TableName: StagingCommittedTransactions
+    StagingLimitsTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+        - AttributeName: Tier
+          AttributeType: S
+        - AttributeName: FiatAmount
+          AttributeType: N
+        - AttributeName: FiatCurrency
+          AttributeType: S
+        KeySchema:
+          - AttributeName: Tier
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
+        StreamSpecification:
+          StreamViewType: NEW_AND_OLD_IMAGES
+        TableName: StagingLimits
+    StagingCustomersTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: cst_id
+            AttributeType: S
+          - AttributeName: timestamp
+            AttributeType: N
+          - AttributeName: Firstname
+            AttributeType: S
+          - AttributeName: Surname
+            AttributeType: S
+          - AttributeName: StreetLine1
+            AttributeType: S
+          - AttributeName: City
+            AttributeType: S
+          - AttributeName: PostalCode
+            AttributeType: N
+          - AttributeName: StateProvince
+            AttributeType: S
+          - AttributeName: Country
+            AttributeType: S
+          - AttributeName: Email
+            AttributeType: S
+          - AttributeName: Tier
+            AttributeType: S
+          - AttributeName: KYC_State
+            AttributeType: S
+          - AttributeName: FiatCurrency
+            AttributeType: S
+          - AttributeName: FiatDayAmount
+            AttributeType: N
+          - AttributeName: FiatMonthAmount
+            AttributeType: N
+        KeySchema:
+          - AttributeName: Email
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
+        GlobalSecondaryIndexes:
+        - IndexName: Email-Firstname-Surname-PostalCode-index
+          KeySchema:
+          - AttributeName: Email
+            KeyType: HASH
+          - AttributeName: Firstname
+            KeySchema: HASH
+          - AttributeName: Surname
+            KeySchema: HASH
+          - AttributeName: PostalCode
+            KeySchema: RANGE
+        StreamSpecification:
+          StreamViewType: NEW_AND_OLD_IMAGES
+        TableName: StagingCustomers
+  TransactionRegisteredDBEvent:
+        Type: AWS::Serverless::Function
+        Properties:
+          CodeUri: dbevents/transaction/registered
+          Handler: index.handler
+          Runtime: nodejs12.x
+          Events:
+            DynamoDBEvent:
+              Type: DynamoDB
+              Stream:
+                !GetAtt StagingCommittedTransactionsTable.StreamArn
+  ValidateTransactionFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: transaction/validate
+      Handler: index.handler
+      Runtime: nodejs12.x
+      Events:
+        ValidateTransactionApi:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /transaction/validate
+            Method: post
+  RegisterTransactionFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: transaction/register
+      Handler: index.handler
+      Runtime: nodejs12.x
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref StagingCommittedTransactionsTable
+      Policies:
+        - DynamoDBWritePolicy:
+          TableName: !Ref StagingCommittedTransactionsTable
+      Events:
+        RegisterTransactionApi:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /transaction/register
+            Method: post
+  RegisterCustomerFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: customer/register
+      Handler: index.handler
+      Runtime: nodejs12.x
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref StagingCustomersTable
+      Policies:
+        - DynamoDBWritePolicy:
+          TableName: !Ref StagingCustomersTable
+      Events:
+        RegisterCustomerApi:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /customer/register
+            Method: post
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  ValidateTransactionApi:
+    Description: 'API Gateway endpoint URL for Prod stage for Validate Transaction function'
+    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/transaction/validate/'
+  ValidateTransactionFunction:
+    Description: 'Validate Transaction Lambda Function ARN'
+    Value: !GetAtt ValidateTransactionFunction.Arn
+  ValidateTransactionFunctionIamRole:
+    Description: 'Implicit IAM Role created for Validate Transaction function'
+    Value: !GetAtt ValidateTransactionFunctionRole.Arn
+  RegisterTransactionApi:
+    Description: 'API Gateway endpoint URL for Prod stage for Register Transaction function'
+    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/transaction/register/'
+  RegisterTransactionFunction:
+    Description: 'Register Transaction Lambda Function ARN'
+    Value: !GetAtt RegisterTransactionFunction.Arn
+  RegisterTransactionFunctionIamRole:
+    Description: 'Implicit IAM Role created for Register Transaction function'
+    Value: !GetAtt RegisterTransactionFunctionRole.Arn
+  RegisterCustomerApi:
+    Description: 'API Gateway endpoint URL for Prod stage for Register customer function'
+    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/customer/register/'
+  RegisterCustomerFunction:
+    Description: 'Register Customer Lambda Function ARN'
+    Value: !GetAtt RegisterCustomerFunction.Arn
+  StagingCommittedTransactionsTable:
+    Value: !GetAtt StagingCommittedTransactionsTable.Arn
+    Description: The ARN of StagingCommittedTransactions DynamoDB Table
+  CommittedTransactionsTable:
+    Value: !GetAtt CommittedTransactionsTable.Arn
+    Description: The ARN of CommittedTransaction DynamoDB Table
+  StagingCustomersTable:
+    Value: !GetAtt StagingCustomersTable.Arn
+    Description: The ARN of StagingCustomers DynamoDB Table
+  StagingLimitsTable:
+    Value: !GetAtt StagingLimitsTable.Arn
+    Description: The ARN of StagingLimits DynamoDB Table

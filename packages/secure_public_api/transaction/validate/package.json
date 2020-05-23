@@ -1,0 +1,8 @@
+{
+	"name": "validate_transaction",
+	"version": "1.0.0",
+	"description": "Validate transaction handler",
+	"main": "index.js",
+	"author": "akosevych",
+	"license": "MIT"
+}

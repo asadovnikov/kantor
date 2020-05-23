@@ -27,38 +27,39 @@ var docClient = new AWS.DynamoDB.DocumentClient({ endpoint: new AWS.Endpoint(AWS
 var tableName = 'requests_table';
 // var tableName = 'TestCommittedTransactions';
 
-exports.lambdaHandler = async (event, context) => {
+exports.lambdaHandler = async (event, context, callback) => {
 	var response = {};
+	console.log('An event received:\n', event);
+	console.log('Reading transaction from request:\n', event.body);
+	const { transaction } = JSON.parse(event.body);
 	var params = {
 		TableName: tableName,
 		Item: {
 			tr_id: uuidv4(),
-			year: 12,
-			title: 'title',
-			info: {
-				plot: 'Nothing happens at all.',
-				rating: 0,
-				tr: event.body,
-			},
+			...transaction
 		},
 	};
-
-	var p = await docClient.put(params).promise();
-	// var d = p.send();
+	console.log('Building put object request:\n', params);
 
 	try {
-		// const ret = await axios(url);
-		debugger;
+		var result = await docClient.put(params).promise();
+		console.log(`Item ${params.Item.tr_id} stored successfully:\n`, result);
 		response = {
 			statusCode: 200,
 			body: JSON.stringify({
-				message: 'not hello world',
-				// location: ret.data.trim()
+				message: `Transaction: ${params.Item.tr_id} was registered.`,
 			}),
 		};
 	} catch (err) {
-		console.log(err);
-		return err;
+		console.log('Error registering transaction:', err);
+		response = {
+			statusCode: 403,
+			body: JSON.stringify({
+				message: `Transaction: ${params.Item.tr_id} failed to be stored. Following error received: ${err}`,
+
+			}),
+		};
+		// return err;
 	}
 
 	return response;
