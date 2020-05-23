@@ -1,0 +1,19 @@
+{
+	"name": "validate_transaction",
+	"version": "1.0.0",
+	"description": "Validate transaction handler",
+	"main": "app.js",
+	"author": "akosevych",
+	"license": "MIT",
+	"dependencies": {
+		"axios": "^0.18.0"
+	},
+	"scripts": {
+		"test": "mocha tests/unit/"
+	},
+	"devDependencies": {
+		"aws-sdk": "^2.681.0",
+		"chai": "^4.2.0",
+		"mocha": "^6.1.4"
+	}
+}

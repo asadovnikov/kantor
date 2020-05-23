@@ -1,0 +1,103 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'packages
+
+  Sample SAM Template for packages
+
+  '
+Globals:
+  Function:
+    Timeout: 3
+ChargeStripeApiWebhook:
+  Type: AWS::Serverless::Api
+  Properties:
+    Cors:
+      AllowHeaders: '''Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'''
+      AllowOrigin:
+        Ref: CorsOrigin
+      MaxAge: '''3600'''
+      AllowMethods: '''OPTIONS,POST'''
+    EndpointConfiguration: REGIONAL
+    StageName: prod
+    TracingEnabled: true
+Resources:
+  TestCommittedTransactionsTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey:
+        Name: id
+        Type: String
+      TableName: TestCommittedTransactions
+  ValidateTransactionFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ValidateTransactionFunction
+      Handler: app.lambdaHandler
+      Runtime: nodejs12.x
+      Events:
+        ValidateTransactionApi:
+          Type: Api
+          Properties:
+            Path: /transaction/validate
+            Method: post
+  RegisterTransactionFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: RegisterTransactionFunction
+      Handler: app.lambdaHandler
+      Runtime: nodejs12.x
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: TestCommittedTransactionsTable
+      Policies:
+      - DynamoDBWritePolicy: null
+        TableName:
+          Ref: TestCommittedTransactionsTable
+      Events:
+        RegisterTransactionApi:
+          Type: Api
+          Properties:
+            Path: /transaction/register
+            Method: post
+Outputs:
+  ValidateTransactionApi:
+    Description: API Gateway endpoint URL for Prod stage for Validate Transaction
+      function
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/transaction/validate/
+  ValidateTransactionFunction:
+    Description: Validate Transaction Lambda Function ARN
+    Value:
+      Fn::GetAtt:
+      - ValidateTransactionFunction
+      - Arn
+  ValidateTransactionFunctionIamRole:
+    Description: Implicit IAM Role created for Validate Transaction function
+    Value:
+      Fn::GetAtt:
+      - ValidateTransactionFunctionRole
+      - Arn
+  RegisterTransactionApi:
+    Description: API Gateway endpoint URL for Prod stage for Register Transaction
+      function
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/transaction/register/
+  RegisterTransactionFunction:
+    Description: Register Transaction Lambda Function ARN
+    Value:
+      Fn::GetAtt:
+      - RegisterTransactionFunction
+      - Arn
+  RegisterTransactionFunctionIamRole:
+    Description: Implicit IAM Role created for Register Transaction function
+    Value:
+      Fn::GetAtt:
+      - RegisterTransactionFunctionRole
+      - Arn
+  DynamoDBTableArn:
+    Value:
+      Fn::GetAtt:
+      - DynamoDBTable
+      - Arn
+    Description: The ARN of your DynamoDB Table

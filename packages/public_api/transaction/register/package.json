@@ -1,0 +1,19 @@
+{
+	"name": "register_transaction",
+	"version": "1.0.0",
+	"description": "register transaction handler",
+	"main": "app.js",
+	"author": "akosevych",
+	"dependencies": {
+		"axios": "^0.18.0",
+		"uuid": "^8.1.0"
+	},
+	"scripts": {
+		"test": "mocha tests/unit/"
+	},
+	"devDependencies": {
+		"aws-sdk": "^2.681.0",
+		"chai": "^4.2.0",
+		"mocha": "^6.1.4"
+	}
+}
