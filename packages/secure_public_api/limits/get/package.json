@@ -1,0 +1,8 @@
+{
+	"name": "get_limits",
+	"version": "1.0.0",
+	"description": "Register customer handler",
+	"main": "index.js",
+	"author": "akosevych",
+	"license": "MIT"
+}

@@ -11,16 +11,16 @@ Globals:
     Timeout: 3
     Tracing: Active
 #https://github.com/heitorlessa/api-lambda-stripe-charge/
-ChargeStripeApiWebhook:
-  Type: AWS::Serverless::Api
-  Properties:
-    Cors:
-      AllowHeaders: "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'"
-      AllowOrigin: !Ref CorsOrigin
-      MaxAge: "'3600'"
-      AllowMethods: "'OPTIONS,POST'"
-    EndpointConfiguration: REGIONAL
-    StageName: prod    
+# ChargeStripeApiWebhook:
+#   Type: AWS::Serverless::Api
+#   Properties:
+#     Cors:
+#       AllowHeaders: "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'"
+#       AllowOrigin: !Ref CorsOrigin
+#       MaxAge: "'3600'"
+#       AllowMethods: "'OPTIONS,POST'"
+#     EndpointConfiguration: REGIONAL
+#     StageName: prod    
 Resources:
   StagingCommittedTransactionsTable:
     Type: 'AWS::DynamoDB::Table'
@@ -28,158 +28,165 @@ Resources:
       AttributeDefinitions:
         - AttributeName: tr_id
           AttributeType: S
-        - AttributeName: timestamp
-          AttributeType: N
-        - AttributeName: Firstname
-          AttributeType: S
-        - AttributeName: Surname
-          AttributeType: S
-        - AttributeName: StreetLine1
-          AttributeType: S
-        - AttributeName: City
-          AttributeType: S
-        - AttributeName: PostalCode
-          AttributeType: N
-        - AttributeName: StateProvince
-          AttributeType: S
-        - AttributeName: Country
-          AttributeType: S
-        - AttributeName: Email
-          AttributeType: S
-        - AttributeName: FiatCurrency
-          AttributeType: S
-        - AttributeName: FiatAmount
-          AttributeType: N
+        # - AttributeName: timestamp
+        #   AttributeType: N
+        # - AttributeName: Firstname
+        #   AttributeType: S
+        # - AttributeName: Surname
+        #   AttributeType: S
+        # - AttributeName: StreetLine1
+        #   AttributeType: S
+        # - AttributeName: City
+        #   AttributeType: S
+        # - AttributeName: PostalCode
+        #   AttributeType: N
+        # - AttributeName: StateProvince
+        #   AttributeType: S
+        # - AttributeName: Country
+        #   AttributeType: S
+        # - AttributeName: Email
+        #   AttributeType: S
+        # - AttributeName: FiatCurrency
+        #   AttributeType: S
+        # - AttributeName: FiatAmount
+        #   AttributeType: N
       KeySchema:
         - AttributeName: tr_id
           KeyType: HASH
       ProvisionedThroughput:
         ReadCapacityUnits: 5
         WriteCapacityUnits: 5
-      StreamSpecification:
-        StreamViewType: NEW_AND_OLD_IMAGES
+      # StreamSpecification:
+      #   StreamViewType: NEW_AND_OLD_IMAGES
       TableName: StagingCommittedTransactions
-    CommittedTransactionsTable:
-      Type: 'AWS::DynamoDB::Table'
-      Properties:
-        AttributeDefinitions:
-          - AttributeName: tr_id
-            AttributeType: S
-          - AttributeName: timestamp
-            AttributeType: N
-          - AttributeName: Firstname
-            AttributeType: S
-          - AttributeName: Surname
-            AttributeType: S
-          - AttributeName: StreetLine1
-            AttributeType: S
-          - AttributeName: City
-            AttributeType: S
-          - AttributeName: PostalCode
-            AttributeType: N
-          - AttributeName: StateProvince
-            AttributeType: S
-          - AttributeName: Country
-            AttributeType: S
-          - AttributeName: Email
-            AttributeType: S
-          - AttributeName: FiatCurrency
-            AttributeType: S
-          - AttributeName: FiatAmount
-            AttributeType: N
-        KeySchema:
-          - AttributeName: tr_id
-            KeyType: HASH
-        ProvisionedThroughput:
-          ReadCapacityUnits: 5
-          WriteCapacityUnits: 5
-        StreamSpecification:
-          StreamViewType: NEW_AND_OLD_IMAGES
-        TableName: StagingCommittedTransactions
-    StagingLimitsTable:
-      Type: 'AWS::DynamoDB::Table'
-      Properties:
-        AttributeDefinitions:
+  # CommittedTransactionsTable:
+  #   Type: 'AWS::DynamoDB::Table'
+  #   Properties:
+  #     AttributeDefinitions:
+  #       - AttributeName: tr_id
+  #         AttributeType: S
+  #       - AttributeName: timestamp
+  #         AttributeType: N
+  #       - AttributeName: Firstname
+  #         AttributeType: S
+  #       - AttributeName: Surname
+  #         AttributeType: S
+  #       - AttributeName: StreetLine1
+  #         AttributeType: S
+  #       - AttributeName: City
+  #         AttributeType: S
+  #       - AttributeName: PostalCode
+  #         AttributeType: N
+  #       - AttributeName: StateProvince
+  #         AttributeType: S
+  #       - AttributeName: Country
+  #         AttributeType: S
+  #       - AttributeName: Email
+  #         AttributeType: S
+  #       - AttributeName: FiatCurrency
+  #         AttributeType: S
+  #       - AttributeName: FiatAmount
+  #         AttributeType: N
+  #     KeySchema:
+  #       - AttributeName: tr_id
+  #         KeyType: HASH
+  #     ProvisionedThroughput:
+  #       ReadCapacityUnits: 5
+  #       WriteCapacityUnits: 5
+  #     StreamSpecification:
+  #       StreamViewType: NEW_AND_OLD_IMAGES
+  #     TableName: CommittedTransactions
+  StagingLimitsTable:
+    Type: 'AWS::DynamoDB::Table'
+    Properties:
+      AttributeDefinitions:
+      - AttributeName: Tier
+        AttributeType: S
+      # - AttributeName: FiatDayAmount
+      #   AttributeType: N
+      # - AttributeName: FiatMonthAmount
+      #   AttributeType: N
+      # - AttributeName: FiatCurrency
+      #   AttributeType: S
+      KeySchema:
         - AttributeName: Tier
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      # StreamSpecification:
+      #   StreamViewType: NEW_AND_OLD_IMAGES
+      TableName: StagingLimits
+  StagingCustomersTable:
+    Type: 'AWS::DynamoDB::Table'
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: cst_id
           AttributeType: S
-        - AttributeName: FiatAmount
-          AttributeType: N
-        - AttributeName: FiatCurrency
+        # - AttributeName: timestamp
+        #   AttributeType: N
+        # - AttributeName: Firstname
+        #   AttributeType: S
+        # - AttributeName: Surname
+        #   AttributeType: S
+        # - AttributeName: StreetLine1
+        #   AttributeType: S
+        # - AttributeName: City
+        #   AttributeType: S
+        # - AttributeName: PostalCode
+        #   AttributeType: N
+        # - AttributeName: StateProvince
+        #   AttributeType: S
+        # - AttributeName: Country
+        #   AttributeType: S
+        - AttributeName: Email
           AttributeType: S
+        # - AttributeName: Tier
+        #   AttributeType: S
+        # - AttributeName: KYC_State
+        #   AttributeType: S
+        # - AttributeName: FiatCurrency
+        #   AttributeType: S
+        # - AttributeName: FiatDayAmount
+        #   AttributeType: N
+        # - AttributeName: FiatMonthAmount
+        #   AttributeType: N
+      KeySchema:
+        - AttributeName: cst_id
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      GlobalSecondaryIndexes:
+      - IndexName: Email-Firstname-Surname-PostalCode-index
         KeySchema:
-          - AttributeName: Tier
-            KeyType: HASH
+        - AttributeName: Email
+          KeyType: HASH
+        Projection:
+          ProjectionType: ALL
         ProvisionedThroughput:
-          ReadCapacityUnits: 5
-          WriteCapacityUnits: 5
-        StreamSpecification:
-          StreamViewType: NEW_AND_OLD_IMAGES
-        TableName: StagingLimits
-    StagingCustomersTable:
-      Type: 'AWS::DynamoDB::Table'
-      Properties:
-        AttributeDefinitions:
-          - AttributeName: cst_id
-            AttributeType: S
-          - AttributeName: timestamp
-            AttributeType: N
-          - AttributeName: Firstname
-            AttributeType: S
-          - AttributeName: Surname
-            AttributeType: S
-          - AttributeName: StreetLine1
-            AttributeType: S
-          - AttributeName: City
-            AttributeType: S
-          - AttributeName: PostalCode
-            AttributeType: N
-          - AttributeName: StateProvince
-            AttributeType: S
-          - AttributeName: Country
-            AttributeType: S
-          - AttributeName: Email
-            AttributeType: S
-          - AttributeName: Tier
-            AttributeType: S
-          - AttributeName: KYC_State
-            AttributeType: S
-          - AttributeName: FiatCurrency
-            AttributeType: S
-          - AttributeName: FiatDayAmount
-            AttributeType: N
-          - AttributeName: FiatMonthAmount
-            AttributeType: N
-        KeySchema:
-          - AttributeName: Email
-            KeyType: HASH
-        ProvisionedThroughput:
-          ReadCapacityUnits: 5
-          WriteCapacityUnits: 5
-        GlobalSecondaryIndexes:
-        - IndexName: Email-Firstname-Surname-PostalCode-index
-          KeySchema:
-          - AttributeName: Email
-            KeyType: HASH
-          - AttributeName: Firstname
-            KeySchema: HASH
-          - AttributeName: Surname
-            KeySchema: HASH
-          - AttributeName: PostalCode
-            KeySchema: RANGE
-        StreamSpecification:
-          StreamViewType: NEW_AND_OLD_IMAGES
-        TableName: StagingCustomers
-  TransactionRegisteredDBEvent:
-        Type: AWS::Serverless::Function
-        Properties:
-          CodeUri: dbevents/transaction/registered
-          Handler: index.handler
-          Runtime: nodejs12.x
-          Events:
-            DynamoDBEvent:
-              Type: DynamoDB
-              Stream:
-                !GetAtt StagingCommittedTransactionsTable.StreamArn
+          ReadCapacityUnits: '3'
+          WriteCapacityUnits: '3'
+        # - AttributeName: Firstname
+        #   KeySchema: HASH
+        # - AttributeName: Surname
+        #   KeySchema: HASH
+        # - AttributeName: PostalCode
+        #   KeySchema: RANGE
+      # StreamSpecification:
+      #   StreamViewType: NEW_AND_OLD_IMAGES
+      TableName: StagingCustomers
+  # TransactionRegisteredDBEvent:
+  #       Type: AWS::Serverless::Function
+  #       Properties:
+  #         CodeUri: dbevents/transaction/registered
+  #         Handler: index.handler
+  #         Runtime: nodejs12.x
+  #         Events:
+  #           DynamoDBEvent:
+  #             Type: DynamoDB
+  #             Stream:
+  #               !GetAtt StagingCommittedTransactionsTable.StreamArn
   ValidateTransactionFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
@@ -203,7 +210,7 @@ Resources:
           TABLE_NAME: !Ref StagingCommittedTransactionsTable
       Policies:
         - DynamoDBWritePolicy:
-          TableName: !Ref StagingCommittedTransactionsTable
+            TableName: !Ref StagingCommittedTransactionsTable
       Events:
         RegisterTransactionApi:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
@@ -221,13 +228,61 @@ Resources:
           TABLE_NAME: !Ref StagingCustomersTable
       Policies:
         - DynamoDBWritePolicy:
-          TableName: !Ref StagingCustomersTable
-      Events:
-        RegisterCustomerApi:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
-          Properties:
-            Path: /customer/register
-            Method: post
+            TableName: !Ref StagingCustomersTable
+      # Events:
+      #   RegisterCustomerApi:
+      #     Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+      #     Properties:
+      #       Path: /customer/register
+      #       Method: post
+  ResolveCustomerFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: customer/resolve
+      Handler: index.handler
+      Runtime: nodejs12.x
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref StagingCustomersTable
+      Policies:
+        - DynamoDBWritePolicy:
+            TableName: !Ref StagingCustomersTable
+      # Events:
+      #   resolveCustomerApi:
+      #     Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+      #     Properties:
+      #       Path: /customer/resolve
+      #       Method: post
+    UpdateCustomerLimitsFunction:
+      Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+      Properties:
+        CodeUri: customer/updateLimits
+        Handler: index.handler
+        Runtime: nodejs12.x
+        Environment:
+          Variables:
+            TABLE_NAME: !Ref StagingCustomersTable
+        Policies:
+          - DynamoDBWritePolicy:
+              TableName: !Ref StagingCustomersTable
+  GetLimitsFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: limits/get
+      Handler: index.handler
+      Runtime: nodejs12.x
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref StagingLimitsTable
+      Policies:
+        - DynamoDBWritePolicy:
+            TableName: !Ref StagingLimitsTable
+      # Events:
+      #   GetLimitsApi:
+      #     Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+      #     Properties:
+      #       Path: /limits
+      #       Method: get
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM
@@ -250,18 +305,42 @@ Outputs:
   RegisterTransactionFunctionIamRole:
     Description: 'Implicit IAM Role created for Register Transaction function'
     Value: !GetAtt RegisterTransactionFunctionRole.Arn
-  RegisterCustomerApi:
-    Description: 'API Gateway endpoint URL for Prod stage for Register customer function'
-    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/customer/register/'
+  # RegisterCustomerApi:
+  #   Description: 'API Gateway endpoint URL for Prod stage for Register customer function'
+  #   Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/customer/register/'
   RegisterCustomerFunction:
     Description: 'Register Customer Lambda Function ARN'
     Value: !GetAtt RegisterCustomerFunction.Arn
+  RegisterCustomerFunctionIamRole:
+    Description: 'Implicit IAM Role created for Register Customer function'
+    Value: !GetAtt RegisterCustomerFunctionRole.Arn
+  # GetLimitsApi:
+  #   Description: 'API Gateway endpoint URL for Prod stage for Get Limits function'
+  #   Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/limits'
+  GetLimitsFunction:
+    Description: 'Get Limits Lambda Function ARN'
+    Value: !GetAtt GetLimitsFunction.Arn
+  GetLimitsFunctionIamRole:
+    Description: 'Implicit IAM Role created for Get Limits function'
+    Value: !GetAtt GetLimitsFunctionRole.Arn
+  # ResolveCustomerApi:
+  #   Description: 'API Gateway endpoint URL for Prod stage for Resolve customer function'
+  #   Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/customer/resolve/'
+  ResolveCustomerFunction:
+    Description: 'Resolve Customer Lambda Function ARN'
+    Value: !GetAtt ResolveCustomerFunction.Arn
+  ResolveCustomerFunctionIamRole:
+    Description: 'Implicit IAM Role created for Resolve Customer function'
+    Value: !GetAtt ResolveCustomerFunctionRole.Arn
+  UpdateCustomerLimitsFunction:
+    Description: 'Update Customer limits Lambda Function ARN'
+    Value: !GetAtt UpdateCustomerLimitsFunction.Arn
+  UpdateCustomerLimitsFunctionIamRole:
+    Description: 'Implicit IAM Role created for Update Customer limits function'
+    Value: !GetAtt UpdateCustomerLimitsFunctionRole.Arn
   StagingCommittedTransactionsTable:
     Value: !GetAtt StagingCommittedTransactionsTable.Arn
     Description: The ARN of StagingCommittedTransactions DynamoDB Table
-  CommittedTransactionsTable:
-    Value: !GetAtt CommittedTransactionsTable.Arn
-    Description: The ARN of CommittedTransaction DynamoDB Table
   StagingCustomersTable:
     Value: !GetAtt StagingCustomersTable.Arn
     Description: The ARN of StagingCustomers DynamoDB Table

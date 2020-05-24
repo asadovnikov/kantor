@@ -8,26 +8,59 @@ Description: 'packages
 Globals:
   Function:
     Timeout: 3
-ChargeStripeApiWebhook:
-  Type: AWS::Serverless::Api
-  Properties:
-    Cors:
-      AllowHeaders: '''Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'''
-      AllowOrigin:
-        Ref: CorsOrigin
-      MaxAge: '''3600'''
-      AllowMethods: '''OPTIONS,POST'''
-    EndpointConfiguration: REGIONAL
-    StageName: prod
-    TracingEnabled: true
+    Tracing: Active
 Resources:
-  TestCommittedTransactionsTable:
-    Type: AWS::Serverless::SimpleTable
+  StagingCommittedTransactionsTable:
+    Type: AWS::DynamoDB::Table
     Properties:
-      PrimaryKey:
-        Name: id
-        Type: String
-      TableName: TestCommittedTransactions
+      AttributeDefinitions:
+      - AttributeName: tr_id
+        AttributeType: S
+      KeySchema:
+      - AttributeName: tr_id
+        KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      TableName: StagingCommittedTransactions
+  StagingLimitsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+      - AttributeName: Tier
+        AttributeType: S
+      KeySchema:
+      - AttributeName: Tier
+        KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      TableName: StagingLimits
+  StagingCustomersTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+      - AttributeName: cst_id
+        AttributeType: S
+      - AttributeName: Email
+        AttributeType: S
+      KeySchema:
+      - AttributeName: cst_id
+        KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      GlobalSecondaryIndexes:
+      - IndexName: Email-Firstname-Surname-PostalCode-index
+        KeySchema:
+        - AttributeName: Email
+          KeyType: HASH
+        Projection:
+          ProjectionType: ALL
+        ProvisionedThroughput:
+          ReadCapacityUnits: '3'
+          WriteCapacityUnits: '3'
+      TableName: StagingCustomers
   ValidateTransactionFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -49,17 +82,59 @@ Resources:
       Environment:
         Variables:
           TABLE_NAME:
-            Ref: TestCommittedTransactionsTable
+            Ref: StagingCommittedTransactionsTable
       Policies:
-      - DynamoDBWritePolicy: null
-        TableName:
-          Ref: TestCommittedTransactionsTable
+      - DynamoDBWritePolicy:
+          TableName:
+            Ref: StagingCommittedTransactionsTable
       Events:
         RegisterTransactionApi:
           Type: Api
           Properties:
             Path: /transaction/register
             Method: post
+  RegisterCustomerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: RegisterCustomerFunction
+      Handler: index.handler
+      Runtime: nodejs12.x
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: StagingCustomersTable
+      Policies:
+      - DynamoDBWritePolicy:
+          TableName:
+            Ref: StagingCustomersTable
+  ResolveCustomerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ResolveCustomerFunction
+      Handler: index.handler
+      Runtime: nodejs12.x
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: StagingCustomersTable
+      Policies:
+      - DynamoDBWritePolicy:
+          TableName:
+            Ref: StagingCustomersTable
+  GetLimitsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: GetLimitsFunction
+      Handler: index.handler
+      Runtime: nodejs12.x
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: StagingLimitsTable
+      Policies:
+      - DynamoDBWritePolicy:
+          TableName:
+            Ref: StagingLimitsTable
 Outputs:
   ValidateTransactionApi:
     Description: API Gateway endpoint URL for Prod stage for Validate Transaction
@@ -95,9 +170,69 @@ Outputs:
       Fn::GetAtt:
       - RegisterTransactionFunctionRole
       - Arn
-  DynamoDBTableArn:
+  RegisterCustomerApi:
+    Description: API Gateway endpoint URL for Prod stage for Register customer function
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/customer/register/
+  RegisterCustomerFunction:
+    Description: Register Customer Lambda Function ARN
     Value:
       Fn::GetAtt:
-      - DynamoDBTable
+      - RegisterCustomerFunction
       - Arn
-    Description: The ARN of your DynamoDB Table
+  RegisterCustomerFunctionIamRole:
+    Description: Implicit IAM Role created for Register Customer function
+    Value:
+      Fn::GetAtt:
+      - RegisterCustomerFunctionRole
+      - Arn
+  GetLimitsApi:
+    Description: API Gateway endpoint URL for Prod stage for Get Limits function
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/limits
+  GetLimitsFunction:
+    Description: Get Limits Lambda Function ARN
+    Value:
+      Fn::GetAtt:
+      - GetLimitsFunction
+      - Arn
+  GetLimitsFunctionIamRole:
+    Description: Implicit IAM Role created for Get Limits function
+    Value:
+      Fn::GetAtt:
+      - GetLimitsFunctionRole
+      - Arn
+  ResolveCustomerApi:
+    Description: API Gateway endpoint URL for Prod stage for Resolve customer function
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/customer/resolve/
+  ResolveCustomerFunction:
+    Description: Resolve Customer Lambda Function ARN
+    Value:
+      Fn::GetAtt:
+      - ResolveCustomerFunction
+      - Arn
+  ResolveCustomerFunctionIamRole:
+    Description: Implicit IAM Role created for Resolve Customer function
+    Value:
+      Fn::GetAtt:
+      - ResolveCustomerFunctionRole
+      - Arn
+  StagingCommittedTransactionsTable:
+    Value:
+      Fn::GetAtt:
+      - StagingCommittedTransactionsTable
+      - Arn
+    Description: The ARN of StagingCommittedTransactions DynamoDB Table
+  StagingCustomersTable:
+    Value:
+      Fn::GetAtt:
+      - StagingCustomersTable
+      - Arn
+    Description: The ARN of StagingCustomers DynamoDB Table
+  StagingLimitsTable:
+    Value:
+      Fn::GetAtt:
+      - StagingLimitsTable
+      - Arn
+    Description: The ARN of StagingLimits DynamoDB Table

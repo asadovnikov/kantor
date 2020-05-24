@@ -1,9 +1,9 @@
 'use strict';
 console.log('Loading function');
-var AWS = require('aws-sdk');
+var dynamodb = require('aws-sdk/clients/dynamodb');
 const { v4: uuidv4 } = require('uuid');
 const AWSendpoint = 'http://docker.for.mac.localhost:8000';
-var docClient = new AWS.DynamoDB.DocumentClient({ endpoint: new AWS.Endpoint(AWSendpoint) });
+var docClient = new dynamodb.DocumentClient({ endpoint: new AWS.Endpoint(AWSendpoint) });
 
 var tableName = 'requests_table';
 
