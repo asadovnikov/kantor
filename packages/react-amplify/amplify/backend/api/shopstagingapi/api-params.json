@@ -1,0 +1,65 @@
+{
+    "paths": [
+        {
+            "name": "/transactions/register",
+            "lambdaFunction": "shopapitransactionregister",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST"
+                ]
+            }
+        },
+        {
+            "name": "/customers/create",
+            "lambdaFunction": "shopcystomerscreate",
+            "privacy": {
+                "protected": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ],
+                "unauth": [
+                    "/GET"
+                ]
+            }
+        }
+    ],
+    "resourceName": "shopstagingapi",
+    "apiName": "shopstagingapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "shopapitransactionregister"
+        },
+        {
+            "lambdaFunction": "shopcystomerscreate"
+        }
+    ],
+    "privacy": {
+        "auth": 2,
+        "unauth": 1,
+        "authRoleName": "amplify-shopstaging-dev-72532-authRole",
+        "unAuthRoleName": "amplify-shopstaging-dev-72532-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "shopapitransactionregister",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "shopcystomerscreate",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

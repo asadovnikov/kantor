@@ -1,0 +1,8 @@
+{
+	"name": "state-machine-describe",
+	"version": "1.0.0",
+	"description": "Describe state machine execution",
+	"main": "index.js",
+	"author": "akosevych",
+	"license": "MIT"
+}

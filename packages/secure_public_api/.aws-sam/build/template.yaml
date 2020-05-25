@@ -81,12 +81,43 @@ Resources:
       Runtime: nodejs12.x
       Environment:
         Variables:
-          TABLE_NAME:
+          TRANSACTION_TABLE_NAME:
             Ref: StagingCommittedTransactionsTable
+          CUSTOMERS_TABLE_NAME:
+            Ref: StagingCustomersTable
+          WARNING_TOPIC_ARN:
+            Ref: WarningSNSTopic
+          TIER_UP_TOPIC_ARN:
+            Ref: TierUpSNSTopic
+          ERROR_TOPIC_ARN:
+            Ref: ErrorSNSTopic
       Policies:
-      - DynamoDBWritePolicy:
+      - DynamoDBCrudPolicy:
           TableName:
             Ref: StagingCommittedTransactionsTable
+      - DynamoDBCrudPolicy:
+          TableName:
+            Ref: StagingCustomersTable
+      - SNSCrudPolicy:
+          TopicName:
+            Fn::GetAtt:
+            - TransactionRegisteredSNSTopic
+            - TopicName
+      - SNSCrudPolicy:
+          TopicName:
+            Fn::GetAtt:
+            - ErrorSNSTopic
+            - TopicName
+      - SNSCrudPolicy:
+          TopicName:
+            Fn::GetAtt:
+            - WarningSNSTopic
+            - TopicName
+      - SNSCrudPolicy:
+          TopicName:
+            Fn::GetAtt:
+            - TierUpSNSTopic
+            - TopicName
       Events:
         RegisterTransactionApi:
           Type: Api
@@ -103,14 +134,35 @@ Resources:
         Variables:
           TABLE_NAME:
             Ref: StagingCustomersTable
+          TOPIC_ARN:
+            Ref: TransactionRegisteredSNSTopic
       Policies:
       - DynamoDBWritePolicy:
           TableName:
             Ref: StagingCustomersTable
+      - SNSCrudPolicy:
+          TopicName:
+            Fn::GetAtt:
+            - TransactionRegisteredSNSTopic
+            - TopicName
   ResolveCustomerFunction:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: ResolveCustomerFunction
+      Handler: index.handler
+      Runtime: nodejs12.x
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: StagingCustomersTable
+      Policies:
+      - DynamoDBWritePolicy:
+          TableName:
+            Ref: StagingCustomersTable
+  UpdateCustomerLimitsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: UpdateCustomerLimitsFunction
       Handler: index.handler
       Runtime: nodejs12.x
       Environment:
@@ -135,7 +187,149 @@ Resources:
       - DynamoDBWritePolicy:
           TableName:
             Ref: StagingLimitsTable
+  TransactionErrorHandlerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: TransactionErrorHandlerFunction
+      Handler: index.handler
+      Runtime: nodejs12.x
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: StagingCommittedTransactionsTable
+      Policies:
+      - DynamoDBWritePolicy:
+          TableName:
+            Ref: StagingCommittedTransactionsTable
+  ApplyTransactionFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ApplyTransactionFunction
+      Handler: index.handler
+      Runtime: nodejs12.x
+  StateMachineRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service:
+              Fn::Sub: states.${AWS::Region}.amazonaws.com
+          Action:
+          - sts:AssumeRole
+      Path: /RegisteredTransactionApply/
+      Policies:
+      - PolicyName: InvokeLambda
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+          - Sid: InvokeLambda
+            Effect: Allow
+            Action:
+            - lambda:InvokeFunction
+            Resource: '*'
+  ApplyTransactionStateMachine:
+    Type: AWS::StepFunctions::StateMachine
+    Properties:
+      DefinitionString:
+        Fn::Sub: "{\r\n  \"Comment\": \"Apply transaction workflow\",\r\n  \"StartAt\"\
+          : \"ApplyTransaction\",\r\n  \"States\": {\r\n    \"ApplyTransaction\":\
+          \ {\r\n      \"Comment\": \"A Pass state passes its input to its output,\
+          \ without performing work. Pass states are useful when constructing and\
+          \ debugging state machines.\",\r\n      \"Type\": \"Task\",\r\n      \"\
+          Resource\": \"arn:aws:states:::lambda:invoke\",\r\n      \"Parameters\"\
+          : {\r\n        \"FunctionName\": \"${ApplyTransactionFunction.Arn}\",\r\n\
+          \        \"Payload\": {\r\n          \"Input.$\": \"$\"\r\n        }\r\n\
+          \      },\r\n      \"Next\": \"ResolveCustomer\",\r\n      \"Catch\": [\r\
+          \n        {\r\n          \"ErrorEquals\": [\r\n            \"InvalidTransactionError\"\
+          \r\n          ],\r\n          \"Next\": \"TransactionErrorHandler\"\r\n\
+          \        }\r\n      ],\r\n      \"Retry\": [\r\n        {\r\n          \"\
+          ErrorEquals\": [\r\n            \"InvalidTransactionError\"\r\n        \
+          \  ],\r\n          \"MaxAttempts\": 0\r\n        },\r\n        {\r\n   \
+          \       \"ErrorEquals\": [\r\n            \"States.ALL\"\r\n          ],\r\
+          \n          \"IntervalSeconds\": 1,\r\n          \"MaxAttempts\": 3,\r\n\
+          \          \"BackoffRate\": 1.5\r\n        }\r\n      ]\r\n    },\r\n  \
+          \  \"ResolveCustomer\": {\r\n      \"Comment\": \"A Choice state adds branching\
+          \ logic to a state machine. Choice rules can implement 16 different comparison\
+          \ operators, and can be combined using And, Or, and Not\",\r\n      \"Type\"\
+          : \"Choice\",\r\n      \"Choices\": [\r\n        {\r\n          \"Variable\"\
+          : \"$.registeredTransaction.customer.resolved\",\r\n          \"BooleanEquals\"\
+          : true,\r\n          \"Next\": \"GetLimits\"\r\n        },\r\n        {\r\
+          \n          \"Variable\": \"$.registeredTransaction.customer.resolved\"\
+          ,\r\n          \"BooleanEquals\": false,\r\n          \"Next\": \"RegisterCustomer\"\
+          \r\n        }\r\n      ],\r\n      \"Default\": \"TransactionErrorHandler\"\
+          \r\n    },\r\n    \"RegisterCustomer\": {\r\n      \"Type\": \"Task\",\r\
+          \n      \"Resource\": \"arn:aws:states:::lambda:invoke\",\r\n      \"Parameters\"\
+          : {\r\n        \"FunctionName\": \"${RegisterCustomerFunction.Arn}\",\r\n\
+          \        \"Payload\": {\r\n          \"Input.$\": \"$.registeredTransaction\"\
+          \r\n        }\r\n      },\r\n      \"Next\": \"GetLimits\",\r\n      \"\
+          Catch\": [\r\n        {\r\n          \"ErrorEquals\": [\r\n            \"\
+          InvalidTransactionError\"\r\n          ],\r\n          \"Next\": \"TransactionErrorHandler\"\
+          \r\n        }\r\n      ],\r\n      \"Retry\": [\r\n        {\r\n       \
+          \   \"ErrorEquals\": [\r\n            \"InvalidTransactionError\"\r\n  \
+          \        ],\r\n          \"MaxAttempts\": 0\r\n        },\r\n        {\r\
+          \n          \"ErrorEquals\": [\r\n            \"States.ALL\"\r\n       \
+          \   ],\r\n          \"IntervalSeconds\": 1,\r\n          \"MaxAttempts\"\
+          : 3,\r\n          \"BackoffRate\": 1.5\r\n        }\r\n      ]\r\n    },\r\
+          \n    \"GetLimits\": {\r\n      \"Type\": \"Task\",\r\n      \"Resource\"\
+          : \"arn:aws:states:::lambda:invoke\",\r\n      \"Parameters\": {\r\n   \
+          \     \"FunctionName\": \"${GetLimitsFunction.Arn}\",\r\n        \"Payload\"\
+          : {\r\n          \"Input.$\": \"$.registeredTransaction\"\r\n        }\r\
+          \n      },\r\n      \"Next\": \"UpdateCustomerLimits\",\r\n      \"Catch\"\
+          : [\r\n        {\r\n          \"ErrorEquals\": [\r\n            \"InvalidTransactionError\"\
+          \r\n          ],\r\n          \"Next\": \"TransactionErrorHandler\"\r\n\
+          \        }\r\n      ],\r\n      \"Retry\": [\r\n        {\r\n          \"\
+          ErrorEquals\": [\r\n            \"InvalidTransactionError\"\r\n        \
+          \  ],\r\n          \"MaxAttempts\": 0\r\n        },\r\n        {\r\n   \
+          \       \"ErrorEquals\": [\r\n            \"States.ALL\"\r\n          ],\r\
+          \n          \"IntervalSeconds\": 1,\r\n          \"MaxAttempts\": 3,\r\n\
+          \          \"BackoffRate\": 1.5\r\n        }\r\n      ]\r\n    },\r\n  \
+          \  \"TransactionErrorHandler\": {\r\n      \"Type\": \"Fail\",\r\n     \
+          \ \"Cause\": \"Invalid data provided!\",\r\n      \"Error\": \"InvalidDataException\"\
+          \r\n    },\r\n    \"UpdateCustomerLimits\": {\r\n      \"Type\": \"Task\"\
+          ,\r\n      \"Resource\": \"arn:aws:states:::lambda:invoke\",\r\n      \"\
+          Parameters\": {\r\n        \"FunctionName\": \"${UpdateCustomerLimitsFunction.Arn}\"\
+          ,\r\n        \"Payload\": {\r\n          \"Input.$\": \"$.registeredTransaction\"\
+          \r\n        }\r\n      },\r\n      \"Catch\": [\r\n        {\r\n       \
+          \   \"ErrorEquals\": [\r\n            \"InvalidTransactionError\"\r\n  \
+          \        ],\r\n          \"Next\": \"TransactionErrorHandler\"\r\n     \
+          \   }\r\n      ],\r\n      \"Retry\": [\r\n        {\r\n          \"ErrorEquals\"\
+          : [\r\n            \"InvalidTransactionError\"\r\n          ],\r\n     \
+          \     \"MaxAttempts\": 0\r\n        },\r\n        {\r\n          \"ErrorEquals\"\
+          : [\r\n            \"States.ALL\"\r\n          ],\r\n          \"IntervalSeconds\"\
+          : 1,\r\n          \"MaxAttempts\": 3,\r\n          \"BackoffRate\": 1.5\r\
+          \n        }\r\n      ],\r\n      \"End\": true\r\n    }\r\n  }\r\n}"
+      RoleArn:
+        Fn::GetAtt:
+        - StateMachineRole
+        - Arn
+  TransactionRegisteredSNSTopic:
+    Type: AWS::SNS::Topic
+  WarningSNSTopic:
+    Type: AWS::SNS::Topic
+  ErrorSNSTopic:
+    Type: AWS::SNS::Topic
+  TierUpSNSTopic:
+    Type: AWS::SNS::Topic
 Outputs:
+  TierUpSNSTopic:
+    Description: Notification topic to signal that customer tier was leveled up
+    Value:
+      Ref: TierUpSNSTopic
+  ErrorSNSTopic:
+    Description: Notification topic to signal error
+    Value:
+      Ref: ErrorSNSTopic
+  WarningSNSTopic:
+    Description: Notification topic to warn about strange activity
+    Value:
+      Ref: WarningSNSTopic
+  TransactionRegisteredSNSTopic:
+    Description: Notification topic to start applying of a transaction
+    Value:
+      Ref: TransactionRegisteredSNSTopic
   ValidateTransactionApi:
     Description: API Gateway endpoint URL for Prod stage for Validate Transaction
       function
@@ -170,10 +364,18 @@ Outputs:
       Fn::GetAtt:
       - RegisterTransactionFunctionRole
       - Arn
-  RegisterCustomerApi:
-    Description: API Gateway endpoint URL for Prod stage for Register customer function
+  ApplyTransactionFunction:
+    Description: Apply Transaction Lambda Function ARN
     Value:
-      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/customer/register/
+      Fn::GetAtt:
+      - ApplyTransactionFunction
+      - Arn
+  ApplyTransactionFunctionIamRole:
+    Description: Implicit IAM Role created for Apply Transaction function
+    Value:
+      Fn::GetAtt:
+      - ApplyTransactionFunctionRole
+      - Arn
   RegisterCustomerFunction:
     Description: Register Customer Lambda Function ARN
     Value:
@@ -186,10 +388,18 @@ Outputs:
       Fn::GetAtt:
       - RegisterCustomerFunctionRole
       - Arn
-  GetLimitsApi:
-    Description: API Gateway endpoint URL for Prod stage for Get Limits function
+  TransactionErrorHandlerFunction:
+    Description: Transaction error handler Lambda Function ARN
     Value:
-      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/limits
+      Fn::GetAtt:
+      - TransactionErrorHandlerFunction
+      - Arn
+  TransactionErrorHandlerFunctionIamRole:
+    Description: Implicit IAM Role created for Transaction Error handler function
+    Value:
+      Fn::GetAtt:
+      - TransactionErrorHandlerFunctionRole
+      - Arn
   GetLimitsFunction:
     Description: Get Limits Lambda Function ARN
     Value:
@@ -202,10 +412,6 @@ Outputs:
       Fn::GetAtt:
       - GetLimitsFunctionRole
       - Arn
-  ResolveCustomerApi:
-    Description: API Gateway endpoint URL for Prod stage for Resolve customer function
-    Value:
-      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/customer/resolve/
   ResolveCustomerFunction:
     Description: Resolve Customer Lambda Function ARN
     Value:
@@ -217,6 +423,18 @@ Outputs:
     Value:
       Fn::GetAtt:
       - ResolveCustomerFunctionRole
+      - Arn
+  UpdateCustomerLimitsFunction:
+    Description: Update Customer limits Lambda Function ARN
+    Value:
+      Fn::GetAtt:
+      - UpdateCustomerLimitsFunction
+      - Arn
+  UpdateCustomerLimitsFunctionIamRole:
+    Description: Implicit IAM Role created for Update Customer limits function
+    Value:
+      Fn::GetAtt:
+      - UpdateCustomerLimitsFunctionRole
       - Arn
   StagingCommittedTransactionsTable:
     Value:

@@ -1,0 +1,150 @@
+---
+  swagger: "2.0"
+  info:
+    description: Secured public api for working with payment transaction
+    version: 1.0.0
+    title: Transaction API
+    contact:
+      email: kantor@kosevych.info
+  host: virtserver.swaggerhub.com
+  basePath: /kantor/transaction/1.0.0
+  tags:
+  - name: GW
+    description: GW white listed available call
+  - name: Shop
+    description: Shop secured call
+  schemes:
+  - https
+  paths:
+    /register:
+      post:
+        tags:
+        - GW
+        summary: register transaction
+        description: |
+          By passing performed and commited transaction
+          it will be store in trnsaction store and appropriate limits
+          will be updated accordingly
+        operationId: RegisterTransaction
+        consumes:
+        - application/json
+        produces:
+        - application/json
+        parameters:
+        - in: body
+          name: transaction
+          description: Trnsaction to register
+          required: false
+          schema:
+            $ref: '#/definitions/Transaction'
+        responses:
+          "201":
+            description: transaction has successfully registered
+          "400":
+            description: invalid transaction
+    /validate:
+      post:
+        tags:
+        - GW
+        summary: validate transaction
+        description: "By passing a payment transaction it will be validated \nthrough KYC check and account limits\n"
+        operationId: ValidateTransaction
+        consumes:
+        - application/json
+        produces:
+        - application/json
+        parameters:
+        - in: body
+          name: transaction
+          description: Trnsaction to register
+          required: false
+          schema:
+            $ref: '#/definitions/Transaction'
+        responses:
+          "201":
+            description: transaction has successfully registered
+          "202":
+            description: transactions is allowed and kyc validation was initiated
+          "400":
+            description: invalid transaction
+          "409":
+            description: transaction blocked during limits check
+  definitions:
+    Transaction:
+      type: object
+      required:
+      - City
+      - Country
+      - Email
+      - FiatCurrency
+      - Firstname
+      - PostalCode
+      - StateProvince
+      - StreetLine1
+      - Surname
+      properties:
+        tr_id:
+          type: string
+          example: d12a7402-d343-458f-a5f3-580b556b7546
+          pattern: ^[A-Fa-f0-9]{32}$
+        Firstname:
+          type: string
+          example: Bill
+        Surname:
+          type: string
+          example: Robinson
+        DateOfBirth:
+          type: string
+          format: date
+          example: 1982-08-29T00:00:00.000Z
+        StreetLine1:
+          type: string
+          example: 2232  Benedum Drive
+        StreetLine2:
+          type: string
+          example: 4724  Longview Avenue
+        City:
+          type: string
+          example: Pomona
+        PostalCode:
+          type: number
+          example: 10970.0
+        StateProvince:
+          type: string
+          example: NY
+        Country:
+          type: string
+          example: USA
+        Email:
+          type: string
+          format: email
+          example: dqukn3u61ko@powerencry.com
+        Telephone:
+          type: string
+          example: 347-968-8516
+        FiatCurrency:
+          type: string
+          example: USD
+        FiatAmount:
+          type: number
+          example: 12.0
+        CryptoCurrency:
+          type: string
+          example: BTC
+        CryptoAmount:
+          type: number
+          example: 0.007
+        CryptoAddress:
+          type: string
+          example: bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq
+        GWReference:
+          type: string
+          format: uuid
+          example: a646c176-ee35-45a5-afa6-41f28b12db5b
+        BankReference:
+          type: string
+          example: 1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2
+        MerchantRef:
+          type: string
+          example: 3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy
+  

@@ -1,0 +1,8 @@
+{
+	"name": "apply_transaction",
+	"version": "1.0.0",
+	"description": "Apply transaction handler",
+	"main": "index.js",
+	"author": "akosevych",
+	"license": "MIT"
+}

@@ -1,0 +1,8 @@
+{
+	"name": "transaction_error_handler",
+	"version": "1.0.0",
+	"description": "Transaction error handler",
+	"main": "index.js",
+	"author": "akosevych",
+	"license": "MIT"
+}

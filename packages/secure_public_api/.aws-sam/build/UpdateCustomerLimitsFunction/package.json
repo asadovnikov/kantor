@@ -1,0 +1,8 @@
+{
+	"name": "update_customer_limits",
+	"version": "1.0.0",
+	"description": "Update customer limits handler",
+	"main": "index.js",
+	"author": "akosevych",
+	"license": "MIT"
+}

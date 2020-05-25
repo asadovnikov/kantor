@@ -1,0 +1,11 @@
+{
+    "permissions": {
+        "function": {
+            "ShopTransactionsTriggerae5bd54f": [
+                "create",
+                "read",
+                "update"
+            ]
+        }
+    }
+}

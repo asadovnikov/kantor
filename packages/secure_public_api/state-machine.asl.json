@@ -1,0 +1,169 @@
+{
+  "Comment": "Apply transaction workflow",
+  "StartAt": "ApplyTransaction",
+  "States": {
+    "ApplyTransaction": {
+      "Comment": "A Pass state passes its input to its output, without performing work. Pass states are useful when constructing and debugging state machines.",
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${ApplyTransactionFunction.Arn}",
+        "Payload": {
+          "Input.$": "$"
+        }
+      },
+      "Next": "ResolveCustomer",
+      "Catch": [
+        {
+          "ErrorEquals": [
+            "InvalidTransactionError"
+          ],
+          "Next": "TransactionErrorHandler"
+        }
+      ],
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "InvalidTransactionError"
+          ],
+          "MaxAttempts": 0
+        },
+        {
+          "ErrorEquals": [
+            "States.ALL"
+          ],
+          "IntervalSeconds": 1,
+          "MaxAttempts": 3,
+          "BackoffRate": 1.5
+        }
+      ]
+    },
+    "ResolveCustomer": {
+      "Comment": "A Choice state adds branching logic to a state machine. Choice rules can implement 16 different comparison operators, and can be combined using And, Or, and Not",
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.registeredTransaction.customer.resolved",
+          "BooleanEquals": true,
+          "Next": "GetLimits"
+        },
+        {
+          "Variable": "$.registeredTransaction.customer.resolved",
+          "BooleanEquals": false,
+          "Next": "RegisterCustomer"
+        }
+      ],
+      "Default": "TransactionErrorHandler"
+    },
+    "RegisterCustomer": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${RegisterCustomerFunction.Arn}",
+        "Payload": {
+          "Input.$": "$.registeredTransaction"
+        }
+      },
+      "Next": "GetLimits",
+      "Catch": [
+        {
+          "ErrorEquals": [
+            "InvalidTransactionError"
+          ],
+          "Next": "TransactionErrorHandler"
+        }
+      ],
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "InvalidTransactionError"
+          ],
+          "MaxAttempts": 0
+        },
+        {
+          "ErrorEquals": [
+            "States.ALL"
+          ],
+          "IntervalSeconds": 1,
+          "MaxAttempts": 3,
+          "BackoffRate": 1.5
+        }
+      ]
+    },
+    "GetLimits": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${GetLimitsFunction.Arn}",
+        "Payload": {
+          "Input.$": "$.registeredTransaction"
+        }
+      },
+      "Next": "UpdateCustomerLimits",
+      "Catch": [
+        {
+          "ErrorEquals": [
+            "InvalidTransactionError"
+          ],
+          "Next": "TransactionErrorHandler"
+        }
+      ],
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "InvalidTransactionError"
+          ],
+          "MaxAttempts": 0
+        },
+        {
+          "ErrorEquals": [
+            "States.ALL"
+          ],
+          "IntervalSeconds": 1,
+          "MaxAttempts": 3,
+          "BackoffRate": 1.5
+        }
+      ]
+    },
+    "TransactionErrorHandler": {
+      "Type": "Fail",
+      "Cause": "Invalid data provided!",
+      "Error": "InvalidDataException"
+    },
+    "UpdateCustomerLimits": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${UpdateCustomerLimitsFunction.Arn}",
+        "Payload": {
+          "Input.$": "$.registeredTransaction"
+        }
+      },
+      "Catch": [
+        {
+          "ErrorEquals": [
+            "InvalidTransactionError"
+          ],
+          "Next": "TransactionErrorHandler"
+        }
+      ],
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "InvalidTransactionError"
+          ],
+          "MaxAttempts": 0
+        },
+        {
+          "ErrorEquals": [
+            "States.ALL"
+          ],
+          "IntervalSeconds": 1,
+          "MaxAttempts": 3,
+          "BackoffRate": 1.5
+        }
+      ],
+      "End": true
+    }
+  }
+}
