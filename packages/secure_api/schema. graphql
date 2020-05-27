@@ -1,18 +1,18 @@
 type Transaction {
-  id: String
+  id: ID!
   firstName: String!
   surname: String!
   dateOfBirth: Date!
   streetLine1: String!
   streetLine2: String
   city: String!
-  postalCode: Number!
+  postalCode: Int!
   stateProvince: String!
   country: String!
   email: String!
   telephone: String
   fiatCurrency: String!
-  fiatAmount: Number!
+  fiatAmount: Int!
   cryptoCurrency: String
   cryptoAmount: Number
   cryptoAddress: String
@@ -22,21 +22,21 @@ type Transaction {
 }
 
 type Customer {
-  id: String
+  id: ID!
   firstName: String!
   surname: String!
   dateOfBirth: Date!
   streetLine1: String!
   streetLine2: String
   city: String!
-  postalCode: Number!
+  postalCode: Int!
   stateProvince: String!
   country: String!
   email: String!
   telephone: String
   fiatCurrency: String!
-  fiatDailyAmount: Number!
-  fiatMonthlyAmount: Number!
+  fiatDailyAmount: Int!
+  fiatMonthlyAmount: Int!
   tier: String
   KYC_State: String!
 }

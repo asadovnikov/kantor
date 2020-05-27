@@ -18,6 +18,18 @@
 			"Type": "String",
 			"Default": "storageSTTransactionStoreArn"
 		},
+		"functiontestPurposeName": {
+			"Type": "String",
+			"Default": "functiontestPurposeName"
+		},
+		"functiontransactionConsumerResourcesName": {
+			"Type": "String",
+			"Default": "functiontransactionConsumerResourcesName"
+		},
+		"authbackofficeamplify18c0e0b7UserPoolId": {
+			"Type": "String",
+			"Default": "authbackofficeamplify18c0e0b7UserPoolId"
+		},
 		"apitransactionstoreGraphQLAPIIdOutput": {
 			"Type": "String",
 			"Default": "apitransactionstoreGraphQLAPIIdOutput"
@@ -65,12 +77,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"transactionsValidateLambda",
+						"transactionProcessorLambda",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"transactionsValidateLambda",
+									"transactionProcessorLambda",
 									"-",
 									{
 										"Ref": "env"
@@ -87,6 +99,15 @@
 						},
 						"REGION": {
 							"Ref": "AWS::Region"
+						},
+						"FUNCTION_TESTPURPOSE_NAME": {
+							"Ref": "functiontestPurposeName"
+						},
+						"FUNCTION_TRANSACTIONCONSUMERRESOURCES_NAME": {
+							"Ref": "functiontransactionConsumerResourcesName"
+						},
+						"AUTH_BACKOFFICEAMPLIFY18C0E0B7_USERPOOLID": {
+							"Ref": "authbackofficeamplify18c0e0b7UserPoolId"
 						},
 						"API_TRANSACTIONSTORE_GRAPHQLAPIIDOUTPUT": {
 							"Ref": "apitransactionstoreGraphQLAPIIdOutput"
@@ -150,7 +171,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-backofficeamplify-dev-94927-deployment",
-					"S3Key": "amplify-builds/transactionsValidate-505061667a2f59734d74-build.zip"
+					"S3Key": "amplify-builds/transactionsProcessorResources-66576f53483575703837-build.zip"
 				}
 			}
 		},
@@ -160,12 +181,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"backofficeamplifyLambdaRoleb0a9eda4",
+						"backofficeamplifyLambdaRolef92b37db",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"backofficeamplifyLambdaRoleb0a9eda4",
+									"backofficeamplifyLambdaRolef92b37db",
 									"-",
 									{
 										"Ref": "env"
@@ -279,6 +300,183 @@
 				"PolicyDocument": {
 					"Version": "2012-10-17",
 					"Statement": [
+						{
+							"Effect": "Allow",
+							"Action": [
+								"lambda:Create*",
+								"lambda:Put*",
+								"lambda:Add*",
+								"lambda:Get*",
+								"lambda:List*",
+								"lambda:Invoke*",
+								"lambda:Update*",
+								"lambda:Delete*",
+								"lambda:Remove*"
+							],
+							"Resource": [
+								{
+									"Fn::Join": [
+										"",
+										[
+											"arn:aws:lambda:",
+											{
+												"Ref": "AWS::Region"
+											},
+											":",
+											{
+												"Ref": "AWS::AccountId"
+											},
+											":function:",
+											{
+												"Ref": "functiontestPurposeName"
+											}
+										]
+									]
+								}
+							]
+						},
+						{
+							"Effect": "Allow",
+							"Action": [
+								"lambda:Create*",
+								"lambda:Put*",
+								"lambda:Add*",
+								"lambda:Get*",
+								"lambda:List*",
+								"lambda:Invoke*",
+								"lambda:Update*",
+								"lambda:Delete*",
+								"lambda:Remove*"
+							],
+							"Resource": [
+								{
+									"Fn::Join": [
+										"",
+										[
+											"arn:aws:lambda:",
+											{
+												"Ref": "AWS::Region"
+											},
+											":",
+											{
+												"Ref": "AWS::AccountId"
+											},
+											":function:",
+											{
+												"Ref": "functiontransactionConsumerResourcesName"
+											}
+										]
+									]
+								}
+							]
+						},
+						{
+							"Effect": "Allow",
+							"Action": [
+								"cognito-idp:ConfirmSignUp",
+								"cognito-idp:AdminCreateUser",
+								"cognito-idp:CreateUserImportJob",
+								"cognito-idp:AdminSetUserSettings",
+								"cognito-idp:AdminLinkProviderForUser",
+								"cognito-idp:CreateIdentityProvider",
+								"cognito-idp:AdminConfirmSignUp",
+								"cognito-idp:AdminDisableUser",
+								"cognito-idp:AdminRemoveUserFromGroup",
+								"cognito-idp:SetUserMFAPreference",
+								"cognito-idp:SetUICustomization",
+								"cognito-idp:SignUp",
+								"cognito-idp:VerifyUserAttribute",
+								"cognito-idp:SetRiskConfiguration",
+								"cognito-idp:StartUserImportJob",
+								"cognito-idp:AdminSetUserPassword",
+								"cognito-idp:AssociateSoftwareToken",
+								"cognito-idp:CreateResourceServer",
+								"cognito-idp:RespondToAuthChallenge",
+								"cognito-idp:CreateUserPoolClient",
+								"cognito-idp:AdminUserGlobalSignOut",
+								"cognito-idp:GlobalSignOut",
+								"cognito-idp:AddCustomAttributes",
+								"cognito-idp:CreateGroup",
+								"cognito-idp:CreateUserPool",
+								"cognito-idp:AdminForgetDevice",
+								"cognito-idp:AdminAddUserToGroup",
+								"cognito-idp:AdminRespondToAuthChallenge",
+								"cognito-idp:ForgetDevice",
+								"cognito-idp:CreateUserPoolDomain",
+								"cognito-idp:AdminEnableUser",
+								"cognito-idp:AdminUpdateDeviceStatus",
+								"cognito-idp:StopUserImportJob",
+								"cognito-idp:InitiateAuth",
+								"cognito-idp:AdminInitiateAuth",
+								"cognito-idp:AdminSetUserMFAPreference",
+								"cognito-idp:ConfirmForgotPassword",
+								"cognito-idp:SetUserSettings",
+								"cognito-idp:VerifySoftwareToken",
+								"cognito-idp:AdminDisableProviderForUser",
+								"cognito-idp:SetUserPoolMfaConfig",
+								"cognito-idp:ChangePassword",
+								"cognito-idp:ConfirmDevice",
+								"cognito-idp:AdminResetUserPassword",
+								"cognito-idp:ResendConfirmationCode",
+								"cognito-identity:Describe*",
+								"cognito-identity:Get*",
+								"cognito-identity:List*",
+								"cognito-idp:Describe*",
+								"cognito-idp:AdminGetDevice",
+								"cognito-idp:AdminGetUser",
+								"cognito-idp:AdminList*",
+								"cognito-idp:List*",
+								"cognito-sync:Describe*",
+								"cognito-sync:Get*",
+								"cognito-sync:List*",
+								"iam:ListOpenIdConnectProviders",
+								"iam:ListRoles",
+								"sns:ListPlatformApplications",
+								"cognito-idp:ForgotPassword",
+								"cognito-idp:UpdateAuthEventFeedback",
+								"cognito-idp:UpdateResourceServer",
+								"cognito-idp:UpdateUserPoolClient",
+								"cognito-idp:AdminUpdateUserAttributes",
+								"cognito-idp:UpdateUserAttributes",
+								"cognito-idp:UpdateUserPoolDomain",
+								"cognito-idp:UpdateIdentityProvider",
+								"cognito-idp:UpdateGroup",
+								"cognito-idp:AdminUpdateAuthEventFeedback",
+								"cognito-idp:UpdateDeviceStatus",
+								"cognito-idp:UpdateUserPool",
+								"cognito-idp:DeleteUserPoolDomain",
+								"cognito-idp:DeleteResourceServer",
+								"cognito-idp:DeleteGroup",
+								"cognito-idp:AdminDeleteUserAttributes",
+								"cognito-idp:DeleteUserPoolClient",
+								"cognito-idp:DeleteUserAttributes",
+								"cognito-idp:DeleteUserPool",
+								"cognito-idp:AdminDeleteUser",
+								"cognito-idp:DeleteIdentityProvider",
+								"cognito-idp:DeleteUser"
+							],
+							"Resource": [
+								{
+									"Fn::Join": [
+										"",
+										[
+											"arn:aws:cognito-idp:",
+											{
+												"Ref": "AWS::Region"
+											},
+											":",
+											{
+												"Ref": "AWS::AccountId"
+											},
+											":userpool/",
+											{
+												"Ref": "authbackofficeamplify18c0e0b7UserPoolId"
+											}
+										]
+									]
+								}
+							]
+						},
 						{
 							"Effect": "Allow",
 							"Action": [

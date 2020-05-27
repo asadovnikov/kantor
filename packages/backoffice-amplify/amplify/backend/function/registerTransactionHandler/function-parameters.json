@@ -1,0 +1,12 @@
+{
+    "permissions": {
+        "storage": {
+            "STCustomerStore": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ]
+        }
+    }
+}

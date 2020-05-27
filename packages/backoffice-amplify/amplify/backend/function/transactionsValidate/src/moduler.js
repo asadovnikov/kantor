@@ -1,4 +1,3 @@
-/*! 0.0.1 */
 const isFalsy = (val) => !val;
 
 // 2xx: Success - 	Indicates that the client’s request was accepted successfully.
@@ -75,9 +74,42 @@ const handleCommonErrors = (err) => {
     return ServerFailed;
 };
 
+const paymentLimits = {
+    'Low': {
+        FiatDailyAmount: 1000,
+        FiatMonthlyAmount: 20000,
+        FiatCurrency: 'EUR'
+    },
+    'Medium': {
+        FiatDailyAmount: 5000,
+        FiatMonthlyAmount: 100000,
+        FiatCurrency: 'EUR'
+    },
+    'High': {
+        FiatDailyAmount: 20000,
+        FiatMonthlyAmount: 300000,
+        FiatCurrency: 'EUR'
+    }
+};
+const isOverLimit = (tier, currentAmount) => {
+    const limit = paymentLimits[tier];
+    // TODO: Decide how to handle situation of FiatCurrency mismatch
+    return currentAmount.FiatDailyAmount > limit.FiatDailyAmount || currentAmount.FiatMonthlyAmount > limit.FiatMonthlyAmount;
+};
+const DefaultTier = 'Low';
+
+const DefaultKYCState = 'Initiated';
+/**
+ * KYC steps for each tier
+ *
+ */
+
 const customersTable = 'STCustomerStoreTbl-dev';
-const resolveCustomer = (dynamo) => async (person) => {
-    console.log('Performing customer lookup');
+const buildHashKey = (person) => {
+    return `#${person.Firstname.toLowerCase()}-#${person.Surname.toLowerCase()}`;
+};
+const resolveCustomerByEmail = (dynamo) => async (person) => {
+    console.log('Performing customer query byEmail:');
     const query = {
         TableName: customersTable,
         IndexName: 'byEmail',
@@ -95,6 +127,58 @@ const resolveCustomer = (dynamo) => async (person) => {
         return handleQueryError(err);
     }
 };
+const lookupCustomers = (dynamo) => async (person) => {
+    console.log('Performing customer query hashKey-index:');
+    const query = {
+        TableName: customersTable,
+        IndexName: 'hashKey-index',
+        KeyConditionExpression: 'hashKey = :a',
+        ExpressionAttributeValues: {
+            ':a': buildHashKey(person)
+        }
+    };
+    try {
+        const result = await dynamo.query(query).promise();
+        console.log(`Query successful. Found ${result.Count} items.\nQuery:\n`, query);
+        return result.Items;
+    }
+    catch (err) {
+        return handleQueryError(err);
+    }
+};
+const byContacts = (person, customer) => {
+    // TODO: provide more exact and presides algorithm
+    return person.Email.toLowerCase() === customer.Email.toLowerCase() || customer.Telephone.toLowerCase() === person.Telephone.toLowerCase();
+};
+const byCityCountry = (person, customer) => {
+    return person.City.toLowerCase() === customer.City.toLowerCase() && person.Country.toLowerCase() === person.Country.toLowerCase();
+};
+const matchCustomer = (person, customers) => {
+    console.log('Performing matching of found customers to provided person.\n', JSON.stringify(customers || []));
+    if (customers === undefined || customers.length === 0) {
+        console.log('Nothing to compare with provided person. We should create a new one.\n', JSON.stringify(person));
+        return person;
+    }
+    if (customers.length === 1) {
+        console.log('Easy job, only one customer is provided.\n', JSON.stringify(customers));
+        return customers[0];
+    }
+    console.log('Step1: by Country and City');
+    const step1 = customers.filter(customer => byCityCountry(person, customer));
+    if (step1.length === 1) {
+        return step1[0];
+    }
+    console.log('Step2: by Email or Phone');
+    const step2 = step1.filter(customer => byContacts(person, customer));
+    if (step2.length === 1) {
+        return step2[0];
+    }
+    // if (step2.length > 1) {
+    //   return person;
+    // }
+    console.log('We should fail here, but I\'m to fucking tired to handle exception tree');
+    return null;
+};
 const createCustomer = (dynamo) => async (person, id) => {
     console.log('Registering new customer');
     const { FiatAmount, ...rest } = person;
@@ -102,10 +186,11 @@ const createCustomer = (dynamo) => async (person, id) => {
         TableName: customersTable,
         Item: {
             id: id,
-            Tier: 'High',
-            KYC_State: 'unknown',
-            FiatDailyAmount: FiatAmount,
-            FiatMonthlyAmount: FiatAmount,
+            hashKey: buildHashKey(person),
+            Tier: DefaultTier,
+            KYC_State: DefaultKYCState,
+            FiatDailyAmount: 0,
+            FiatMonthlyAmount: 0,
             ...rest
         }
     };
@@ -120,6 +205,7 @@ const createCustomer = (dynamo) => async (person, id) => {
 };
 const updateCustomerLimits = (dynamo) => async (customer) => {
     console.log('Updating customer limits');
+    // TODO: check limits and update tier if needed
     const updateQuery = {
         TableName: customersTable,
         Key: { id: customer.id, Email: customer.Email },
@@ -139,6 +225,23 @@ const updateCustomerLimits = (dynamo) => async (customer) => {
         return handleQueryError(err);
     }
 };
+const validateCustomerTransaction = (customer) => {
+    // TODO: provide logs
+    // TODO: block payment in case of over-limit and KYC check not passed
+    // TODO: If KYC was passed before but over-limit occurs a tier level-up should be initiated
+    const today = customer.FiatDailyAmount + customer.FiatAmount;
+    const monthly = customer.FiatMonthlyAmount + customer.FiatAmount;
+    const isAllowed = customer.KYC_State !== 'Validated' && isOverLimit(customer.Tier, {
+        FiatDailyAmount: today,
+        FiatMonthlyAmount: monthly,
+        FiatCurrency: customer.FiatCurrency
+    });
+    return {
+        KYC: customer.KYC_State,
+        Tier: customer.Tier,
+        PaymentAllowed: isAllowed
+    };
+};
 
 /**
  * Extract transaction from body
@@ -150,6 +253,23 @@ const updateCustomerLimits = (dynamo) => async (customer) => {
  * Check customer KYC
  * Check customer limits
  */
+const transactionsTbl = 'STTransactionStoreTbl-dev';
+const saveTransaction = (dynamo) => async (transaction) => {
+    console.log('Saving transaction to db.');
+    var params = {
+        TableName: transactionsTbl,
+        Item: transaction
+    };
+    try {
+        var result = await dynamo.put(params).promise();
+        console.log(`Item ${params.Item.id} stored successfully:\n`, result);
+        return params.Item;
+    }
+    catch (error) {
+        return handleQueryError(error);
+    }
+};
+// export const registerTransaction
 // TODO: provide additional checks
 const isTransactionRequest = (arg) => {
     return (arg || {}).hasOwnProperty('Email') || (arg || {}).hasOwnProperty('email');
@@ -182,5 +302,5 @@ const extractTransaction = (message) => {
     throw new Error('Failed extracting transaction details');
 };
 
-exports.helpers = { createCustomer, extractTransaction, handleQueryError, resolveCustomer, updateCustomerLimits };
+exports.helpers = { buildHashKey, createCustomer, extractTransaction, handleQueryError, lookupCustomers, matchCustomer, resolveCustomerByEmail, saveTransaction, updateCustomerLimits, validateCustomerTransaction };
 //# sourceMappingURL=bundle.js.map

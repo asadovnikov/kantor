@@ -11,28 +11,29 @@ exports.handler = async (event, context) => {
 
   };
   console.log(`EVENT: ${JSON.stringify(event)}`);
-  const transaction = helpers.extractTransaction(JSON.parse(event.body));
-  const customers = await helpers.resolveCustomer(docClient)(transaction);
+  const transaction = helpers.extractTransaction(event.body !== undefined ? JSON.parse(event.body) : event);
+  const customers = await helpers.lookupCustomers(docClient)(transaction);
   if(Array.isArray(customers)){
-    if(customers.length > 0 ){
-      response = {
-        statusCode: 200,
-        body: JSON.stringify(customers)
-      }
-    }
-    else {
+    const knownCustomer = helpers.matchCustomer(transaction, customers);
+    if(knownCustomer === transaction) {
       transaction.id = uuidv4();
       const customer = await helpers.createCustomer(docClient)(transaction);
-      response = {
+      return {
         statusCode: 200,
-        body: JSON.stringify(customer)
+        body: JSON.stringify({KYC: customer})
       }
+    }
+    if( knownCustomer !== null) {
+      return {
+        statusCode: 200,
+        body: JSON.stringify(customers)
+      };
     }
   }
   else {
     response = {
       statusCode: 500,
-      body: JSON.stringify(customers)
+      body: JSON.stringify(event)
     }
   }
   return response;

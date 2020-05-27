@@ -1,0 +1,60 @@
+{
+    "permissions": {
+        "function": {
+            "testPurpose": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ],
+            "transactionConsumerResources": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ]
+        },
+        "auth": {
+            "backofficeamplify18c0e0b7": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ]
+        },
+        "api": {
+            "transactionstore": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ],
+            "transactionConsumer": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ]
+        },
+        "storage": {
+            "STTransactionStore": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ],
+            "STCustomerStore": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ],
+            "StagingTransactions:@model(appsync)": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ]
+        }
+    }
+}
