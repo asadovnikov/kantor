@@ -1,0 +1,504 @@
+{
+	"AWSTemplateFormatVersion": "2010-09-09",
+	"Description": "Lambda resource stack creation using Amplify CLI",
+	"Parameters": {
+		"CloudWatchRule": {
+			"Type": "String",
+			"Default": "NONE",
+			"Description": " Schedule Expression"
+		},
+		"env": {
+			"Type": "String"
+		},
+		"storageSTTransactionStoreName": {
+			"Type": "String",
+			"Default": "storageSTTransactionStoreName"
+		},
+		"storageSTTransactionStoreArn": {
+			"Type": "String",
+			"Default": "storageSTTransactionStoreArn"
+		},
+		"apitransactionstoreGraphQLAPIIdOutput": {
+			"Type": "String",
+			"Default": "apitransactionstoreGraphQLAPIIdOutput"
+		},
+		"apitransactionstoreGraphQLAPIEndpointOutput": {
+			"Type": "String",
+			"Default": "apitransactionstoreGraphQLAPIEndpointOutput"
+		},
+		"apitransactionConsumerApiName": {
+			"Type": "String",
+			"Default": "apitransactionConsumerApiName"
+		},
+		"apitransactionConsumerApiId": {
+			"Type": "String",
+			"Default": "apitransactionConsumerApiId"
+		},
+		"storageSTCustomerStoreName": {
+			"Type": "String",
+			"Default": "storageSTCustomerStoreName"
+		},
+		"storageSTCustomerStoreArn": {
+			"Type": "String",
+			"Default": "storageSTCustomerStoreArn"
+		}
+	},
+	"Conditions": {
+		"ShouldNotCreateEnvResources": {
+			"Fn::Equals": [
+				{
+					"Ref": "env"
+				},
+				"NONE"
+			]
+		}
+	},
+	"Resources": {
+		"LambdaFunction": {
+			"Type": "AWS::Lambda::Function",
+			"Metadata": {
+				"aws:asset:path": "./src",
+				"aws:asset:property": "Code"
+			},
+			"Properties": {
+				"Handler": "index.handler",
+				"FunctionName": {
+					"Fn::If": [
+						"ShouldNotCreateEnvResources",
+						"transactionsValidateLambda",
+						{
+							"Fn::Join": [
+								"",
+								[
+									"transactionsValidateLambda",
+									"-",
+									{
+										"Ref": "env"
+									}
+								]
+							]
+						}
+					]
+				},
+				"Environment": {
+					"Variables": {
+						"ENV": {
+							"Ref": "env"
+						},
+						"REGION": {
+							"Ref": "AWS::Region"
+						},
+						"API_TRANSACTIONSTORE_GRAPHQLAPIIDOUTPUT": {
+							"Ref": "apitransactionstoreGraphQLAPIIdOutput"
+						},
+						"API_TRANSACTIONSTORE_GRAPHQLAPIENDPOINTOUTPUT": {
+							"Ref": "apitransactionstoreGraphQLAPIEndpointOutput"
+						},
+						"API_TRANSACTIONCONSUMER_APINAME": {
+							"Ref": "apitransactionConsumerApiName"
+						},
+						"API_TRANSACTIONCONSUMER_APIID": {
+							"Ref": "apitransactionConsumerApiId"
+						},
+						"STORAGE_STTRANSACTIONSTORE_NAME": {
+							"Ref": "storageSTTransactionStoreName"
+						},
+						"STORAGE_STTRANSACTIONSTORE_ARN": {
+							"Ref": "storageSTTransactionStoreArn"
+						},
+						"STORAGE_STCUSTOMERSTORE_NAME": {
+							"Ref": "storageSTCustomerStoreName"
+						},
+						"STORAGE_STCUSTOMERSTORE_ARN": {
+							"Ref": "storageSTCustomerStoreArn"
+						},
+						"API_TRANSACTIONSTORE_STAGINGTRANSACTIONSTABLE_NAME": {
+							"Fn::ImportValue": {
+								"Fn::Sub": "${apitransactionstoreGraphQLAPIIdOutput}:GetAtt:StagingTransactionsTable:Name"
+							}
+						},
+						"API_TRANSACTIONSTORE_STAGINGTRANSACTIONSTABLE_ARN": {
+							"Fn::Join": [
+								"",
+								[
+									"arn:aws:dynamodb:",
+									{
+										"Ref": "AWS::Region"
+									},
+									":",
+									{
+										"Ref": "AWS::AccountId"
+									},
+									":table/",
+									{
+										"Fn::ImportValue": {
+											"Fn::Sub": "${apitransactionstoreGraphQLAPIIdOutput}:GetAtt:StagingTransactionsTable:Name"
+										}
+									}
+								]
+							]
+						}
+					}
+				},
+				"Role": {
+					"Fn::GetAtt": [
+						"LambdaExecutionRole",
+						"Arn"
+					]
+				},
+				"Runtime": "nodejs12.x",
+				"Timeout": "25",
+				"Code": {
+					"S3Bucket": "amplify-backofficeamplify-dev-94927-deployment",
+					"S3Key": "amplify-builds/transactionsValidate-7874387a30595a714347-build.zip"
+				}
+			}
+		},
+		"LambdaExecutionRole": {
+			"Type": "AWS::IAM::Role",
+			"Properties": {
+				"RoleName": {
+					"Fn::If": [
+						"ShouldNotCreateEnvResources",
+						"backofficeamplifyLambdaRoleb0a9eda4",
+						{
+							"Fn::Join": [
+								"",
+								[
+									"backofficeamplifyLambdaRoleb0a9eda4",
+									"-",
+									{
+										"Ref": "env"
+									}
+								]
+							]
+						}
+					]
+				},
+				"AssumeRolePolicyDocument": {
+					"Version": "2012-10-17",
+					"Statement": [
+						{
+							"Effect": "Allow",
+							"Principal": {
+								"Service": [
+									"lambda.amazonaws.com"
+								]
+							},
+							"Action": [
+								"sts:AssumeRole"
+							]
+						}
+					]
+				}
+			}
+		},
+		"lambdaexecutionpolicy": {
+			"DependsOn": [
+				"LambdaExecutionRole"
+			],
+			"Type": "AWS::IAM::Policy",
+			"Properties": {
+				"PolicyName": "lambda-execution-policy",
+				"Roles": [
+					{
+						"Ref": "LambdaExecutionRole"
+					}
+				],
+				"PolicyDocument": {
+					"Version": "2012-10-17",
+					"Statement": [
+						{
+							"Effect": "Allow",
+							"Action": [
+								"logs:CreateLogGroup",
+								"logs:CreateLogStream",
+								"logs:PutLogEvents"
+							],
+							"Resource": {
+								"Fn::Sub": [
+									"arn:aws:logs:${region}:${account}:log-group:/aws/lambda/${lambda}:log-stream:*",
+									{
+										"region": {
+											"Ref": "AWS::Region"
+										},
+										"account": {
+											"Ref": "AWS::AccountId"
+										},
+										"lambda": {
+											"Ref": "LambdaFunction"
+										}
+									}
+								]
+							}
+						},
+						{
+							"Effect": "Allow",
+							"Action": [
+								"dynamodb:DescribeTable",
+								"dynamodb:GetItem",
+								"dynamodb:Query",
+								"dynamodb:Scan",
+								"dynamodb:PutItem",
+								"dynamodb:UpdateItem",
+								"dynamodb:DeleteItem"
+							],
+							"Resource": [
+								{
+									"Ref": "storageSTTransactionStoreArn"
+								},
+								{
+									"Fn::Join": [
+										"/",
+										[
+											{
+												"Ref": "storageSTTransactionStoreArn"
+											},
+											"index/*"
+										]
+									]
+								}
+							]
+						}
+					]
+				}
+			}
+		},
+		"AmplifyResourcesPolicy": {
+			"DependsOn": [
+				"LambdaExecutionRole"
+			],
+			"Type": "AWS::IAM::Policy",
+			"Properties": {
+				"PolicyName": "amplify-lambda-execution-policy",
+				"Roles": [
+					{
+						"Ref": "LambdaExecutionRole"
+					}
+				],
+				"PolicyDocument": {
+					"Version": "2012-10-17",
+					"Statement": [
+						{
+							"Effect": "Allow",
+							"Action": [
+								"appsync:Create*",
+								"appsync:StartSchemaCreation",
+								"appsync:GraphQL",
+								"appsync:Get*",
+								"appsync:List*",
+								"appsync:Update*",
+								"appsync:Delete*"
+							],
+							"Resource": [
+								{
+									"Fn::Join": [
+										"",
+										[
+											"arn:aws:appsync:",
+											{
+												"Ref": "AWS::Region"
+											},
+											":",
+											{
+												"Ref": "AWS::AccountId"
+											},
+											":apis/",
+											{
+												"Ref": "apitransactionstoreGraphQLAPIIdOutput"
+											},
+											"/*"
+										]
+									]
+								}
+							]
+						},
+						{
+							"Effect": "Allow",
+							"Action": [
+								"apigateway:POST",
+								"apigateway:PUT",
+								"apigateway:GET",
+								"apigateway:HEAD",
+								"apigateway:OPTIONS",
+								"apigateway:PATCH",
+								"apigateway:DELETE"
+							],
+							"Resource": [
+								{
+									"Fn::Join": [
+										"",
+										[
+											"arn:aws:apigateway:",
+											{
+												"Ref": "AWS::Region"
+											},
+											"::/restapis/",
+											{
+												"Ref": "apitransactionConsumerApiName"
+											},
+											"/*"
+										]
+									]
+								}
+							]
+						},
+						{
+							"Effect": "Allow",
+							"Action": [
+								"dynamodb:Put*",
+								"dynamodb:Create*",
+								"dynamodb:BatchWriteItem",
+								"dynamodb:Get*",
+								"dynamodb:BatchGetItem",
+								"dynamodb:List*",
+								"dynamodb:Describe*",
+								"dynamodb:Scan",
+								"dynamodb:Query",
+								"dynamodb:Update*",
+								"dynamodb:RestoreTable*",
+								"dynamodb:Delete*"
+							],
+							"Resource": [
+								{
+									"Ref": "storageSTTransactionStoreArn"
+								},
+								{
+									"Fn::Join": [
+										"/",
+										[
+											{
+												"Ref": "storageSTTransactionStoreArn"
+											},
+											"index/*"
+										]
+									]
+								}
+							]
+						},
+						{
+							"Effect": "Allow",
+							"Action": [
+								"dynamodb:Put*",
+								"dynamodb:Create*",
+								"dynamodb:BatchWriteItem",
+								"dynamodb:Get*",
+								"dynamodb:BatchGetItem",
+								"dynamodb:List*",
+								"dynamodb:Describe*",
+								"dynamodb:Scan",
+								"dynamodb:Query",
+								"dynamodb:Update*",
+								"dynamodb:RestoreTable*",
+								"dynamodb:Delete*"
+							],
+							"Resource": [
+								{
+									"Ref": "storageSTCustomerStoreArn"
+								},
+								{
+									"Fn::Join": [
+										"/",
+										[
+											{
+												"Ref": "storageSTCustomerStoreArn"
+											},
+											"index/*"
+										]
+									]
+								}
+							]
+						},
+						{
+							"Effect": "Allow",
+							"Action": [
+								"dynamodb:Put*",
+								"dynamodb:Create*",
+								"dynamodb:BatchWriteItem",
+								"dynamodb:Get*",
+								"dynamodb:BatchGetItem",
+								"dynamodb:List*",
+								"dynamodb:Describe*",
+								"dynamodb:Scan",
+								"dynamodb:Query",
+								"dynamodb:Update*",
+								"dynamodb:RestoreTable*",
+								"dynamodb:Delete*"
+							],
+							"Resource": [
+								{
+									"Fn::Join": [
+										"",
+										[
+											"arn:aws:dynamodb:",
+											{
+												"Ref": "AWS::Region"
+											},
+											":",
+											{
+												"Ref": "AWS::AccountId"
+											},
+											":table/",
+											{
+												"Fn::ImportValue": {
+													"Fn::Sub": "${apitransactionstoreGraphQLAPIIdOutput}:GetAtt:StagingTransactionsTable:Name"
+												}
+											}
+										]
+									]
+								},
+								{
+									"Fn::Join": [
+										"",
+										[
+											"arn:aws:dynamodb:",
+											{
+												"Ref": "AWS::Region"
+											},
+											":",
+											{
+												"Ref": "AWS::AccountId"
+											},
+											":table/",
+											{
+												"Fn::ImportValue": {
+													"Fn::Sub": "${apitransactionstoreGraphQLAPIIdOutput}:GetAtt:StagingTransactionsTable:Name"
+												}
+											},
+											"/index/*"
+										]
+									]
+								}
+							]
+						}
+					]
+				}
+			}
+		}
+	},
+	"Outputs": {
+		"Name": {
+			"Value": {
+				"Ref": "LambdaFunction"
+			}
+		},
+		"Arn": {
+			"Value": {
+				"Fn::GetAtt": [
+					"LambdaFunction",
+					"Arn"
+				]
+			}
+		},
+		"Region": {
+			"Value": {
+				"Ref": "AWS::Region"
+			}
+		},
+		"LambdaExecutionRole": {
+			"Value": {
+				"Ref": "LambdaExecutionRole"
+			}
+		}
+	}
+}
