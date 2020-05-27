@@ -1,0 +1,44 @@
+{
+  "name": "transaction-util",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=12",
+    "npm": ">=6"
+  },
+  "files": [
+    "dist"
+  ],
+  "types": "dist/modules/index.d.ts",
+  "description": "Typescript starter project with Rollup and Jest",
+  "license": "ISC",
+  "scripts": {
+    "build": "run-s clean test build_js",
+    "build_js": "rollup -c",
+    "serve": "run-s clean serve_html serve_local",
+    "serve_html": "node lib/wrap-html.js",
+    "serve_local": "run-p serve_js serve_livereload serve_httpserver",
+    "serve_js": "NODE_ENV=development rollup -c -w",
+    "serve_livereload": "livereload dist",
+    "serve_httpserver": "http-server ./dist -o -d false",
+    "test": "run-s test_lint test_coverage",
+    "test_lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "test_coverage": "jest --coverage",
+    "clean": "rimraf dist"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^2.0.1",
+    "@types/jest": "^24.0.25",
+    "glob": "^7.1.6",
+    "http-server": "^0.12.0",
+    "jest": "^24.9.0",
+    "livereload": "^0.8.2",
+    "mkdirp": "^0.5.1",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.0",
+    "rollup": "^1.27.14",
+    "rollup-plugin-uglify": "^6.0.4",
+    "ts-jest": "^24.2.0",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.4"
+  }
+}
