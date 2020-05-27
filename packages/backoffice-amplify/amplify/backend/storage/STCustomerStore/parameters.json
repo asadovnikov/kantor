@@ -1,0 +1,7 @@
+{
+    "tableName": "STCustomerStoreTbl",
+    "partitionKeyName": "id",
+    "partitionKeyType": "S",
+    "sortKeyName": "Email",
+    "sortKeyType": "S"
+}

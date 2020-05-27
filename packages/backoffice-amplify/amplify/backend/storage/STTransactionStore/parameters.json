@@ -1,0 +1,7 @@
+{
+    "tableName": "STTransactionStoreTbl",
+    "partitionKeyName": "id",
+    "partitionKeyType": "S",
+    "sortKeyName": "Email",
+    "sortKeyType": "S"
+}
