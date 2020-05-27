@@ -1,0 +1,41 @@
+{
+    "paths": [
+        {
+            "name": "/transactions",
+            "lambdaFunction": "transactionConsumerResources",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            }
+        }
+    ],
+    "resourceName": "transactionConsumer",
+    "apiName": "transactionConsumer",
+    "functionArns": [
+        {
+            "lambdaFunction": "transactionConsumerResources"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 0,
+        "authRoleName": "amplify-backofficeamplify-dev-94927-authRole",
+        "unAuthRoleName": "amplify-backofficeamplify-dev-94927-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "transactionConsumerResources",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

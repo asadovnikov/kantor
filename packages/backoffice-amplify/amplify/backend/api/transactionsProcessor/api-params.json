@@ -1,0 +1,66 @@
+{
+    "paths": [
+        {
+            "name": "/transactions/register",
+            "lambdaFunction": "transactionsProcessorResources",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            }
+        },
+        {
+            "name": "/transactions/validate",
+            "lambdaFunction": "transactionsValidate",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            }
+        }
+    ],
+    "resourceName": "transactionsProcessor",
+    "apiName": "transactionsProcessor",
+    "functionArns": [
+        {
+            "lambdaFunction": "transactionsProcessorResources"
+        },
+        {
+            "lambdaFunction": "transactionsValidate"
+        }
+    ],
+    "privacy": {
+        "auth": 2,
+        "unauth": 0,
+        "authRoleName": "amplify-backofficeamplify-dev-94927-authRole",
+        "unAuthRoleName": "amplify-backofficeamplify-dev-94927-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "transactionsProcessorResources",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "transactionsValidate",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
