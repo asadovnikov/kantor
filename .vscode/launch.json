@@ -11,7 +11,7 @@
 			"address": "localhost",
 			"port": 5858,
 			// From the sam init example, it would be "${workspaceRoot}/hello-world"
-			"localRoot": "${workspaceRoot}/packages/public_api/transaction/register",
+			"localRoot": "${workspaceRoot}/packages/secure_public_api/transaction/register",
 			"remoteRoot": "/var/task",
 			"protocol": "inspector",
 			"stopOnEntry": false
