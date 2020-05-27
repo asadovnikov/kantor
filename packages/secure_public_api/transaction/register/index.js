@@ -13,7 +13,7 @@ const AWSendpoint = 'http://docker.for.mac.localhost:8000';
 var docClient = new AWS.DynamoDB.DocumentClient({ endpoint: new AWS.Endpoint(AWSendpoint) });
 // var docClient = new dynamodb.DocumentClient();
 // const WARNING_TOPIC_ARN = process.env.WARNING_TOPIC_ARN;
-const transactionsTbl = 'StagingCommittedTransactions'; //process.env.TRANSACTION_TABLE_NAME;
+const transactionsTbl = 'STTransactionStoreTbl-dev'; //process.env.TRANSACTION_TABLE_NAME;
 
 exports.handler = async (event, context, callback) => {
   var response = {};
