@@ -150,7 +150,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-backofficeamplify-dev-94927-deployment",
-					"S3Key": "amplify-builds/transactionsValidate-505061667a2f59734d74-build.zip"
+					"S3Key": "amplify-builds/transactionsValidate-365230454e2f51587666-build.zip"
 				}
 			}
 		},
