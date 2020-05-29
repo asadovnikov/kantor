@@ -12,12 +12,15 @@
 import { TransactionRequest, RegisteredEntity, Transaction } from "../types/common.types";
 import { dynamoDb } from "../types/dbaccess.types";
 import { DBAccessResult } from "../types/response.types";
-import { handleQueryError } from "../main";
+import { handleQueryError } from "../validation/DbErrors";
+import { reportMessage } from "../operationlog";
 
 const transactionsTbl = 'STTransactionStoreTbl-dev';
 
-export const saveTransaction = (dynamo: dynamoDb<RegisteredEntity<Transaction>>) => async (transaction: RegisteredEntity<Transaction>): Promise<DBAccessResult<RegisteredEntity<Transaction>>> => {
+export const saveTransaction = (dynamo: dynamoDb<RegisteredEntity<Transaction>>) => async (transaction: RegisteredEntity<Transaction>, id: string): Promise<DBAccessResult<RegisteredEntity<Transaction>>> => {
   console.log('Saving transaction to db.');
+  reportMessage('Saving transaction to db.')
+  transaction.id = id
   var params = {
     TableName: transactionsTbl,
     Item: transaction
@@ -47,6 +50,7 @@ const prepareTrRequest = (arg: any): TransactionRequest => {
 }
 
 export const extractTransaction = (message: any): TransactionRequest => {
+  reportMessage('Extracting transaction from a message');
   if (isTransactionRequest(message)) {
     return prepareTrRequest(message);
   }

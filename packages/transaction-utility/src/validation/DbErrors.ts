@@ -1,5 +1,6 @@
 import { Falsy, isFalsy, DbErrorInfo, ResponseInfo, DbErrorsRegistry } from "../types/response.types"
 import { ServerFailed, FullSuccess } from "./httpResponseRegistry";
+import { reportMessage } from "../operationlog";
 
 const errorStore: DbErrorsRegistry = {
   'InternalServerError': {
@@ -50,6 +51,7 @@ const errorStore: DbErrorsRegistry = {
 }
 
 export const handleQueryError = (err: DbErrorInfo | Falsy): ResponseInfo => {
+  reportMessage('Handling db error');
   if (isFalsy(err)) {
     console.error('Encountered error object was empty');
     return ServerFailed;
