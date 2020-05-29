@@ -9,7 +9,7 @@ var docClient = new AWS.DynamoDB.DocumentClient({ endpoint: new AWS.Endpoint(AWS
 // var docClient = new dynamodb.DocumentClient();
 // const WARNING_TOPIC_ARN = process.env.WARNING_TOPIC_ARN;
 // const TIER_UP_TOPIC_ARN = process.env.TIER_UP_TOPIC_ARN;
-var customersTbl = 'StagingCustomers';//process.env.CUSTOMERS_TABLE_NAME;
+var customersTbl = 'STCustomerStoreTbl-dev';//process.env.CUSTOMERS_TABLE_NAME;
 
 exports.updateCustomerLimits = async (event) => {
   console.log('UpdateCustomerLimits received an event:\n', event);

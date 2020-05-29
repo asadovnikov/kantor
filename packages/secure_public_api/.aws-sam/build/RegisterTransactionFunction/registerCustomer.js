@@ -4,7 +4,7 @@ const { v4: uuidv4 } = require('uuid');
 const AWSendpoint = 'http://docker.for.mac.localhost:8000';
 var docClient = new AWS.DynamoDB.DocumentClient({ endpoint: new AWS.Endpoint(AWSendpoint) });
 // const WARNING_TOPIC_ARN = process.env.WARNING_TOPIC_ARN;
-var customersTbl = 'StagingCustomers';//process.env.CUSTOMERS_TABLE_NAME;
+var customersTbl = 'STCustomerStoreTbl-dev';//process.env.CUSTOMERS_TABLE_NAME;
 
 exports.registerCustomer = async (event) => {
   console.log('RegisterCustomer received an event:\n', event);

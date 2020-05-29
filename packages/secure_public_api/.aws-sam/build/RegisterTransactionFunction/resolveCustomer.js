@@ -2,7 +2,7 @@
 var AWS = require('aws-sdk');
 const AWSendpoint = 'http://docker.for.mac.localhost:8000';
 var docClient = new AWS.DynamoDB.DocumentClient({ endpoint: new AWS.Endpoint(AWSendpoint) });
-var customersTbl = 'StagingCustomers';//process.env.CUSTOMERS_TABLE_NAME;
+var customersTbl = 'STCustomerStoreTbl-dev';//process.env.CUSTOMERS_TABLE_NAME;
 
 exports.resolveCustomer = async (event) => {
   var response = {};
@@ -12,7 +12,7 @@ exports.resolveCustomer = async (event) => {
 
   var query = {
     TableName: customersTbl,
-    IndexName: 'Email-Firstname-Surname-PostalCode-index',
+    IndexName: 'byEmail',
     KeyConditionExpression: 'Email = :a',
     ExpressionAttributeValues: {
       ':a': customer_email
@@ -61,16 +61,16 @@ exports.resolveCustomer = async (event) => {
         console.error(`Request denied due to throttling, generally safe to retry with exponential back-off. Error: ${err.message}`);
         return;
       case 'UnrecognizedClientException':
-        console.error(`The request signature is incorrect most likely due to an invalid AWS access key ID or secret key, fix before retrying.`
+        console.error(``
           + `Error: ${err.message}`);
         return;
       case 'ValidationException':
-        console.error(`The input fails to satisfy the constraints specified by DynamoDB, `
+        console.error(``
           + `fix input before retrying. Error: ${err.message}`);
         return;
       case 'RequestLimitExceeded':
-        console.error(`Throughput exceeds the current throughput limit for your account, `
-          + `increase account level throughput before retrying. Error: ${err.message}`);
+        console.error(` `
+          + ` Error: ${err.message}`);
         return;
       default:
         console.error(`An exception occurred, investigate and configure retry strategy. Error: ${err.message}`);
