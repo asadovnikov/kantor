@@ -2,7 +2,7 @@ module.exports = {
   transform: {
     '^.+\\.ts?$': 'ts-jest'
   },
-  testEnvironment: 'node',
-  testRegex: '/src/.*\\.test?\\.ts$',
+  testEnvironment: 'jsdom',
+  testRegex: '/src/modules/.*\\.test?\\.ts$',
   moduleFileExtensions: ['ts', 'js']
 };

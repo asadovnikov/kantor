@@ -1,5 +1,5 @@
 {
-	"cSpell.words": [
+  "cSpell.words": [
     "Firstname",
     "Sendpoint",
     "back",
@@ -10,7 +10,10 @@
     "dbevents",
     "kantor",
     "kosevych",
+    "moduler",
     "office",
-    "oleksandr"
-  ]
+    "oleksandr",
+    "operationlog"
+  ],
+  // "jest.pathToJest": "/Users/oleksandrkosevich/Documents/GitHub/kantor/packages/transaction-utility/node_modules/.bin/jest"
 }

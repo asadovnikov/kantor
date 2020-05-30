@@ -36,7 +36,7 @@ const isOverLimit = (tier: CustomerTier, currentAmount: FiatAmount): boolean => 
   reportMessage('Check payment over tier limits')
   const limit = paymentLimits[tier];
   // TODO: Decide how to handle situation of FiatCurrency mismatch
-  return !(currentAmount.FiatDailyAmount > limit.FiatDailyAmount || currentAmount.FiatMonthlyAmount > limit.FiatMonthlyAmount);
+  return currentAmount.FiatDailyAmount > limit.FiatDailyAmount || currentAmount.FiatMonthlyAmount > limit.FiatMonthlyAmount;
 }
 
 export const selectAppropriateTier = (amount: FiatAmount) => {

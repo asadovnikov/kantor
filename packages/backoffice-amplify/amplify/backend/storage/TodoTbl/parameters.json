@@ -1,7 +1,0 @@
-{
-    "tableName": "TodoTbl",
-    "partitionKeyName": "id",
-    "partitionKeyType": "S",
-    "sortKeyName": "Email",
-    "sortKeyType": "S"
-}
