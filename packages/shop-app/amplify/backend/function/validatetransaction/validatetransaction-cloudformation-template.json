@@ -13,10 +13,6 @@
 		"apishopappapiGraphQLAPIIdOutput": {
 			"Type": "String",
 			"Default": "apishopappapiGraphQLAPIIdOutput"
-		},
-		"apishopappapiGraphQLAPIEndpointOutput": {
-			"Type": "String",
-			"Default": "apishopappapiGraphQLAPIEndpointOutput"
 		}
 	},
 	"Conditions": {
@@ -41,12 +37,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"processstoredpaymentrequest",
+						"validatetransactionlambda",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"processstoredpaymentrequest",
+									"validatetransactionlambda",
 									"-",
 									{
 										"Ref": "env"
@@ -183,7 +179,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-shopapp-dev-145203-deployment",
-					"S3Key": "amplify-builds/onpaymentrequeststored-36587070772b454b4876-build.zip"
+					"S3Key": "amplify-builds/validatetransaction-717165302f7a57626f4a-build.zip"
 				}
 			}
 		},
@@ -193,12 +189,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"shopappLambdaRole9aebad7e",
+						"shopappLambdaRole37285cdd",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"shopappLambdaRole9aebad7e",
+									"shopappLambdaRole37285cdd",
 									"-",
 									{
 										"Ref": "env"
@@ -287,17 +283,12 @@
 						{
 							"Effect": "Allow",
 							"Action": [
-								"dynamodb:Put*",
-								"dynamodb:Create*",
-								"dynamodb:BatchWriteItem",
 								"dynamodb:Get*",
 								"dynamodb:BatchGetItem",
 								"dynamodb:List*",
 								"dynamodb:Describe*",
 								"dynamodb:Scan",
-								"dynamodb:Query",
-								"dynamodb:Update*",
-								"dynamodb:RestoreTable*"
+								"dynamodb:Query"
 							],
 							"Resource": [
 								{
@@ -348,14 +339,9 @@
 						{
 							"Effect": "Allow",
 							"Action": [
-								"dynamodb:Get*",
-								"dynamodb:BatchGetItem",
-								"dynamodb:List*",
-								"dynamodb:Describe*",
-								"dynamodb:Scan",
-								"dynamodb:Query",
-								"dynamodb:Update*",
-								"dynamodb:RestoreTable*"
+								"dynamodb:Put*",
+								"dynamodb:Create*",
+								"dynamodb:BatchWriteItem"
 							],
 							"Resource": [
 								{
@@ -406,17 +392,12 @@
 						{
 							"Effect": "Allow",
 							"Action": [
-								"dynamodb:Put*",
-								"dynamodb:Create*",
-								"dynamodb:BatchWriteItem",
 								"dynamodb:Get*",
 								"dynamodb:BatchGetItem",
 								"dynamodb:List*",
 								"dynamodb:Describe*",
 								"dynamodb:Scan",
-								"dynamodb:Query",
-								"dynamodb:Update*",
-								"dynamodb:RestoreTable*"
+								"dynamodb:Query"
 							],
 							"Resource": [
 								{
@@ -467,17 +448,12 @@
 						{
 							"Effect": "Allow",
 							"Action": [
-								"dynamodb:Put*",
-								"dynamodb:Create*",
-								"dynamodb:BatchWriteItem",
 								"dynamodb:Get*",
 								"dynamodb:BatchGetItem",
 								"dynamodb:List*",
 								"dynamodb:Describe*",
 								"dynamodb:Scan",
-								"dynamodb:Query",
-								"dynamodb:Update*",
-								"dynamodb:RestoreTable*"
+								"dynamodb:Query"
 							],
 							"Resource": [
 								{
@@ -527,62 +503,6 @@
 						}
 					]
 				}
-			}
-		},
-		"LambdaTriggerPolicyPaymentRequest": {
-			"DependsOn": [
-				"LambdaExecutionRole"
-			],
-			"Type": "AWS::IAM::Policy",
-			"Properties": {
-				"PolicyName": "amplify-lambda-execution-policy-PaymentRequest",
-				"Roles": [
-					{
-						"Ref": "LambdaExecutionRole"
-					}
-				],
-				"PolicyDocument": {
-					"Version": "2012-10-17",
-					"Statement": [
-						{
-							"Effect": "Allow",
-							"Action": [
-								"dynamodb:DescribeStream",
-								"dynamodb:GetRecords",
-								"dynamodb:GetShardIterator",
-								"dynamodb:ListStreams"
-							],
-							"Resource": {
-								"Fn::ImportValue": {
-									"Fn::Sub": "${apishopappapiGraphQLAPIIdOutput}:GetAtt:PaymentRequestTable:StreamArn"
-								}
-							}
-						}
-					]
-				}
-			}
-		},
-		"LambdaEventSourceMappingPaymentRequest": {
-			"Type": "AWS::Lambda::EventSourceMapping",
-			"DependsOn": [
-				"LambdaTriggerPolicyPaymentRequest",
-				"LambdaExecutionRole"
-			],
-			"Properties": {
-				"BatchSize": 100,
-				"Enabled": true,
-				"EventSourceArn": {
-					"Fn::ImportValue": {
-						"Fn::Sub": "${apishopappapiGraphQLAPIIdOutput}:GetAtt:PaymentRequestTable:StreamArn"
-					}
-				},
-				"FunctionName": {
-					"Fn::GetAtt": [
-						"LambdaFunction",
-						"Arn"
-					]
-				},
-				"StartingPosition": "LATEST"
 			}
 		}
 	},
