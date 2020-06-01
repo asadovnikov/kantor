@@ -8,12 +8,17 @@
     "cutting",
     "dbaccess",
     "dbevents",
+    "forgotpassword",
     "kantor",
     "kosevych",
+    "kycverification",
     "moduler",
     "office",
     "oleksandr",
-    "operationlog"
+    "operationlog",
+    "paymentfailed",
+    "paymentsuccessfull",
+    "registerconfirm"
   ],
   // "jest.pathToJest": "/Users/oleksandrkosevich/Documents/GitHub/kantor/packages/transaction-utility/node_modules/.bin/jest"
 }
