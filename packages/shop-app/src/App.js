@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
+import { API, graphqlOperation } from 'aws-amplify'
 
 function App() {
   return (
-    <div>
+    <div>x
       <AmplifySignOut />
       My App
     </div>
