@@ -59,6 +59,7 @@ export const getPaymentRequest = /* GraphQL */ `
       Telephone
       FiatCurrency
       FiatAmount
+      Status
       createdOn
       updatedOn
     }
@@ -86,6 +87,7 @@ export const listPaymentRequests = /* GraphQL */ `
         Telephone
         FiatCurrency
         FiatAmount
+        Status
         createdOn
         updatedOn
       }
@@ -109,6 +111,7 @@ export const getTransaction = /* GraphQL */ `
       Email
       Telephone
       FiatCurrency
+      FiatBaseAmount
       FiatAmount
       CryptoCurrency
       CryptoAmount
@@ -142,6 +145,7 @@ export const listTransactions = /* GraphQL */ `
         Email
         Telephone
         FiatCurrency
+        FiatBaseAmount
         FiatAmount
         CryptoCurrency
         CryptoAmount
@@ -171,9 +175,9 @@ export const getCustomer = /* GraphQL */ `
       Country
       Email
       Telephone
-      TotalAmount
-      DailyAmount
-      MonthlyAmount
+      FiatTotalAmount
+      FiatDailyAmount
+      FiatMonthlyAmount
       Tier
       KYCState
       PaymentTransactions {
@@ -191,6 +195,7 @@ export const getCustomer = /* GraphQL */ `
           Email
           Telephone
           FiatCurrency
+          FiatBaseAmount
           FiatAmount
           CryptoCurrency
           CryptoAmount
@@ -208,7 +213,7 @@ export const getCustomer = /* GraphQL */ `
           id
           idVerification
           poaVerification
-          finance
+          financeVerification
           createdOn
           updatedOn
         }
@@ -239,9 +244,9 @@ export const listCustomers = /* GraphQL */ `
         Country
         Email
         Telephone
-        TotalAmount
-        DailyAmount
-        MonthlyAmount
+        FiatTotalAmount
+        FiatDailyAmount
+        FiatMonthlyAmount
         Tier
         KYCState
         PaymentTransactions {
@@ -285,7 +290,7 @@ export const getVerification = /* GraphQL */ `
         }
         nextToken
       }
-      finance
+      financeVerification
       financeDocuments {
         items {
           id
@@ -319,7 +324,7 @@ export const listVerifications = /* GraphQL */ `
         poaVerificationDocuments {
           nextToken
         }
-        finance
+        financeVerification
         financeDocuments {
           nextToken
         }

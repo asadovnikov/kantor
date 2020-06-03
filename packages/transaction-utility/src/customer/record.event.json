@@ -1,0 +1,79 @@
+{
+  "ApproximateCreationDateTime": 1591108376,
+  "Keys": {
+    "id": {
+      "S": "fca99548-d8ee-453e-ab82-f4dc66c9d06a"
+    }
+  },
+  "NewImage": {
+    "DateOfBirth": {
+      "M": {}
+    },
+    "CryptoAmount": {
+      "N": "1"
+    },
+    "Email": {
+      "S": "transaction-next-level-1@otso.city11"
+    },
+    "FiatAmount": {
+      "N": "500"
+    },
+    "Telephone": {
+      "S": "347-968-8516"
+    },
+    "CryptoAddress": {
+      "S": "bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq"
+    },
+    "StateProvince": {
+      "S": "NY"
+    },
+    "MerchantRef": {
+      "S": "3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy"
+    },
+    "PostalCode": {
+      "N": "10970"
+    },
+    "City": {
+      "S": "Pomona"
+    },
+    "GWReference": {
+      "S": "a646c176-ee35-45a5-afa6-41f28b12db5b"
+    },
+    "updatedOn": {
+      "S": "2020-06-02T14:32:54.955Z"
+    },
+    "createdOn": {
+      "S": "2020-06-02T14:32:54.955Z"
+    },
+    "Firstname": {
+      "S": "Alesha"
+    },
+    "CryptoCurrency": {
+      "S": "BTC"
+    },
+    "BankReference": {
+      "S": "1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2"
+    },
+    "Country": {
+      "S": "USA"
+    },
+    "FiatCurrency": {
+      "S": "USD"
+    },
+    "id": {
+      "S": "fca99548-d8ee-453e-ab82-f4dc66c9d06a"
+    },
+    "Surname": {
+      "S": "Postman"
+    },
+    "StreetLine2": {
+      "S": "4724  Longview Avenue"
+    },
+    "StreetLine1": {
+      "S": "2232  Benedum Drive"
+    }
+  },
+  "SequenceNumber": "3635700000000071177759155",
+  "SizeBytes": 610,
+  "StreamViewType": "NEW_AND_OLD_IMAGES"
+}

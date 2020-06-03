@@ -49,6 +49,9 @@ function App() {
                       <Route path="/kycverification">
                         <KYCPage />
                       </Route>
+                      <Route path="/kyc">
+                        <KYCPage />
+                      </Route>
                       <Route path="*">
                         <NoFoundPage />
                       </Route>  

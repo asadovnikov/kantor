@@ -1,5 +1,5 @@
 enum PaymentRequestStatus {
-  RECIEVED
+  RECEIVED
   APPROVED
   DECLINED
   COMMITED
@@ -85,6 +85,7 @@ type PaymentRequest @model(timestamps:{createdAt: "createdOn", updatedAt: "updat
   Telephone: String
   FiatCurrency: String!
   FiatAmount: Int!
+  Status: PaymentRequestStatus!
 }
 
 type Transaction @model(timestamps:{createdAt: "createdOn", updatedAt: "updatedOn"}) 
@@ -104,6 +105,7 @@ type Transaction @model(timestamps:{createdAt: "createdOn", updatedAt: "updatedO
   Email: String!
   Telephone: String
   FiatCurrency: String!
+  FiatBaseAmount: Int
   FiatAmount: Int!
   CryptoCurrency: String!
   CryptoAmount: Int!
@@ -114,6 +116,7 @@ type Transaction @model(timestamps:{createdAt: "createdOn", updatedAt: "updatedO
 }
 
 type Customer @model(timestamps:{createdAt: "createdOn", updatedAt: "updatedOn"})
+@key(name: "byEmail", fields: ["Email"])
 @auth(rules: [{ allow: public }]) {
   id: ID!
   Firstname: String!
@@ -127,9 +130,9 @@ type Customer @model(timestamps:{createdAt: "createdOn", updatedAt: "updatedOn"}
   Country: String!
   Email: String!
   Telephone: String
-  TotalAmount: Int!
-  DailyAmount: Int!
-  MonthlyAmount: Int!
+  FiatTotalAmount: Int
+  FiatDailyAmount: Int
+  FiatMonthlyAmount: Int
   Tier: CustomerTier!
   KYCState: KYCStageStatus!
   PaymentTransactions: [Transaction] @connection(keyName: "byMerchantRef", fields: ["id"])
@@ -143,6 +146,6 @@ type Verification @model(timestamps:{createdAt: "createdOn", updatedAt: "updated
   idVerificationDocuments: [KYCDocument] @connection
   poaVerification: KYCStageStatus!
   poaVerificationDocuments: [KYCDocument] @connection
-  finance: KYCStageStatus!
+  financeVerification: KYCStageStatus!
   financeDocuments: [KYCDocument] @connection
 }

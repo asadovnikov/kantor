@@ -56,6 +56,16 @@ export type KYCInfo = {
   KYC_State: KYCState;
 }
 
+export type VerificationStatus = 'INITIATED' | 'VALIDATED' | 'NOT_REQUIRED' | 'FAILED';
+
+export type KYCVerification = {
+  idVerification: string;
+  poaVerification: string;
+  financeVerification: string;
+  createdOn: string;
+  updatedOn: string;
+}
+
 export type Transaction = Person & FiatPayment & Partial<CryptoPayment> & Partial<PaymentRef>
 export type TransactionRequest = Person & FiatPayment;
 export type Customer = Person & Limits & KYCInfo;

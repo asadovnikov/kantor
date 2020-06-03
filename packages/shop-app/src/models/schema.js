@@ -183,6 +183,15 @@ export const schema = {
                     "type": "Int",
                     "isRequired": true,
                     "attributes": []
+                },
+                "Status": {
+                    "name": "Status",
+                    "isArray": false,
+                    "type": {
+                        "enum": "PaymentRequestStatus"
+                    },
+                    "isRequired": true,
+                    "attributes": []
                 }
             },
             "syncable": true,
@@ -301,6 +310,13 @@ export const schema = {
                     "isArray": false,
                     "type": "String",
                     "isRequired": true,
+                    "attributes": []
+                },
+                "FiatBaseAmount": {
+                    "name": "FiatBaseAmount",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
                     "attributes": []
                 },
                 "FiatAmount": {
@@ -474,25 +490,25 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "TotalAmount": {
-                    "name": "TotalAmount",
+                "FiatTotalAmount": {
+                    "name": "FiatTotalAmount",
                     "isArray": false,
                     "type": "Int",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
-                "DailyAmount": {
-                    "name": "DailyAmount",
+                "FiatDailyAmount": {
+                    "name": "FiatDailyAmount",
                     "isArray": false,
                     "type": "Int",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
-                "MonthlyAmount": {
-                    "name": "MonthlyAmount",
+                "FiatMonthlyAmount": {
+                    "name": "FiatMonthlyAmount",
                     "isArray": false,
                     "type": "Int",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "Tier": {
@@ -550,6 +566,15 @@ export const schema = {
                             "createdAt": "createdOn",
                             "updatedAt": "updatedOn"
                         }
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byEmail",
+                        "fields": [
+                            "Email"
+                        ]
                     }
                 },
                 {
@@ -618,8 +643,8 @@ export const schema = {
                         "associatedWith": "verificationPoaVerificationDocumentsId"
                     }
                 },
-                "finance": {
-                    "name": "finance",
+                "financeVerification": {
+                    "name": "financeVerification",
                     "isArray": false,
                     "type": {
                         "enum": "KycStageStatus"
@@ -677,7 +702,7 @@ export const schema = {
         "PaymentRequestStatus": {
             "name": "PaymentRequestStatus",
             "values": [
-                "RECIEVED",
+                "RECEIVED",
                 "APPROVED",
                 "DECLINED",
                 "COMMITED"
@@ -739,5 +764,5 @@ export const schema = {
             }
         }
     },
-    "version": "a0e347971f90b516b9872ba499bc5a64"
+    "version": "282a5815246b41f7f2de42bceed62793"
 };

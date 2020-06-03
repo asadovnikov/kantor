@@ -24,7 +24,7 @@ export const ShopHeader = () => {
     <PageHeader
       className="site-page-header"
       title="Welcome"
-      breadcrumb={{ routes }}
+      // breadcrumb={{ routes }}
       subTitle="Check recent activities"
       extra={[
         <AmplifySignOut />

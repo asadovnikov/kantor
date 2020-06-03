@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+// import gql from 'graphql-tag';
 import AWSAppSyncClient, { AUTH_TYPE } from 'aws-appsync';
 import awsExports from './aws-exports';
 

@@ -5,10 +5,10 @@ import { reportMessage } from "../operationlog";
 import { handleQueryError } from "../validation/DbErrors";
 import { DefaultKYCState } from "../kyc";
 import { DefaultTier, selectAppropriateTier, isCustomerOverLimit } from "../validation/limits";
-import { OperationResult, successResponse } from "../response";
+import { successResponse } from "../response";
 
-export const CustomerWorker = (dynamo: dynamoDb<RegisteredEntity<Customer>>, id_gen: () => string) => {
-  const customersTable = 'STCustomerStoreTbl-dev';
+export const CustomerWorker = (dynamo: dynamoDb<RegisteredEntity<Customer>>, customersTable: string, id_gen: () => string) => {
+  // const customersTable = 'STCustomerStoreTbl-dev';
 
   const buildHashKey = (person: Person) => {
     return `#${person.Firstname.toLowerCase()}-#${person.Surname.toLowerCase()}`;
@@ -88,33 +88,6 @@ export const CustomerWorker = (dynamo: dynamoDb<RegisteredEntity<Customer>>, id_
 
     console.log('We should fail here, but I\'m to fucking tired to handle exception tree');
     return null;
-  }
-
-  const createCustomer = async (person: Person & FiatPayment): Promise<DBAccessResult<RegisteredEntity<Customer>>> => {
-    console.log('Registering new customer');
-    reportMessage('Registering a new customer');
-    const { FiatAmount, ...rest } = person;
-    const putQuery = {
-      TableName: customersTable,
-      Item: {
-        id: id_gen(),
-        hashKey: buildHashKey(person),
-        Tier: DefaultTier,
-        KYC_State: DefaultKYCState,
-        FiatDailyAmount: 0,
-        FiatMonthlyAmount: 0,
-        ...rest
-      }
-    }
-    try {
-      const result = await dynamo.put(putQuery).promise();
-      console.log(`Item ${putQuery.Item.id} stored successfully:\n`, result);
-      reportMessage(`Customer: ${putQuery.Item.id} stored successfully.`);
-      return putQuery.Item;
-    }
-    catch (err) {
-      return handleQueryError(err);
-    }
   }
 
   const updateCustomerKyc = async (customer: RegisteredEntity<Customer>, kyc: KYCState): Promise<DBAccessResult<RegisteredEntity<Customer>>> => {
@@ -207,6 +180,55 @@ export const CustomerWorker = (dynamo: dynamoDb<RegisteredEntity<Customer>>, id_
     throw Error('Shit happens');
   }
 
-  return { resolveCustomerByEmail, resolveCustomerByFirstLastName, registerIfUnknown, createCustomer, validateCustomerTransaction, updateCustomerLimits }
+  const tableScanQuery = (key: string, value: string) => {
+    return {
+      TableName: customersTable,
+      FilterExpression: `${key} = :a`,
+      ExpressionAttributeValues: {
+        ':a': value
+      }
+    }
+  }
 
+  const scanCustomerByEmail = async (person: Person): Promise<DBAccessResult<RegisteredEntity<Customer>[]>> => {
+    console.log('Performing customer query byEmail:');
+    try {
+      const result = await dynamo.scan(tableScanQuery('Email', person.Email)).promise();
+      console.log(`Query successful. Found ${result.Count} items.`);
+      return result.Items;
+    }
+    catch (err) {
+      return handleQueryError(err);
+    }
+  }
+
+  const createCustomer = async (person: Person & FiatPayment): Promise<DBAccessResult<RegisteredEntity<Customer>>> => {
+    console.log('Registering new customer');
+    reportMessage('Registering a new customer');
+    const { FiatAmount, ...rest } = person;
+    const putQuery = {
+      TableName: customersTable,
+      Item: {
+        id: id_gen(),
+        hashKey: buildHashKey(person),
+        Tier: DefaultTier,
+        KYC_State: DefaultKYCState,
+        FiatDailyAmount: 0,
+        FiatMonthlyAmount: 0,
+        ...rest
+      }
+    }
+    try {
+      const result = await dynamo.put(putQuery).promise();
+      console.log(`Item ${putQuery.Item.id} stored successfully:\n`, result);
+      reportMessage(`Customer: ${putQuery.Item.id} stored successfully.`);
+      return putQuery.Item;
+    }
+    catch (err) {
+      return handleQueryError(err);
+    }
+  }
+
+  // return { resolveCustomerByEmail, resolveCustomerByFirstLastName, registerIfUnknown, createCustomer, validateCustomerTransaction, updateCustomerLimits }
+  return { scanCustomerByEmail };
 }

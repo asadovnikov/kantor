@@ -3,7 +3,7 @@ import { initSchema } from '@aws-amplify/datastore';
 import { schema } from './schema';
 
 const PaymentRequestStatus = {
-  "RECIEVED": "RECIEVED",
+  "RECEIVED": "RECEIVED",
   "APPROVED": "APPROVED",
   "DECLINED": "DECLINED",
   "COMMITED": "COMMITED"

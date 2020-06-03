@@ -3,7 +3,10 @@ import { dynamoDb, putQuery, updateQuery, dbQuery } from '../types/dbaccess.type
 import { RegisteredEntity, Customer, Person } from '../types/common.types';
 import { uuid } from 'uuidv4';
 import * as event from './validate.event.json';
-import { extractTransaction, OperationResult } from '../main';
+import * as recordEvent from './record.event.json';
+import { extractTransaction } from '../transaction';
+import { extractTransactionFromDBEvent } from '../parser';
+// import { extractTransaction, OperationResult } from '../main';
 
 let byIdDb = {};
 let byEmailDb = {};
@@ -175,7 +178,7 @@ describe('Customer worker', () => {
   });
 
   it('Change customer tier in case of over limit: KYC-initiated', async () => {
-
+    const record = extractTransactionFromDBEvent(recordEvent);
   });
 
   it('Change KYC state on changing tier', async () => {

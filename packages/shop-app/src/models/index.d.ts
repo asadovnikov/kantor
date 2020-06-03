@@ -1,7 +1,7 @@
 import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplify/datastore";
 
 export enum PaymentRequestStatus {
-  RECIEVED = "RECIEVED",
+  RECEIVED = "RECEIVED",
   APPROVED = "APPROVED",
   DECLINED = "DECLINED",
   COMMITED = "COMMITED"
@@ -63,6 +63,7 @@ export declare class PaymentRequest {
   readonly Telephone?: string;
   readonly FiatCurrency: string;
   readonly FiatAmount: number;
+  readonly Status: PaymentRequestStatus | keyof typeof PaymentRequestStatus;
   constructor(init: ModelInit<PaymentRequest>);
   static copyOf(source: PaymentRequest, mutator: (draft: MutableModel<PaymentRequest>) => MutableModel<PaymentRequest> | void): PaymentRequest;
 }
@@ -81,6 +82,7 @@ export declare class Transaction {
   readonly Email: string;
   readonly Telephone?: string;
   readonly FiatCurrency: string;
+  readonly FiatBaseAmount?: number;
   readonly FiatAmount: number;
   readonly CryptoCurrency: string;
   readonly CryptoAmount: number;
@@ -105,9 +107,9 @@ export declare class Customer {
   readonly Country: string;
   readonly Email: string;
   readonly Telephone?: string;
-  readonly TotalAmount: number;
-  readonly DailyAmount: number;
-  readonly MonthlyAmount: number;
+  readonly FiatTotalAmount?: number;
+  readonly FiatDailyAmount?: number;
+  readonly FiatMonthlyAmount?: number;
   readonly Tier: CustomerTier | keyof typeof CustomerTier;
   readonly KYCState: KycStageStatus | keyof typeof KycStageStatus;
   readonly PaymentTransactions?: Transaction[];
@@ -122,7 +124,7 @@ export declare class Verification {
   readonly idVerificationDocuments?: KYCDocument[];
   readonly poaVerification: KycStageStatus | keyof typeof KycStageStatus;
   readonly poaVerificationDocuments?: KYCDocument[];
-  readonly finance: KycStageStatus | keyof typeof KycStageStatus;
+  readonly financeVerification: KycStageStatus | keyof typeof KycStageStatus;
   readonly financeDocuments?: KYCDocument[];
   readonly customerKycVerificationId?: string;
   constructor(init: ModelInit<Verification>);

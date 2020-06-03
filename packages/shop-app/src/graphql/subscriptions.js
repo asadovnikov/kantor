@@ -69,6 +69,7 @@ export const onCreatePaymentRequest = /* GraphQL */ `
       Telephone
       FiatCurrency
       FiatAmount
+      Status
       createdOn
       updatedOn
     }
@@ -91,6 +92,7 @@ export const onUpdatePaymentRequest = /* GraphQL */ `
       Telephone
       FiatCurrency
       FiatAmount
+      Status
       createdOn
       updatedOn
     }
@@ -113,6 +115,7 @@ export const onDeletePaymentRequest = /* GraphQL */ `
       Telephone
       FiatCurrency
       FiatAmount
+      Status
       createdOn
       updatedOn
     }
@@ -134,6 +137,7 @@ export const onCreateTransaction = /* GraphQL */ `
       Email
       Telephone
       FiatCurrency
+      FiatBaseAmount
       FiatAmount
       CryptoCurrency
       CryptoAmount
@@ -162,6 +166,7 @@ export const onUpdateTransaction = /* GraphQL */ `
       Email
       Telephone
       FiatCurrency
+      FiatBaseAmount
       FiatAmount
       CryptoCurrency
       CryptoAmount
@@ -190,6 +195,7 @@ export const onDeleteTransaction = /* GraphQL */ `
       Email
       Telephone
       FiatCurrency
+      FiatBaseAmount
       FiatAmount
       CryptoCurrency
       CryptoAmount
@@ -217,9 +223,9 @@ export const onCreateCustomer = /* GraphQL */ `
       Country
       Email
       Telephone
-      TotalAmount
-      DailyAmount
-      MonthlyAmount
+      FiatTotalAmount
+      FiatDailyAmount
+      FiatMonthlyAmount
       Tier
       KYCState
       PaymentTransactions {
@@ -237,6 +243,7 @@ export const onCreateCustomer = /* GraphQL */ `
           Email
           Telephone
           FiatCurrency
+          FiatBaseAmount
           FiatAmount
           CryptoCurrency
           CryptoAmount
@@ -254,7 +261,7 @@ export const onCreateCustomer = /* GraphQL */ `
           id
           idVerification
           poaVerification
-          finance
+          financeVerification
           createdOn
           updatedOn
         }
@@ -280,9 +287,9 @@ export const onUpdateCustomer = /* GraphQL */ `
       Country
       Email
       Telephone
-      TotalAmount
-      DailyAmount
-      MonthlyAmount
+      FiatTotalAmount
+      FiatDailyAmount
+      FiatMonthlyAmount
       Tier
       KYCState
       PaymentTransactions {
@@ -300,6 +307,7 @@ export const onUpdateCustomer = /* GraphQL */ `
           Email
           Telephone
           FiatCurrency
+          FiatBaseAmount
           FiatAmount
           CryptoCurrency
           CryptoAmount
@@ -317,7 +325,7 @@ export const onUpdateCustomer = /* GraphQL */ `
           id
           idVerification
           poaVerification
-          finance
+          financeVerification
           createdOn
           updatedOn
         }
@@ -343,9 +351,9 @@ export const onDeleteCustomer = /* GraphQL */ `
       Country
       Email
       Telephone
-      TotalAmount
-      DailyAmount
-      MonthlyAmount
+      FiatTotalAmount
+      FiatDailyAmount
+      FiatMonthlyAmount
       Tier
       KYCState
       PaymentTransactions {
@@ -363,6 +371,7 @@ export const onDeleteCustomer = /* GraphQL */ `
           Email
           Telephone
           FiatCurrency
+          FiatBaseAmount
           FiatAmount
           CryptoCurrency
           CryptoAmount
@@ -380,7 +389,7 @@ export const onDeleteCustomer = /* GraphQL */ `
           id
           idVerification
           poaVerification
-          finance
+          financeVerification
           createdOn
           updatedOn
         }
@@ -419,7 +428,7 @@ export const onCreateVerification = /* GraphQL */ `
         }
         nextToken
       }
-      finance
+      financeVerification
       financeDocuments {
         items {
           id
@@ -464,7 +473,7 @@ export const onUpdateVerification = /* GraphQL */ `
         }
         nextToken
       }
-      finance
+      financeVerification
       financeDocuments {
         items {
           id
@@ -509,7 +518,7 @@ export const onDeleteVerification = /* GraphQL */ `
         }
         nextToken
       }
-      finance
+      financeVerification
       financeDocuments {
         items {
           id
