@@ -178,9 +178,9 @@ const handleCommonErrors = (err) => {
     return ServerFailed;
 };
 
-const DefaultTier = 'Low';
+const DefaultTier = 'INITIAL';
 
-const DefaultKYCState = 'Initiated';
+const DefaultKYCState = 'INITIATED';
 /**
  * KYC steps for each tier
  *
@@ -220,10 +220,12 @@ const CustomerWorker = (dynamo, customersTable, id_gen) => {
                 id: id_gen(),
                 hashKey: buildHashKey(person),
                 Tier: DefaultTier,
-                KYC_State: DefaultKYCState,
+                KYCState: DefaultKYCState,
                 FiatDailyAmount: 0,
                 FiatMonthlyAmount: 0,
                 KYCVerification: verificationId,
+                createdOn: new Date().toISOString(),
+                updatedOn: new Date().toISOString(),
                 ...rest
             }
         };

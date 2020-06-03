@@ -102,4 +102,172 @@ const extractTransactionFromRequest = async (event) => {
     return requested;
 };
 
-exports.helpers = { extractTransactionFromDBEvent, extractTransactionFromRequest };
+const isFalsy = (val) => !val;
+
+// 2xx: Success - 	Indicates that the client’s request was accepted successfully.
+const ServerFailed = {
+    code: 500,
+    status: 'Internal Server Error',
+    message: 'The request was not completed due to an internal error on the server side.'
+};
+
+const errorStore = {
+    'InternalServerError': {
+        ...ServerFailed,
+        logMessage: 'Internal Server Error, generally safe to retry with exponential back-off.'
+    },
+    'ProvisionedThroughputExceededException': {
+        logMessage: `Request rate is too high. If you're using a custom retry strategy make sure to retry with exponential back-off.`
+            + `Otherwise consider reducing frequency of requests or increasing provisioned capacity for your table or secondary index.`,
+        ...ServerFailed
+    },
+    'ResourceNotFoundException': {
+        logMessage: 'One of the tables was not found, verify table exists before retrying.',
+        ...ServerFailed
+    },
+    'ServiceUnavailable': {
+        logMessage: 'Had trouble reaching DynamoDB. generally safe to retry with exponential back-off.',
+        ...ServerFailed
+    },
+    'ThrottlingException': {
+        logMessage: 'Request denied due to throttling, generally safe to retry with exponential back-off.',
+        ...ServerFailed
+    },
+    'UnrecognizedClientException': {
+        logMessage: 'The request signature is incorrect most likely due to an invalid AWS access key ID or secret key, fix before retrying.',
+        ...ServerFailed
+    },
+    'ValidationException': {
+        logMessage: 'The input fails to satisfy the constraints specified by DynamoDB, fix input before retrying.',
+        ...ServerFailed
+    },
+    'RequestLimitExceeded': {
+        logMessage: 'Throughput exceeds the current throughput limit for your account, increase account level throughput before retrying.',
+        ...ServerFailed
+    },
+    'ConditionalCheckFailedException': {
+        logMessage: 'Condition check specified in the operation failed, review and update the condition check before retrying.',
+        ...ServerFailed
+    },
+    'TransactionConflictException': {
+        logMessage: 'Operation was rejected because there is an ongoing transaction for the item, generally safe to retry with exponential back-off.',
+        ...ServerFailed
+    },
+    'ItemCollectionSizeLimitExceededException': {
+        logMessage: `An item collection is too large, you're using Local Secondary Index and exceeded size limit of items per partition key. Consider using Global Secondary Index instead.`,
+        ...ServerFailed
+    }
+};
+const handleQueryError = (err) => {
+    if (isFalsy(err)) {
+        console.error('Encountered error object was empty');
+        return ServerFailed;
+    }
+    if (isFalsy(err.code)) {
+        console.error(`An exception occurred, investigate and configure retry strategy. Error: ${JSON.stringify(err)}`);
+    }
+    return handleCommonErrors(err);
+};
+const handleCommonErrors = (err) => {
+    if (err.code in errorStore) {
+        const errInfo = errorStore[err.code];
+        console.error(`${errInfo.logMessage} Error: ${err.message}`);
+        return errInfo;
+    }
+    console.error(`An exception occurred, investigate and configure retry strategy. Error: ${err.message}`);
+    return ServerFailed;
+};
+
+const DefaultTier = 'INITIAL';
+
+const DefaultKYCState = 'INITIATED';
+/**
+ * KYC steps for each tier
+ *
+ */
+
+// import { reportMessage } from "../operationlog";
+const CustomerWorker = (dynamo, customersTable, id_gen) => {
+    const buildHashKey = (person) => {
+        return `#${person.Firstname.toLowerCase()}-#${person.Surname.toLowerCase()}`;
+    };
+    const tableScanQuery = (key, value) => {
+        return {
+            TableName: customersTable,
+            FilterExpression: `${key} = :a`,
+            ExpressionAttributeValues: {
+                ':a': value
+            }
+        };
+    };
+    const scanCustomerByEmail = async (person) => {
+        console.log('Performing customer query byEmail:');
+        try {
+            const result = await dynamo.scan(tableScanQuery('Email', person.Email)).promise();
+            console.log(`Query successful. Found ${result.Count} items.`);
+            return result.Items;
+        }
+        catch (err) {
+            return handleQueryError(err);
+        }
+    };
+    const createCustomer = async (person, verificationId) => {
+        console.log('Registering new customer');
+        const { FiatAmount, ...rest } = person;
+        const putQuery = {
+            TableName: customersTable,
+            Item: {
+                id: id_gen(),
+                hashKey: buildHashKey(person),
+                Tier: DefaultTier,
+                KYCState: DefaultKYCState,
+                FiatDailyAmount: 0,
+                FiatMonthlyAmount: 0,
+                KYCVerification: verificationId,
+                createdOn: new Date().toISOString(),
+                updatedOn: new Date().toISOString(),
+                ...rest
+            }
+        };
+        try {
+            const result = await dynamo.put(putQuery).promise();
+            console.log(`Item ${putQuery.Item.id} stored successfully:\n`, result);
+            return putQuery.Item;
+        }
+        catch (err) {
+            return handleQueryError(err);
+        }
+    };
+    return { scanCustomerByEmail, createCustomer };
+};
+
+const KYCVerificationWorker = (dynamo, VerificationTable, id_gen) => {
+    // const customersTable = 'STCustomerStoreTbl-dev';
+    const createVerificationRecord = async () => {
+        console.log('Creating kyc verification customer');
+        const putQuery = {
+            TableName: VerificationTable,
+            Item: {
+                id: id_gen(),
+                idVerification: 'NOT_REQUIRED',
+                poaVerification: 'NOT_REQUIRED',
+                financeVerification: 'NOT_REQUIRED',
+                createdOn: new Date().toISOString(),
+                updatedOn: new Date().toISOString()
+            }
+        };
+        try {
+            const result = await dynamo.put(putQuery).promise();
+            console.log(`Item ${putQuery.Item.id} stored successfully:\n`, result);
+            return putQuery.Item;
+        }
+        catch (err) {
+            return handleQueryError(err);
+        }
+    };
+    // return { resolveCustomerByEmail, resolveCustomerByFirstLastName, registerIfUnknown, createCustomer, validateCustomerTransaction, updateCustomerLimits }
+    return { createVerificationRecord };
+};
+
+exports.helpers = { CustomerWorker, KYCVerificationWorker, extractTransactionFromDBEvent, extractTransactionFromRequest };
+//# sourceMappingURL=bundle.js.map

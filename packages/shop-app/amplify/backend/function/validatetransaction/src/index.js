@@ -14,7 +14,7 @@ exports.handler = async (event, context) => {
   catch(err) {
     return {
       statusCode: 400,
-      body: JSON.stringify(err)
+      body: `Error: Invalid request. ${JSON.stringify(err)}`
     }
   }
   let response = {
