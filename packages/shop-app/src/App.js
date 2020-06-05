@@ -8,6 +8,7 @@ import {FailedPage} from './Pages/Failed';
 import {SuccessPage} from './Pages/Success';
 import {KYCPage} from './Pages/KYC';
 import HomePage from './Pages/secured/Home';
+import PaymentPage from './Pages/secured/Payment';
 
 const {Content, Footer} = Layout;
 
@@ -16,20 +17,17 @@ function App() {
     <Router>
       <Layout>
             <ShopHeader/>
-              <Content style={{padding: '0 50px', width: "100%"}}>
-
-                <div style={{background: '#fff', width: "100%"}}>
-                    {/* <Route exact path='/' component={HomePage}/>
-                    <Route path={'/home'} component={HomePage}/>
-                    <Router path={'/paymentfailed'} component={FailedPage}/>
-                    <Router path={'/paymentsuccessfull'} component={SuccessPage}/>
-                    <Router path={'/kycverification'} component={KYCPage}/> */}
+              <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
+                <div className="site-layout-background" style={{ background: '#fff', padding: 24, minHeight: 380 }}>                    
                     <Switch>
                       <Route exact path="/">
                         <HomePage />
                       </Route>
                       <Route path="/home">
                         <HomePage />
+                      </Route>
+                      <Route path="/payment">
+                        <PaymentPage />
                       </Route>
                       <Route path="/paymentfailed">
                         <FailedPage />
@@ -56,11 +54,6 @@ function App() {
                         <NoFoundPage />
                       </Route>  
                     </Switch>
-                    {/* <Route path={"/login"} component={AuthScreen}/>
-                    <Route path={"/register"} component={AuthScreen}/>
-                    <Route path={"/registerconfirm"} component={AuthScreen}/>
-                    <Route path={"/forgotpassword1"} component={AuthScreen}/>
-                    <Route path={"/forgotpassword2"} component={AuthScreen}/> */}
                 </div>
             </Content>
             <Footer style={{textAlign: 'center'}}>kosevych.info © 2020 </Footer>

@@ -44,16 +44,16 @@ export const selectAppropriateTier = (amount: FiatAmount) => {
   if (amount.FiatCurrency !== paymentLimits[DefaultTier].FiatCurrency) {
     reportMessage('Found currency mismatch. [Not implemented yet]');
   }
-  if (!isOverLimit('Low', amount)) {
-    return 'Low';
+  if (!isOverLimit('LOW', amount)) {
+    return 'LOW';
   }
-  if (isOverLimit('Medium', amount)) {
-    return 'High'
+  if (isOverLimit('UPPER', amount)) {
+    return 'HIGH'
   }
-  if (isOverLimit('Low', amount)) {
-    return 'Medium'
+  if (isOverLimit('LOW', amount)) {
+    return 'UPPER'
   }
-  return 'High';
+  return 'HIGH';
 }
 
-export const DefaultTier: CustomerTier = 'Low';
+export const DefaultTier: CustomerTier = 'INITIAL';

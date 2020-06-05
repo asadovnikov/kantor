@@ -42,10 +42,12 @@ export const CustomerWorker = (dynamo: dynamoDb<RegisteredEntity<Customer>>, cus
         id: id_gen(),
         hashKey: buildHashKey(person),
         Tier: DefaultTier,
-        KYC_State: DefaultKYCState,
+        KYCState: DefaultKYCState,
         FiatDailyAmount: 0,
         FiatMonthlyAmount: 0,
         KYCVerification: verificationId,
+        createdOn: new Date().toISOString(),
+        updatedOn: new Date().toISOString(),
         ...rest
       }
     }

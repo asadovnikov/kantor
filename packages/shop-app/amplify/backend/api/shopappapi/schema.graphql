@@ -78,13 +78,13 @@ type PaymentRequest @model(timestamps:{createdAt: "createdOn", updatedAt: "updat
   StreetLine1: String!
   StreetLine2: String
   City: String!
-  PostalCode: Int!
+  PostalCode: String!
   StateProvince: String!
   Country: String!
   Email: String!
   Telephone: String
   FiatCurrency: String!
-  FiatAmount: Int!
+  FiatAmount: String!
   Status: PaymentRequestStatus!
 }
 
@@ -99,16 +99,16 @@ type Transaction @model(timestamps:{createdAt: "createdOn", updatedAt: "updatedO
   StreetLine1: String!
   StreetLine2: String
   City: String!
-  PostalCode: Int!
+  PostalCode: String!
   StateProvince: String!
   Country: String!
   Email: String!
   Telephone: String
   FiatCurrency: String!
-  FiatBaseAmount: Int
-  FiatAmount: Int!
+  FiatBaseAmount: String
+  FiatAmount: String!
   CryptoCurrency: String!
-  CryptoAmount: Int!
+  CryptoAmount: String!
   CryptoAddress: String!
   GWReference: String
   BankReference: String
@@ -130,9 +130,9 @@ type Customer @model(timestamps:{createdAt: "createdOn", updatedAt: "updatedOn"}
   Country: String!
   Email: String!
   Telephone: String
-  FiatTotalAmount: Int
-  FiatDailyAmount: Int
-  FiatMonthlyAmount: Int
+  FiatTotalAmount: String
+  FiatDailyAmount: String
+  FiatMonthlyAmount: String
   Tier: CustomerTier!
   KYCState: KYCStageStatus!
   PaymentTransactions: [Transaction] @connection(keyName: "byMerchantRef", fields: ["id"])

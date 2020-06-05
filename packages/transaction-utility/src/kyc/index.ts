@@ -2,7 +2,7 @@ import { KYCState, Customer, FiatPayment } from "../types/common.types";
 import { reportMessage } from "../operationlog";
 import { isCustomerOverLimit } from "../validation/limits";
 
-export const DefaultKYCState: KYCState = 'Initiated';
+export const DefaultKYCState: KYCState = 'INITIATED';
 
 export const kycCheck = (customer: Customer, payment: FiatPayment) => {
   reportMessage('Performing KYC status check');

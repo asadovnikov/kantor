@@ -138,7 +138,7 @@ export const schema = {
                 "PostalCode": {
                     "name": "PostalCode",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": true,
                     "attributes": []
                 },
@@ -180,7 +180,7 @@ export const schema = {
                 "FiatAmount": {
                     "name": "FiatAmount",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": true,
                     "attributes": []
                 },
@@ -273,7 +273,7 @@ export const schema = {
                 "PostalCode": {
                     "name": "PostalCode",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": true,
                     "attributes": []
                 },
@@ -315,14 +315,14 @@ export const schema = {
                 "FiatBaseAmount": {
                     "name": "FiatBaseAmount",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
                 "FiatAmount": {
                     "name": "FiatAmount",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": true,
                     "attributes": []
                 },
@@ -336,7 +336,7 @@ export const schema = {
                 "CryptoAmount": {
                     "name": "CryptoAmount",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": true,
                     "attributes": []
                 },
@@ -493,21 +493,21 @@ export const schema = {
                 "FiatTotalAmount": {
                     "name": "FiatTotalAmount",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
                 "FiatDailyAmount": {
                     "name": "FiatDailyAmount",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
                 "FiatMonthlyAmount": {
                     "name": "FiatMonthlyAmount",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -764,5 +764,5 @@ export const schema = {
             }
         }
     },
-    "version": "282a5815246b41f7f2de42bceed62793"
+    "version": "e137051bce59c323b1179a2bbdacf5de"
 };

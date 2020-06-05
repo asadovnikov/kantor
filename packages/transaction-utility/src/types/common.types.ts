@@ -44,8 +44,8 @@ export type ValidationResult = {
   PaymentAllowed: boolean
 }
 
-export type KYCState = 'Unknown' | 'Initiated' | 'Pending' | 'Validated';
-export type CustomerTier = 'Low' | 'Medium' | 'High';
+export type KYCState = 'UNKNOWN' | 'INITIATED' | 'VALIDATED' | 'NOT_REQUIRED' | 'FAILED';
+export type CustomerTier = 'INITIAL' | 'LOW' | 'UPPER' | 'HIGH';
 export type FiatAmount = {
   FiatDailyAmount: number;
   FiatMonthlyAmount: number;
@@ -53,7 +53,7 @@ export type FiatAmount = {
 }
 
 export type KYCInfo = {
-  KYC_State: KYCState;
+  KYCState: KYCState;
 }
 
 export type VerificationStatus = 'INITIATED' | 'VALIDATED' | 'NOT_REQUIRED' | 'FAILED';
