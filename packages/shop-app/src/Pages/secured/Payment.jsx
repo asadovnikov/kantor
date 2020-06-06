@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Form, Button, Card, Select, Row, Col, Input, InputNumber, Typography } from 'antd';
+import { Form, Button, Card, Select, Row, Col, Input, Typography } from 'antd';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import axios from 'axios';
 const { Option } = Select;
@@ -9,18 +9,35 @@ const rateURI = (currency) =>
 	`https://api.coinlayer.com/api/live?access_key=68067b671383b2e296479c087ece3398&target=${currency}&symbols=BTC`;
 
 const BTCForm = ({ value = {}, onChange }) => {
-	const [number, setNumber] = useState(0);
-	const [currency, setCurrency] = useState('EUR');
+	const [FiatAmount, setFiatAmount] = useState(value.FiatAmount);
+	const [FiatCurrency, setFiatCurrency] = useState('EUR');
 	const [btc, setBTC] = useState(0);
 
+	axios.get(rateURI(FiatCurrency)).then(({ data }) => {
+		const {
+			rates: { BTC },
+		} = data;
+		// debugger;
+		console.log(FiatAmount / BTC);
+		setBTC(FiatAmount / BTC);
+		// console.log(response);
+	});
+
 	const triggerChange = (changedValue) => {
-		axios.get(rateURI(currency)).then(({ rates }) => {
-			setBTC(rates.BTC * number);
+		const obj = { ...value, ...changedValue };
+		axios.get(rateURI(obj.FiatCurrency)).then(({ data }) => {
+			const {
+				rates: { BTC },
+			} = data;
+			// debugger;
+			console.log(obj.FiatAmount / BTC);
+			setBTC(obj.FiatAmount / BTC);
+			// console.log(response);
 		});
 		if (onChange) {
 			onChange({
-				number,
-				currency,
+				FiatAmount,
+				FiatCurrency,
 				btc,
 				...value,
 				...changedValue,
@@ -28,59 +45,54 @@ const BTCForm = ({ value = {}, onChange }) => {
 		}
 	};
 
-	const onNumberChange = (e) => {
-		const newNumber = parseInt(e.target.value || 0, 10);
+	const onFiatAmountChange = (e) => {
+		const newFiatAmount = parseInt(e.target.value || 0, 10);
 
-		if (Number.isNaN(number)) {
+		if (Number.isNaN(FiatAmount)) {
 			return;
 		}
 
-		if (!('number' in value)) {
-			setNumber(newNumber);
+		if (!('FiatAmount' in value)) {
+			setFiatAmount(newFiatAmount);
 		}
 
 		triggerChange({
-			number: newNumber,
+			FiatAmount: newFiatAmount,
 		});
 	};
 
-	const onCurrencyChange = (newCurrency) => {
-		if (!('currency' in value)) {
-			setCurrency(newCurrency);
+	const onFiatCurrencyChange = (newFiatCurrency) => {
+		if (!('FiatCurrency' in value)) {
+			setFiatCurrency(newFiatCurrency);
 		}
 
 		triggerChange({
-			currency: newCurrency,
+			FiatCurrency: newFiatCurrency,
 		});
 	};
 	return (
 		<>
-			<Row>
-				<Col span={8} offset={8}>
+			<Row justify='center'>
+				<Col>
 					<Title level={4}>Buy BTC</Title>
 				</Col>
 			</Row>
 			<Row>
 				<Col span={16} offset={4}>
-					<Input type='text' value={value.number || number} onChange={onNumberChange} />
+					<Input type='text' value={value.FiatAmount || FiatAmount} onChange={onFiatAmountChange} />
 				</Col>
 			</Row>
 			<Row>
 				<Col span={16} offset={4}>
-					<Input type='text' value={value.number || number} onChange={onNumberChange} />
-				</Col>
-			</Row>
-			<Row>
-				<Col span={16} offset={4}>
-					<Select value={value.currency || currency} onChange={onCurrencyChange}>
+					<Select value={value.FiatCurrency || FiatCurrency} onChange={onFiatCurrencyChange}>
 						<Option value='EUR'>Euro</Option>
 						<Option value='USD'>US Dollar</Option>
 					</Select>
 				</Col>
 			</Row>
-			<Row>
-				<Col span={8} offset={8}>
-					<Title level={4}>{btc}</Title>
+			<Row justify='center'>
+				<Col>
+					<Title level={4}>{btc} BTC</Title>
 				</Col>
 			</Row>
 		</>
@@ -104,29 +116,29 @@ const buildHash = async (str) => {
 };
 
 const PaymentPage = () => {
-	const checkPrice = (rule, value) => {
-		if (value.number > 0) {
+	const checkPayment = (rule, value) => {
+		if (value.FiatAmount > 0) {
 			return Promise.resolve();
 		}
 
-		return Promise.reject('Price must be greater than zero!');
+		return Promise.reject('Payment must be greater than zero!');
 	};
 
-	const onFinishForm = ({ user }) => {
-		console.log(user);
-		buildHash(`p@s5w0Rd123200604201617${user.FiatCurrency}${user.FiatAmount * 100}`).then((hash) => {
+	const onFinishForm = ({ payment }) => {
+		console.log(payment);
+		buildHash(`p@s5w0Rd123200604201617${payment.FiatCurrency}${payment.FiatAmount * 100}`).then((hash) => {
 			const formData = new FormData();
 			formData.append('Signature', hash);
 			formData.append('MerchantName', 'Dummy1');
 			formData.append('MerchantPassword', 'p@s5w0Rd123');
 			formData.append('MerchantRef', '200604201617');
-			formData.append('Currency', user.FiatCurrency);
-			formData.append('Amount', user.FiatAmount * 100);
+			formData.append('Currency', payment.FiatCurrency);
+			formData.append('Amount', payment.FiatAmount * 100);
 			formData.append('SuccessURL', 'https://dev.kantor.kosevych.info/success');
 			formData.append('FailURL', 'https://dev.kantor.kosevych.info/success/failed');
 			formData.append('CallbackURL', 'https://dev.kantor.kosevych.info/kyc');
-			formData.append('Firstname', 'John');
-			formData.append('Surname', 'Philips');
+			formData.append('Firstname', 'Jerome');
+			formData.append('Surname', 'K. Jerome');
 			formData.append('StreetLine1', '92 West Broadway');
 			formData.append('StreetLine2', '');
 			formData.append('City', 'New York');
@@ -147,7 +159,7 @@ const PaymentPage = () => {
 	return (
 		<Row>
 			<Col span={8} offset={8}>
-				<Card title='Buy BTC'>
+				<Card title='Payment form'>
 					<Form
 						onFinish={onFinishForm}
 						labelCol={{
@@ -157,34 +169,21 @@ const PaymentPage = () => {
 							span: 20,
 						}}
 						layout='horizontal'
-						size='large'>
+						size='large'
+						initialValues={{
+							payment: {
+								FiatAmount: 1,
+								FiatCurrency: 'EUR',
+							},
+						}}>
 						<Form.Item
-							name={['user', 'FiatAmount']}
-							label='Input'
+							name='payment'
 							rules={[
 								{
-									required: true,
-									type: 'number',
-									min: 1,
-									max: 9999,
-									message: 'Please enter amount',
+									validator: checkPayment,
 								},
 							]}>
-							<InputNumber />
-						</Form.Item>
-						<Form.Item
-							name={['user', 'FiatCurrency']}
-							label='Currency'
-							rules={[
-								{
-									required: true,
-									message: 'Please select currency',
-								},
-							]}>
-							<Select placeholder='Please select a currency'>
-								<Option value='EUR'>EUR</Option>
-								<Option value='USD'>USD</Option>
-							</Select>
+							<BTCForm />
 						</Form.Item>
 
 						<Form.Item>
