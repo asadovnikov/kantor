@@ -1,40 +1,63 @@
 @import '~antd/dist/antd.css';
 
 .App {
-  text-align: center;
+	text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+	height: 40vmin;
+	pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
 }
 
 .App-link {
-  color: #61dafb;
+	color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* Registration */
+
+.registration-content__row {
+	margin-top: 25px;
+}
+
+.registration-form-container {
+	min-height: 70vh;
+}
+
+.react-tel-input > input.form-control {
+	width: 107px;
+	border-radius: 2px;
+	height: 40px;
+	border-color: #d9d9d9;
+	font-size: 16px;
+	font-family: inherit;
+	line-height: 1.5715;
+	color: rgba(0, 0, 0, 0.65);
+	font-variant: tabular-nums;
+	transition: all 0.3s;
 }

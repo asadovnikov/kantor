@@ -15,7 +15,7 @@ exports.handler = async (event) => {
     console.log('Error:\n', JSON.stringify(err));
     return {
       statusCode: 400,
-      body: JSON.stringify(err)
+      body: `Error: Invalid request. ${JSON.stringify(err)}`
     }
   }
   try {  
