@@ -25,13 +25,6 @@ const PasswordPage = () => {
 						/>
 					</Col>
 				</Row>
-				<Row gutter={[24, 24]} justify='center' style={{ margin: '50px 0' }}>
-					<Col span='16'>
-						<Button shape='round' size='large' type='primary' block>
-							Continue
-						</Button>
-					</Col>
-				</Row>
 			</RegistrationContent>
 		</RegistrationForm>
 	);

@@ -1,16 +1,16 @@
 import React from 'react';
 import { Row, Col, Card, Button } from 'antd';
 
-export const RegistrationContent = (props) => {
+export const FormContent = (props) => {
 	const { children, actionText = 'Continue' } = props;
 	return (
-		<Row justify='center' className='registration-content__row'>
-			<Col className='registration-content__row'>
-				<Card bordered={false} className='registration-content__card'>
+		<Row justify='center' className='kantor-form-content__row'>
+			<Col className='kantor-form-content__column'>
+				<Card bordered={false} className='kantor-form-content__card'>
 					{children}
 					<Row gutter={[24, 24]} justify='center' style={{ margin: '50px 0' }}>
 						<Col span='16'>
-							<Button shape='round' size='large' type='primary' block>
+							<Button shape='round' size='large' className='kantor-form-content_action-button' type='primary' block>
 								{actionText}
 							</Button>
 						</Col>

@@ -10,7 +10,7 @@ const GetVerifiedPage = () => {
 				Main='Get Verified'
 				Secondary='Before you can start using Kantor, you will need to complete the following steps.'
 			/>
-			<RegistrationContent>
+			<RegistrationContent actionText='Start Your Verification'>
 				<Row gutter={[16, 16]}>
 					<Col span='24'>
 						<Space>
@@ -42,13 +42,6 @@ const GetVerifiedPage = () => {
 								Enable extra security
 							</Title>
 						</Space>
-					</Col>
-				</Row>
-				<Row gutter={[24, 24]} justify='center' style={{ margin: '50px 0' }}>
-					<Col span='16'>
-						<Button shape='round' size='large' type='primary' block>
-							Start Your Verification
-						</Button>
 					</Col>
 				</Row>
 			</RegistrationContent>

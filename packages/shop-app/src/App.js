@@ -18,6 +18,7 @@ import GetVerifiedPage from './Pages/registration/GetVerified';
 import AddressPage from './Pages/registration/AddressPage';
 import VerifyPhonePage from './Pages/registration/PhoneVerificationPage';
 import PhoneCodePage from './Pages/registration/PhoneCodePage';
+import DocumentsForm from './Pages/registration/DocumentsForm';
 import { SideMenu } from './Components/SideMenu';
 
 const { Content, Footer, Sider } = Layout;
@@ -103,6 +104,9 @@ function App() {
 									</Route>
 									<Route path='/step8'>
 										<PhoneCodePage />
+									</Route>
+									<Route path='/step9'>
+										<DocumentsForm />
 									</Route>
 									<Route path='*'>
 										<NoFoundPage />

@@ -64,6 +64,18 @@ export const SideMenu = () => {
 					<Link to='/step8'>Phone code</Link>
 				</>
 			</Menu.Item>
+			<Menu.Item key='9'>
+				<>
+					<SettingOutlined />
+					<Link to='/step9'>Documents upload</Link>
+				</>
+			</Menu.Item>
+			<Menu.Item key='10'>
+				<>
+					<SettingOutlined />
+					<Link to='/Payment'>Payment</Link>
+				</>
+			</Menu.Item>
 		</Menu>
 	);
 };

@@ -50,13 +50,6 @@ const AddressPage = () => {
 				<RegistrationContentRow>
 					<Checkbox size='large'>I hold nationality from this country</Checkbox>
 				</RegistrationContentRow>
-				<Row gutter={[24, 24]} justify='center' style={{ margin: '50px 0' }}>
-					<Col span='16'>
-						<Button shape='round' size='large' type='primary' block>
-							Continue
-						</Button>
-					</Col>
-				</Row>
 			</RegistrationContent>
 		</RegistrationForm>
 	);
