@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row, Col, Button, Input, Checkbox, Typography } from 'antd';
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { RegistrationHeader, RegistrationForm, RegistrationContent } from './components';
 
 const { Link } = Typography;
@@ -19,7 +20,26 @@ const HolderPage = () => {
 				</Row>
 				<Row gutter={[16, 16]}>
 					<Col span='24'>
+						<Input size='large' placeholder='Date of birth' />
+					</Col>
+				</Row>
+				<Row gutter={[16, 16]}>
+					<Col span='24'>
 						<Input size='large' placeholder='Email' />
+					</Col>
+				</Row>
+				<Row gutter={[16, 16]}>
+					<Col span='24'>
+						<Input.Password size='large' placeholder='Enter password' />
+					</Col>
+				</Row>
+				<Row gutter={[16, 16]}>
+					<Col span='24'>
+						<Input.Password
+							size='large'
+							placeholder='Confirm password'
+							iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+						/>
 					</Col>
 				</Row>
 				<Row gutter={[16, 16]}>

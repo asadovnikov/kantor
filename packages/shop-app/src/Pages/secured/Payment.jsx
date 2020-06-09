@@ -1,39 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import { Form, Button, Card, Select, Row, Col, Input, Typography } from 'antd';
+import { Select, Input, Typography, Space } from 'antd';
+import { FormLayout, FormContent, FormContentRow, FormHeader } from '../../Components';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import axios from 'axios';
 const { Option } = Select;
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 const rateURI = (currency) =>
 	`https://api.coinlayer.com/api/live?access_key=68067b671383b2e296479c087ece3398&target=${currency}&symbols=BTC`;
 
 const BTCForm = ({ value = {}, onChange }) => {
-	const [FiatAmount, setFiatAmount] = useState(value.FiatAmount);
+	const [FiatAmount, setFiatAmount] = useState(0);
 	const [FiatCurrency, setFiatCurrency] = useState('EUR');
+	const [fee, setFee] = useState(0);
 	const [btc, setBTC] = useState(0);
 
-	axios.get(rateURI(FiatCurrency)).then(({ data }) => {
-		const {
-			rates: { BTC },
-		} = data;
-		// debugger;
-		console.log(FiatAmount / BTC);
-		setBTC(FiatAmount / BTC);
-		// console.log(response);
-	});
+	useEffect(() => {
+		let isMounted = true;
+		if (FiatAmount > 0) {
+			axios.get(rateURI(FiatCurrency)).then(({ data }) => {
+				const {
+					rates: { BTC },
+				} = data;
+				// debugger;
+
+				console.log(FiatAmount / BTC);
+				setBTC((FiatAmount / BTC).toFixed(6));
+				setFee(FiatAmount / 10);
+			});
+		}
+		return () => {
+			isMounted = false;
+		};
+	}, [FiatAmount, FiatCurrency]);
 
 	const triggerChange = (changedValue) => {
-		const obj = { ...value, ...changedValue };
-		axios.get(rateURI(obj.FiatCurrency)).then(({ data }) => {
-			const {
-				rates: { BTC },
-			} = data;
-			// debugger;
-			console.log(obj.FiatAmount / BTC);
-			setBTC(obj.FiatAmount / BTC);
-			// console.log(response);
-		});
 		if (onChange) {
 			onChange({
 				FiatAmount,
@@ -71,41 +72,45 @@ const BTCForm = ({ value = {}, onChange }) => {
 		});
 	};
 	return (
-		<>
-			<Row justify='center'>
-				<Col>
-					<Title level={4}>Buy BTC</Title>
-				</Col>
-			</Row>
-			<Row>
-				<Col span={16} offset={4}>
-					<Input type='text' value={value.FiatAmount || FiatAmount} onChange={onFiatAmountChange} />
-				</Col>
-			</Row>
-			<Row>
-				<Col span={16} offset={4}>
-					<Select value={value.FiatCurrency || FiatCurrency} onChange={onFiatCurrencyChange}>
-						<Option value='EUR'>Euro</Option>
-						<Option value='USD'>US Dollar</Option>
-					</Select>
-				</Col>
-			</Row>
-			<Row justify='center'>
-				<Col>
-					<Title level={4}>{btc} BTC</Title>
-				</Col>
-			</Row>
-		</>
+		<FormContent actionText='Buy'>
+			<FormContentRow>
+				<Input
+					className='fiat-amount-input'
+					type='text'
+					value={value.FiatAmount || FiatAmount}
+					onChange={onFiatAmountChange}
+				/>
+			</FormContentRow>
+			<FormContentRow>
+				<Select
+					size='large'
+					className='fiat-currency-select'
+					value={value.FiatCurrency || FiatCurrency}
+					onChange={onFiatCurrencyChange}>
+					<Option value='EUR'>Euro</Option>
+					<Option value='USD'>US Dollar</Option>
+				</Select>
+			</FormContentRow>
+			<FormContentRow>
+				<Space direction='vertical' style={{ margin: '5px 0' }}>
+					<Text strong>You receive</Text>
+					<Text type='secondary' level={4}>
+						~ {btc} BTC
+					</Text>
+					<Text strong>Processing fee</Text>
+					<Text type='secondary' level={4}>
+						{fee} {FiatCurrency} (10%)
+					</Text>
+				</Space>
+			</FormContentRow>
+			<FormContentRow>
+				<Select size='large' block placeholder='Select destination wallet' className='btc-wallet-select'>
+					<Option value='EUR'>Euro</Option>
+					<Option value='USD'>US Dollar</Option>
+				</Select>
+			</FormContentRow>
+		</FormContent>
 	);
-};
-
-const layout = {
-	labelCol: {
-		span: 8,
-	},
-	wrapperCol: {
-		span: 16,
-	},
 };
 
 const buildHash = async (str) => {
@@ -157,44 +162,10 @@ const PaymentPage = () => {
 		});
 	};
 	return (
-		<Row>
-			<Col span={8} offset={8}>
-				<Card title='Payment form'>
-					<Form
-						onFinish={onFinishForm}
-						labelCol={{
-							span: 4,
-						}}
-						wrapperCol={{
-							span: 20,
-						}}
-						layout='horizontal'
-						size='large'
-						initialValues={{
-							payment: {
-								FiatAmount: 1,
-								FiatCurrency: 'EUR',
-							},
-						}}>
-						<Form.Item
-							name='payment'
-							rules={[
-								{
-									validator: checkPayment,
-								},
-							]}>
-							<BTCForm />
-						</Form.Item>
-
-						<Form.Item>
-							<Button type='primary' htmlType='submit'>
-								Submit
-							</Button>
-						</Form.Item>
-					</Form>
-				</Card>
-			</Col>
-		</Row>
+		<FormLayout>
+			<FormHeader Main={`Buy BTC`} Secondary={`Let's buy some crypto`} />
+			<BTCForm />
+		</FormLayout>
 	);
 };
 

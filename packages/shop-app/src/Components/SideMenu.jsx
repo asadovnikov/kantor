@@ -10,8 +10,13 @@ import {
 	AppstoreOutlined,
 	MailOutlined,
 	SettingOutlined,
+	BulbOutlined,
+	CoffeeOutlined,
+	DeploymentUnitOutlined,
+	UserSwitchOutlined,
+	EuroOutlined,
+	DislikeOutlined,
 } from '@ant-design/icons';
-// const { Item } = Menu;
 
 export const SideMenu = () => {
 	return (
@@ -66,14 +71,111 @@ export const SideMenu = () => {
 			</Menu.Item>
 			<Menu.Item key='9'>
 				<>
-					<SettingOutlined />
+					<DeploymentUnitOutlined />
 					<Link to='/step9'>Documents upload</Link>
 				</>
 			</Menu.Item>
 			<Menu.Item key='10'>
 				<>
-					<SettingOutlined />
+					<BulbOutlined />
 					<Link to='/Payment'>Payment</Link>
+				</>
+			</Menu.Item>
+			<Menu.Item key='11'>
+				<>
+					<CoffeeOutlined />
+					<Link to='/waiting'>Waiting</Link>
+				</>
+			</Menu.Item>
+			<Menu.Item key='12'>
+				<>
+					<UserSwitchOutlined />
+					<Link to='/account'>Account details</Link>
+				</>
+			</Menu.Item>
+			<Menu.Item key='13'>
+				<>
+					<EuroOutlined />
+					<Link to='/mytransactions'>My transactions</Link>
+				</>
+			</Menu.Item>
+			<Menu.Item key='14'>
+				<>
+					<DislikeOutlined />
+					<Link to='/settings'>Settings</Link>
+				</>
+			</Menu.Item>
+			<Menu.Item key='15'>
+				<>
+					<DislikeOutlined />
+					<Link to='/failed'>Failed page</Link>
+				</>
+			</Menu.Item>
+			<Menu.Item key='16'>
+				<>
+					<DislikeOutlined />
+					<Link to='/success'>Success page</Link>
+				</>
+			</Menu.Item>
+
+			<Menu.Item key='17'>
+				<>
+					<DislikeOutlined />
+					<Link to='/privacy-policy'>Privacy policy</Link>
+				</>
+			</Menu.Item>
+			<Menu.Item key='18'>
+				<>
+					<DislikeOutlined />
+					<Link to='/terms-and-conditions'>Terms and conditions</Link>
+				</>
+			</Menu.Item>
+			<Menu.Item key='20'>
+				<>
+					<DislikeOutlined />
+					<Link to='/step10'>Landing</Link>
+				</>
+			</Menu.Item>
+			<Menu.Item key='19'>
+				<>
+					<DislikeOutlined />
+					<Link to='/settings'>Login</Link>
+				</>
+			</Menu.Item>
+			<Menu.Item key='19'>
+				<>
+					<DislikeOutlined />
+					<Link to='/settings'>Logout</Link>
+				</>
+			</Menu.Item>
+			<Menu.Item key='19'>
+				<>
+					<DislikeOutlined />
+					<Link to='/settings'>Reset password</Link>
+				</>
+			</Menu.Item>
+			<Menu.Item key='19'>
+				<>
+					<DislikeOutlined />
+					<Link to='/settings'>FX Rates</Link>
+				</>
+			</Menu.Item>
+			<Menu.Item key='19'>
+				<>
+					<DislikeOutlined />
+					<Link to='/settings'>Home Page</Link>
+				</>
+			</Menu.Item>
+			<Menu.Item key='19'>
+				<>
+					<DislikeOutlined />
+					<Link to='/settings'>BTC wallet (add and list)</Link>
+				</>
+			</Menu.Item>
+			<Menu.Item key='19'>
+				<>
+					<DislikeOutlined />
+					<Link to='/settings'>Financial documents input</Link>
 				</>
 			</Menu.Item>
 		</Menu>

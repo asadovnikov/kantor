@@ -61,3 +61,23 @@
 	font-variant: tabular-nums;
 	transition: all 0.3s;
 }
+
+/* kantor form */
+.kantor-form-content__row {
+	margin-top: 25px;
+}
+
+.kantor-form-layout_container {
+	min-height: 60vh;
+}
+.fiat-amount-input {
+	text-align: center;
+	border: 0;
+	font-size: 5rem;
+	max-width: 300px;
+}
+.fiat-currency-select,
+.btc-wallet-select {
+	min-width: 300px;
+	max-width: 300px;
+}

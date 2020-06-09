@@ -14,12 +14,13 @@ const PasswordPage = () => {
 			<RegistrationContent>
 				<Row gutter={[16, 16]}>
 					<Col span='24'>
-						<Input.Password placeholder='Enter password' />
+						<Input.Password size='large' placeholder='Enter password' />
 					</Col>
 				</Row>
 				<Row gutter={[16, 16]}>
 					<Col span='24'>
 						<Input.Password
+							size='large'
 							placeholder='Confirm password'
 							iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
 						/>

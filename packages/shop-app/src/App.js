@@ -3,9 +3,10 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import { Layout } from 'antd';
 import { ShopHeader } from './Components/Header';
-import NoFoundPage from './Pages/404';
-import { FailedPage } from './Pages/Failed';
-import { SuccessPage } from './Pages/Success';
+import NoFoundPage from './Pages/Static/404';
+import { FailedPage } from './Pages/Static/Failed';
+import { SuccessPage } from './Pages/Static/Success';
+import PrivacyPolicy from './Pages/Static/PrivacyPolicy';
 import { KYCPage } from './Pages/KYC';
 import HomePage from './Pages/secured/Home';
 import PaymentPage from './Pages/secured/Payment';
@@ -19,6 +20,11 @@ import AddressPage from './Pages/registration/AddressPage';
 import VerifyPhonePage from './Pages/registration/PhoneVerificationPage';
 import PhoneCodePage from './Pages/registration/PhoneCodePage';
 import DocumentsForm from './Pages/registration/DocumentsForm';
+import Waiting from './Pages/registration/Waiting';
+import LandingForm from './Pages/registration/LandingForm';
+import AccountDetails from './Pages/secured/AccountDetails';
+import MyTransactions from './Pages/secured/MyTransactions';
+import SettingsForm from './Pages/secured/Settings';
 import { SideMenu } from './Components/SideMenu';
 
 const { Content, Footer, Sider } = Layout;
@@ -81,6 +87,9 @@ function App() {
 									<Route path='/kyc'>
 										<KYCPage />
 									</Route>
+									<Route path='/privacy-policy'>
+										<PrivacyPolicy />
+									</Route>
 									<Route path='/step1'>
 										<SelectAccountType />
 									</Route>
@@ -107,6 +116,21 @@ function App() {
 									</Route>
 									<Route path='/step9'>
 										<DocumentsForm />
+									</Route>
+									<Route path='/step10'>
+										<LandingForm />
+									</Route>
+									<Route path='/waiting'>
+										<Waiting />
+									</Route>
+									<Route path='/account'>
+										<AccountDetails />
+									</Route>
+									<Route path='/mytransactions'>
+										<MyTransactions />
+									</Route>
+									<Route path='/settings'>
+										<SettingsForm />
 									</Route>
 									<Route path='*'>
 										<NoFoundPage />

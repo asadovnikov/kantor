@@ -47,9 +47,9 @@ const AddressPage = () => {
 						<Input size='large' placeholder='Postal code' />
 					</Space>
 				</RegistrationContentRow>
-				<RegistrationContentRow>
+				{/* <RegistrationContentRow>
 					<Checkbox size='large'>I hold nationality from this country</Checkbox>
-				</RegistrationContentRow>
+				</RegistrationContentRow> */}
 			</RegistrationContent>
 		</RegistrationForm>
 	);
