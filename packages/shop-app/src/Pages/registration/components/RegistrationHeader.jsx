@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Typography } from 'antd';
+import { Row, Col, Typography, Space } from 'antd';
 // import Title from 'antd/lib/skeleton/Title';
 const { Title, Text } = Typography;
 
@@ -18,8 +18,10 @@ export const RegistrationHeader = (params) => {
 				<Row justify='center' className='registration-header__secondary-row'>
 					<Col className='registration-header__secondary-column'>
 						<Text type='secondary' level={2} className='registration-header__secondary-text'>
-							{Secondary}
-							{SecondaryExtra}
+							<Space>
+								{Secondary}
+								{SecondaryExtra}
+							</Space>
 						</Text>
 					</Col>
 				</Row>

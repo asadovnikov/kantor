@@ -7,6 +7,7 @@ import NoFoundPage from './Pages/Static/404';
 import { FailedPage } from './Pages/Static/Failed';
 import { SuccessPage } from './Pages/Static/Success';
 import PrivacyPolicy from './Pages/Static/PrivacyPolicy';
+import SignIn from './Pages/RegistrationFlow/Landing';
 import { KYCPage } from './Pages/KYC';
 import HomePage from './Pages/secured/Home';
 import PaymentPage from './Pages/secured/Payment';
@@ -21,6 +22,8 @@ import VerifyPhonePage from './Pages/registration/PhoneVerificationPage';
 import PhoneCodePage from './Pages/registration/PhoneCodePage';
 import DocumentsForm from './Pages/registration/DocumentsForm';
 import Waiting from './Pages/registration/Waiting';
+import SignInForm from './Pages/registration/SignInForm';
+import SignUpForm from './Pages/registration/SignUpForm';
 import LandingForm from './Pages/registration/LandingForm';
 import AccountDetails from './Pages/secured/AccountDetails';
 import MyTransactions from './Pages/secured/MyTransactions';
@@ -62,6 +65,9 @@ function App() {
 									</Route>
 									<Route path='/home'>
 										<HomePage />
+									</Route>
+									<Route path='/land'>
+										<SignIn />
 									</Route>
 									<Route path='/payment'>
 										<PaymentPage />
@@ -122,6 +128,12 @@ function App() {
 									</Route>
 									<Route path='/waiting'>
 										<Waiting />
+									</Route>
+									<Route path='/signin'>
+										<SignInForm />
+									</Route>
+									<Route path='/signup'>
+										<SignUpForm />
 									</Route>
 									<Route path='/account'>
 										<AccountDetails />
