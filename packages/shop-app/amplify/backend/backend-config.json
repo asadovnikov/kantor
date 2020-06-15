@@ -43,7 +43,17 @@
         "shopapp53b8683e": {
             "service": "Cognito",
             "providerPlugin": "awscloudformation",
-            "dependsOn": [],
+            "dependsOn": [
+                {
+                    "category": "function",
+                    "resourceName": "shopapp53b8683ePostConfirmation",
+                    "triggerProvider": "Cognito",
+                    "attributes": [
+                        "Arn",
+                        "Name"
+                    ]
+                }
+            ],
             "customAuth": false
         },
         "userPoolGroups": {
@@ -56,8 +66,7 @@
                     "attributes": [
                         "UserPoolId",
                         "AppClientIDWeb",
-                        "AppClientID",
-                        "IdentityPoolId"
+                        "AppClientID"
                     ]
                 }
             ]
@@ -121,6 +130,11 @@
                     ]
                 }
             ]
+        },
+        "shopapp53b8683ePostConfirmation": {
+            "build": true,
+            "providerPlugin": "awscloudformation",
+            "service": "Lambda"
         }
     },
     "hosting": {

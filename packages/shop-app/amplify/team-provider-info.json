@@ -20,6 +20,11 @@
                     "appId": "d1of2l2xhwe01x",
                     "type": "manual"
                 }
+            },
+            "function": {
+                "shopapp53b8683ePostConfirmation": {
+                    "GROUP": "Customers"
+                }
             }
         }
     }

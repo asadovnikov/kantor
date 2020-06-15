@@ -1,0 +1,16 @@
+{
+    "trigger": true,
+    "modules": [
+        "add-to-group"
+    ],
+    "parentResource": "shopapp53b8683e",
+    "functionName": "shopapp53b8683ePostConfirmation",
+    "resourceName": "shopapp53b8683ePostConfirmation",
+    "parentStack": "auth",
+    "triggerEnvs": [],
+    "triggerDir": "/usr/local/lib/node_modules/@aws-amplify/cli/node_modules/amplify-category-auth/provider-utils/awscloudformation/utils/../triggers/PostConfirmation",
+    "triggerTemplate": "PostConfirmation.json.ejs",
+    "roleName": "shopapp53b8683ePostConfirmation",
+    "skipEdit": true,
+    "GROUP": "Customers"
+}

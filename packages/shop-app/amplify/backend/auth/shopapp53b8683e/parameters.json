@@ -1,14 +1,13 @@
 {
-    "identityPoolName": "shopapp53b8683e_identitypool_53b8683e",
-    "allowUnauthenticatedIdentities": false,
     "resourceNameTruncated": "shopap53b8683e",
     "userPoolName": "shopapp53b8683e_userpool_53b8683e",
     "autoVerifiedAttributes": [
         "email"
     ],
-    "mfaConfiguration": "OFF",
+    "mfaConfiguration": "OPTIONAL",
     "mfaTypes": [
-        "SMS Text Message"
+        "SMS Text Message",
+        "TOTP"
     ],
     "smsAuthenticationMessage": "Your authentication code is {####}",
     "smsVerificationMessage": "Your verification code is {####}",
@@ -32,7 +31,7 @@
     "userpoolClientSetAttributes": false,
     "sharedId": "53b8683e",
     "resourceName": "shopapp53b8683e",
-    "authSelections": "identityPoolAndUserPool",
+    "authSelections": "userPoolOnly",
     "authRoleArn": {
         "Fn::GetAtt": [
             "AuthRole",
@@ -45,10 +44,33 @@
             "Arn"
         ]
     },
-    "useDefault": "default",
+    "useDefault": "manual",
     "usernameAttributes": [
         "email, phone_number"
     ],
-    "userPoolGroupList": [],
-    "dependsOn": []
+    "userPoolGroupList": [
+        "Customers",
+        "Admins"
+    ],
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "shopapp53b8683ePostConfirmation",
+            "triggerProvider": "Cognito",
+            "attributes": [
+                "Arn",
+                "Name"
+            ]
+        }
+    ],
+    "userPoolGroups": false,
+    "adminQueries": false,
+    "triggers": "{\"PostConfirmation\":[\"add-to-group\"]}",
+    "hostedUI": false,
+    "parentStack": {
+        "Ref": "AWS::StackId"
+    },
+    "permissions": [
+        "{\"policyName\":\"AddToGroupCognito\",\"trigger\":\"PostConfirmation\",\"effect\":\"Allow\",\"actions\":[\"cognito-idp:AdminAddUserToGroup\",\"cognito-idp:GetGroup\",\"cognito-idp:CreateGroup\"],\"resource\":{\"paramType\":\"!GetAtt\",\"keys\":[\"UserPool\",\"Arn\"]}}"
+    ]
 }
