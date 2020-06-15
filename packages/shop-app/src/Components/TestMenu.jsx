@@ -1,27 +1,44 @@
-import React from 'react';
-import {Layout, Menu} from 'antd';
-import {Link} from 'react-router-dom'
-import { AmplifySignOut } from "@aws-amplify/ui-react";
-const { Header}  = Layout;
+import React, { useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import { Auth } from 'aws-amplify';
+import { Layout, PageHeader, Row, Col, Button } from 'antd';
+import { AmplifySignOut } from '@aws-amplify/ui-react';
+const { Header } = Layout;
 
 export const TestMenu = () => {
-  return (
-    <Header>
-      {/* <AmplifySignOut/> */}
-      <Menu theme="dark" mode="horizontal">
-        <Menu.Item key="/home">
-          <Link to='/'>Home</Link>
-        </Menu.Item>
-        <Menu.Item key="/payment">
-          <Link to='/payment'>Payment Page</Link>
-        </Menu.Item>
-        <Menu.Item key="/failed">
-          <Link to='/failed'>Failed Page</Link>
-        </Menu.Item>
-        <Menu.Item key="/kyc">
-          <Link to='/kyc/5757575'>KYC Page</Link>
-        </Menu.Item>
-      </Menu>
-    </Header>
-  )
-}
+	const [isAuth, setIsAuth] = useState(false);
+	const [isLoggedOut, setLoggedOut] = useState(false);
+	Auth.currentAuthenticatedUser()
+		.then((user) => {
+			console.log(user);
+			setIsAuth(true);
+		})
+		.catch((err) => {
+			console.log(err);
+			setIsAuth(false);
+		});
+	return (
+		<Header>
+			<Row justify='end'>
+				<Col>
+					{isAuth === false && <Link to='/signin'>Sign in </Link>}
+					{isAuth === true && (
+						<Button
+							type='primary'
+							onClick={async () => {
+								try {
+									await Auth.signOut({ global: true });
+									setLoggedOut(true);
+								} catch (error) {
+									console.log('error signing out: ', error);
+								}
+							}}>
+							Log out
+						</Button>
+					)}
+					{isLoggedOut === true && <Redirect to='/signin' />}
+				</Col>
+			</Row>
+		</Header>
+	);
+};

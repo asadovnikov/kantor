@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Input, Checkbox, Typography, DatePicker } from 'antd';
 import { RegistrationHeader, RegistrationForm, RegistrationContent } from './components';
+import { MaterialPass, MaterialTxt, MaterialDatePicker } from './components/LabeledInput';
 
 const { Link } = Typography;
 
@@ -8,19 +9,29 @@ const HolderPage = ({ value = {}, onChange, onValidate, onApply }) => {
 	const [firstName, setFirstName] = useState(value.firstName);
 	const [lastName, setLastName] = useState(value.lastName);
 	const [email, setEmail] = useState(value.email);
-	const [dateOfBirth, setDateOfBirth] = useState(value.dateOfBirth);
+	const [dateOfBirth, setDateOfBirth] = useState(value.dateOfBirth || new Date('2002-08-18T21:11:54'));
 	const [password, setPassword] = useState(value.password);
 	const [agree, setAgree] = useState(value.agree);
 	const [isValid, setIsValid] = useState(false);
+	const [notValidEmail, setNotValidEmail] = useState(false);
 
 	useEffect(() => {
+		const valid = (firstName && lastName && email && dateOfBirth && password && agree) === true;
+		debugger;
 		setIsValid((firstName && lastName && email && dateOfBirth && password && agree) === true);
+		if (valid) {
+			onChange({ firstName, lastName, email, dateOfBirth, password });
+		}
 	}, [firstName, lastName, email, dateOfBirth, password, agree]);
 
 	const triggerChange = () => {
-		if (onChange) {
-			onChange({ firstName, lastName, email, dateOfBirth, password });
-		}
+		// if (onChange) {
+		// 	onChange({ firstName, lastName, email, dateOfBirth, password });
+		// }
+	};
+	const validateEmail = (email) => {
+		const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		setNotValidEmail(!re.test(String(email).toLowerCase()));
 	};
 	return (
 		<RegistrationForm>
@@ -28,65 +39,63 @@ const HolderPage = ({ value = {}, onChange, onValidate, onApply }) => {
 			<RegistrationContent isValid={isValid} onAction={onApply}>
 				<Row gutter={[16, 16]}>
 					<Col span='12'>
-						<Input
+						<MaterialTxt
 							value={firstName}
 							onChange={({ target: { value } }) => {
+								// debugger;
 								setFirstName(value);
 								triggerChange();
 							}}
-							size='large'
-							placeholder='First name'
+							labelKey='First name'
 						/>
 					</Col>
 					<Col span='12'>
-						<Input
+						<MaterialTxt
 							value={lastName}
 							onChange={({ target: { value } }) => {
 								setLastName(value);
 								triggerChange();
 							}}
-							size='large'
-							placeholder='Last name'
+							labelKey='Last name'
 						/>
 					</Col>
 				</Row>
 				<Row gutter={[16, 16]}>
 					<Col span='24'>
-						<DatePicker
-							value={dateOfBirth}
+						<MaterialDatePicker
+							inputValue={dateOfBirth}
 							onChange={(date) => {
 								setDateOfBirth(date);
 								triggerChange();
 							}}
-							size='large'
-							placeholder='Date of birth'
+							labelKey='Date of birth'
 						/>
 					</Col>
 				</Row>
+
 				<Row gutter={[16, 16]}>
 					<Col span='24'>
-						<Input
-							value={email}
-							type='email'
+						<MaterialTxt
+							inputValue={email}
+							error={notValidEmail}
 							onChange={({ target: { value } }) => {
 								setEmail(value);
-								triggerChange();
+								validateEmail(value);
 							}}
-							size='large'
-							placeholder='Email'
+							labelKey={`Email`}
+							helperText={notValidEmail && 'Provide valid email'}
 						/>
 					</Col>
 				</Row>
 				<Row gutter={[16, 16]}>
 					<Col span='24'>
-						<Input.Password
+						<MaterialPass
 							value={password}
 							onChange={({ target: { value } }) => {
 								setPassword(value);
 								triggerChange();
 							}}
-							size='large'
-							placeholder='Enter password'
+							labelKey='Enter password'
 						/>
 					</Col>
 				</Row>

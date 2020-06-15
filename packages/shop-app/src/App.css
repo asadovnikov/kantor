@@ -1,4 +1,5 @@
 @import '~antd/dist/antd.css';
+
 :root {
 	--amplify-primary-color: #1890ff;
 	--amplify-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
@@ -51,7 +52,7 @@
 }
 
 .registration-form-container {
-	min-height: 70vh;
+	height: calc(100vh - 172px);
 }
 
 .react-tel-input > input.form-control {
@@ -73,7 +74,7 @@
 }
 
 .kantor-form-layout_container {
-	min-height: 60vh;
+	min-height: calc(100vh - 64px);
 }
 .fiat-amount-input {
 	text-align: center;
@@ -85,4 +86,17 @@
 .btc-wallet-select {
 	min-width: 300px;
 	max-width: 300px;
+}
+.registration-input-action {
+	/* min-width: 10vw; */
+}
+/* ant controls */
+.ant-input-lg,
+.ant-input-password.ant-input-password-large,
+.ant-picker-large,
+.ant-select-selector {
+	border-top: 0 !important;
+	border-left: 0 !important;
+	border-right: 0 !important;
+	/* border-bottom: 1px !important; */
 }

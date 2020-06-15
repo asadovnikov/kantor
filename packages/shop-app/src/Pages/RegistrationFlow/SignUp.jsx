@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { message } from 'antd';
 import { Auth } from 'aws-amplify';
+import { HolderPage } from './Steps/HolderPage';
 // import { LoadingOutlined } from '@ant-design/icons';
-import { RegistrationHeader, RegistrationForm, RegistrationContent, RegistrationContentRow } from './components';
+// import { RegistrationHeader, RegistrationForm, RegistrationContent, RegistrationContentRow } from './components';
 
-import HolderPage from './HolderPage';
-import AddressPage from './AddressPage';
-import FinancePage from './FinancePage';
-import EmailCodePage from './EmailCodePage';
+// import HolderPage from './HolderPage';
+// import AddressPage from './AddressPage';
+// import FinancePage from './FinancePage';
+// import EmailCodePage from './EmailCodePage';
 
-const SignUpForm = () => {
+export const SignUp = () => {
 	const [step, setStep] = useState(0);
 	const [basicInfo, setBasicInfo] = useState({});
 	const [extendedInfo, setExtendedInfo] = useState({});
@@ -76,7 +77,7 @@ const SignUpForm = () => {
 			{step === 0 && (
 				<HolderPage value={basicInfo} onChange={(props) => setBasicInfo(props)} onApply={() => setStep(1)} />
 			)}
-			{step === 1 && (
+			{/* {step === 1 && (
 				<AddressPage value={extendedInfo} onChange={(props) => setExtendedInfo(props)} onApply={() => setStep(2)} />
 			)}
 			{step === 2 && (
@@ -88,9 +89,7 @@ const SignUpForm = () => {
 					onChange={(props) => setVerificationCode(props)}
 					onApply={() => doVerify()}
 				/>
-			)}
+			)} */}
 		</>
 	);
 };
-
-export default SignUpForm;

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Input, Typography, Space, message } from 'antd';
+import { Redirect } from 'react-router-dom';
 import { Auth } from 'aws-amplify';
-// import { LoadingOutlined } from '@ant-design/icons';
+import { MaterialPass, MaterialTxt } from './components/LabeledInput';
 import { RegistrationHeader, RegistrationForm, RegistrationContent, RegistrationContentRow } from './components';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 const { Link } = Typography;
@@ -10,61 +11,60 @@ const SignInForm = () => {
 	const [userName, setUserName] = useState('');
 	const [password, setPassword] = useState('');
 	const [loadingState, setLoadingState] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [isVerified, setIsVerified] = useState(true);
 	const doSignIn = () => {
 		setLoadingState(true);
+		debugger;
 		Auth.signIn(userName, password)
 			.then((result) => {
 				console.log(result);
-				message.success('We are done!');
+				// message.success('We are done!');
+				setIsLoggedIn(true);
 			})
 			.catch((err) => {
-				message.error('Error: check your user name and password');
+				console.log(err);
+				if (err.code === 'UserNotConfirmedException') {
+					setIsVerified(false);
+				} else {
+					message.error('Error: check your user name and password');
+				}
 			})
 			.finally(() => setLoadingState(false));
 	};
 	return (
 		<RegistrationForm>
+			{isLoggedIn === true && <Redirect to='/' />}
+			{isVerified === false && <Redirect to={`/verify-email/${userName}`} />}
 			<RegistrationHeader
 				Main='Sign in to your account'
 				Secondary={`Don't have account?`}
-				SecondaryExtra={
-					<Link href='https://ant.design' target='_blank'>
-						Register now for free.
-					</Link>
-				}
+				SecondaryExtra={<Link href='/signup'>Register now for free.</Link>}
 			/>
 
 			<RegistrationContent isLoading={loadingState} onAction={doSignIn} actionText='Sign in'>
 				<RegistrationContentRow>
-					<Input
-						size='large'
-						id='username'
-						key='username'
-						type='email'
-						name='username'
-						value={userName}
+					<MaterialTxt
+						inputValue={userName}
 						onChange={(props) => {
 							setUserName(props.target.value);
 						}}
-						placeholder='Email'
+						id='email'
+						autoComplete='email'
+						labelKey='Email'
 					/>
 				</RegistrationContentRow>
 				<RegistrationContentRow>
-					<Input.Password
-						size='large'
-						id='password'
-						key='password'
-						name='password'
-						value={password}
+					<MaterialPass
+						inputValue={password}
 						onChange={(props) => setPassword(props.target.value)}
-						placeholder='Enter password'
-						iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+						labelKey='Enter password'
 					/>
 				</RegistrationContentRow>
 				<RegistrationContentRow>
 					<Space>
 						<Typography.Text type='secondary'>Forgot your password?</Typography.Text>
-						<Link>Reset password</Link>
+						<Link href='/reset-password'>Reset password</Link>
 					</Space>
 				</RegistrationContentRow>
 			</RegistrationContent>

@@ -8,12 +8,13 @@ const DocumentsForm = () => {
 	return (
 		<RegistrationForm>
 			<RegistrationHeader
-				Main={`Let's set your password`}
-				Secondary={`This is your safety belt. Make sure it's string enough.`}
+				Main={`Verify your documents`}
+				Secondary={`In order to to payments we need to verify your documents fires`}
 			/>
 			<RegistrationContent>
 				<Row gutter={[16, 16]}>
 					<Col span='24'>
+						<div>We do not need 'continue' button on this form</div>
 						<ActionTile
 							icon={id}
 							title='Verify identity'

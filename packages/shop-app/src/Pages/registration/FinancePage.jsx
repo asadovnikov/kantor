@@ -1,74 +1,77 @@
 import React, { useState, useEffect } from 'react';
-import { Input } from 'antd';
 import { RegistrationHeader, RegistrationForm, RegistrationContent, RegistrationContentRow } from './components';
+import { MaterialTxt } from './components/LabeledInput';
 
 const FinancePage = ({ value = {}, onChange, onValidate, onApply }) => {
 	const [occupation, setOccupation] = useState(value.occupation);
 	const [employmentStatus, setEmploymentStatus] = useState(value.employmentStatus);
 	const [sourceOfFunds, setSourceOfFunds] = useState(value.sourceOfFunds);
-	const [totalValueOfTransactions, setTotalValueOfTransactions] = useState(value.totalValueOfTransactions);
+	const [yearIncome, setYearIncome] = useState(value.yearIncome);
 
 	const [isValid, setIsValid] = useState(false);
 
 	useEffect(() => {
-		const validation = (occupation && employmentStatus && sourceOfFunds && totalValueOfTransactions) !== undefined;
+		const validation = (occupation && employmentStatus && sourceOfFunds && yearIncome) !== undefined;
 		setIsValid(validation);
 		if (validation && onChange) {
-			onChange({ occupation, employmentStatus, sourceOfFunds, totalValueOfTransactions });
+			onChange({ occupation, employmentStatus, sourceOfFunds, yearIncome });
 		}
-	}, [occupation, employmentStatus, sourceOfFunds, totalValueOfTransactions]);
+	}, [occupation, employmentStatus, sourceOfFunds, yearIncome]);
 
 	const triggerChange = () => {
 		// if (onChange) {
-		// 	onChange({ occupation, employmentStatus, sourceOfFunds, totalValueOfTransactions });
+		// 	onChange({ occupation, employmentStatus, sourceOfFunds, yearIncome });
 		// }
 	};
 	return (
 		<RegistrationForm>
-			<RegistrationHeader Main='Financial information' Secondary='Please, provide us with the source of your income.' />
-			<RegistrationContent isValid={isValid} onAction={onApply}>
+			<RegistrationHeader
+				Main='Basic financial information'
+				Secondary='As a regulated business, we are required to collect this info .'
+			/>
+			<RegistrationContent actionText={`Create account`} isValid={isValid} onAction={onApply}>
 				<RegistrationContentRow>
-					<Input
+					<MaterialTxt
 						value={occupation}
 						onChange={({ target: { value } }) => {
 							setOccupation(value);
 							triggerChange();
 						}}
 						size='large'
-						placeholder='Occupation'
+						labelKey='Occupation'
 					/>
 				</RegistrationContentRow>
 				<RegistrationContentRow>
-					<Input
+					<MaterialTxt
 						value={employmentStatus}
 						onChange={({ target: { value } }) => {
 							setEmploymentStatus(value);
 							triggerChange();
 						}}
 						size='large'
-						placeholder='Employment Status'
+						labelKey='Employment Status'
 					/>
 				</RegistrationContentRow>
 				<RegistrationContentRow>
-					<Input
+					<MaterialTxt
 						value={sourceOfFunds}
 						onChange={({ target: { value } }) => {
 							setSourceOfFunds(value);
 							triggerChange();
 						}}
 						size='large'
-						placeholder='Source of funds?'
+						labelKey='Source of funds?'
 					/>
 				</RegistrationContentRow>
 				<RegistrationContentRow>
-					<Input
-						value={totalValueOfTransactions}
+					<MaterialTxt
+						value={yearIncome}
 						onChange={({ target: { value } }) => {
-							setTotalValueOfTransactions(value);
+							setYearIncome(value);
 							triggerChange();
 						}}
 						size='large'
-						placeholder='Total value of transactions'
+						labelKey='Total value of transactions'
 					/>
 				</RegistrationContentRow>
 			</RegistrationContent>

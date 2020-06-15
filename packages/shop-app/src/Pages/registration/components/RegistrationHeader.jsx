@@ -4,7 +4,7 @@ import { Row, Col, Typography, Space } from 'antd';
 const { Title, Text } = Typography;
 
 export const RegistrationHeader = (params) => {
-	const { Main, Secondary = '', SecondaryExtra } = params;
+	const { Main, Secondary = '', SecondaryExtra, Extra } = params;
 	return (
 		<>
 			<Row justify='center' className='registration-header__main-row'>
@@ -26,6 +26,9 @@ export const RegistrationHeader = (params) => {
 					</Col>
 				</Row>
 			)}
+			<Row justify='center' className='registration-header__main-row'>
+				<Col className='registration-header__main-column'>{Extra}</Col>
+			</Row>
 		</>
 	);
 };
