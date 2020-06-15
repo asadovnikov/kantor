@@ -14,4 +14,10 @@ export const blackTheme = createMuiTheme({
 	},
 });
 
+export const blueTheme = createMuiTheme({
+	palette: {
+		primary: blue,
+	},
+});
+
 export default theme;

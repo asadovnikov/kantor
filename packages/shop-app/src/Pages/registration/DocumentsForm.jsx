@@ -9,12 +9,11 @@ const DocumentsForm = () => {
 		<RegistrationForm>
 			<RegistrationHeader
 				Main={`Verify your documents`}
-				Secondary={`In order to to payments we need to verify your documents fires`}
+				Secondary={`In order to do payments we need to verify your documents fires`}
 			/>
-			<RegistrationContent>
+			<RegistrationContent showAction={false}>
 				<Row gutter={[16, 16]}>
 					<Col span='24'>
-						<div>We do not need 'continue' button on this form</div>
 						<ActionTile
 							icon={id}
 							title='Verify identity'

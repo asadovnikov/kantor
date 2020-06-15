@@ -14,6 +14,8 @@ import FormControl from '@material-ui/core/FormControl';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import { makeStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -22,7 +24,72 @@ const useStyles = makeStyles((theme) => ({
 			textAlign: 'center',
 		},
 	},
+	formControl: {
+		// margin: theme.spacing(1),
+		minWidth: 120,
+	},
+	selectEmpty: {
+		marginTop: theme.spacing(2),
+	},
 }));
+
+const currencies = [
+	{
+		value: 'USD',
+		Display: 'US Dollar',
+		label: '$',
+	},
+	{
+		value: 'EUR',
+		Display: 'Euro',
+		label: '€',
+	},
+];
+
+export const MaterialCurrencySelect = ({ value, onChange }) => {
+	const classes = useStyles();
+	return (
+		<FormControl className={classes.formControl} fullWidth>
+			<InputLabel htmlFor='age-native-simple'>Select preferred currency</InputLabel>
+			<Select
+				fullWidth
+				size='large'
+				placeholder='Select one'
+				value={value}
+				onChange={({ target: { value } }) => {
+					onChange(value);
+				}}>
+				{currencies.map((source) => (
+					<MenuItem value={source.value}>{source.Display}</MenuItem>
+				))}
+			</Select>
+		</FormControl>
+	);
+};
+
+export const CurrencySelector = () => {
+	const [currency, setCurrency] = React.useState('EUR');
+
+	const handleChange = (event) => {
+		setCurrency(event.target.value);
+	};
+
+	return (
+		<TextField
+			id='standard-select-currency'
+			select
+			label='Select'
+			value={currency}
+			onChange={handleChange}
+			helperText='Please select your currency'>
+			{currencies.map((option) => (
+				<MenuItem key={option.value} value={option.value}>
+					{option.label}
+				</MenuItem>
+			))}
+		</TextField>
+	);
+};
 
 /**
  *

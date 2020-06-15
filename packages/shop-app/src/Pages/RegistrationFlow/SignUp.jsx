@@ -33,7 +33,7 @@ export const SignUp = () => {
 
 	const doSignUp = () => {
 		setLoadingState(true);
-		debugger;
+		// debugger;
 		const { email, password, ...rest } = basicInfo;
 		const username = email;
 		const pre = {

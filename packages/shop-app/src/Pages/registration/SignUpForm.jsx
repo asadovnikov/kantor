@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { message } from 'antd';
 import { Auth } from 'aws-amplify';
-// import { LoadingOutlined } from '@ant-design/icons';
-import { RegistrationHeader, RegistrationForm, RegistrationContent, RegistrationContentRow } from './components';
-
+import { Redirect } from 'react-router-dom';
 import HolderPage from './HolderPage';
 import AddressPage from './AddressPage';
 import FinancePage from './FinancePage';
@@ -17,6 +15,7 @@ const SignUpForm = () => {
 	const [verificationCode, setVerificationCode] = useState();
 	const [currentUser, setCurrentUser] = useState();
 	const [loadingState, setLoadingState] = useState(false);
+	const [commitUser, setCommitUser] = useState(false);
 
 	const doVerify = () => {
 		setLoadingState(true);
@@ -32,7 +31,7 @@ const SignUpForm = () => {
 
 	const doSignUp = () => {
 		setLoadingState(true);
-		debugger;
+		// debugger;
 		const { email, password, ...rest } = basicInfo;
 		const username = email;
 		const pre = {
@@ -80,15 +79,22 @@ const SignUpForm = () => {
 				<AddressPage value={extendedInfo} onChange={(props) => setExtendedInfo(props)} onApply={() => setStep(2)} />
 			)}
 			{step === 2 && (
-				<FinancePage value={financeInfo} onChange={(props) => setFinanceInfo(props)} onApply={() => doSignUp()} />
+				<FinancePage
+					isLoading={loadingState}
+					value={financeInfo}
+					onChange={(props) => setFinanceInfo(props)}
+					onApply={() => doSignUp()}
+				/>
 			)}
 			{step === 3 && (
 				<EmailCodePage
+					isLoading={loadingState}
 					email={basicInfo.email}
 					onChange={(props) => setVerificationCode(props)}
 					onApply={() => doVerify()}
 				/>
 			)}
+			{commitUser === true && <Redirect to='/' />}
 		</>
 	);
 };

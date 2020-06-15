@@ -15,7 +15,7 @@ const SignInForm = () => {
 	const [isVerified, setIsVerified] = useState(true);
 	const doSignIn = () => {
 		setLoadingState(true);
-		debugger;
+		// debugger;
 		Auth.signIn(userName, password)
 			.then((result) => {
 				console.log(result);

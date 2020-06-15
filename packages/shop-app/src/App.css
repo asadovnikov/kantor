@@ -52,7 +52,7 @@
 }
 
 .registration-form-container {
-	height: calc(100vh - 172px);
+	height: calc(100vh - 185px);
 }
 
 .react-tel-input > input.form-control {

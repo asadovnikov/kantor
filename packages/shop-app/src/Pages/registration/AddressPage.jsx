@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Space, Button, Input, Checkbox } from 'antd';
 import { RegistrationHeader, RegistrationContent, RegistrationForm, RegistrationContentRow } from './components';
 import regionData from 'country-region-data';
 import Select from '@material-ui/core/Select';
-import { MaterialPass, MaterialTxt, MaterialDatePicker } from './components/LabeledInput';
+import { MaterialTxt } from './components/LabeledInput';
 import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
+// import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 
 const useStyles = makeStyles((theme) => ({
@@ -32,7 +31,7 @@ const AddressPage = ({ value = {}, onChange, onValidate, onApply }) => {
 	const classes = useStyles();
 
 	useEffect(() => {
-		debugger;
+		// debugger;
 		const valid = (region && country && homeAddress && city && postalCode) !== undefined;
 		setIsValid(valid);
 		if (valid && onChange) {
@@ -91,7 +90,7 @@ const AddressPage = ({ value = {}, onChange, onValidate, onApply }) => {
 						<Select
 							fullWidth
 							onChange={({ target: { value } }) => {
-								debugger;
+								// debugger;
 								setRegion(value);
 								triggerChange();
 							}}

@@ -18,7 +18,7 @@ export const HolderPage = ({ value = {}, onChange, onValidate, onApply }) => {
 
 	useEffect(() => {
 		const valid = (firstName && lastName && email && dateOfBirth && password && agree) === true;
-		debugger;
+		// debugger;
 		setIsValid((firstName && lastName && email && dateOfBirth && password && agree) === true);
 		if (valid) {
 			onChange({ firstName, lastName, email, dateOfBirth, password });

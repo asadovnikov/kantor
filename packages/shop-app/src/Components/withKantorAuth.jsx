@@ -4,7 +4,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { Redirect } from 'react-router-dom';
 
 export const WithKantorAuth = ({ children }) => {
-	debugger;
+	// debugger;
 	const [hasUser, setHasUser] = useState(false);
 	const [loading, setLoading] = useState(true);
 

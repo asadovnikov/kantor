@@ -6,7 +6,7 @@ import { LinkButton } from './components/MaterialButtons';
 import { useParams } from 'react-router-dom';
 const { Title, Text, Link } = Typography;
 
-const EmailCodePage = ({ email, onChange, onApply }) => {
+const EmailCodePage = ({ email, onChange, onApply, isLoading }) => {
 	let { validationId } = useParams();
 	if (validationId) {
 		email = validationId;
@@ -66,7 +66,7 @@ const EmailCodePage = ({ email, onChange, onApply }) => {
 					</LinkButton>
 				</Col>
 			</Row>
-			<RegistrationContent isValid={isValid} onAction={onApply} actionText={`Verify`}>
+			<RegistrationContent isLoading={isLoading} isValid={isValid} onAction={onApply} actionText={`Verify`}>
 				<Row gutter={[16, 16]} justify='center'>
 					<Col>
 						<Text type='secondary' style={{ textAlign: 'center' }}>

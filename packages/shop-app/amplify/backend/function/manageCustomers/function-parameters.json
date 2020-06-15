@@ -1,0 +1,21 @@
+{
+    "permissions": {
+        "storage": {
+            "KYCDocument:@model(appsync)": [
+                "create",
+                "read",
+                "update"
+            ],
+            "Customer:@model(appsync)": [
+                "create",
+                "read",
+                "update"
+            ],
+            "Verification:@model(appsync)": [
+                "create",
+                "read",
+                "update"
+            ]
+        }
+    }
+}
