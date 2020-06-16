@@ -119,7 +119,7 @@ export const TestMenu = () => {
 		<ThemeProvider theme={blueTheme}>
 			<AppBar position='static' color='default' elevation={0}>
 				<Toolbar>
-					<TemporaryDrawer />
+					{isAuth === true && <TemporaryDrawer />}
 					<Typography className={classes.title} color='inherit' variant='h6' noWrap>
 						Kantor Shop
 					</Typography>

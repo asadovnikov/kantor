@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Input, Checkbox, Typography, DatePicker } from 'antd';
-import { RegistrationHeader, RegistrationForm, RegistrationContent } from './components';
+import { RegistrationHeader, RegistrationForm, RegistrationContent, RegistrationContentRow } from './components';
 import { MaterialPass, MaterialTxt, MaterialDatePicker } from './components/LabeledInput';
 
 const { Link } = Typography;
@@ -37,81 +37,75 @@ const HolderPage = ({ value = {}, onChange, onValidate, onApply }) => {
 		<RegistrationForm>
 			<RegistrationHeader Main='Welcome to Kantor' Secondary='To begin, create your account.' />
 			<RegistrationContent isValid={isValid} onAction={onApply}>
-				<Row gutter={[16, 16]}>
-					<Col span='12'>
-						<MaterialTxt
-							value={firstName}
-							onChange={({ target: { value } }) => {
-								// debugger;
-								setFirstName(value);
-								triggerChange();
-							}}
-							labelKey='First name'
-						/>
-					</Col>
-					<Col span='12'>
-						<MaterialTxt
-							value={lastName}
-							onChange={({ target: { value } }) => {
-								setLastName(value);
-								triggerChange();
-							}}
-							labelKey='Last name'
-						/>
-					</Col>
-				</Row>
-				<Row gutter={[16, 16]}>
-					<Col span='24'>
-						<MaterialDatePicker
-							inputValue={dateOfBirth}
-							onChange={(date) => {
-								setDateOfBirth(date);
-								triggerChange();
-							}}
-							labelKey='Date of birth'
-						/>
-					</Col>
-				</Row>
+				<RegistrationContentRow>
+					<Row gutter={[16, 16]}>
+						<Col span='12'>
+							<MaterialTxt
+								value={firstName}
+								onChange={({ target: { value } }) => {
+									// debugger;
+									setFirstName(value);
+									triggerChange();
+								}}
+								labelKey='First name'
+							/>
+						</Col>
+						<Col span='12'>
+							<MaterialTxt
+								value={lastName}
+								onChange={({ target: { value } }) => {
+									setLastName(value);
+									triggerChange();
+								}}
+								labelKey='Last name'
+							/>
+						</Col>
+					</Row>
+				</RegistrationContentRow>
 
-				<Row gutter={[16, 16]}>
-					<Col span='24'>
-						<MaterialTxt
-							inputValue={email}
-							error={notValidEmail}
-							onChange={({ target: { value } }) => {
-								setEmail(value);
-								validateEmail(value);
-							}}
-							labelKey={`Email`}
-							helperText={notValidEmail && 'Provide valid email'}
-						/>
-					</Col>
-				</Row>
-				<Row gutter={[16, 16]}>
-					<Col span='24'>
-						<MaterialPass
-							value={password}
-							onChange={({ target: { value } }) => {
-								setPassword(value);
-								triggerChange();
-							}}
-							labelKey='Enter password'
-						/>
-					</Col>
-				</Row>
-				<Row gutter={[16, 16]}>
-					<Col span='24'>
-						<Checkbox
-							size='large'
-							checked={agree}
-							onChange={({ target: { checked } }) => {
-								setAgree(checked);
-								triggerChange();
-							}}>
-							I agree to Kantor's <Link>Terms of use</Link> and <Link>Privacy Policy.</Link>
-						</Checkbox>
-					</Col>
-				</Row>
+				<RegistrationContentRow>
+					<MaterialDatePicker
+						inputValue={dateOfBirth}
+						onChange={(date) => {
+							setDateOfBirth(date);
+							triggerChange();
+						}}
+						labelKey='Date of birth'
+					/>
+				</RegistrationContentRow>
+				<RegistrationContentRow>
+					<MaterialTxt
+						inputValue={email}
+						error={notValidEmail}
+						onChange={({ target: { value } }) => {
+							setEmail(value);
+							validateEmail(value);
+						}}
+						labelKey={`Email`}
+						helperText={notValidEmail && 'Provide valid email'}
+					/>
+				</RegistrationContentRow>
+				<RegistrationContentRow>
+					<MaterialPass
+						value={password}
+						onChange={({ target: { value } }) => {
+							setPassword(value);
+							triggerChange();
+						}}
+						labelKey='Enter password'
+					/>
+				</RegistrationContentRow>
+				<RegistrationContentRow>
+					<Checkbox
+						size='large'
+						checked={agree}
+						onChange={({ target: { checked } }) => {
+							setAgree(checked);
+							triggerChange();
+						}}>
+						I agree to Kantor's <Link>Terms of use</Link> and <Link>Privacy Policy.</Link>
+					</Checkbox>
+				</RegistrationContentRow>
 			</RegistrationContent>
 		</RegistrationForm>
 	);

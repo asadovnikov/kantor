@@ -3,6 +3,7 @@ import { Row, Col, Card, Button } from 'antd';
 
 export const RegistrationContent = (props) => {
 	console.log(props);
+
 	const { children, actionText = 'Continue', onAction, isLoading, isValid = true, showAction = true } = props;
 	return (
 		<Row justify='center' className='registration-content__row'>
