@@ -62,6 +62,7 @@ export const getPaymentRequest = /* GraphQL */ `
       Status
       createdOn
       updatedOn
+      owner
     }
   }
 `;
@@ -90,6 +91,7 @@ export const listPaymentRequests = /* GraphQL */ `
         Status
         createdOn
         updatedOn
+        owner
       }
       nextToken
     }
@@ -121,6 +123,7 @@ export const getTransaction = /* GraphQL */ `
       MerchantRef
       createdOn
       updatedOn
+      owner
     }
   }
 `;
@@ -155,6 +158,7 @@ export const listTransactions = /* GraphQL */ `
         MerchantRef
         createdOn
         updatedOn
+        owner
       }
       nextToken
     }
@@ -205,6 +209,7 @@ export const getCustomer = /* GraphQL */ `
           MerchantRef
           createdOn
           updatedOn
+          owner
         }
         nextToken
       }
@@ -216,11 +221,13 @@ export const getCustomer = /* GraphQL */ `
           financeVerification
           createdOn
           updatedOn
+          owner
         }
         nextToken
       }
       createdOn
       updatedOn
+      owner
     }
   }
 `;
@@ -257,6 +264,7 @@ export const listCustomers = /* GraphQL */ `
         }
         createdOn
         updatedOn
+        owner
       }
       nextToken
     }
@@ -304,6 +312,7 @@ export const getVerification = /* GraphQL */ `
       }
       createdOn
       updatedOn
+      owner
     }
   }
 `;
@@ -330,6 +339,87 @@ export const listVerifications = /* GraphQL */ `
         }
         createdOn
         updatedOn
+        owner
+      }
+      nextToken
+    }
+  }
+`;
+export const getUserMeata = /* GraphQL */ `
+  query GetUserMeata($id: ID!) {
+    getUserMeata(id: $id) {
+      id
+      email
+      Wallets {
+        items {
+          id
+          name
+          Address
+          description
+          State
+          createdOn
+          updatedOn
+          owner
+        }
+        nextToken
+      }
+      createdOn
+      updatedOn
+      owner
+    }
+  }
+`;
+export const listUserMeatas = /* GraphQL */ `
+  query ListUserMeatas(
+    $filter: ModelUserMeataFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUserMeatas(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        email
+        Wallets {
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+      }
+      nextToken
+    }
+  }
+`;
+export const getUserWallets = /* GraphQL */ `
+  query GetUserWallets($id: ID!) {
+    getUserWallets(id: $id) {
+      id
+      name
+      Address
+      description
+      State
+      createdOn
+      updatedOn
+      owner
+    }
+  }
+`;
+export const listUserWalletss = /* GraphQL */ `
+  query ListUserWalletss(
+    $filter: ModelUserWalletsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUserWalletss(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        Address
+        description
+        State
+        createdOn
+        updatedOn
+        owner
       }
       nextToken
     }

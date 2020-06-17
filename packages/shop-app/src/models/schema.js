@@ -76,7 +76,16 @@ export const schema = {
                     "properties": {
                         "rules": [
                             {
-                                "allow": "public"
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
+                                "identityClaim": "cognito:username",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
                             }
                         ]
                     }
@@ -211,7 +220,16 @@ export const schema = {
                     "properties": {
                         "rules": [
                             {
-                                "allow": "public"
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
+                                "identityClaim": "cognito:username",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
                             }
                         ]
                     }
@@ -396,7 +414,16 @@ export const schema = {
                     "properties": {
                         "rules": [
                             {
-                                "allow": "public"
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
+                                "identityClaim": "cognito:username",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
                             }
                         ]
                     }
@@ -582,7 +609,16 @@ export const schema = {
                     "properties": {
                         "rules": [
                             {
-                                "allow": "public"
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
+                                "identityClaim": "cognito:username",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
                             }
                         ]
                     }
@@ -690,7 +726,161 @@ export const schema = {
                     "properties": {
                         "rules": [
                             {
-                                "allow": "public"
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
+                                "identityClaim": "cognito:username",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "UserMeata": {
+            "name": "UserMeata",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "email": {
+                    "name": "email",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "Wallets": {
+                    "name": "Wallets",
+                    "isArray": true,
+                    "type": {
+                        "model": "UserWallets"
+                    },
+                    "isRequired": true,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": "userMeataWalletsId"
+                    }
+                }
+            },
+            "syncable": true,
+            "pluralName": "UserMeatas",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {
+                        "timestamps": {
+                            "createdAt": "createdOn",
+                            "updatedAt": "updatedOn"
+                        }
+                    }
+                },
+                {
+                    "type": "auth",
+                    "properties": {
+                        "rules": [
+                            {
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
+                                "identityClaim": "cognito:username",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "UserWallets": {
+            "name": "UserWallets",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "name": {
+                    "name": "name",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "Address": {
+                    "name": "Address",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "description": {
+                    "name": "description",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "State": {
+                    "name": "State",
+                    "isArray": false,
+                    "type": {
+                        "enum": "UserWalletState"
+                    },
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "userMeataWalletsId": {
+                    "name": "userMeataWalletsId",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
+                }
+            },
+            "syncable": true,
+            "pluralName": "UserWallets",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {
+                        "timestamps": {
+                            "createdAt": "createdOn",
+                            "updatedAt": "updatedOn"
+                        }
+                    }
+                },
+                {
+                    "type": "auth",
+                    "properties": {
+                        "rules": [
+                            {
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
+                                "identityClaim": "cognito:username",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
                             }
                         ]
                     }
@@ -734,6 +924,13 @@ export const schema = {
                 "UPPER",
                 "HIGH"
             ]
+        },
+        "UserWalletState": {
+            "name": "UserWalletState",
+            "values": [
+                "ACTIVE",
+                "INACTIVE"
+            ]
         }
     },
     "nonModels": {
@@ -764,5 +961,5 @@ export const schema = {
             }
         }
     },
-    "version": "e137051bce59c323b1179a2bbdacf5de"
+    "version": "9a1c495b03a8979cbeba4b7cdf9cce24"
 };

@@ -1,5 +1,11 @@
 {
     "AppSyncApiName": "shopappapi",
     "DynamoDBBillingMode": "PAY_PER_REQUEST",
-    "DynamoDBEnableServerSideEncryption": "false"
+    "DynamoDBEnableServerSideEncryption": "false",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authshopapp53b8683e",
+            "Outputs.UserPoolId"
+        ]
+    }
 }

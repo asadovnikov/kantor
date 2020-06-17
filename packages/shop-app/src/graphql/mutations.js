@@ -84,6 +84,7 @@ export const createPaymentRequest = /* GraphQL */ `
       Status
       createdOn
       updatedOn
+      owner
     }
   }
 `;
@@ -110,6 +111,7 @@ export const updatePaymentRequest = /* GraphQL */ `
       Status
       createdOn
       updatedOn
+      owner
     }
   }
 `;
@@ -136,6 +138,7 @@ export const deletePaymentRequest = /* GraphQL */ `
       Status
       createdOn
       updatedOn
+      owner
     }
   }
 `;
@@ -168,6 +171,7 @@ export const createTransaction = /* GraphQL */ `
       MerchantRef
       createdOn
       updatedOn
+      owner
     }
   }
 `;
@@ -200,6 +204,7 @@ export const updateTransaction = /* GraphQL */ `
       MerchantRef
       createdOn
       updatedOn
+      owner
     }
   }
 `;
@@ -232,6 +237,7 @@ export const deleteTransaction = /* GraphQL */ `
       MerchantRef
       createdOn
       updatedOn
+      owner
     }
   }
 `;
@@ -283,6 +289,7 @@ export const createCustomer = /* GraphQL */ `
           MerchantRef
           createdOn
           updatedOn
+          owner
         }
         nextToken
       }
@@ -294,11 +301,13 @@ export const createCustomer = /* GraphQL */ `
           financeVerification
           createdOn
           updatedOn
+          owner
         }
         nextToken
       }
       createdOn
       updatedOn
+      owner
     }
   }
 `;
@@ -350,6 +359,7 @@ export const updateCustomer = /* GraphQL */ `
           MerchantRef
           createdOn
           updatedOn
+          owner
         }
         nextToken
       }
@@ -361,11 +371,13 @@ export const updateCustomer = /* GraphQL */ `
           financeVerification
           createdOn
           updatedOn
+          owner
         }
         nextToken
       }
       createdOn
       updatedOn
+      owner
     }
   }
 `;
@@ -417,6 +429,7 @@ export const deleteCustomer = /* GraphQL */ `
           MerchantRef
           createdOn
           updatedOn
+          owner
         }
         nextToken
       }
@@ -428,11 +441,13 @@ export const deleteCustomer = /* GraphQL */ `
           financeVerification
           createdOn
           updatedOn
+          owner
         }
         nextToken
       }
       createdOn
       updatedOn
+      owner
     }
   }
 `;
@@ -481,6 +496,7 @@ export const createVerification = /* GraphQL */ `
       }
       createdOn
       updatedOn
+      owner
     }
   }
 `;
@@ -529,6 +545,7 @@ export const updateVerification = /* GraphQL */ `
       }
       createdOn
       updatedOn
+      owner
     }
   }
 `;
@@ -577,6 +594,139 @@ export const deleteVerification = /* GraphQL */ `
       }
       createdOn
       updatedOn
+      owner
+    }
+  }
+`;
+export const createUserMeata = /* GraphQL */ `
+  mutation CreateUserMeata(
+    $input: CreateUserMeataInput!
+    $condition: ModelUserMeataConditionInput
+  ) {
+    createUserMeata(input: $input, condition: $condition) {
+      id
+      email
+      Wallets {
+        items {
+          id
+          name
+          Address
+          description
+          State
+          createdOn
+          updatedOn
+          owner
+        }
+        nextToken
+      }
+      createdOn
+      updatedOn
+      owner
+    }
+  }
+`;
+export const updateUserMeata = /* GraphQL */ `
+  mutation UpdateUserMeata(
+    $input: UpdateUserMeataInput!
+    $condition: ModelUserMeataConditionInput
+  ) {
+    updateUserMeata(input: $input, condition: $condition) {
+      id
+      email
+      Wallets {
+        items {
+          id
+          name
+          Address
+          description
+          State
+          createdOn
+          updatedOn
+          owner
+        }
+        nextToken
+      }
+      createdOn
+      updatedOn
+      owner
+    }
+  }
+`;
+export const deleteUserMeata = /* GraphQL */ `
+  mutation DeleteUserMeata(
+    $input: DeleteUserMeataInput!
+    $condition: ModelUserMeataConditionInput
+  ) {
+    deleteUserMeata(input: $input, condition: $condition) {
+      id
+      email
+      Wallets {
+        items {
+          id
+          name
+          Address
+          description
+          State
+          createdOn
+          updatedOn
+          owner
+        }
+        nextToken
+      }
+      createdOn
+      updatedOn
+      owner
+    }
+  }
+`;
+export const createUserWallets = /* GraphQL */ `
+  mutation CreateUserWallets(
+    $input: CreateUserWalletsInput!
+    $condition: ModelUserWalletsConditionInput
+  ) {
+    createUserWallets(input: $input, condition: $condition) {
+      id
+      name
+      Address
+      description
+      State
+      createdOn
+      updatedOn
+      owner
+    }
+  }
+`;
+export const updateUserWallets = /* GraphQL */ `
+  mutation UpdateUserWallets(
+    $input: UpdateUserWalletsInput!
+    $condition: ModelUserWalletsConditionInput
+  ) {
+    updateUserWallets(input: $input, condition: $condition) {
+      id
+      name
+      Address
+      description
+      State
+      createdOn
+      updatedOn
+      owner
+    }
+  }
+`;
+export const deleteUserWallets = /* GraphQL */ `
+  mutation DeleteUserWallets(
+    $input: DeleteUserWalletsInput!
+    $condition: ModelUserWalletsConditionInput
+  ) {
+    deleteUserWallets(input: $input, condition: $condition) {
+      id
+      name
+      Address
+      description
+      State
+      createdOn
+      updatedOn
+      owner
     }
   }
 `;

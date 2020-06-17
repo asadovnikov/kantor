@@ -28,6 +28,11 @@ export enum CustomerTier {
   HIGH = "HIGH"
 }
 
+export enum UserWalletState {
+  ACTIVE = "ACTIVE",
+  INACTIVE = "INACTIVE"
+}
+
 export declare class S3Object {
   readonly bucket: string;
   readonly region: string;
@@ -129,4 +134,23 @@ export declare class Verification {
   readonly customerKycVerificationId?: string;
   constructor(init: ModelInit<Verification>);
   static copyOf(source: Verification, mutator: (draft: MutableModel<Verification>) => MutableModel<Verification> | void): Verification;
+}
+
+export declare class UserMeata {
+  readonly id: string;
+  readonly email: string;
+  readonly Wallets: UserWallets[];
+  constructor(init: ModelInit<UserMeata>);
+  static copyOf(source: UserMeata, mutator: (draft: MutableModel<UserMeata>) => MutableModel<UserMeata> | void): UserMeata;
+}
+
+export declare class UserWallets {
+  readonly id: string;
+  readonly name: string;
+  readonly Address: string;
+  readonly description?: string;
+  readonly State?: UserWalletState | keyof typeof UserWalletState;
+  readonly userMeataWalletsId?: string;
+  constructor(init: ModelInit<UserWallets>);
+  static copyOf(source: UserWallets, mutator: (draft: MutableModel<UserWallets>) => MutableModel<UserWallets> | void): UserWallets;
 }

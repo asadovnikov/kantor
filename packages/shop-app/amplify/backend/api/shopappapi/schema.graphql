@@ -1,151 +1,174 @@
 enum PaymentRequestStatus {
-  RECEIVED
-  APPROVED
-  DECLINED
-  COMMITED
+	RECEIVED
+	APPROVED
+	DECLINED
+	COMMITED
 }
 
 enum DocumentState {
-  NEW,
-  VERIFIED,
-  FAILED,
-  JUMIO_VERIFIED
+	NEW
+	VERIFIED
+	FAILED
+	JUMIO_VERIFIED
 }
 
 enum KYCStageStatus {
-  INITIATED
-  VALIDATED
-  NOT_REQUIRED
-  FAILED
+	INITIATED
+	VALIDATED
+	NOT_REQUIRED
+	FAILED
 }
 
 enum CustomerTier {
-  INITIAL
-  LOW
-  UPPER
-  HIGH
+	INITIAL
+	LOW
+	UPPER
+	HIGH
 }
 
 interface IPerson {
-  Firstname: String!
-  Surname: String!
-  DateOfBirth: String
-  StreetLine1: String!
-  StreetLine2: String
-  City: String!
-  PostalCode: Int!
-  StateProvince: String!
-  Country: String!
-  Email: String!
-  Telephone: String  
+	Firstname: String!
+	Surname: String!
+	DateOfBirth: String
+	StreetLine1: String!
+	StreetLine2: String
+	City: String!
+	PostalCode: Int!
+	StateProvince: String!
+	Country: String!
+	Email: String!
+	Telephone: String
 }
 
 interface IPaymentRequest {
-  FiatCurrency: String!
-  FiatAmount: Int!
+	FiatCurrency: String!
+	FiatAmount: Int!
 }
 
 interface IPaymentTransaction {
-  CryptoCurrency: String!
-  CryptoAmount: Int!
-  CryptoAddress: String!
-  GWReference: String
-  BankReference: String
-  MerchantRef: String
+	CryptoCurrency: String!
+	CryptoAmount: Int!
+	CryptoAddress: String!
+	GWReference: String
+	BankReference: String
+	MerchantRef: String
 }
 
 type S3Object {
-  bucket: String!
-  region: String!
-  key: String!
+	bucket: String!
+	region: String!
+	key: String!
 }
 
-type KYCDocument @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  name: String
-  owner: String
-  state: DocumentState!
-  file: S3Object
+type KYCDocument @model @auth(rules: [{ allow: owner }]) {
+	id: ID!
+	name: String
+	owner: String
+	state: DocumentState!
+	file: S3Object
 }
 
-
-type PaymentRequest @model(timestamps:{createdAt: "createdOn", updatedAt: "updatedOn"})
-@auth(rules: [{ allow: public }]) {
-  id: ID!
-  Firstname: String!
-  Surname: String!
-  DateOfBirth: String
-  StreetLine1: String!
-  StreetLine2: String
-  City: String!
-  PostalCode: String!
-  StateProvince: String!
-  Country: String!
-  Email: String!
-  Telephone: String
-  FiatCurrency: String!
-  FiatAmount: String!
-  Status: PaymentRequestStatus!
+type PaymentRequest
+	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
+	@auth(rules: [{ allow: owner }]) {
+	id: ID!
+	Firstname: String!
+	Surname: String!
+	DateOfBirth: String
+	StreetLine1: String!
+	StreetLine2: String
+	City: String!
+	PostalCode: String!
+	StateProvince: String!
+	Country: String!
+	Email: String!
+	Telephone: String
+	FiatCurrency: String!
+	FiatAmount: String!
+	Status: PaymentRequestStatus!
 }
 
-type Transaction @model(timestamps:{createdAt: "createdOn", updatedAt: "updatedOn"}) 
-@key(name: "byMerchantRef", fields: ["MerchantRef", "id"])
-@auth(rules: [{ allow: public }])
-{
-  id: ID!
-  Firstname: String!
-  Surname: String!
-  DateOfBirth: String
-  StreetLine1: String!
-  StreetLine2: String
-  City: String!
-  PostalCode: String!
-  StateProvince: String!
-  Country: String!
-  Email: String!
-  Telephone: String
-  FiatCurrency: String!
-  FiatBaseAmount: String
-  FiatAmount: String!
-  CryptoCurrency: String!
-  CryptoAmount: String!
-  CryptoAddress: String!
-  GWReference: String
-  BankReference: String
-  MerchantRef: ID!
+type Transaction
+	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
+	@key(name: "byMerchantRef", fields: ["MerchantRef", "id"])
+	@auth(rules: [{ allow: owner }]) {
+	id: ID!
+	Firstname: String!
+	Surname: String!
+	DateOfBirth: String
+	StreetLine1: String!
+	StreetLine2: String
+	City: String!
+	PostalCode: String!
+	StateProvince: String!
+	Country: String!
+	Email: String!
+	Telephone: String
+	FiatCurrency: String!
+	FiatBaseAmount: String
+	FiatAmount: String!
+	CryptoCurrency: String!
+	CryptoAmount: String!
+	CryptoAddress: String!
+	GWReference: String
+	BankReference: String
+	MerchantRef: ID!
 }
 
-type Customer @model(timestamps:{createdAt: "createdOn", updatedAt: "updatedOn"})
-@key(name: "byEmail", fields: ["Email"])
-@auth(rules: [{ allow: public }]) {
-  id: ID!
-  Firstname: String!
-  Surname: String!
-  DateOfBirth: String
-  StreetLine1: String!
-  StreetLine2: String
-  City: String!
-  PostalCode: Int!
-  StateProvince: String!
-  Country: String!
-  Email: String!
-  Telephone: String
-  FiatTotalAmount: String
-  FiatDailyAmount: String
-  FiatMonthlyAmount: String
-  Tier: CustomerTier!
-  KYCState: KYCStageStatus!
-  PaymentTransactions: [Transaction] @connection(keyName: "byMerchantRef", fields: ["id"])
-  KYCVerification: [Verification] @connection
+type Customer
+	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
+	@key(name: "byEmail", fields: ["Email"])
+	@auth(rules: [{ allow: owner }]) {
+	id: ID!
+	Firstname: String!
+	Surname: String!
+	DateOfBirth: String
+	StreetLine1: String!
+	StreetLine2: String
+	City: String!
+	PostalCode: Int!
+	StateProvince: String!
+	Country: String!
+	Email: String!
+	Telephone: String
+	FiatTotalAmount: String
+	FiatDailyAmount: String
+	FiatMonthlyAmount: String
+	Tier: CustomerTier!
+	KYCState: KYCStageStatus!
+	PaymentTransactions: [Transaction] @connection(keyName: "byMerchantRef", fields: ["id"])
+	KYCVerification: [Verification] @connection
 }
 
-type Verification @model(timestamps:{createdAt: "createdOn", updatedAt: "updatedOn"}) 
-@auth(rules: [{ allow: public }]){
-  id: ID!
-  idVerification: KYCStageStatus!
-  idVerificationDocuments: [KYCDocument] @connection
-  poaVerification: KYCStageStatus!
-  poaVerificationDocuments: [KYCDocument] @connection
-  financeVerification: KYCStageStatus!
-  financeDocuments: [KYCDocument] @connection
+type Verification
+	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
+	@auth(rules: [{ allow: owner }]) {
+	id: ID!
+	idVerification: KYCStageStatus!
+	idVerificationDocuments: [KYCDocument] @connection
+	poaVerification: KYCStageStatus!
+	poaVerificationDocuments: [KYCDocument] @connection
+	financeVerification: KYCStageStatus!
+	financeDocuments: [KYCDocument] @connection
+}
+
+type UserMeata @model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" }) @auth(rules: [{ allow: owner }]) {
+	id: ID!
+	email: String!
+	Wallets: [UserWallets]! @connection
+}
+
+type UserWallets
+	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
+	@auth(rules: [{ allow: owner }]) {
+	id: ID!
+	name: String!
+	Address: String!
+	description: String
+	State: UserWalletState
+}
+
+enum UserWalletState {
+	ACTIVE
+	INACTIVE
 }

@@ -30,7 +30,12 @@ const CustomerTier = {
   "HIGH": "HIGH"
 };
 
-const { KYCDocument, PaymentRequest, Transaction, Customer, Verification, S3Object } = initSchema(schema);
+const UserWalletState = {
+  "ACTIVE": "ACTIVE",
+  "INACTIVE": "INACTIVE"
+};
+
+const { KYCDocument, PaymentRequest, Transaction, Customer, Verification, UserMeata, UserWallets, S3Object } = initSchema(schema);
 
 export {
   KYCDocument,
@@ -38,9 +43,12 @@ export {
   Transaction,
   Customer,
   Verification,
+  UserMeata,
+  UserWallets,
   PaymentRequestStatus,
   DocumentState,
   KycStageStatus,
   CustomerTier,
+  UserWalletState,
   S3Object
 };

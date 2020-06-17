@@ -37,7 +37,7 @@ export const RegistrationForm = ({ children }) => {
 			<RegistrationContentRow>
 				<Container maxWidth='md'>
 					<AnimatePresence>
-						<Paper className={classes.paper} square elevation={0}>
+						<Paper className={classes.paper} square elevation={3}>
 							<motion.div initial='initial' animate='in' exit='out' variants={pageVariants} transition={pageTransition}>
 								{children}
 							</motion.div>

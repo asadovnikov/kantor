@@ -26,6 +26,8 @@ import LandingForm from '../Pages/registration/LandingForm';
 import AccountDetails from '../Pages/secured/AccountDetails';
 import MyTransactions from '../Pages/secured/MyTransactions';
 import SettingsForm from '../Pages/secured/Settings';
+import { WalletForm } from '../Pages/secured/Wallets';
+import { WalletListForm } from '../Pages/secured/WalletList';
 import { SideMenu } from '../Components/SideMenu';
 // import { SignUpForm } from '../Pages/MaterialSign/SignUpForm';
 
@@ -38,9 +40,12 @@ export const DemoRouting = () => {
 			<Route path='/home'>
 				<HomePage />
 			</Route>
-			{/* <Route path='/material'>
-				<SignUp />
-			</Route> */}
+			<Route path='/wallets'>
+				<WalletForm />
+			</Route>
+			<Route path='/walletlist'>
+				<WalletListForm />
+			</Route>
 			<Route path='/land'>
 				<SignIn />
 			</Route>
