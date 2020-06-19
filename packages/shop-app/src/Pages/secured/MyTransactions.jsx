@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FormLayout, FormContent, FormContentRow, FormHeader } from '../../Components';
 import { withAuthenticator } from '@aws-amplify/ui-react';
+import { EnhancedTable } from '../../Components/TransactionsTable';
 import { Descriptions } from 'antd';
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
+
+import { API, graphqlOperation } from 'aws-amplify';
+import { listTransactions } from '../../graphql/queries';
 
 const data = [
 	{
@@ -57,19 +63,31 @@ const details = () => {
 };
 
 const MyTransactions = () => {
-	const res = details();
+	const [transactions, setTransactions] = useState([]);
+
+	useEffect(() => {
+		let canceled = false;
+		API.graphql(graphqlOperation(listTransactions)).then(
+			({
+				data: {
+					listTransactions: { items },
+				},
+			}) => {
+				if (!canceled) {
+					setTransactions(items);
+				}
+			}
+		);
+		return () => (canceled = true);
+	}, []);
 	return (
 		<FormLayout>
 			<FormHeader Main='My transactions' Secondary='Review you successful transactions' />
-			<FormContent>
-				<ul>
-					<li>Дата транзакции</li>
-					<li>Сколько списали</li>
-					<li>Адрес кошелька не имя</li>
-					<li>Рейт не нужен</li>
-				</ul>
-				<FormContentRow>{res}</FormContentRow>
-			</FormContent>
+			<Box mt={6}>
+				<Container maxWidth='lg'>
+					<EnhancedTable transactions={transactions} />
+				</Container>
+			</Box>
 		</FormLayout>
 	);
 };

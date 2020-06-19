@@ -10,6 +10,11 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InputLabel from '@material-ui/core/InputLabel';
 // import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
+import { v4 as uuid } from 'uuid';
+
+import { API, graphqlOperation } from 'aws-amplify';
+import { listUserWalletss } from '../../graphql/queries';
+import { createTransaction } from '../../graphql/mutations';
 
 import {
 	RegistrationHeader,
@@ -61,37 +66,110 @@ const BTCForm = ({ value = {}, onChange }) => {
 	const classes = useStyles();
 	const [FiatAmount, setFiatAmount] = useState(0);
 	const [FiatCurrency, setFiatCurrency] = useState('EUR');
+	const [wallets, setWallets] = useState([]);
 	const [fee, setFee] = useState(0);
 	const [btc, setBTC] = useState(0);
 	const [btcWallet, setBTCWallet] = useState();
+	const [valid, setIsValid] = useState(false);
 	const [loading, setLoading] = useState(false);
+
+	useEffect(() => {
+		// debugger;
+		setIsValid(FiatAmount > 0 && btcWallet !== undefined);
+	}, [FiatAmount, btcWallet]);
+
+	const writeTransaction = async (userData) => {
+		const { signature, ...rest } = userData;
+		try {
+			// debugger;
+			const result = await API.graphql(
+				graphqlOperation(createTransaction, {
+					input: { ...rest },
+				})
+			);
+			console.log(result);
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
+	useEffect(() => {
+		setLoading(true);
+		let isCancelled = false;
+		try {
+			API.graphql(graphqlOperation(listUserWalletss)).then(
+				({
+					data: {
+						listUserWalletss: { items },
+					},
+				}) => {
+					if (!isCancelled) {
+						setWallets(items);
+					}
+				}
+			);
+			// console.log(items);
+		} catch (error) {
+			console.error(error);
+		} finally {
+			setLoading(false);
+		}
+		return () => (isCancelled = true);
+	}, []);
 
 	const doPayment = async () => {
 		setLoading(true);
 		try {
 			const hash = await buildHash(`p@s5w0Rd123200604201617${FiatCurrency}${FiatAmount * 100}`);
 			const user = await Auth.currentAuthenticatedUser();
+			const userData = {
+				id: uuid(),
+				signature: hash,
+				Firstname: user.attributes['custom:firstName'] || 'Jerome',
+				Surname: user.attributes['custom:lastName'] || 'K. Jerome',
+				DateOfBirth: user.attributes['custom:dateOfBirth'] || '1982-08-29',
+				StreetLine1: user.attributes['custom:homeAddress'] || '92 West Broadway',
+				City: user.attributes['custom:city'] || 'New York',
+				PostalCode: user.attributes['custom:postalCode'] || 10007,
+				StateProvince: user.attributes['custom:region'] || 'NY',
+				Country: user.attributes['custom:country'] || 'US',
+				Email: user.attributes.email,
+				Telephone: user.attributes.phone_number,
+				FiatCurrency: FiatCurrency,
+				FiatAmount: `${FiatAmount * 100}`,
+				CryptoCurrency: 'BTC',
+				CryptoAmount: `${FiatAmount / (await btcAmount())}`,
+				CryptoAddress: btcWallet,
+				GWReference: 'dummy@GateWay@ref',
+				BankReference: 'dummy@bank@ref',
+				MerchantRef: 'dummy@merchant@ref',
+			};
+			await writeTransaction(userData);
+			// debugger;
 			const formData = new FormData();
-			formData.append('Signature', hash);
+			formData.append('Signature', userData.signature);
 			formData.append('MerchantName', 'Dummy1');
 			formData.append('MerchantPassword', 'p@s5w0Rd123');
 			formData.append('MerchantRef', '200604201617');
-			formData.append('Currency', FiatCurrency);
-			formData.append('Amount', FiatAmount * 100);
+			formData.append('Currency', userData.FiatCurrency);
+			formData.append('Amount', userData.FiatAmount);
 			formData.append('SuccessURL', 'https://dev.kantor.kosevych.info/success');
-			formData.append('FailURL', 'https://dev.kantor.kosevych.info/success/failed');
+			formData.append('FailURL', 'https://dev.kantor.kosevych.info/failed');
 			formData.append('CallbackURL', 'https://dev.kantor.kosevych.info/kyc');
-			formData.append('Firstname', user.attributes['custom:firstName'] || 'Jerome');
-			formData.append('Surname', user.attributes['custom:lastName'] || 'K. Jerome');
-			formData.append('StreetLine1', user.attributes['custom:homeAddress'] || '92 West Broadway');
+			formData.append('Firstname', userData.Firstname);
+			formData.append('Surname', userData.Surname);
+			formData.append('StreetLine1', userData.StreetLine1);
 			formData.append('StreetLine2', '');
-			formData.append('City', user.attributes['custom:city'] || 'New York');
-			formData.append('PostalCode', user.attributes['custom:postalCode'] || 10007);
-			formData.append('StateProvince', user.attributes['custom:region'] || 'NY');
-			formData.append('Country', user.attributes['custom:country'] || 'US');
-			formData.append('Email', user.attributes.email);
-			formData.append('Telephone', user.attributes.phone_number);
-			formData.append('DateOfBirth', user.attributes['custom:dateOfBirth'] || '1982-08-29');
+			formData.append('City', userData.City);
+			formData.append('PostalCode', userData.PostalCode);
+			formData.append('StateProvince', userData.StateProvince);
+			formData.append('Country', userData.Country);
+			formData.append('Email', userData.Email);
+			formData.append('Telephone', userData.Telephone);
+			formData.append('DateOfBirth', userData.DateOfBirth);
+			formData.append('CryptoCurrency', userData.CryptoCurrency);
+			formData.append('CryptoAddress', userData.CryptoAddress);
+			formData.append('CryptoAmount', userData.CryptoAmount);
 			var form = document.createElement('form');
 			document.body.appendChild(form);
 			form.method = 'post';
@@ -105,60 +183,27 @@ const BTCForm = ({ value = {}, onChange }) => {
 		}
 	};
 
-	const onFinishForm = ({ payment }) => {
-		console.log(payment);
-
-		buildHash(`p@s5w0Rd123200604201617${payment.FiatCurrency}${payment.FiatAmount * 100}`).then((hash) => {
-			const formData = new FormData();
-			formData.append('Signature', hash);
-			formData.append('MerchantName', 'Dummy1');
-			formData.append('MerchantPassword', 'p@s5w0Rd123');
-			formData.append('MerchantRef', '200604201617');
-			formData.append('Currency', payment.FiatCurrency);
-			formData.append('Amount', payment.FiatAmount * 100);
-			formData.append('SuccessURL', 'https://dev.kantor.kosevych.info/success');
-			formData.append('FailURL', 'https://dev.kantor.kosevych.info/success/failed');
-			formData.append('CallbackURL', 'https://dev.kantor.kosevych.info/kyc');
-			formData.append('Firstname', 'Jerome');
-			formData.append('Surname', 'K. Jerome');
-			formData.append('StreetLine1', '92 West Broadway');
-			formData.append('StreetLine2', '');
-			formData.append('City', 'New York');
-			formData.append('PostalCode', 10007);
-			formData.append('StateProvince', 'NY');
-			formData.append('Country', 'US');
-			formData.append('Email', 'john.phillips.1972@gmail.com');
-			formData.append('Telephone', '212 566 1901');
-			formData.append('DateOfBirth', '1982-08-29');
-			var form = document.createElement('form');
-			document.body.appendChild(form);
-			form.method = 'post';
-			form.action = 'https://gw-test.cgate.tech/orion/hosted/Payment.aspx';
-			form.innerHTML = [...formData.entries()].map((e) => `<input type='hidden' name='${e[0]}' value='${e[1]}' />`);
-			form.submit();
-		});
+	const btcAmount = async () => {
+		const {
+			data: {
+				rates: { BTC },
+			},
+		} = await axios.get(rateURI(FiatCurrency));
+		return BTC;
 	};
 
 	useEffect(() => {
-		let isMounted = true;
+		let isCancelled = false;
 		setLoading(true);
 		try {
 			if (FiatAmount > 0) {
-				axios
-					.get(rateURI(FiatCurrency))
-					.then(({ data }) => {
-						const {
-							rates: { BTC },
-						} = data;
-						// debugger;
-
-						console.log(FiatAmount / BTC);
-						setBTC((FiatAmount / BTC).toFixed(6));
-						setFee(FiatAmount - FiatAmount / 10);
-					})
-					.finally(() => {
-						setLoading(false);
-					});
+				// const btc = await
+				btcAmount().then((btc) => {
+					if (!isCancelled) {
+						setBTC((FiatAmount / btc).toFixed(6));
+						setFee(FiatAmount + FiatAmount / 10);
+					}
+				});
 			}
 		} catch (error) {
 			console.log(error);
@@ -167,7 +212,7 @@ const BTCForm = ({ value = {}, onChange }) => {
 		}
 
 		return () => {
-			isMounted = false;
+			isCancelled = true;
 		};
 	}, [FiatAmount, FiatCurrency]);
 
@@ -209,7 +254,7 @@ const BTCForm = ({ value = {}, onChange }) => {
 		});
 	};
 	return (
-		<RegistrationContent actionText='Buy BTC' isLoading={loading} onAction={doPayment}>
+		<RegistrationContent actionText='Buy BTC' isLoading={loading} onAction={doPayment} isValid={valid}>
 			<RegistrationContentRow>
 				<div style={{ textAlign: 'center' }}>
 					<Input
@@ -226,7 +271,7 @@ const BTCForm = ({ value = {}, onChange }) => {
 			<RegistrationContentRow>
 				<List>
 					<ListItem disableGutters dense>
-						<ListItemText primary='Subtotal' />
+						<ListItemText primary='Will be charged' />
 						<Typography variant='subtitle1' className={classes.total}>
 							{fee} {FiatCurrency}
 						</Typography>
@@ -243,17 +288,19 @@ const BTCForm = ({ value = {}, onChange }) => {
 			</RegistrationContentRow>
 			<RegistrationContentRow>
 				<FormControl className={classes.formControl} fullWidth>
-					<InputLabel htmlFor='age-native-simple'>Send destination wallet</InputLabel>
+					<InputLabel htmlFor='destination-wallet-address'>Destination wallet</InputLabel>
 					<Select
 						fullWidth
+						id='destination-wallet-address'
 						size='large'
 						placeholder='Select destination wallet'
 						value={btcWallet}
 						onChange={(value) => {
+							// debugger;
 							setBTCWallet(value);
 						}}>
-						{walletsData.map((wallet) => (
-							<MenuItem value={wallet.value}>{wallet.name}</MenuItem>
+						{wallets.map((wallet) => (
+							<MenuItem value={wallet.Address}>{wallet.name}</MenuItem>
 						))}
 					</Select>
 				</FormControl>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col, Card, Button } from 'antd';
 
 export const FormContent = (props) => {
-	const { children, actionText = 'Continue' } = props;
+	const { children, actionText = 'Continue', showAction = true } = props;
 	return (
 		<Row justify='center' className='kantor-form-content__row'>
 			<Col className='kantor-form-content__column'>

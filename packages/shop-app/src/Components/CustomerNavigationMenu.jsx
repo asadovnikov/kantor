@@ -1,6 +1,6 @@
 import React from 'react';
 // import clsx from 'clsx';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 // import Button from '@material-ui/core/Button';
@@ -32,6 +32,8 @@ const useStyles = makeStyles((theme) => ({
 export const TemporaryDrawer = () => {
 	const classes = useStyles();
 	const [open, setOpen] = React.useState(false);
+	const [toPayment, setToPayment] = React.useState(false);
+	const [toTransaction, setToTransaction] = React.useState(false);
 	const routing = useHistory();
 
 	const toggleDrawer = (open) => (event) => {
@@ -44,11 +46,14 @@ export const TemporaryDrawer = () => {
 
 	const list = () => (
 		<div className={classes.list} role='presentation' onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
+			{/* {toPayment === true && <Redirect to='/payment' />}
+			{toTransaction === true && <Redirect to='/mytransactions' />} */}
 			<List>
 				<ListItem
 					button
 					key={'Buy BTC'}
 					onClick={() => {
+						// setToPayment(true);
 						routing.push('/payment');
 					}}>
 					<ListItemIcon>
@@ -61,6 +66,7 @@ export const TemporaryDrawer = () => {
 					key={'My transactions'}
 					onClick={() => {
 						routing.push('/mytransactions');
+						// setToTransaction(true);
 					}}>
 					<ListItemIcon>
 						<HistoryOutlinedIcon />
@@ -69,9 +75,20 @@ export const TemporaryDrawer = () => {
 				</ListItem>
 				<ListItem
 					button
+					key={'My wallets'}
+					onClick={() => {
+						routing.push('/walletlist');
+					}}>
+					<ListItemIcon>
+						<HistoryOutlinedIcon />
+					</ListItemIcon>
+					<ListItemText primary={'My wallets'} />
+				</ListItem>
+				<ListItem
+					button
 					key={'Verification'}
 					onClick={() => {
-						routing.push('/kyc');
+						routing.push('/kyc/0');
 					}}>
 					<ListItemIcon>
 						<MonetizationOnOutlinedIcon />

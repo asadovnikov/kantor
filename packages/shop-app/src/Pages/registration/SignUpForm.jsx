@@ -22,6 +22,7 @@ const SignUpForm = () => {
 		Auth.confirmSignUp(currentUser.username, verificationCode)
 			.then(() => {
 				message.success('We are done here');
+				setCommitUser(true);
 			})
 			.catch((e) => {
 				console.log('failed with error', e);

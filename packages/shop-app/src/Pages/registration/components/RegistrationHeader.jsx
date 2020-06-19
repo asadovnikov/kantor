@@ -1,7 +1,8 @@
 import React from 'react';
-import { Row, Col, Typography, Space } from 'antd';
+import { Row, Col, Space } from 'antd';
+import Typography from '@material-ui/core/Typography';
 // import Title from 'antd/lib/skeleton/Title';
-const { Title, Text } = Typography;
+// const { Title, Text } = Typography;
 
 export const RegistrationHeader = (params) => {
 	const { Main, Secondary = '', SecondaryExtra, Extra } = params;
@@ -9,20 +10,20 @@ export const RegistrationHeader = (params) => {
 		<>
 			<Row justify='center' className='registration-header__main-row'>
 				<Col className='registration-header__main-column'>
-					<Title level={2} className='registration-header__main-text'>
+					<Typography component='h1' variant='h3' align='center' color='textPrimary' gutterBottom>
 						{Main}
-					</Title>
+					</Typography>
 				</Col>
 			</Row>
 			{Secondary.length > 0 && (
 				<Row justify='center' className='registration-header__secondary-row'>
 					<Col className='registration-header__secondary-column'>
-						<Text type='secondary' level={2} className='registration-header__secondary-text'>
+						<Typography variant='h5' align='center' color='textSecondary' component='p'>
 							<Space>
 								{Secondary}
 								{SecondaryExtra}
 							</Space>
-						</Text>
+						</Typography>
 					</Col>
 				</Row>
 			)}

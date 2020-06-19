@@ -1,7 +1,7 @@
 import React from 'react';
-import { Row, Col, Typography } from 'antd';
+import { Row, Col } from 'antd';
 // import Title from 'antd/lib/skeleton/Title';
-const { Title, Text } = Typography;
+import Typography from '@material-ui/core/Typography';
 
 export const FormHeader = (params) => {
 	const { Main, Secondary = '', SecondaryExtra } = params;
@@ -9,18 +9,18 @@ export const FormHeader = (params) => {
 		<>
 			<Row justify='center' className='kantor-form-header__main-row'>
 				<Col className='kantor-form-header__main-column'>
-					<Title level={2} className='kantor-form-header__main-text'>
+					<Typography component='h1' variant='h3' align='center' color='textPrimary' gutterBottom>
 						{Main}
-					</Title>
+					</Typography>
 				</Col>
 			</Row>
 			{Secondary.length > 0 && (
 				<Row justify='center' className='kantor-form-header__secondary-row'>
 					<Col className='kantor-form-header__secondary-column'>
-						<Text type='secondary' level={2} className='kantor-form-header__secondary-text'>
+						<Typography variant='h5' align='center' color='textSecondary' component='p'>
 							{Secondary}
 							{SecondaryExtra}
-						</Text>
+						</Typography>
 					</Col>
 				</Row>
 			)}

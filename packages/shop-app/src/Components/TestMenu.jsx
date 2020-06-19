@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+
 import { Link, Redirect } from 'react-router-dom';
 import { Auth, Hub } from 'aws-amplify';
 import { Layout, Row, Col, Button } from 'antd';
@@ -10,12 +14,12 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 // import Link from '@material-ui/core/Link';
 import { fade, makeStyles } from '@material-ui/core/styles';
-// import Container from '@material-ui/core/Container';
-// import Box from '@material-ui/core/Box';
-// import { SignUp } from './Pages/RegistrationFlow/SignUp';
-import { blueTheme } from '../theme';
-import { ThemeProvider } from '@material-ui/styles';
 import { TemporaryDrawer } from './CustomerNavigationMenu';
+import { HeaderUserbox } from './HeaderUserbox';
+
+function Alert(props) {
+	return <MuiAlert elevation={6} variant='filled' {...props} />;
+}
 
 const { Header } = Layout;
 
@@ -92,23 +96,47 @@ const useStyles = makeStyles((theme) => ({
 export const TestMenu = () => {
 	const classes = useStyles();
 	const [isAuth, setIsAuth] = useState(false);
+	const [firstName, setFirstName] = useState();
+	const [lastName, setLastName] = useState();
+	const [email, setEmail] = useState();
 	const [isLoggedOut, setLoggedOut] = useState(false);
+
+	const [open, setOpen] = useState(false);
+	const handleClose = (event, reason) => {
+		if (reason === 'clickaway') {
+			return;
+		}
+
+		setOpen(false);
+	};
+
+	let isMount = true;
 	Hub.listen('auth', (data) => {
 		console.log('============auth=============');
 		console.log(data);
 		console.log('============end=============');
+		debugger;
 		const { payload } = data;
 		if (payload.event === 'signIn') {
 			setIsAuth(true);
 			setLoggedOut(false);
 		} else if (payload.event === 'signOut') {
-			setLoggedOut(true);
-			setIsAuth(true);
+			if (isMount) {
+				setLoggedOut(true);
+				setIsAuth(true);
+				isMount = false;
+				window.location = window.location;
+			}
+		} else if (payload.event === 'signIn_failure') {
+			setOpen(true);
 		}
 	});
 	Auth.currentAuthenticatedUser()
 		.then((user) => {
 			console.log(user);
+			setEmail(user.attributes.email);
+			setFirstName(user.attributes['custom:firstName'] || 'Manually');
+			setLastName(user.attributes['custom:lastName'] || 'Created');
 			setIsAuth(true);
 		})
 		.catch((err) => {
@@ -116,31 +144,39 @@ export const TestMenu = () => {
 			setIsAuth(false);
 		});
 	return (
-		<ThemeProvider theme={blueTheme}>
-			<AppBar position='static' color='default' elevation={0}>
-				<Toolbar>
-					{isAuth === true && <TemporaryDrawer />}
-					<Typography className={classes.title} color='inherit' variant='h6' noWrap>
-						Kantor Shop
-					</Typography>
-					<div className={classes.grow} />
-					{isAuth === false && <Link to='/signin'>Sign in </Link>}
-					{isAuth === true && (
-						<Button
-							type='primary'
-							onClick={async () => {
-								try {
-									await Auth.signOut({ global: true });
-								} catch (error) {
-									console.log('error signing out: ', error);
-								}
-							}}>
-							Log out
-						</Button>
-					)}
-					{isLoggedOut === true && <Redirect to='/signin' />}
-				</Toolbar>
-			</AppBar>
-		</ThemeProvider>
+		<AppBar position='static' color='default' elevation={0}>
+			<Toolbar>
+				{isAuth === true && <TemporaryDrawer />}
+				<Typography className={classes.title} color='inherit' variant='h6' noWrap>
+					Kantor Shop
+				</Typography>
+				<div className={classes.grow} />
+				{isAuth === false && <Link to='/signin'>Sign in </Link>}
+				{isAuth === true && (
+					<HeaderUserbox firstName={firstName} lastName={lastName} email={email} />
+					// <Button
+					// 	type='primary'
+					// 	onClick={async () => {
+					// 		try {
+					// 			await Auth.signOut({ global: true });
+					// 		} catch (error) {
+					// 			console.log('error signing out: ', error);
+					// 		}
+					// 	}}>
+					// 	Log out
+					// </Button>
+				)}
+				{isLoggedOut === true && <Redirect to='/' />}
+			</Toolbar>
+			<Snackbar
+				anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+				open={open}
+				autoHideDuration={3000}
+				onClose={handleClose}>
+				<Alert onClose={handleClose} variant='filled' severity='error' color='error'>
+					Incorrect username or password!
+				</Alert>
+			</Snackbar>
+		</AppBar>
 	);
 };

@@ -73,9 +73,6 @@
 	margin-top: 25px;
 }
 
-.kantor-form-layout_container {
-	min-height: calc(100vh - 64px);
-}
 .fiat-amount-input {
 	text-align: center;
 	border: 0;

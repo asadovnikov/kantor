@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import { SignUp } from './Pages/RegistrationFlow/SignUp';
-import { blackTheme } from './theme';
+import { blackTheme } from './Theme';
 import { ThemeProvider } from '@material-ui/styles';
 
 function Copyright() {

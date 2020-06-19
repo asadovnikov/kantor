@@ -11,6 +11,7 @@ import Switch from '@material-ui/core/Switch';
 // import MonetizationOnOutlinedIcon from '@material-ui/icons/MonetizationOnOutlined';
 import { WalletForm } from './Wallets';
 import { v4 as uuid } from 'uuid';
+import { Empty } from 'antd';
 
 import { API, graphqlOperation } from 'aws-amplify';
 import { listUserWalletss } from '../../graphql/queries';
@@ -32,19 +33,25 @@ const useStyles = makeStyles((theme) => ({
 const DataList = ({ checked, wallets, loading, onWalletStateToggle }) => {
 	const classes = useStyles();
 	return (
-		<List fullWidth subheader={<ListSubheader>Wallets</ListSubheader>} className={classes.root}>
+		<List fullWidth className='mb-4 list-group-bordered'>
 			{wallets.map((wallet) => {
 				return (
-					<ListItem>
-						<ListItemText id={`${wallet.id}`} primary={wallet.name} secondary={wallet.Address} />
-						<ListItemSecondaryAction>
+					<ListItem className='d-flex justify-content-between align-items-center py-3'>
+						<div className='d-flex align-items-center mr-4'>
+							<div>
+								<div className='font-weight-bold'>{wallet.name}</div>
+								<span className='opacity-6 d-block'>{wallet.Address}</span>
+							</div>
+						</div>
+						<div className='d-flex align-items-center'>
 							<Switch
 								edge='end'
+								className='switch-medium'
 								onChange={onWalletStateToggle(wallet.id)}
 								checked={checked.indexOf(wallet.id) !== -1}
 								inputProps={{ 'aria-labelledby': wallet.id }}
 							/>
-						</ListItemSecondaryAction>
+						</div>
 					</ListItem>
 				);
 			})}
@@ -59,22 +66,30 @@ export const WalletListForm = () => {
 	const [addWalletForm, setAddWalletForm] = useState(false);
 	const [loadData, setLoadData] = useState();
 
-	useEffect(async () => {
+	useEffect(() => {
+		let isCancelled = false;
 		setLoading(true);
 		try {
-			const {
-				data: {
-					listUserWalletss: { items },
-				},
-			} = await API.graphql(graphqlOperation(listUserWalletss));
-			console.log(items);
-			setChecked(items.filter((wallet) => wallet.State !== 'Active').map((wallet) => wallet.id));
-			setWallets(items);
+			API.graphql(graphqlOperation(listUserWalletss)).then(
+				({
+					data: {
+						listUserWalletss: { items },
+					},
+				}) => {
+					if (!isCancelled) {
+						setChecked(items.filter((wallet) => wallet.State !== 'Active').map((wallet) => wallet.id));
+						setWallets(items);
+					}
+				}
+			);
 		} catch (error) {
 			console.error(error);
 		} finally {
 			setLoading(false);
 		}
+		return () => {
+			isCancelled = true;
+		};
 	}, []);
 
 	const handleToggle = (value) => () => {
@@ -109,7 +124,11 @@ export const WalletListForm = () => {
 					<RegistrationHeader Main={`List of Wallets`} />
 					<RegistrationContent actionText={`Add wallet`} onAction={handleAction}>
 						<RegistrationContentRow>
-							<DataList wallets={wallets} checked={checked} loading={loading} onWalletStateToggle={handleToggle} />
+							{wallets.length > 0 ? (
+								<DataList wallets={wallets} checked={checked} loading={loading} onWalletStateToggle={handleToggle} />
+							) : (
+								<Empty />
+							)}
 						</RegistrationContentRow>
 					</RegistrationContent>
 				</RegistrationForm>
