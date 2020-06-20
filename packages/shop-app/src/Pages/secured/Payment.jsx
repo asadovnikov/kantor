@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Auth } from 'aws-amplify';
-import { Select, Input, Space } from 'antd';
+import { Input } from 'antd';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
@@ -10,6 +10,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InputLabel from '@material-ui/core/InputLabel';
 // import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 import { v4 as uuid } from 'uuid';
 
 import { API, graphqlOperation } from 'aws-amplify';
@@ -26,19 +27,8 @@ import { MaterialPass, MaterialTxt, MaterialCurrencySelect } from '../registrati
 // import { FormLayout, FormContent, FormContentRow, FormHeader } from '../../Components';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import axios from 'axios';
-const { Option } = Select;
+// const { Option } = Select;
 // const { Title, Text } = Typography;
-
-const walletsData = [
-	{
-		name: 'Main wallet',
-		value: 'ifklsadhfklhaadsf',
-	},
-	{
-		name: 'Brother wallet',
-		value: 'dsns,mbfadsbfsda',
-	},
-];
 
 const useStyles = makeStyles((theme) => ({
 	listItem: {

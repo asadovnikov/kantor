@@ -12,13 +12,12 @@ import VerifiedUserTwoToneIcon from '@material-ui/icons/VerifiedUserTwoTone';
 import ExitToAppTwoToneIcon from '@material-ui/icons/ExitToAppTwoTone';
 import Avatar from 'react-avatar';
 
-import { withStyles } from '@material-ui/core/styles';
-
 export const HeaderUserbox = ({ firstName, lastName, email }) => {
 	const [anchorEl, setAnchorEl] = useState(null);
 	const history = useHistory();
 
 	const handleClick = (event) => {
+		debugger;
 		setAnchorEl(event.currentTarget);
 	};
 

@@ -12,6 +12,8 @@ import './App.css';
 import { bigFontsTheme } from './Theme';
 import { ThemeProvider } from '@material-ui/styles';
 
+import { AppContainer } from './Layouts/AppContainer';
+
 const useStyles = makeStyles((theme) => ({
 	toolbar: theme.mixins.toolbar,
 	icon: {
@@ -63,25 +65,9 @@ export const AntdApp = () => {
 	return (
 		<ThemeProvider theme={bigFontsTheme}>
 			<CssBaseline />
-			<TopToolbar />
-			{/* <TestMenu /> */}
-			<div className={classes.toolbar} />
-			<main className='app-wrapper'>
-				<Container>
-					<Box mt={6}>
-						<DemoRouting />
-					</Box>
-				</Container>
-			</main>
-			<footer>
-				<Typography variant='h6' align='center' gutterBottom>
-					Footer
-				</Typography>
-				<Typography variant='subtitle1' align='center' color='textSecondary' component='p'>
-					Something here to give the footer a purpose!
-				</Typography>
-				<Copyright />
-			</footer>
+			<AppContainer>
+				<DemoRouting />
+			</AppContainer>
 		</ThemeProvider>
 	);
 };

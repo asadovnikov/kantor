@@ -1,34 +1,28 @@
 import React from 'react';
-import { Row, Col, Card, Button } from 'antd';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 
 export const RegistrationContent = (props) => {
 	console.log(props);
 
 	const { children, actionText = 'Continue', onAction, isLoading, isValid = true, showAction = true } = props;
 	return (
-		<Row justify='center' className='registration-content__row'>
-			<Col className='registration-content__row'>
-				<Card bordered={false} className='registration-content__card' style={{ width: 500 }}>
-					{children}
-					{showAction !== false && (
-						<Row gutter={[24, 24]} justify='center' style={{ margin: '50px 0' }}>
-							<Col span='16'>
-								<Button
-									disabled={!isValid}
-									loading={isLoading}
-									shape='round'
-									size='large'
-									type='primary'
-									className='registration-input-action'
-									block
-									onClick={onAction}>
-									{actionText}
-								</Button>
-							</Col>
-						</Row>
-					)}
-				</Card>
-			</Col>
-		</Row>
+		<>
+			<Grid item xs={12}>
+				{children}
+			</Grid>
+			{showAction !== false && (
+				<Grid item xs={12}>
+					<Button
+						disabled={!isValid}
+						loading={isLoading}
+						className='btn-primary py-4 mt-5 px-5 font-weight-bold font-size-lg'
+						fullWidth
+						onClick={onAction}>
+						{actionText}
+					</Button>
+				</Grid>
+			)}
+		</>
 	);
 };

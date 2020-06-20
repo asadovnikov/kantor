@@ -28,6 +28,7 @@ import MyTransactions from '../Pages/secured/MyTransactions';
 import SettingsForm from '../Pages/secured/Settings';
 import { WalletForm } from '../Pages/secured/Wallets';
 import { WalletListForm } from '../Pages/secured/WalletList';
+import { MyWallets } from '../Pages/secured/MyWallets';
 import { SideMenu } from '../Components/SideMenu';
 // import { SignUpForm } from '../Pages/MaterialSign/SignUpForm';
 
@@ -45,6 +46,9 @@ export const DemoRouting = () => {
 			</Route>
 			<Route path='/walletlist'>
 				<WalletListForm />
+			</Route>
+			<Route path='/mywallets'>
+				<MyWallets />
 			</Route>
 			<Route path='/land'>
 				<SignIn />

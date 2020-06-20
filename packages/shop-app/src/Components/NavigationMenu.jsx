@@ -16,8 +16,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import SidebarWidget from './SidebarWidget';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
-
-const drawerWidth = 320;
+import { navigationDefaultWidth } from '../Utils/constants';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -25,14 +24,14 @@ const useStyles = makeStyles((theme) => ({
 	},
 	drawer: {
 		[theme.breakpoints.up('sm')]: {
-			width: drawerWidth,
+			width: navigationDefaultWidth,
 			flexShrink: 0,
 		},
 	},
 	appBar: {
 		[theme.breakpoints.up('sm')]: {
-			width: `calc(100% - ${drawerWidth}px)`,
-			marginLeft: drawerWidth,
+			width: `calc(100% - ${navigationDefaultWidth}px)`,
+			marginLeft: navigationDefaultWidth,
 		},
 	},
 	menuButton: {
@@ -44,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 	// necessary for content to be below app bar
 	toolbar: theme.mixins.toolbar,
 	drawerPaper: {
-		width: drawerWidth,
+		width: navigationDefaultWidth,
 	},
 	content: {
 		flexGrow: 1,

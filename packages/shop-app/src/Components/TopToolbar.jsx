@@ -11,13 +11,11 @@ import { Auth, Hub } from 'aws-amplify';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { HeaderUserbox } from './HeaderUserbox';
-import { NavigationMenu } from './NavigationMenu';
+import { navigationDefaultWidth } from '../Utils/constants';
 
 function Alert(props) {
 	return <MuiAlert elevation={6} variant='filled' {...props} />;
 }
-
-const drawerWidth = 320;
 
 const useStyles = makeStyles((theme) => ({
 	grow: {
@@ -32,8 +30,8 @@ const useStyles = makeStyles((theme) => ({
 	appBar: {
 		background: 'rgba(255, 255, 255, 0.95)',
 		[theme.breakpoints.up('sm')]: {
-			width: `calc(100% - ${drawerWidth}px)`,
-			marginLeft: drawerWidth,
+			width: `calc(100% - ${navigationDefaultWidth}px)`,
+			marginLeft: navigationDefaultWidth,
 		},
 	},
 	menuButton: {
@@ -44,18 +42,12 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export const TopToolbar = () => {
+export const TopToolbar = ({ mobileOpen, handleDrawerToggle }) => {
 	const classes = useStyles();
 	const [isAuth, setIsAuth] = useState(false);
 	const [firstName, setFirstName] = useState();
 	const [lastName, setLastName] = useState();
 	const [email, setEmail] = useState();
-
-	const [mobileOpen, setMobileOpen] = useState(false);
-
-	const handleDrawerToggle = () => {
-		setMobileOpen(!mobileOpen);
-	};
 
 	const [open, setOpen] = useState(false);
 	const handleClose = (event, reason) => {
@@ -94,39 +86,36 @@ export const TopToolbar = () => {
 			setIsAuth(false);
 		});
 	return (
-		<>
-			<AppBar position='fixed' className={`${classes.appBar}`} elevation={0}>
-				<Toolbar>
-					<IconButton
-						color='inherit'
-						aria-label='open drawer'
-						edge='start'
-						onClick={handleDrawerToggle}
-						className={classes.menuButton}>
-						<MenuIcon />
-					</IconButton>
-					<Typography className={classes.title} color='inherit' variant='h6' noWrap>
-						Kantor Shop
-					</Typography>
-					<div className={classes.grow} />
-					{isAuth === true ? (
-						<HeaderUserbox firstName={firstName} lastName={lastName} email={email} />
-					) : (
-						<Link to='/signin'>Sign in </Link>
-					)}
+		<AppBar position='fixed' className={`${classes.appBar}`} elevation={1}>
+			<Toolbar>
+				<IconButton
+					color='inherit'
+					aria-label='open drawer'
+					edge='start'
+					onClick={handleDrawerToggle}
+					className={classes.menuButton}>
+					<MenuIcon />
+				</IconButton>
+				<Typography className={classes.title} color='inherit' variant='h6' noWrap>
+					Kantor Shop
+				</Typography>
+				<div className={classes.grow} />
+				{isAuth === true ? (
+					<HeaderUserbox firstName={firstName} lastName={lastName} email={email} />
+				) : (
+					<Link to='/signin'>Sign in </Link>
+				)}
 
-					<Snackbar
-						anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-						open={open}
-						autoHideDuration={3000}
-						onClose={handleClose}>
-						<Alert onClose={handleClose} variant='filled' severity='error' color='error'>
-							Incorrect username or password!
-						</Alert>
-					</Snackbar>
-				</Toolbar>
-			</AppBar>
-			<NavigationMenu mobileOpen={mobileOpen} handleDrawerToggle={handleDrawerToggle} />
-		</>
+				<Snackbar
+					anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+					open={open}
+					autoHideDuration={3000}
+					onClose={handleClose}>
+					<Alert onClose={handleClose} variant='filled' severity='error' color='error'>
+						Incorrect username or password!
+					</Alert>
+				</Snackbar>
+			</Toolbar>
+		</AppBar>
 	);
 };
