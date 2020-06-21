@@ -73,7 +73,7 @@ function EnhancedTableHead(props) {
 
 	return (
 		<TableHead>
-			<TableRow>
+			<TableRow className='thead-light text-capitalize font-size-sm font-weight-bold'>
 				{headCells.map((headCell) => (
 					<TableCell
 						key={headCell.id}
@@ -168,7 +168,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export const EnhancedTable = ({ transactions = [] }) => {
+export const EnhancedTable = ({ transactions = [], showHeader = true }) => {
 	const rows = transactions.map(transactionFormat);
 	const classes = useStyles();
 	const [order, setOrder] = React.useState('asc');
@@ -216,8 +216,8 @@ export const EnhancedTable = ({ transactions = [] }) => {
 
 	return (
 		<div className={classes.root}>
-			<Paper className={classes.paper} elevation={3}>
-				<EnhancedTableToolbar />
+			<Paper className={classes.paper}>
+				{showHeader && <EnhancedTableToolbar />}
 				<TableContainer>
 					<Table className={classes.table} aria-labelledby='tableTitle' size='medium' aria-label='enhanced table'>
 						<EnhancedTableHead

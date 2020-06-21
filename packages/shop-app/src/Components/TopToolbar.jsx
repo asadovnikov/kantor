@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { HeaderUserbox } from './HeaderUserbox';
 import { navigationDefaultWidth } from '../Utils/constants';
+import { AppName } from './AppName';
 
 function Alert(props) {
 	return <MuiAlert elevation={6} variant='filled' {...props} />;
@@ -86,7 +87,7 @@ export const TopToolbar = ({ mobileOpen, handleDrawerToggle }) => {
 			setIsAuth(false);
 		});
 	return (
-		<AppBar position='fixed' className={`${classes.appBar}`} elevation={1}>
+		<AppBar position='fixed' className={`${classes.appBar} app-sidebar--light`} elevation={1}>
 			<Toolbar>
 				<IconButton
 					color='inherit'
@@ -96,9 +97,7 @@ export const TopToolbar = ({ mobileOpen, handleDrawerToggle }) => {
 					className={classes.menuButton}>
 					<MenuIcon />
 				</IconButton>
-				<Typography className={classes.title} color='inherit' variant='h6' noWrap>
-					Kantor Shop
-				</Typography>
+				<AppName />
 				<div className={classes.grow} />
 				{isAuth === true ? (
 					<HeaderUserbox firstName={firstName} lastName={lastName} email={email} />

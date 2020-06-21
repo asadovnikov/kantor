@@ -1,21 +1,28 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { StaticRoutes } from './StaticRoutes';
-import { AuthFlow } from './AuthFlow';
+import { authRoutes } from './AuthFlow';
+// import { SecuredRoutes } from './SecuredRoutes';
+import { HomePage, Transactions, MyWallets, BuyCryptoPage } from '../Pages/secured';
 import NoFoundPage from '../Pages/Static/404';
-import HomePage from '../Pages/secured/Home';
 
 export const Routing = () => {
 	return (
 		<Switch>
-			<Route exact path='/'>
+			<Route exact path={['/', '/home']}>
 				<HomePage />
 			</Route>
-			<Route path='/home'>
-				<HomePage />
+			<Route path={['/transaction', '/mytransactions']}>
+				<Transactions />
 			</Route>
+			<Route path={['/wallets', '/mywallets', '/walletlist']}>
+				<MyWallets />
+			</Route>
+			<Route path={['/buy', '/payment', '/buybtc']}>
+				<BuyCryptoPage />
+			</Route>
+			{authRoutes}
 			<StaticRoutes />
-			<AuthFlow />
 			<Route path='*'>
 				<NoFoundPage />
 			</Route>

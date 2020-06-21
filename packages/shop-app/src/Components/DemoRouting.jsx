@@ -6,7 +6,7 @@ import { SuccessPage } from '../Pages/Static/Success';
 import PrivacyPolicy from '../Pages/Static/PrivacyPolicy';
 import SignIn from '../Pages/RegistrationFlow/Landing';
 import { KYCPage } from '../Pages/KYC';
-import HomePage from '../Pages/secured/Home';
+// import HomePage from '../Pages/secured';
 import PaymentPage from '../Pages/secured/Payment';
 import { TestMenu } from '../Components/TestMenu';
 import HolderPage from '../Pages/registration/HolderPage';
@@ -28,7 +28,7 @@ import MyTransactions from '../Pages/secured/MyTransactions';
 import SettingsForm from '../Pages/secured/Settings';
 import { WalletForm } from '../Pages/secured/Wallets';
 import { WalletListForm } from '../Pages/secured/WalletList';
-import { MyWallets } from '../Pages/secured/MyWallets';
+import { MyWallets, Transactions, HomePage, BuyCryptoPage } from '../Pages/secured';
 import { SideMenu } from '../Components/SideMenu';
 // import { SignUpForm } from '../Pages/MaterialSign/SignUpForm';
 
@@ -49,6 +49,12 @@ export const DemoRouting = () => {
 			</Route>
 			<Route path='/mywallets'>
 				<MyWallets />
+			</Route>
+			<Route path='/transactions'>
+				<Transactions />
+			</Route>
+			<Route path='/buybtc'>
+				<BuyCryptoPage />
 			</Route>
 			<Route path='/land'>
 				<SignIn />

@@ -1,13 +1,8 @@
 import React from 'react';
-import Box from '@material-ui/core/Box';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import { DemoRouting } from './Components/DemoRouting';
-import { TopToolbar } from './Components/TopToolbar';
-import { TestMenu } from './Components/TestMenu';
+import { Routing } from './Routing/Routing';
 import './App.css';
 import { bigFontsTheme } from './Theme';
 import { ThemeProvider } from '@material-ui/styles';
@@ -47,26 +42,13 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const Copyright = () => {
-	return (
-		<Typography variant='body2' color='textSecondary' align='center'>
-			{'Copyright © '}
-			<Link color='inherit' href='https://dev.kantor.kosevych.info'>
-				kantor.kosevych.info
-			</Link>{' '}
-			{new Date().getFullYear()}
-			{'.'}
-		</Typography>
-	);
-};
-
 export const AntdApp = () => {
 	const classes = useStyles();
 	return (
 		<ThemeProvider theme={bigFontsTheme}>
 			<CssBaseline />
 			<AppContainer>
-				<DemoRouting />
+				<Routing />
 			</AppContainer>
 		</ThemeProvider>
 	);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 // TODO: move all to static/index.js
 import { FailedPage } from '../Pages/Static/Failed';
 import { SuccessPage } from '../Pages/Static/Success';
@@ -8,7 +8,7 @@ import PrivacyPolicy from '../Pages/Static/PrivacyPolicy';
 
 export const StaticRoutes = () => {
 	return (
-		<Switch>
+		<>
 			<Route path='/paymentfailed'>
 				<FailedPage />
 			</Route>
@@ -33,6 +33,6 @@ export const StaticRoutes = () => {
 			<Route path='/privacy-policy'>
 				<PrivacyPolicy />
 			</Route>
-		</Switch>
+		</>
 	);
 };

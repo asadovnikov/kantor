@@ -109,7 +109,7 @@ const SidebarWidget = () => {
 							<span className='font-size-xs font-weight-bold px-1'>Deposit</span>
 						</Button> */}
 						<Button className='px-4 py-2 text-uppercase btn-success' onClick={() => history.push('/payment')}>
-							<span className='font-size-xs font-weight-bold px-1'>Withdraw</span>
+							<span className='font-size-xs font-weight-bold px-1'>Buy crypto</span>
 						</Button>
 					</div>
 				</div>

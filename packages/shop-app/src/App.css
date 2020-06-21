@@ -97,3 +97,11 @@
 	border-right: 0 !important;
 	/* border-bottom: 1px !important; */
 }
+
+.text-white {
+	color: #fff !important;
+}
+
+.app-footer {
+	height: auto !important;
+}

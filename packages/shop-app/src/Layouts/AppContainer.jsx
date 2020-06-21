@@ -6,6 +6,7 @@ import { NavigationMenu } from '../Components/NavigationMenu';
 import { makeStyles } from '@material-ui/core/styles';
 import { navigationDefaultWidth } from '../Utils/constants';
 import Box from '@material-ui/core/Box';
+import { AppFooter } from '../Components/AppFooter';
 
 const Copyright = () => {
 	return (
@@ -54,14 +55,8 @@ export const AppContainer = ({ children }) => {
 						</div>
 					</main>
 				</div>
-				<footer>
-					<Typography variant='h6' align='center' gutterBottom>
-						Footer
-					</Typography>
-					<Typography variant='subtitle1' align='center' color='textSecondary' component='p'>
-						Something here to give the footer a purpose!
-					</Typography>
-					<Copyright />
+				<footer className='app-footer text-black-50 app-footer--opacity-bg'>
+					<AppFooter />
 				</footer>
 			</Box>
 		</div>

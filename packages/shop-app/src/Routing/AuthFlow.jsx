@@ -5,22 +5,18 @@ import SignInForm from '../Pages/registration/SignInForm';
 import SignUpForm from '../Pages/registration/SignUpForm';
 import ResetPasswordPage from '../Pages/registration/ResetPasswordPage';
 
-export const AuthFlow = ({ material = false }) => {
+export const authRoutes = [
+	<Route path='/reset-password' component={ResetPasswordPage} />,
+	<Route path='/signin' component={SignInForm} />,
+	<Route path='/signup' component={SignUpForm} />,
+];
+
+export const AuthFlow = () => {
 	return (
-		<Switch>
-			{material === false && (
-				<>
-					<Route path='/reset-password'>
-						<ResetPasswordPage />
-					</Route>
-					<Route path='/signin'>
-						<SignInForm />
-					</Route>
-					<Route path='/signup'>
-						<SignUpForm />
-					</Route>
-				</>
-			)}
-		</Switch>
+		<>
+			<Route path='/reset-password' component={ResetPasswordPage} />
+			<Route path='/signin' component={SignInForm} />
+			<Route path='/signup' component={SignUpForm} />
+		</>
 	);
 };
