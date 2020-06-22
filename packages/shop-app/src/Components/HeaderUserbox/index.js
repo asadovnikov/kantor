@@ -17,7 +17,6 @@ export const HeaderUserbox = ({ firstName, lastName, email }) => {
 	const history = useHistory();
 
 	const handleClick = (event) => {
-		debugger;
 		setAnchorEl(event.currentTarget);
 	};
 

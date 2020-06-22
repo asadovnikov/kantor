@@ -63,6 +63,7 @@ export const TopToolbar = ({ mobileOpen, handleDrawerToggle }) => {
 	Hub.listen('auth', (data) => {
 		const { payload } = data;
 		if (payload.event === 'signIn') {
+			console.log(data);
 			setIsAuth(true);
 		} else if (payload.event === 'signOut') {
 			if (isMount) {

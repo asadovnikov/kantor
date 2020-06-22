@@ -32,7 +32,7 @@ const SignUpForm = () => {
 
 	const doSignUp = () => {
 		setLoadingState(true);
-		// debugger;
+
 		const { email, password, ...rest } = basicInfo;
 		const username = email;
 		const pre = {

@@ -150,7 +150,6 @@ export const SmallTopPanel = () => {
 		console.log(document.getElementById('header'));
 		var header = new HSHeader(document.getElementById('header'));
 		header.init();
-		// debugger;
 	}, []);
 	return (
 		<div id='header' className='header'>

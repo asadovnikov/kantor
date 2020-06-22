@@ -1,41 +1,30 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
-import { AppPage, WidgetContainer } from '../../Layouts';
-import { VerifyDocumentsBanner, QuickLinks } from '../../Widgets';
+import { AdminAppPage, WidgetContainer } from '../../Layouts';
+import { CustomerDetailsWidget } from '../../Widgets';
 import { motion, AnimatePresence } from 'framer-motion';
 // import Grow from '@material-ui/core/Grow';
 import { Button } from '@material-ui/core';
 import HomeTwoToneIcon from '@material-ui/icons/HomeTwoTone';
 import CardTravelRoundedIcon from '@material-ui/icons/CardTravelRounded';
 
-export const HomePage = ({ isAdmin }) => {
+export const CustomerDetailsPage = ({ customerId }) => {
 	// const [showAdd, setShowAdd] = useState(false);
-	const history = useHistory();
+	// const history = useHistory();
+	const { id } = useParams();
 	return (
 		<>
-			<AppPage
+			<AdminAppPage
 				title={`Welcome back`}
 				description={`Don't hesitate, buy some crypto.`}
-				actions={
-					<Button
-						startIcon={<CardTravelRoundedIcon />}
-						onClick={() => {
-							history.push('/payment');
-						}}
-						variant='contained'
-						className='text-uppercase font-weight-bold'
-						color='primary'>
-						Buy crypto
-					</Button>
-				}
 				icon={<HomeTwoToneIcon className='text-primary' />}>
 				<AnimatePresence>
 					<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-						<VerifyDocumentsBanner />
-						<QuickLinks />
+						<CustomerDetailsWidget customerId={id} />
 					</motion.div>
 				</AnimatePresence>
-			</AppPage>
+			</AdminAppPage>
 		</>
 	);
 };

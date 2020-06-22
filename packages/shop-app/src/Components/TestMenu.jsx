@@ -115,7 +115,7 @@ export const TestMenu = () => {
 		console.log('============auth=============');
 		console.log(data);
 		console.log('============end=============');
-		debugger;
+
 		const { payload } = data;
 		if (payload.event === 'signIn') {
 			setIsAuth(true);

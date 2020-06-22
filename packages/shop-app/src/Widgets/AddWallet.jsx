@@ -54,7 +54,6 @@ export const AddWalletWidget = ({ onWalletAdded }) => {
 			}
 			// message.info(JSON.stringify(wallet));
 		} catch (error) {
-			// debugger;
 			console.error(error);
 		} finally {
 			setLoading(false);

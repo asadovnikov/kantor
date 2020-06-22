@@ -18,7 +18,7 @@ export const HolderPage = ({ value = {}, onChange, onValidate, onApply }) => {
 
 	useEffect(() => {
 		const valid = (firstName && lastName && email && dateOfBirth && password && agree) === true;
-		// debugger;
+
 		setIsValid((firstName && lastName && email && dateOfBirth && password && agree) === true);
 		if (valid) {
 			onChange({ firstName, lastName, email, dateOfBirth, password });
@@ -36,7 +36,6 @@ export const HolderPage = ({ value = {}, onChange, onValidate, onApply }) => {
 				<MaterialTxt
 					value={firstName}
 					onChange={({ target: { value } }) => {
-						// debugger;
 						setFirstName(value);
 						triggerChange();
 					}}

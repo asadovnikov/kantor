@@ -2,7 +2,7 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateKycDocument = /* GraphQL */ `
-  subscription OnCreateKycDocument($owner: String!) {
+  subscription OnCreateKycDocument($owner: String) {
     onCreateKYCDocument(owner: $owner) {
       id
       name
@@ -19,7 +19,7 @@ export const onCreateKycDocument = /* GraphQL */ `
   }
 `;
 export const onUpdateKycDocument = /* GraphQL */ `
-  subscription OnUpdateKycDocument($owner: String!) {
+  subscription OnUpdateKycDocument($owner: String) {
     onUpdateKYCDocument(owner: $owner) {
       id
       name
@@ -36,7 +36,7 @@ export const onUpdateKycDocument = /* GraphQL */ `
   }
 `;
 export const onDeleteKycDocument = /* GraphQL */ `
-  subscription OnDeleteKycDocument($owner: String!) {
+  subscription OnDeleteKycDocument($owner: String) {
     onDeleteKYCDocument(owner: $owner) {
       id
       name
@@ -53,7 +53,7 @@ export const onDeleteKycDocument = /* GraphQL */ `
   }
 `;
 export const onCreatePaymentRequest = /* GraphQL */ `
-  subscription OnCreatePaymentRequest($owner: String!) {
+  subscription OnCreatePaymentRequest($owner: String) {
     onCreatePaymentRequest(owner: $owner) {
       id
       Firstname
@@ -77,7 +77,7 @@ export const onCreatePaymentRequest = /* GraphQL */ `
   }
 `;
 export const onUpdatePaymentRequest = /* GraphQL */ `
-  subscription OnUpdatePaymentRequest($owner: String!) {
+  subscription OnUpdatePaymentRequest($owner: String) {
     onUpdatePaymentRequest(owner: $owner) {
       id
       Firstname
@@ -101,7 +101,7 @@ export const onUpdatePaymentRequest = /* GraphQL */ `
   }
 `;
 export const onDeletePaymentRequest = /* GraphQL */ `
-  subscription OnDeletePaymentRequest($owner: String!) {
+  subscription OnDeletePaymentRequest($owner: String) {
     onDeletePaymentRequest(owner: $owner) {
       id
       Firstname
@@ -125,7 +125,7 @@ export const onDeletePaymentRequest = /* GraphQL */ `
   }
 `;
 export const onCreateTransaction = /* GraphQL */ `
-  subscription OnCreateTransaction($owner: String!) {
+  subscription OnCreateTransaction($owner: String) {
     onCreateTransaction(owner: $owner) {
       id
       Firstname
@@ -155,7 +155,7 @@ export const onCreateTransaction = /* GraphQL */ `
   }
 `;
 export const onUpdateTransaction = /* GraphQL */ `
-  subscription OnUpdateTransaction($owner: String!) {
+  subscription OnUpdateTransaction($owner: String) {
     onUpdateTransaction(owner: $owner) {
       id
       Firstname
@@ -185,7 +185,7 @@ export const onUpdateTransaction = /* GraphQL */ `
   }
 `;
 export const onDeleteTransaction = /* GraphQL */ `
-  subscription OnDeleteTransaction($owner: String!) {
+  subscription OnDeleteTransaction($owner: String) {
     onDeleteTransaction(owner: $owner) {
       id
       Firstname
@@ -215,7 +215,7 @@ export const onDeleteTransaction = /* GraphQL */ `
   }
 `;
 export const onCreateCustomer = /* GraphQL */ `
-  subscription OnCreateCustomer($owner: String!) {
+  subscription OnCreateCustomer($owner: String) {
     onCreateCustomer(owner: $owner) {
       id
       Firstname
@@ -282,7 +282,7 @@ export const onCreateCustomer = /* GraphQL */ `
   }
 `;
 export const onUpdateCustomer = /* GraphQL */ `
-  subscription OnUpdateCustomer($owner: String!) {
+  subscription OnUpdateCustomer($owner: String) {
     onUpdateCustomer(owner: $owner) {
       id
       Firstname
@@ -349,7 +349,7 @@ export const onUpdateCustomer = /* GraphQL */ `
   }
 `;
 export const onDeleteCustomer = /* GraphQL */ `
-  subscription OnDeleteCustomer($owner: String!) {
+  subscription OnDeleteCustomer($owner: String) {
     onDeleteCustomer(owner: $owner) {
       id
       Firstname
@@ -416,7 +416,7 @@ export const onDeleteCustomer = /* GraphQL */ `
   }
 `;
 export const onCreateVerification = /* GraphQL */ `
-  subscription OnCreateVerification($owner: String!) {
+  subscription OnCreateVerification($owner: String) {
     onCreateVerification(owner: $owner) {
       id
       idVerification
@@ -462,7 +462,7 @@ export const onCreateVerification = /* GraphQL */ `
   }
 `;
 export const onUpdateVerification = /* GraphQL */ `
-  subscription OnUpdateVerification($owner: String!) {
+  subscription OnUpdateVerification($owner: String) {
     onUpdateVerification(owner: $owner) {
       id
       idVerification
@@ -508,7 +508,7 @@ export const onUpdateVerification = /* GraphQL */ `
   }
 `;
 export const onDeleteVerification = /* GraphQL */ `
-  subscription OnDeleteVerification($owner: String!) {
+  subscription OnDeleteVerification($owner: String) {
     onDeleteVerification(owner: $owner) {
       id
       idVerification
@@ -554,7 +554,7 @@ export const onDeleteVerification = /* GraphQL */ `
   }
 `;
 export const onCreateUserMeata = /* GraphQL */ `
-  subscription OnCreateUserMeata($owner: String!) {
+  subscription OnCreateUserMeata($owner: String) {
     onCreateUserMeata(owner: $owner) {
       id
       email
@@ -578,7 +578,7 @@ export const onCreateUserMeata = /* GraphQL */ `
   }
 `;
 export const onUpdateUserMeata = /* GraphQL */ `
-  subscription OnUpdateUserMeata($owner: String!) {
+  subscription OnUpdateUserMeata($owner: String) {
     onUpdateUserMeata(owner: $owner) {
       id
       email
@@ -602,7 +602,7 @@ export const onUpdateUserMeata = /* GraphQL */ `
   }
 `;
 export const onDeleteUserMeata = /* GraphQL */ `
-  subscription OnDeleteUserMeata($owner: String!) {
+  subscription OnDeleteUserMeata($owner: String) {
     onDeleteUserMeata(owner: $owner) {
       id
       email
@@ -626,7 +626,7 @@ export const onDeleteUserMeata = /* GraphQL */ `
   }
 `;
 export const onCreateUserWallets = /* GraphQL */ `
-  subscription OnCreateUserWallets($owner: String!) {
+  subscription OnCreateUserWallets($owner: String) {
     onCreateUserWallets(owner: $owner) {
       id
       name
@@ -640,7 +640,7 @@ export const onCreateUserWallets = /* GraphQL */ `
   }
 `;
 export const onUpdateUserWallets = /* GraphQL */ `
-  subscription OnUpdateUserWallets($owner: String!) {
+  subscription OnUpdateUserWallets($owner: String) {
     onUpdateUserWallets(owner: $owner) {
       id
       name
@@ -654,7 +654,7 @@ export const onUpdateUserWallets = /* GraphQL */ `
   }
 `;
 export const onDeleteUserWallets = /* GraphQL */ `
-  subscription OnDeleteUserWallets($owner: String!) {
+  subscription OnDeleteUserWallets($owner: String) {
     onDeleteUserWallets(owner: $owner) {
       id
       name

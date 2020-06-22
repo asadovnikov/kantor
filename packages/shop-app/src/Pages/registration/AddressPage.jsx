@@ -31,7 +31,6 @@ const AddressPage = ({ value = {}, onChange, onValidate, onApply }) => {
 	const classes = useStyles();
 
 	useEffect(() => {
-		// debugger;
 		const valid = (region && country && homeAddress && city && postalCode) !== undefined;
 		setIsValid(valid);
 		if (valid && onChange) {
@@ -90,7 +89,6 @@ const AddressPage = ({ value = {}, onChange, onValidate, onApply }) => {
 						<Select
 							fullWidth
 							onChange={({ target: { value } }) => {
-								// debugger;
 								setRegion(value);
 								triggerChange();
 							}}

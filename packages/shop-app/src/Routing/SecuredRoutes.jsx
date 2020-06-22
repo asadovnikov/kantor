@@ -5,7 +5,10 @@ import { HomePage, Transactions, MyWallets, BuyCryptoPage } from '../Pages/secur
 export const SecuredRoutes = () => {
 	return (
 		<>
-			<Route exact path={['/', '/home']}>
+			<Route exact path={'/'}>
+				<HomePage />
+			</Route>
+			<Route path='/home'>
 				<HomePage />
 			</Route>
 			<Route path={['/transaction', '/mytransactions']}>

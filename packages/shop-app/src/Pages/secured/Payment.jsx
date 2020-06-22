@@ -64,14 +64,12 @@ const BTCForm = ({ value = {}, onChange }) => {
 	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
-		// debugger;
 		setIsValid(FiatAmount > 0 && btcWallet !== undefined);
 	}, [FiatAmount, btcWallet]);
 
 	const writeTransaction = async (userData) => {
 		const { signature, ...rest } = userData;
 		try {
-			// debugger;
 			const result = await API.graphql(
 				graphqlOperation(createTransaction, {
 					input: { ...rest },
@@ -135,7 +133,7 @@ const BTCForm = ({ value = {}, onChange }) => {
 				MerchantRef: 'dummy@merchant@ref',
 			};
 			await writeTransaction(userData);
-			// debugger;
+
 			const formData = new FormData();
 			formData.append('Signature', userData.signature);
 			formData.append('MerchantName', 'Dummy1');
@@ -243,6 +241,7 @@ const BTCForm = ({ value = {}, onChange }) => {
 			FiatCurrency: newFiatCurrency,
 		});
 	};
+
 	return (
 		<RegistrationContent actionText='Buy BTC' isLoading={loading} onAction={doPayment} isValid={valid}>
 			<RegistrationContentRow>
@@ -286,7 +285,6 @@ const BTCForm = ({ value = {}, onChange }) => {
 						placeholder='Select destination wallet'
 						value={btcWallet}
 						onChange={(value) => {
-							// debugger;
 							setBTCWallet(value);
 						}}>
 						{wallets.map((wallet) => (
