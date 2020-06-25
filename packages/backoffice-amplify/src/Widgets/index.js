@@ -1,0 +1,11 @@
+export { UserWidget } from './Users';
+export { TransactionsWidget } from './Transactions';
+export { KYCValidationWidget } from './KYCValidation';
+export { PersonCommentsWidget } from './PersonComments';
+export { PersonDetailsWidget } from './PersonDetails';
+export { PersonFilesWidget } from './PersonFiles';
+export { PersonTransactionsWidget } from './PersonTransactions';
+export { PersonFinanceWidget } from './PersonFinance';
+export { PersonVerificationWidget } from './PersonVerification';
+export { PersonNameWidget } from './PersonName';
+export { DocumentUploadWidget } from './DocumentUpload';

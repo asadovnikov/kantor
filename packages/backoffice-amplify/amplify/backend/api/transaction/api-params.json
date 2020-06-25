@@ -1,0 +1,52 @@
+{
+    "paths": [
+        {
+            "name": "/transaction/validate",
+            "lambdaFunction": "validatetransaction",
+            "privacy": {
+                "open": true
+            }
+        },
+        {
+            "name": "/transaction/register",
+            "lambdaFunction": "registertransaction",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "transaction",
+    "apiName": "transaction",
+    "functionArns": [
+        {
+            "lambdaFunction": "validatetransaction"
+        },
+        {
+            "lambdaFunction": "registertransaction"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-shopapp-dev-145203-authRole",
+        "unAuthRoleName": "amplify-shopapp-dev-145203-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "validatetransaction",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "registertransaction",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
