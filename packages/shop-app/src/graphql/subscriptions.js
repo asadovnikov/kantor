@@ -6,15 +6,52 @@ export const onCreateKycDocument = /* GraphQL */ `
     onCreateKYCDocument(owner: $owner) {
       id
       name
-      owner
       state
       file {
         bucket
         region
         key
       }
-      createdAt
-      updatedAt
+      documentType
+      Verification {
+        id
+        customer {
+          id
+          Firstname
+          Surname
+          DateOfBirth
+          StreetLine1
+          StreetLine2
+          City
+          PostalCode
+          StateProvince
+          Country
+          Email
+          Telephone
+          FiatTotalAmount
+          FiatDailyAmount
+          FiatMonthlyAmount
+          FiatCurrency
+          Tier
+          KYCState
+          VerificationID
+          createdOn
+          updatedOn
+          owner
+        }
+        idVerification
+        poaVerification
+        financeVerification
+        documents {
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+      }
+      createdOn
+      updatedOn
+      owner
     }
   }
 `;
@@ -23,15 +60,52 @@ export const onUpdateKycDocument = /* GraphQL */ `
     onUpdateKYCDocument(owner: $owner) {
       id
       name
-      owner
       state
       file {
         bucket
         region
         key
       }
-      createdAt
-      updatedAt
+      documentType
+      Verification {
+        id
+        customer {
+          id
+          Firstname
+          Surname
+          DateOfBirth
+          StreetLine1
+          StreetLine2
+          City
+          PostalCode
+          StateProvince
+          Country
+          Email
+          Telephone
+          FiatTotalAmount
+          FiatDailyAmount
+          FiatMonthlyAmount
+          FiatCurrency
+          Tier
+          KYCState
+          VerificationID
+          createdOn
+          updatedOn
+          owner
+        }
+        idVerification
+        poaVerification
+        financeVerification
+        documents {
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+      }
+      createdOn
+      updatedOn
+      owner
     }
   }
 `;
@@ -40,15 +114,52 @@ export const onDeleteKycDocument = /* GraphQL */ `
     onDeleteKYCDocument(owner: $owner) {
       id
       name
-      owner
       state
       file {
         bucket
         region
         key
       }
-      createdAt
-      updatedAt
+      documentType
+      Verification {
+        id
+        customer {
+          id
+          Firstname
+          Surname
+          DateOfBirth
+          StreetLine1
+          StreetLine2
+          City
+          PostalCode
+          StateProvince
+          Country
+          Email
+          Telephone
+          FiatTotalAmount
+          FiatDailyAmount
+          FiatMonthlyAmount
+          FiatCurrency
+          Tier
+          KYCState
+          VerificationID
+          createdOn
+          updatedOn
+          owner
+        }
+        idVerification
+        poaVerification
+        financeVerification
+        documents {
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+      }
+      createdOn
+      updatedOn
+      owner
     }
   }
 `;
@@ -148,6 +259,45 @@ export const onCreateTransaction = /* GraphQL */ `
       GWReference
       BankReference
       MerchantRef
+      Customer {
+        id
+        Firstname
+        Surname
+        DateOfBirth
+        StreetLine1
+        StreetLine2
+        City
+        PostalCode
+        StateProvince
+        Country
+        Email
+        Telephone
+        FiatTotalAmount
+        FiatDailyAmount
+        FiatMonthlyAmount
+        FiatCurrency
+        Tier
+        KYCState
+        VerificationID
+        PaymentTransactions {
+          nextToken
+        }
+        KYCVerification {
+          id
+          idVerification
+          poaVerification
+          financeVerification
+          createdOn
+          updatedOn
+          owner
+        }
+        comments {
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+      }
       createdOn
       updatedOn
       owner
@@ -178,6 +328,45 @@ export const onUpdateTransaction = /* GraphQL */ `
       GWReference
       BankReference
       MerchantRef
+      Customer {
+        id
+        Firstname
+        Surname
+        DateOfBirth
+        StreetLine1
+        StreetLine2
+        City
+        PostalCode
+        StateProvince
+        Country
+        Email
+        Telephone
+        FiatTotalAmount
+        FiatDailyAmount
+        FiatMonthlyAmount
+        FiatCurrency
+        Tier
+        KYCState
+        VerificationID
+        PaymentTransactions {
+          nextToken
+        }
+        KYCVerification {
+          id
+          idVerification
+          poaVerification
+          financeVerification
+          createdOn
+          updatedOn
+          owner
+        }
+        comments {
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+      }
       createdOn
       updatedOn
       owner
@@ -208,6 +397,45 @@ export const onDeleteTransaction = /* GraphQL */ `
       GWReference
       BankReference
       MerchantRef
+      Customer {
+        id
+        Firstname
+        Surname
+        DateOfBirth
+        StreetLine1
+        StreetLine2
+        City
+        PostalCode
+        StateProvince
+        Country
+        Email
+        Telephone
+        FiatTotalAmount
+        FiatDailyAmount
+        FiatMonthlyAmount
+        FiatCurrency
+        Tier
+        KYCState
+        VerificationID
+        PaymentTransactions {
+          nextToken
+        }
+        KYCVerification {
+          id
+          idVerification
+          poaVerification
+          financeVerification
+          createdOn
+          updatedOn
+          owner
+        }
+        comments {
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+      }
       createdOn
       updatedOn
       owner
@@ -232,8 +460,10 @@ export const onCreateCustomer = /* GraphQL */ `
       FiatTotalAmount
       FiatDailyAmount
       FiatMonthlyAmount
+      FiatCurrency
       Tier
       KYCState
+      VerificationID
       PaymentTransactions {
         items {
           id
@@ -264,14 +494,49 @@ export const onCreateCustomer = /* GraphQL */ `
         nextToken
       }
       KYCVerification {
-        items {
+        id
+        customer {
           id
-          idVerification
-          poaVerification
-          financeVerification
+          Firstname
+          Surname
+          DateOfBirth
+          StreetLine1
+          StreetLine2
+          City
+          PostalCode
+          StateProvince
+          Country
+          Email
+          Telephone
+          FiatTotalAmount
+          FiatDailyAmount
+          FiatMonthlyAmount
+          FiatCurrency
+          Tier
+          KYCState
+          VerificationID
           createdOn
           updatedOn
           owner
+        }
+        idVerification
+        poaVerification
+        financeVerification
+        documents {
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+      }
+      comments {
+        items {
+          id
+          content
+          Author
+          AuthorEmail
+          createdOn
+          updatedOn
         }
         nextToken
       }
@@ -299,8 +564,10 @@ export const onUpdateCustomer = /* GraphQL */ `
       FiatTotalAmount
       FiatDailyAmount
       FiatMonthlyAmount
+      FiatCurrency
       Tier
       KYCState
+      VerificationID
       PaymentTransactions {
         items {
           id
@@ -331,14 +598,49 @@ export const onUpdateCustomer = /* GraphQL */ `
         nextToken
       }
       KYCVerification {
-        items {
+        id
+        customer {
           id
-          idVerification
-          poaVerification
-          financeVerification
+          Firstname
+          Surname
+          DateOfBirth
+          StreetLine1
+          StreetLine2
+          City
+          PostalCode
+          StateProvince
+          Country
+          Email
+          Telephone
+          FiatTotalAmount
+          FiatDailyAmount
+          FiatMonthlyAmount
+          FiatCurrency
+          Tier
+          KYCState
+          VerificationID
           createdOn
           updatedOn
           owner
+        }
+        idVerification
+        poaVerification
+        financeVerification
+        documents {
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+      }
+      comments {
+        items {
+          id
+          content
+          Author
+          AuthorEmail
+          createdOn
+          updatedOn
         }
         nextToken
       }
@@ -366,8 +668,10 @@ export const onDeleteCustomer = /* GraphQL */ `
       FiatTotalAmount
       FiatDailyAmount
       FiatMonthlyAmount
+      FiatCurrency
       Tier
       KYCState
+      VerificationID
       PaymentTransactions {
         items {
           id
@@ -398,14 +702,49 @@ export const onDeleteCustomer = /* GraphQL */ `
         nextToken
       }
       KYCVerification {
-        items {
+        id
+        customer {
           id
-          idVerification
-          poaVerification
-          financeVerification
+          Firstname
+          Surname
+          DateOfBirth
+          StreetLine1
+          StreetLine2
+          City
+          PostalCode
+          StateProvince
+          Country
+          Email
+          Telephone
+          FiatTotalAmount
+          FiatDailyAmount
+          FiatMonthlyAmount
+          FiatCurrency
+          Tier
+          KYCState
+          VerificationID
           createdOn
           updatedOn
           owner
+        }
+        idVerification
+        poaVerification
+        financeVerification
+        documents {
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+      }
+      comments {
+        items {
+          id
+          content
+          Author
+          AuthorEmail
+          createdOn
+          updatedOn
         }
         nextToken
       }
@@ -415,43 +754,214 @@ export const onDeleteCustomer = /* GraphQL */ `
     }
   }
 `;
+export const onCreateComment = /* GraphQL */ `
+  subscription OnCreateComment {
+    onCreateComment {
+      id
+      content
+      Customer {
+        id
+        Firstname
+        Surname
+        DateOfBirth
+        StreetLine1
+        StreetLine2
+        City
+        PostalCode
+        StateProvince
+        Country
+        Email
+        Telephone
+        FiatTotalAmount
+        FiatDailyAmount
+        FiatMonthlyAmount
+        FiatCurrency
+        Tier
+        KYCState
+        VerificationID
+        PaymentTransactions {
+          nextToken
+        }
+        KYCVerification {
+          id
+          idVerification
+          poaVerification
+          financeVerification
+          createdOn
+          updatedOn
+          owner
+        }
+        comments {
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+      }
+      Author
+      AuthorEmail
+      createdOn
+      updatedOn
+    }
+  }
+`;
+export const onUpdateComment = /* GraphQL */ `
+  subscription OnUpdateComment {
+    onUpdateComment {
+      id
+      content
+      Customer {
+        id
+        Firstname
+        Surname
+        DateOfBirth
+        StreetLine1
+        StreetLine2
+        City
+        PostalCode
+        StateProvince
+        Country
+        Email
+        Telephone
+        FiatTotalAmount
+        FiatDailyAmount
+        FiatMonthlyAmount
+        FiatCurrency
+        Tier
+        KYCState
+        VerificationID
+        PaymentTransactions {
+          nextToken
+        }
+        KYCVerification {
+          id
+          idVerification
+          poaVerification
+          financeVerification
+          createdOn
+          updatedOn
+          owner
+        }
+        comments {
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+      }
+      Author
+      AuthorEmail
+      createdOn
+      updatedOn
+    }
+  }
+`;
+export const onDeleteComment = /* GraphQL */ `
+  subscription OnDeleteComment {
+    onDeleteComment {
+      id
+      content
+      Customer {
+        id
+        Firstname
+        Surname
+        DateOfBirth
+        StreetLine1
+        StreetLine2
+        City
+        PostalCode
+        StateProvince
+        Country
+        Email
+        Telephone
+        FiatTotalAmount
+        FiatDailyAmount
+        FiatMonthlyAmount
+        FiatCurrency
+        Tier
+        KYCState
+        VerificationID
+        PaymentTransactions {
+          nextToken
+        }
+        KYCVerification {
+          id
+          idVerification
+          poaVerification
+          financeVerification
+          createdOn
+          updatedOn
+          owner
+        }
+        comments {
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+      }
+      Author
+      AuthorEmail
+      createdOn
+      updatedOn
+    }
+  }
+`;
 export const onCreateVerification = /* GraphQL */ `
   subscription OnCreateVerification($owner: String) {
     onCreateVerification(owner: $owner) {
       id
+      customer {
+        id
+        Firstname
+        Surname
+        DateOfBirth
+        StreetLine1
+        StreetLine2
+        City
+        PostalCode
+        StateProvince
+        Country
+        Email
+        Telephone
+        FiatTotalAmount
+        FiatDailyAmount
+        FiatMonthlyAmount
+        FiatCurrency
+        Tier
+        KYCState
+        VerificationID
+        PaymentTransactions {
+          nextToken
+        }
+        KYCVerification {
+          id
+          idVerification
+          poaVerification
+          financeVerification
+          createdOn
+          updatedOn
+          owner
+        }
+        comments {
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+      }
       idVerification
-      idVerificationDocuments {
-        items {
-          id
-          name
-          owner
-          state
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
       poaVerification
-      poaVerificationDocuments {
-        items {
-          id
-          name
-          owner
-          state
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
       financeVerification
-      financeDocuments {
+      documents {
         items {
           id
           name
-          owner
           state
-          createdAt
-          updatedAt
+          documentType
+          createdOn
+          updatedOn
+          owner
         }
         nextToken
       }
@@ -465,39 +975,57 @@ export const onUpdateVerification = /* GraphQL */ `
   subscription OnUpdateVerification($owner: String) {
     onUpdateVerification(owner: $owner) {
       id
+      customer {
+        id
+        Firstname
+        Surname
+        DateOfBirth
+        StreetLine1
+        StreetLine2
+        City
+        PostalCode
+        StateProvince
+        Country
+        Email
+        Telephone
+        FiatTotalAmount
+        FiatDailyAmount
+        FiatMonthlyAmount
+        FiatCurrency
+        Tier
+        KYCState
+        VerificationID
+        PaymentTransactions {
+          nextToken
+        }
+        KYCVerification {
+          id
+          idVerification
+          poaVerification
+          financeVerification
+          createdOn
+          updatedOn
+          owner
+        }
+        comments {
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+      }
       idVerification
-      idVerificationDocuments {
-        items {
-          id
-          name
-          owner
-          state
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
       poaVerification
-      poaVerificationDocuments {
-        items {
-          id
-          name
-          owner
-          state
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
       financeVerification
-      financeDocuments {
+      documents {
         items {
           id
           name
-          owner
           state
-          createdAt
-          updatedAt
+          documentType
+          createdOn
+          updatedOn
+          owner
         }
         nextToken
       }
@@ -511,39 +1039,57 @@ export const onDeleteVerification = /* GraphQL */ `
   subscription OnDeleteVerification($owner: String) {
     onDeleteVerification(owner: $owner) {
       id
+      customer {
+        id
+        Firstname
+        Surname
+        DateOfBirth
+        StreetLine1
+        StreetLine2
+        City
+        PostalCode
+        StateProvince
+        Country
+        Email
+        Telephone
+        FiatTotalAmount
+        FiatDailyAmount
+        FiatMonthlyAmount
+        FiatCurrency
+        Tier
+        KYCState
+        VerificationID
+        PaymentTransactions {
+          nextToken
+        }
+        KYCVerification {
+          id
+          idVerification
+          poaVerification
+          financeVerification
+          createdOn
+          updatedOn
+          owner
+        }
+        comments {
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+      }
       idVerification
-      idVerificationDocuments {
-        items {
-          id
-          name
-          owner
-          state
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
       poaVerification
-      poaVerificationDocuments {
-        items {
-          id
-          name
-          owner
-          state
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
       financeVerification
-      financeDocuments {
+      documents {
         items {
           id
           name
-          owner
           state
-          createdAt
-          updatedAt
+          documentType
+          createdOn
+          updatedOn
+          owner
         }
         nextToken
       }

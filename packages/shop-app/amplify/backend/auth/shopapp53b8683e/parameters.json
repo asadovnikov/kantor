@@ -1,4 +1,6 @@
 {
+    "identityPoolName": "shopapp53b8683e_identitypool_32ff92a9",
+    "allowUnauthenticatedIdentities": false,
     "resourceNameTruncated": "shopap53b8683e",
     "userPoolName": "shopapp53b8683e_userpool_53b8683e",
     "autoVerifiedAttributes": [
@@ -31,7 +33,7 @@
     "userpoolClientSetAttributes": false,
     "sharedId": "53b8683e",
     "resourceName": "shopapp53b8683e",
-    "authSelections": "userPoolOnly",
+    "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
             "AuthRole",

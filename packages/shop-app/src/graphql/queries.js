@@ -6,15 +6,52 @@ export const getKycDocument = /* GraphQL */ `
     getKYCDocument(id: $id) {
       id
       name
-      owner
       state
       file {
         bucket
         region
         key
       }
-      createdAt
-      updatedAt
+      documentType
+      Verification {
+        id
+        customer {
+          id
+          Firstname
+          Surname
+          DateOfBirth
+          StreetLine1
+          StreetLine2
+          City
+          PostalCode
+          StateProvince
+          Country
+          Email
+          Telephone
+          FiatTotalAmount
+          FiatDailyAmount
+          FiatMonthlyAmount
+          FiatCurrency
+          Tier
+          KYCState
+          VerificationID
+          createdOn
+          updatedOn
+          owner
+        }
+        idVerification
+        poaVerification
+        financeVerification
+        documents {
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+      }
+      createdOn
+      updatedOn
+      owner
     }
   }
 `;
@@ -28,15 +65,25 @@ export const listKycDocuments = /* GraphQL */ `
       items {
         id
         name
-        owner
         state
         file {
           bucket
           region
           key
         }
-        createdAt
-        updatedAt
+        documentType
+        Verification {
+          id
+          idVerification
+          poaVerification
+          financeVerification
+          createdOn
+          updatedOn
+          owner
+        }
+        createdOn
+        updatedOn
+        owner
       }
       nextToken
     }
@@ -121,6 +168,45 @@ export const getTransaction = /* GraphQL */ `
       GWReference
       BankReference
       MerchantRef
+      Customer {
+        id
+        Firstname
+        Surname
+        DateOfBirth
+        StreetLine1
+        StreetLine2
+        City
+        PostalCode
+        StateProvince
+        Country
+        Email
+        Telephone
+        FiatTotalAmount
+        FiatDailyAmount
+        FiatMonthlyAmount
+        FiatCurrency
+        Tier
+        KYCState
+        VerificationID
+        PaymentTransactions {
+          nextToken
+        }
+        KYCVerification {
+          id
+          idVerification
+          poaVerification
+          financeVerification
+          createdOn
+          updatedOn
+          owner
+        }
+        comments {
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+      }
       createdOn
       updatedOn
       owner
@@ -156,6 +242,30 @@ export const listTransactions = /* GraphQL */ `
         GWReference
         BankReference
         MerchantRef
+        Customer {
+          id
+          Firstname
+          Surname
+          DateOfBirth
+          StreetLine1
+          StreetLine2
+          City
+          PostalCode
+          StateProvince
+          Country
+          Email
+          Telephone
+          FiatTotalAmount
+          FiatDailyAmount
+          FiatMonthlyAmount
+          FiatCurrency
+          Tier
+          KYCState
+          VerificationID
+          createdOn
+          updatedOn
+          owner
+        }
         createdOn
         updatedOn
         owner
@@ -182,8 +292,10 @@ export const getCustomer = /* GraphQL */ `
       FiatTotalAmount
       FiatDailyAmount
       FiatMonthlyAmount
+      FiatCurrency
       Tier
       KYCState
+      VerificationID
       PaymentTransactions {
         items {
           id
@@ -214,14 +326,49 @@ export const getCustomer = /* GraphQL */ `
         nextToken
       }
       KYCVerification {
-        items {
+        id
+        customer {
           id
-          idVerification
-          poaVerification
-          financeVerification
+          Firstname
+          Surname
+          DateOfBirth
+          StreetLine1
+          StreetLine2
+          City
+          PostalCode
+          StateProvince
+          Country
+          Email
+          Telephone
+          FiatTotalAmount
+          FiatDailyAmount
+          FiatMonthlyAmount
+          FiatCurrency
+          Tier
+          KYCState
+          VerificationID
           createdOn
           updatedOn
           owner
+        }
+        idVerification
+        poaVerification
+        financeVerification
+        documents {
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+      }
+      comments {
+        items {
+          id
+          content
+          Author
+          AuthorEmail
+          createdOn
+          updatedOn
         }
         nextToken
       }
@@ -254,12 +401,23 @@ export const listCustomers = /* GraphQL */ `
         FiatTotalAmount
         FiatDailyAmount
         FiatMonthlyAmount
+        FiatCurrency
         Tier
         KYCState
+        VerificationID
         PaymentTransactions {
           nextToken
         }
         KYCVerification {
+          id
+          idVerification
+          poaVerification
+          financeVerification
+          createdOn
+          updatedOn
+          owner
+        }
+        comments {
           nextToken
         }
         createdOn
@@ -270,43 +428,155 @@ export const listCustomers = /* GraphQL */ `
     }
   }
 `;
+export const getComment = /* GraphQL */ `
+  query GetComment($id: ID!) {
+    getComment(id: $id) {
+      id
+      content
+      Customer {
+        id
+        Firstname
+        Surname
+        DateOfBirth
+        StreetLine1
+        StreetLine2
+        City
+        PostalCode
+        StateProvince
+        Country
+        Email
+        Telephone
+        FiatTotalAmount
+        FiatDailyAmount
+        FiatMonthlyAmount
+        FiatCurrency
+        Tier
+        KYCState
+        VerificationID
+        PaymentTransactions {
+          nextToken
+        }
+        KYCVerification {
+          id
+          idVerification
+          poaVerification
+          financeVerification
+          createdOn
+          updatedOn
+          owner
+        }
+        comments {
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+      }
+      Author
+      AuthorEmail
+      createdOn
+      updatedOn
+    }
+  }
+`;
+export const listComments = /* GraphQL */ `
+  query ListComments(
+    $filter: ModelCommentFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listComments(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        content
+        Customer {
+          id
+          Firstname
+          Surname
+          DateOfBirth
+          StreetLine1
+          StreetLine2
+          City
+          PostalCode
+          StateProvince
+          Country
+          Email
+          Telephone
+          FiatTotalAmount
+          FiatDailyAmount
+          FiatMonthlyAmount
+          FiatCurrency
+          Tier
+          KYCState
+          VerificationID
+          createdOn
+          updatedOn
+          owner
+        }
+        Author
+        AuthorEmail
+        createdOn
+        updatedOn
+      }
+      nextToken
+    }
+  }
+`;
 export const getVerification = /* GraphQL */ `
   query GetVerification($id: ID!) {
     getVerification(id: $id) {
       id
+      customer {
+        id
+        Firstname
+        Surname
+        DateOfBirth
+        StreetLine1
+        StreetLine2
+        City
+        PostalCode
+        StateProvince
+        Country
+        Email
+        Telephone
+        FiatTotalAmount
+        FiatDailyAmount
+        FiatMonthlyAmount
+        FiatCurrency
+        Tier
+        KYCState
+        VerificationID
+        PaymentTransactions {
+          nextToken
+        }
+        KYCVerification {
+          id
+          idVerification
+          poaVerification
+          financeVerification
+          createdOn
+          updatedOn
+          owner
+        }
+        comments {
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+      }
       idVerification
-      idVerificationDocuments {
-        items {
-          id
-          name
-          owner
-          state
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
       poaVerification
-      poaVerificationDocuments {
-        items {
-          id
-          name
-          owner
-          state
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
       financeVerification
-      financeDocuments {
+      documents {
         items {
           id
           name
-          owner
           state
-          createdAt
-          updatedAt
+          documentType
+          createdOn
+          updatedOn
+          owner
         }
         nextToken
       }
@@ -325,16 +595,34 @@ export const listVerifications = /* GraphQL */ `
     listVerifications(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        customer {
+          id
+          Firstname
+          Surname
+          DateOfBirth
+          StreetLine1
+          StreetLine2
+          City
+          PostalCode
+          StateProvince
+          Country
+          Email
+          Telephone
+          FiatTotalAmount
+          FiatDailyAmount
+          FiatMonthlyAmount
+          FiatCurrency
+          Tier
+          KYCState
+          VerificationID
+          createdOn
+          updatedOn
+          owner
+        }
         idVerification
-        idVerificationDocuments {
-          nextToken
-        }
         poaVerification
-        poaVerificationDocuments {
-          nextToken
-        }
         financeVerification
-        financeDocuments {
+        documents {
           nextToken
         }
         createdOn

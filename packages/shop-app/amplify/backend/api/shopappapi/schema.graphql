@@ -12,6 +12,15 @@ enum DocumentState {
 	JUMIO_VERIFIED
 }
 
+enum DocumentClassification {
+	UNKNOWN
+	IDENTITY
+	POA
+	SOW
+	PHOTO
+	DOCUMENT
+}
+
 enum KYCStageStatus {
 	INITIATED
 	VALIDATED
@@ -60,12 +69,15 @@ type S3Object {
 	key: String!
 }
 
-type KYCDocument @model @auth(rules: [{ allow: owner }, { allow: groups, groups: ["Admins"] }]) {
+type KYCDocument
+	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
+	@auth(rules: [{ allow: owner }, { allow: groups, groups: ["Admins"] }]) {
 	id: ID!
 	name: String
-	owner: String
 	state: DocumentState!
 	file: S3Object
+	documentType: DocumentClassification!
+	Verification: Verification @connection(name: "VerificationDocument")
 }
 
 type PaymentRequest
@@ -113,6 +125,7 @@ type Transaction
 	GWReference: String
 	BankReference: String
 	MerchantRef: ID!
+	Customer: Customer @connection(name: "CustomerPaymentTransaction")
 }
 
 type Customer
@@ -134,22 +147,34 @@ type Customer
 	FiatTotalAmount: String
 	FiatDailyAmount: String
 	FiatMonthlyAmount: String
+	FiatCurrency: String
 	Tier: CustomerTier!
 	KYCState: KYCStageStatus!
-	PaymentTransactions: [Transaction] @connection(keyName: "byMerchantRef", fields: ["id"])
-	KYCVerification: [Verification] @connection
+	VerificationID: ID!
+	PaymentTransactions: [Transaction] @connection(name: "CustomerPaymentTransaction")
+	KYCVerification: Verification @connection(name: "CustomerVerification")
+	comments: [Comment] @connection(name: "CustomerComment")
+}
+
+type Comment
+	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
+	@auth(rules: [{ allow: groups, groups: ["Admins"] }]) {
+	id: ID!
+	content: String
+	Customer: Customer @connection(name: "CustomerComment")
+	Author: String
+	AuthorEmail: String
 }
 
 type Verification
 	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
 	@auth(rules: [{ allow: owner }, { allow: groups, groups: ["Admins"] }]) {
 	id: ID!
+	customer: Customer @connection(name: "CustomerVerification")
 	idVerification: KYCStageStatus!
-	idVerificationDocuments: [KYCDocument] @connection
 	poaVerification: KYCStageStatus!
-	poaVerificationDocuments: [KYCDocument] @connection
 	financeVerification: KYCStageStatus!
-	financeDocuments: [KYCDocument] @connection
+	documents: [KYCDocument] @connection(name: "VerificationDocument")
 }
 
 type UserMeata

@@ -65,7 +65,8 @@
                     "attributes": [
                         "UserPoolId",
                         "AppClientIDWeb",
-                        "AppClientID"
+                        "AppClientID",
+                        "IdentityPoolId"
                     ]
                 }
             ]
@@ -148,6 +149,11 @@
                     ]
                 }
             ]
+        },
+        "S3Trigger2a0a4f75": {
+            "service": "Lambda",
+            "providerPlugin": "awscloudformation",
+            "build": true
         }
     },
     "hosting": {
@@ -155,6 +161,44 @@
             "service": "amplifyhosting",
             "providerPlugin": "awscloudformation",
             "type": "manual"
+        }
+    },
+    "storage": {
+        "kycimages": {
+            "service": "S3",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": [
+                {
+                    "category": "function",
+                    "resourceName": "S3Trigger2a0a4f75",
+                    "attributes": [
+                        "Name",
+                        "Arn",
+                        "LambdaExecutionRole"
+                    ]
+                },
+                {
+                    "category": "auth",
+                    "resourceName": "shopapp53b8683e",
+                    "attributes": [
+                        "UserPoolId"
+                    ]
+                },
+                {
+                    "category": "auth",
+                    "resourceName": "userPoolGroups",
+                    "attributes": [
+                        "CustomersGroupRole"
+                    ]
+                },
+                {
+                    "category": "auth",
+                    "resourceName": "userPoolGroups",
+                    "attributes": [
+                        "AdminsGroupRole"
+                    ]
+                }
+            ]
         }
     }
 }
