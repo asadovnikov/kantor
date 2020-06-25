@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { ItemDetails } from '../Components';
-import { Row, Col, Descriptions, Space, Typography, Button, Modal } from 'antd';
+import { Row, Col, Space, Typography, Button, Modal } from 'antd';
 import { KYCValidationWidget } from './KYCValidation';
 import { UserSwitchOutlined, MinusSquareOutlined, CheckOutlined } from '@ant-design/icons';
 

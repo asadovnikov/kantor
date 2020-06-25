@@ -1,11 +1,8 @@
 import React from 'react';
 import { DataTable } from '../Components';
-import { Empty, Spin, Typography, Space } from 'antd';
-import { LoadingOutlined } from '@ant-design/icons';
+import { Empty, Typography } from 'antd';
 
 const { Text } = Typography;
-
-const loadingIndicator = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 const dataColumns = [
 	{

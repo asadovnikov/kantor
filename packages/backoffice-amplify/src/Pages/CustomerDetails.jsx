@@ -57,7 +57,7 @@ export const CustomerDetailsPage = () => {
 				setLoaded(true);
 			});
 		return () => (canceled = true);
-	}, []);
+	}, [customerId]);
 	return (
 		<Spin indicator={loadingIndicator} spinning={loading} tip='Loading...'>
 			{loaded === true && (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Auth } from 'aws-amplify';
-import { Comment, Tooltip, List, Input, Row, Col, Button, Space } from 'antd';
+import { Comment, Tooltip, List, Input, Row, Col, Button } from 'antd';
 import { v4 as uuid } from 'uuid';
 import moment from 'moment';
 import Avatar from 'react-avatar';
@@ -20,8 +20,7 @@ const AddComment = ({ person }) => {
 			const {
 				attributes: { email },
 			} = await Auth.currentAuthenticatedUser();
-			// debugger;
-			const result = await API.graphql(
+			await API.graphql(
 				graphqlOperation(createComment, {
 					input: {
 						id: uuid(),

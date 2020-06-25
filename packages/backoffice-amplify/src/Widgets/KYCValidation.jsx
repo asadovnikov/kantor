@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Row, Col, Radio } from 'antd';
 
 const style = { padding: '8px 0', textAlign: 'center' };
 const textStyle = { padding: '8px 0' };
 
 const VerificationRow = ({ title, status, onStatusChange = () => {} }) => {
-	const [verification, setVerification] = useState(status);
-
 	const updateStatus = (value) => {
 		// setVerification(value);
 		onStatusChange(value);

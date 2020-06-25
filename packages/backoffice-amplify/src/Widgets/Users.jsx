@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DataTable } from '../Components';
-import { Empty, Spin, Typography, Space, Drawer } from 'antd';
+import { Empty, Spin, Typography, Space } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { API, graphqlOperation } from 'aws-amplify';
@@ -67,8 +67,6 @@ export const UserWidget = ({ kycState }) => {
 		},
 	];
 	const [users, setUsers] = useState([]);
-	const [customerId, setCustomerID] = useState();
-	const [showDetails, setShowDetails] = useState(false);
 	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
