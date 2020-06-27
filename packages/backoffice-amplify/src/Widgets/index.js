@@ -8,4 +8,4 @@ export { PersonTransactionsWidget } from './PersonTransactions';
 export { PersonFinanceWidget } from './PersonFinance';
 export { PersonVerificationWidget } from './PersonVerification';
 export { PersonNameWidget } from './PersonName';
-export { DocumentUploadWidget } from './DocumentUpload';
+export { DocumentsWidget } from './Documents';

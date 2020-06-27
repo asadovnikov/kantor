@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Row, Col } from 'antd';
 import { motion, AnimatePresence } from 'framer-motion';
 import styled from 'styled-components';
 import {
@@ -11,6 +11,8 @@ import {
 	VideoCameraOutlined,
 	UploadOutlined,
 } from '@ant-design/icons';
+
+import { CurrentUser } from './Components';
 
 import { BaseRoutes } from './Routing';
 
@@ -60,10 +62,6 @@ export const AdminAppLayout = () => {
 						Pending KYC
 						<Link to='/pending' />
 					</Menu.Item>
-					{/* <Menu.Item key='/overlimited' icon={<VideoCameraOutlined />}>
-						Overlimited
-						<Link to='/overlimited' />
-					</Menu.Item> */}
 					<Menu.Item key='/transactions' icon={<UploadOutlined />}>
 						Transactions
 						<Link to='/transactions' />
@@ -72,11 +70,19 @@ export const AdminAppLayout = () => {
 			</FixedSider>
 			<SiteLayout collapsed={collapsed ? true : undefined}>
 				<FixedHeader className='site-layout-background' style={{ padding: 0 }}>
-					{collapsed === true ? (
-						<MenuUnfoldOutlined className='trigger' onClick={() => setCollapsed(!collapsed)} />
-					) : (
-						<MenuFoldOutlined className='trigger' onClick={() => setCollapsed(!collapsed)} />
-					)}
+					<Row>
+						<Col flex='50px'>
+							{collapsed === true ? (
+								<MenuUnfoldOutlined className='trigger' onClick={() => setCollapsed(!collapsed)} />
+							) : (
+								<MenuFoldOutlined className='trigger' onClick={() => setCollapsed(!collapsed)} />
+							)}
+						</Col>
+						<Col flex='auto'></Col>
+						<Col>
+							<CurrentUser />
+						</Col>
+					</Row>
 				</FixedHeader>
 				<HeadingOffset />
 				<SiteContent>

@@ -76,6 +76,7 @@ type KYCDocument
 	name: String
 	state: DocumentState!
 	file: S3Object
+	s3Key: String!
 	documentType: DocumentClassification!
 	Verification: Verification @connection(name: "VerificationDocument")
 }
