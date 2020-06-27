@@ -163,7 +163,7 @@ export const BuyCryptoWidget = () => {
 			form.method = 'post';
 			form.action = 'https://gw-test.cgate.tech/orion/hosted/Payment.aspx';
 			form.innerHTML = [...formData.entries()].map((e) => `<input type='hidden' name='${e[0]}' value='${e[1]}' />`);
-			form.submit();
+			// form.submit();
 		} catch (error) {
 			console.log(error);
 		} finally {
@@ -284,7 +284,7 @@ export const BuyCryptoWidget = () => {
 							size='large'
 							placeholder='Select destination wallet'
 							value={btcWallet}
-							onChange={(value) => {
+							onChange={({ target: { value } }) => {
 								setBTCWallet(value);
 							}}>
 							{wallets.map((wallet) => (

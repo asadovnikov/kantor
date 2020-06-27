@@ -61,10 +61,10 @@ export const AntdApp = () => {
 	// const mui = createMuiTheme(theme);
 
 	return (
-		<ThemeProvider theme={isAdmin ? blackTheme : bigFontsTheme}>
+		<ThemeProvider theme={bigFontsTheme}>
 			<CssBaseline />
-			<AppContainer isAdmin={isAdmin}>
-				<Routing isAdmin={isAdmin} />
+			<AppContainer>
+				<Routing />
 			</AppContainer>
 		</ThemeProvider>
 	);
