@@ -24,6 +24,11 @@
             "function": {
                 "shopapp53b8683ePostConfirmation": {
                     "GROUP": "Customers"
+                },
+                "shopapp53b8683eDefineAuthChallenge": {},
+                "shopapp53b8683eCreateAuthChallenge": {},
+                "shopapp53b8683eVerifyAuthChallengeResponse": {
+                    "RECAPTCHASECRET": "6LfH3_sUAAAAAME1Tja4PU_WtrM-VqkyQ-oDORRL"
                 }
             }
         }

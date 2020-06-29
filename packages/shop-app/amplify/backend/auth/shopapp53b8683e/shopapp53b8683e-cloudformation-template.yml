@@ -21,6 +21,36 @@ Parameters:
   
   
   
+  functionshopapp53b8683eDefineAuthChallengeArn: 
+    Type: String
+    Default: functionshopapp53b8683eDefineAuthChallengeArn
+  
+  functionshopapp53b8683eDefineAuthChallengeName: 
+    Type: String
+    Default: functionshopapp53b8683eDefineAuthChallengeName
+  
+  
+  
+  functionshopapp53b8683eCreateAuthChallengeArn: 
+    Type: String
+    Default: functionshopapp53b8683eCreateAuthChallengeArn
+  
+  functionshopapp53b8683eCreateAuthChallengeName: 
+    Type: String
+    Default: functionshopapp53b8683eCreateAuthChallengeName
+  
+  
+  
+  functionshopapp53b8683eVerifyAuthChallengeResponseArn: 
+    Type: String
+    Default: functionshopapp53b8683eVerifyAuthChallengeResponseArn
+  
+  functionshopapp53b8683eVerifyAuthChallengeResponseName: 
+    Type: String
+    Default: functionshopapp53b8683eVerifyAuthChallengeResponseName
+  
+  
+  
 
     
   identityPoolName:
@@ -124,7 +154,10 @@ Parameters:
                 
   permissions:
     Type: CommaDelimitedList
-    
+        
+  thirdPartyAuth:
+    Type: String
+                      
 Conditions:
   ShouldNotCreateEnvResources: !Equals [ !Ref env, NONE ]
 
@@ -180,7 +213,11 @@ Resources:
       
       LambdaConfig:
         
+          CreateAuthChallenge: !Ref functionshopapp53b8683eCreateAuthChallengeArn
         
+        
+        
+          DefineAuthChallenge: !Ref functionshopapp53b8683eDefineAuthChallengeArn
         
         
         
@@ -189,6 +226,8 @@ Resources:
         
         
         
+        
+          VerifyAuthChallengeResponse: !Ref functionshopapp53b8683eVerifyAuthChallengeResponseArn
         
       
       
@@ -217,8 +256,26 @@ Resources:
     DependsOn: SNSRole
     
   
+  
+  UserPoolCreateAuthChallengeLambdaInvokePermission: 
+    Type: "AWS::Lambda::Permission"
+    DependsOn: UserPool
+    Properties: 
+      Action: "lambda:invokeFunction"
+      Principal: "cognito-idp.amazonaws.com"
+      FunctionName: !Ref functionshopapp53b8683eCreateAuthChallengeName
+      SourceArn: !GetAtt UserPool.Arn
     
     
+  
+  UserPoolDefineAuthChallengeLambdaInvokePermission: 
+    Type: "AWS::Lambda::Permission"
+    DependsOn: UserPool
+    Properties: 
+      Action: "lambda:invokeFunction"
+      Principal: "cognito-idp.amazonaws.com"
+      FunctionName: !Ref functionshopapp53b8683eDefineAuthChallengeName
+      SourceArn: !GetAtt UserPool.Arn
   
     
   
@@ -234,6 +291,15 @@ Resources:
   
   
    
+  
+  UserPoolVerifyAuthChallengeResponseLambdaInvokePermission: 
+    Type: "AWS::Lambda::Permission"
+    DependsOn: UserPool
+    Properties: 
+      Action: "lambda:invokeFunction"
+      Principal: "cognito-idp.amazonaws.com"
+      FunctionName: !Ref functionshopapp53b8683eVerifyAuthChallengeResponseName
+      SourceArn: !GetAtt UserPool.Arn
     
   # Updating lambda role with permissions to Cognito
   

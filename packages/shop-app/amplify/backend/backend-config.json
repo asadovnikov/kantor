@@ -51,6 +51,33 @@
                         "Arn",
                         "Name"
                     ]
+                },
+                {
+                    "category": "function",
+                    "resourceName": "shopapp53b8683eDefineAuthChallenge",
+                    "triggerProvider": "Cognito",
+                    "attributes": [
+                        "Arn",
+                        "Name"
+                    ]
+                },
+                {
+                    "category": "function",
+                    "resourceName": "shopapp53b8683eCreateAuthChallenge",
+                    "triggerProvider": "Cognito",
+                    "attributes": [
+                        "Arn",
+                        "Name"
+                    ]
+                },
+                {
+                    "category": "function",
+                    "resourceName": "shopapp53b8683eVerifyAuthChallengeResponse",
+                    "triggerProvider": "Cognito",
+                    "attributes": [
+                        "Arn",
+                        "Name"
+                    ]
                 }
             ],
             "customAuth": false
@@ -154,6 +181,21 @@
             "service": "Lambda",
             "providerPlugin": "awscloudformation",
             "build": true
+        },
+        "shopapp53b8683eDefineAuthChallenge": {
+            "build": true,
+            "providerPlugin": "awscloudformation",
+            "service": "Lambda"
+        },
+        "shopapp53b8683eCreateAuthChallenge": {
+            "build": true,
+            "providerPlugin": "awscloudformation",
+            "service": "Lambda"
+        },
+        "shopapp53b8683eVerifyAuthChallengeResponse": {
+            "build": true,
+            "providerPlugin": "awscloudformation",
+            "service": "Lambda"
         }
     },
     "hosting": {

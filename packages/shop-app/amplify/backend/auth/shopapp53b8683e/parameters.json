@@ -1,6 +1,6 @@
 {
     "identityPoolName": "shopapp53b8683e_identitypool_32ff92a9",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "shopap53b8683e",
     "userPoolName": "shopapp53b8683e_userpool_53b8683e",
     "autoVerifiedAttributes": [
@@ -63,16 +63,44 @@
                 "Arn",
                 "Name"
             ]
+        },
+        {
+            "category": "function",
+            "resourceName": "shopapp53b8683eDefineAuthChallenge",
+            "triggerProvider": "Cognito",
+            "attributes": [
+                "Arn",
+                "Name"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "shopapp53b8683eCreateAuthChallenge",
+            "triggerProvider": "Cognito",
+            "attributes": [
+                "Arn",
+                "Name"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "shopapp53b8683eVerifyAuthChallengeResponse",
+            "triggerProvider": "Cognito",
+            "attributes": [
+                "Arn",
+                "Name"
+            ]
         }
     ],
     "userPoolGroups": false,
     "adminQueries": false,
-    "triggers": "{\"PostConfirmation\":[\"add-to-group\"]}",
+    "triggers": "{\"PostConfirmation\":[\"add-to-group\"],\"DefineAuthChallenge\":[\"captcha-define-challenge\"],\"CreateAuthChallenge\":[\"captcha-create-challenge\"],\"VerifyAuthChallengeResponse\":[\"captcha-verify\"]}",
     "hostedUI": false,
     "parentStack": {
         "Ref": "AWS::StackId"
     },
     "permissions": [
         "{\"policyName\":\"AddToGroupCognito\",\"trigger\":\"PostConfirmation\",\"effect\":\"Allow\",\"actions\":[\"cognito-idp:AdminAddUserToGroup\",\"cognito-idp:GetGroup\",\"cognito-idp:CreateGroup\"],\"resource\":{\"paramType\":\"!GetAtt\",\"keys\":[\"UserPool\",\"Arn\"]}}"
-    ]
+    ],
+    "thirdPartyAuth": false
 }
