@@ -1,0 +1,23 @@
+{
+    "landing": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-shoplanding-landing-05822-authRole",
+            "UnauthRoleArn": "arn:aws:iam::293562257411:role/amplify-shoplanding-landing-05822-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::293562257411:role/amplify-shoplanding-landing-05822-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-shoplanding-landing-05822-deployment",
+            "UnauthRoleName": "amplify-shoplanding-landing-05822-unauthRole",
+            "StackName": "amplify-shoplanding-landing-05822",
+            "StackId": "arn:aws:cloudformation:us-east-1:293562257411:stack/amplify-shoplanding-landing-05822/a88805c0-ba53-11ea-bd9a-0a254e00bc9f",
+            "AmplifyAppId": "d28qw7bupr50ox"
+        },
+        "categories": {
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d28qw7bupr50ox",
+                    "type": "manual"
+                }
+            }
+        }
+    }
+}
