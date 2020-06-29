@@ -19,57 +19,57 @@ export const SignUp = () => {
 	const [currentUser, setCurrentUser] = useState();
 	const [loadingState, setLoadingState] = useState(false);
 
-	const doVerify = () => {
-		setLoadingState(true);
-		Auth.confirmSignUp(currentUser.username, verificationCode)
-			.then(() => {
-				message.success('We are done here');
-			})
-			.catch((e) => {
-				console.log('failed with error', e);
-			})
-			.finally(() => setLoadingState(false));
-	};
+	// const doVerify = () => {
+	// 	setLoadingState(true);
+	// 	Auth.confirmSignUp(currentUser.username, verificationCode)
+	// 		.then(() => {
+	// 			message.success('We are done here');
+	// 		})
+	// 		.catch((e) => {
+	// 			console.log('failed with error', e);
+	// 		})
+	// 		.finally(() => setLoadingState(false));
+	// };
 
-	const doSignUp = () => {
-		setLoadingState(true);
+	// const doSignUp = () => {
+	// 	setLoadingState(true);
 
-		const { email, password, ...rest } = basicInfo;
-		const username = email;
-		const pre = {
-			...rest,
-			...extendedInfo,
-			...financeInfo,
-		};
-		const attrs = {};
-		Object.keys(pre).forEach((key) => {
-			attrs[`custom:${key}`] = pre[key]; //TODO: why the hack
-		});
+	// 	const { email, password, ...rest } = basicInfo;
+	// 	const username = email;
+	// 	const pre = {
+	// 		...rest,
+	// 		...extendedInfo,
+	// 		...financeInfo,
+	// 	};
+	// 	const attrs = {};
+	// 	Object.keys(pre).forEach((key) => {
+	// 		attrs[`custom:${key}`] = pre[key]; //TODO: why the hack
+	// 	});
 
-		const dataObj = {
-			username,
-			password,
-			attributes: {
-				email,
-				...attrs,
-			},
-		};
-		console.log(dataObj);
-		Auth.signUp(dataObj)
-			.then(({ user }) => {
-				console.log(user);
-				setCurrentUser(user);
-				setStep(3);
-				message.success('Verification email was sent');
-			})
-			.catch((err) => {
-				console.error(err);
-				message.error('Something went wrong, please check provided data');
-			})
-			.finally(() => {
-				setLoadingState(false);
-			});
-	};
+	// 	const dataObj = {
+	// 		username,
+	// 		password,
+	// 		attributes: {
+	// 			email,
+	// 			...attrs,
+	// 		},
+	// 	};
+	// 	console.log(dataObj);
+	// 	Auth.signUp(dataObj)
+	// 		.then(({ user }) => {
+	// 			console.log(user);
+	// 			setCurrentUser(user);
+	// 			setStep(3);
+	// 			message.success('Verification email was sent');
+	// 		})
+	// 		.catch((err) => {
+	// 			console.error(err);
+	// 			message.error('Something went wrong, please check provided data');
+	// 		})
+	// 		.finally(() => {
+	// 			setLoadingState(false);
+	// 		});
+	// };
 
 	const steps = [];
 	return (

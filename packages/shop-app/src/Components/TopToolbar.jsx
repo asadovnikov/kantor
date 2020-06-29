@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
 import { Auth, Hub } from 'aws-amplify';
-import Typography from '@material-ui/core/Typography';
+// import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { HeaderUserbox } from './HeaderUserbox';
 import { navigationDefaultWidth } from '../Utils/constants';
@@ -33,6 +33,13 @@ const useStyles = makeStyles((theme) => ({
 		[theme.breakpoints.up('sm')]: {
 			width: `calc(100% - ${navigationDefaultWidth}px)`,
 			marginLeft: navigationDefaultWidth,
+		},
+	},
+	appBarFull: {
+		background: 'rgba(255, 255, 255, 0.95)',
+		[theme.breakpoints.up('sm')]: {
+			width: '100%',
+			marginLeft: 0,
 		},
 	},
 	menuButton: {
@@ -69,7 +76,7 @@ export const TopToolbar = ({ mobileOpen, handleDrawerToggle }) => {
 			if (isMount) {
 				setIsAuth(true);
 				isMount = false;
-				window.location = window.location;
+				window.location.reload();
 			}
 		} else if (payload.event === 'signIn_failure') {
 			setOpen(true);
@@ -88,7 +95,10 @@ export const TopToolbar = ({ mobileOpen, handleDrawerToggle }) => {
 			setIsAuth(false);
 		});
 	return (
-		<AppBar position='fixed' className={`${classes.appBar} app-sidebar--light`} elevation={1}>
+		<AppBar
+			position='fixed'
+			className={`${mobileOpen ? classes.appBar : classes.appBarFull} app-sidebar--light`}
+			elevation={1}>
 			<Toolbar>
 				<IconButton
 					color='inherit'

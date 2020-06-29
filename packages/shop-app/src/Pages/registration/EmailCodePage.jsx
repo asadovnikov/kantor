@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Typography, Space } from 'antd';
-import { RegistrationHeader, RegistrationForm, RegistrationContent } from './components';
+import { RegistrationForm, RegistrationContent } from './components';
 import { MaterialCodeInput } from './components/LabeledInput';
 import { LinkButton } from './components/MaterialButtons';
 import { useParams } from 'react-router-dom';
@@ -11,7 +11,7 @@ const EmailCodePage = ({ email, onChange, onApply, isLoading }) => {
 	if (validationId) {
 		email = validationId;
 	}
-	const [verfificationState, setVerificationState] = useState();
+	// const [verfificationState, setVerificationState] = useState();
 	const [isValid, setIsValid] = useState();
 	const [codes, setCodes] = useState({
 		code1: undefined,

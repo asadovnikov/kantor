@@ -3,14 +3,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 // import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
+// import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+// import ListItemText from '@material-ui/core/ListItemText';
+// import ListSubheader from '@material-ui/core/ListSubheader';
 import Switch from '@material-ui/core/Switch';
 // import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 // import MonetizationOnOutlinedIcon from '@material-ui/icons/MonetizationOnOutlined';
 import { WalletForm } from './Wallets';
-import { v4 as uuid } from 'uuid';
+// import { v4 as uuid } from 'uuid';
 import { Empty } from 'antd';
 
 import { API, graphqlOperation } from 'aws-amplify';

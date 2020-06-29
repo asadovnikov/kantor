@@ -6,12 +6,12 @@ import { CustomerInfoWidget } from './CustomerInfo';
 
 export const CustomerDetailsWidget = ({ customerId }) => {
 	const [customer, setCustomer] = useState({});
-	const [kyc, setKyc] = useState({});
+	// const [kyc, setKyc] = useState({});
 
-	const [loading, setLoading] = useState(false);
+	// const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
-		setLoading(true);
+		// setLoading(true);
 		let canceled = false;
 
 		API.graphql(graphqlOperation(getCustomer, { id: customerId }))
@@ -21,10 +21,10 @@ export const CustomerDetailsWidget = ({ customerId }) => {
 					setCustomer(getCustomer);
 				}
 			})
-			.catch((err) => console.error(err))
-			.finally(() => setLoading(false));
+			.catch((err) => console.error(err));
+		// .finally(() => setLoading(false));
 		return () => (canceled = true);
-	}, []);
+	}, [customerId]);
 
 	return (
 		<div>

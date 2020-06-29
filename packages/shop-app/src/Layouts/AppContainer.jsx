@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
+import React, { useState, useContext } from 'react';
+// import Typography from '@material-ui/core/Typography';
+// import Link from '@material-ui/core/Link';
 import { TopToolbar } from '../Components/TopToolbar';
 import { NavigationMenu } from '../Components/NavigationMenu';
 import { AdminNavigationMenu } from '../Components/AdminNavigationMenu';
@@ -8,19 +8,20 @@ import { makeStyles } from '@material-ui/core/styles';
 import { navigationDefaultWidth } from '../Utils/constants';
 import Box from '@material-ui/core/Box';
 import { AppFooter } from '../Components/AppFooter';
+import { AuthContext } from '../Components/AuthContext';
 
-const Copyright = () => {
-	return (
-		<Typography variant='body2' color='textSecondary' align='center'>
-			{'Copyright © '}
-			<Link color='inherit' href='https://dev.kantor.kosevych.info'>
-				kantor.kosevych.info
-			</Link>{' '}
-			{new Date().getFullYear()}
-			{'.'}
-		</Typography>
-	);
-};
+// const Copyright = () => {
+// 	return (
+// 		<Typography variant='body2' color='textSecondary' align='center'>
+// 			{'Copyright © '}
+// 			<Link color='inherit' href='https://dev.kantor.kosevych.info'>
+// 				kantor.kosevych.info
+// 			</Link>{' '}
+// 			{new Date().getFullYear()}
+// 			{'.'}
+// 		</Typography>
+// 	);
+// };
 
 const useStyles = makeStyles((theme) => ({
 	toolbar: theme.mixins.toolbar,
@@ -31,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
 
 const UserAppLayout = ({ children }) => {
 	const classes = useStyles();
+	const { isAuthenticated } = useContext(AuthContext);
 	const [mobileOpen, setMobileOpen] = useState(false);
 
 	const handleDrawerToggle = () => {
@@ -38,7 +40,7 @@ const UserAppLayout = ({ children }) => {
 	};
 	return (
 		<div className='app-wrapper'>
-			<NavigationMenu mobileOpen={mobileOpen} handleDrawerToggle={handleDrawerToggle} />
+			{isAuthenticated === true && <NavigationMenu mobileOpen={mobileOpen} handleDrawerToggle={handleDrawerToggle} />}
 
 			<Box className={mobileOpen && classes.navigationVisible} style={{ width: '100%', paddingTop: '64px' }}>
 				{/* <Box className={classes.toolbar}>&nbsp;</Box> */}

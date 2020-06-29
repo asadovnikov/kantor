@@ -4,7 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { Typography } from 'antd';
 import { RegistrationHeader, RegistrationForm, RegistrationContent, RegistrationContentRow } from './components';
 import { MaterialPass, MaterialTxt } from './components/LabeledInput';
-const { Title } = Typography;
+// const { Title } = Typography;
 
 const ResetPasswordPage = () => {
 	const [userName, setUserName] = useState();
@@ -16,13 +16,13 @@ const ResetPasswordPage = () => {
 
 	const [passwordChanged, setPasswordChanged] = useState(false);
 
-	const changePass = async () => {
-		const res = await Auth.forgotPassword(userName);
-		console.log(res);
+	// const changePass = async () => {
+	// 	const res = await Auth.forgotPassword(userName);
+	// 	console.log(res);
 
-		const changeResult = await Auth.forgotPasswordSubmit(userName, code, pass);
-		return changeResult;
-	};
+	// 	const changeResult = await Auth.forgotPasswordSubmit(userName, code, pass);
+	// 	return changeResult;
+	// };
 
 	const onApply = () => {
 		setLoadingState(true);

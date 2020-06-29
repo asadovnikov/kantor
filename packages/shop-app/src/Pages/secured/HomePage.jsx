@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { AppPage, WidgetContainer } from '../../Layouts';
+import { AppPage } from '../../Layouts';
 import { VerifyDocumentsBanner, QuickLinks } from '../../Widgets';
 import { motion, AnimatePresence } from 'framer-motion';
 // import Grow from '@material-ui/core/Grow';

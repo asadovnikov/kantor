@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Avatar from 'react-avatar';
-import { KYCVerificationWidget } from './KYCVerification';
-import { API, graphqlOperation } from 'aws-amplify';
-import { getCustomer } from '../graphql/queries';
-import { Radio, Grid, Typography, Paper, Container } from '@material-ui/core';
+// import { KYCVerificationWidget } from './KYCVerification';
+// import { API, graphqlOperation } from 'aws-amplify';
+// import { getCustomer } from '../graphql/queries';
+import { Grid, Typography, Paper, Container } from '@material-ui/core';
 
 export const CustomerInfoWidget = ({ name, email }) => {
 	return (

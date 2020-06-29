@@ -1,5 +1,5 @@
 import React from 'react';
-import HomeWorkTwoToneIcon from '@material-ui/icons/HomeWorkTwoTone';
+// import HomeWorkTwoToneIcon from '@material-ui/icons/HomeWorkTwoTone';
 
 export const PageTitle = (props) => {
 	const { title, description, children, icon } = props;

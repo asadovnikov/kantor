@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { StaticRoutes } from './StaticRoutes';
-import { AuthFlow, authRoutes } from './AuthFlow';
-import { SecuredRoutes } from './SecuredRoutes';
-import { AdminSecuredRoutes } from './AdminRouting';
-import { HomePage, Transactions, MyWallets, BuyCryptoPage, AdminHomePage } from '../Pages/secured';
+// import { StaticRoutes } from './StaticRoutes';
+// import { AuthFlow, authRoutes } from './AuthFlow';
+// import { SecuredRoutes } from './SecuredRoutes';
+// import { AdminSecuredRoutes } from './AdminRouting';
+import { HomePage } from '../Pages/secured';
 import { routes } from './DefaultRouting';
 import NoFoundPage from '../Pages/Static/404';
 

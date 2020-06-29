@@ -1,6 +1,6 @@
 import React from 'react';
-import { AppName } from './AppName';
-import { Grid, Typography, Box, Link, Divider, List, ListItem } from '@material-ui/core';
+// import { AppName } from './AppName';
+import { Grid, Typography, Box, Link, Divider } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import visa from '../assets/images/providers/visa.svg';
@@ -81,7 +81,7 @@ export const AppFooter = () => {
 								title: 'Crypto Kantor LTD',
 							},
 							{
-								title: '4 Privete Drive',
+								title: '4 Private Drive',
 							},
 							{
 								title: 'Little Whinging',
@@ -109,7 +109,7 @@ export const AppFooter = () => {
 			</Grid>
 			<Grid item xs={12}>
 				<Divider className={classes.dividerMargin} />
-				<Grid container direction='row' justify='space-around' alignItems='flex-start'>
+				<Grid container direction='row' justify='space-between' alignItems='flex-start'>
 					<Box>
 						<Copyright />
 					</Box>
@@ -128,7 +128,7 @@ export const AppFooter = () => {
 						</Grid>
 					</Box>
 					<Box className='app-sidebar--light'>
-						<AppName />
+						<span>crypto </span> <b style={{ textTransform: 'lowercase' }}>kantor</b>
 					</Box>
 				</Grid>
 			</Grid>

@@ -10,14 +10,15 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import { Container, Button, Grid } from '@material-ui/core';
+import { Container, Grid } from '@material-ui/core';
 import { v4 as uuid } from 'uuid';
 
 import { API, graphqlOperation } from 'aws-amplify';
 import { listUserWalletss } from '../graphql/queries';
 import { createTransaction } from '../graphql/mutations';
 import { CurrencySelect } from '../Components/Inputs';
-import { withAuthenticator } from '@aws-amplify/ui-react';
+import { ProgressButton } from '../Components';
+// import { withAuthenticator } from '@aws-amplify/ui-react';
 import axios from 'axios';
 
 const buildHash = async (str) => {
@@ -163,7 +164,7 @@ export const BuyCryptoWidget = () => {
 			form.method = 'post';
 			form.action = 'https://gw-test.cgate.tech/orion/hosted/Payment.aspx';
 			form.innerHTML = [...formData.entries()].map((e) => `<input type='hidden' name='${e[0]}' value='${e[1]}' />`);
-			// form.submit();
+			form.submit();
 		} catch (error) {
 			console.log(error);
 		} finally {
@@ -185,7 +186,7 @@ export const BuyCryptoWidget = () => {
 		setLoading(true);
 		try {
 			if (FiatAmount > 0) {
-				// const btc = await
+				// eslint-disable-next-line react-hooks/exhaustive-deps
 				btcAmount().then((btc) => {
 					if (!isCancelled) {
 						setBTC((FiatAmount / btc).toFixed(6));
@@ -295,14 +296,15 @@ export const BuyCryptoWidget = () => {
 				</Grid>
 				<Grid item xs={12}>
 					<Grid container justify='center' alignItems='center'>
-						<Button
+						<ProgressButton
 							disabled={!valid}
 							fullWidth
 							onClick={doPayment}
+							loading={loading}
 							size='large'
 							className='btn-success py-4 mt-5 px-5 text-uppercase font-weight-bold font-size-lg'>
 							Buy{btc > 0 ? ` ${btc} BTC` : ''}
-						</Button>
+						</ProgressButton>
 					</Grid>
 				</Grid>
 			</Grid>

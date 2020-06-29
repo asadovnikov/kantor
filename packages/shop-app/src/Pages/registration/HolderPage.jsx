@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Input, Checkbox, Typography, DatePicker } from 'antd';
+import { Row, Col, Checkbox, Typography } from 'antd';
 import { RegistrationHeader, RegistrationForm, RegistrationContent, RegistrationContentRow } from './components';
 import { MaterialPass, MaterialTxt, MaterialDatePicker } from './components/LabeledInput';
 
 const { Link } = Typography;
 
-const HolderPage = ({ value = {}, onChange, onValidate, onApply }) => {
+const HolderPage = ({ value = {}, onChange, onApply }) => {
 	const [firstName, setFirstName] = useState(value.firstName);
 	const [lastName, setLastName] = useState(value.lastName);
 	const [email, setEmail] = useState(value.email);
@@ -30,7 +30,7 @@ const HolderPage = ({ value = {}, onChange, onValidate, onApply }) => {
 		// }
 	};
 	const validateEmail = (email) => {
-		const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		setNotValidEmail(!re.test(String(email).toLowerCase()));
 	};
 	return (

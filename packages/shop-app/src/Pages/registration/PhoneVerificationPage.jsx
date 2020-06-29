@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Row, Col, Input } from 'antd';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
-import { RegistrationHeader, RegistrationForm, RegistrationContent, RegistrationContentRow } from './components';
+import { RegistrationHeader, RegistrationForm, RegistrationContent } from './components';
 
 const VerifyPhonePage = () => {
-	const [countryCode, setCountryCode] = useState('us');
+	// const [countryCode, setCountryCode] = useState('us');
 	return (
 		<RegistrationForm>
 			<RegistrationHeader

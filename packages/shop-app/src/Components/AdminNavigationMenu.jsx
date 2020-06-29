@@ -6,14 +6,14 @@ import Hidden from '@material-ui/core/Hidden';
 
 import BusinessCenterTwoToneIcon from '@material-ui/icons/BusinessCenterTwoTone';
 import AttachMoneyTwoToneIcon from '@material-ui/icons/AttachMoneyTwoTone';
-import VerifiedUserTwoToneIcon from '@material-ui/icons/VerifiedUserTwoTone';
+// import VerifiedUserTwoToneIcon from '@material-ui/icons/VerifiedUserTwoTone';
 import FilterListTwoToneIcon from '@material-ui/icons/FilterListTwoTone';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
-import SidebarWidget from './SidebarWidget';
+// import SidebarWidget from './SidebarWidget';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 import { navigationDefaultWidth } from '../Utils/constants';

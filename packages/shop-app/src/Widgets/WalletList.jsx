@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Switch from '@material-ui/core/Switch';
@@ -11,18 +11,18 @@ import Grid from '@material-ui/core/Grid';
 import { API, graphqlOperation } from 'aws-amplify';
 import { listUserWalletss } from '../graphql/queries';
 
-const useStyles = makeStyles((theme) => ({
-	root: {
-		width: '100%',
-		backgroundColor: theme.palette.background.paper,
-	},
-	backdrop: {
-		zIndex: theme.zIndex.drawer + 1,
-		color: '#fff',
-	},
-}));
+// const useStyles = makeStyles((theme) => ({
+// 	root: {
+// 		width: '100%',
+// 		backgroundColor: theme.palette.background.paper,
+// 	},
+// 	backdrop: {
+// 		zIndex: theme.zIndex.drawer + 1,
+// 		color: '#fff',
+// 	},
+// }));
 
-const DataList = ({ checked, wallets, loading, onWalletStateToggle }) => {
+const DataList = ({ checked, wallets, onWalletStateToggle }) => {
 	return (
 		<List fullWidth className='mb-4 list-group-bordered'>
 			{wallets.map((wallet) => {
@@ -55,7 +55,7 @@ export const WalletListWidget = () => {
 	const [wallets, setWallets] = useState([]);
 	const [loading, setLoading] = useState(false);
 	// const [loadData, setLoadData] = useState();
-	const classes = useStyles();
+	// const classes = useStyles();
 
 	useEffect(() => {
 		let isCancelled = false;

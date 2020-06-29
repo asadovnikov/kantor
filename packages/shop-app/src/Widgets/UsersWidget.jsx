@@ -7,7 +7,7 @@ import { Grid, Typography } from '@material-ui/core';
 import { Empty } from 'antd';
 import Fade from '@material-ui/core/Fade';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import moment from 'moment';
+// import moment from 'moment';
 
 import { API, graphqlOperation } from 'aws-amplify';
 import { listCustomers } from '../graphql/queries';

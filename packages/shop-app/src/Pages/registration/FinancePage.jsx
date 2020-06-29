@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { RegistrationHeader, RegistrationForm, RegistrationContent, RegistrationContentRow } from './components';
 import Select from '@material-ui/core/Select';
-import { MaterialTxt } from './components/LabeledInput';
+// import { MaterialTxt } from './components/LabeledInput';
 import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -116,7 +116,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const FinancePage = ({ value = {}, onChange, onValidate, onApply, isLoading }) => {
+const FinancePage = ({ value = {}, onChange = () => {}, onValidate, onApply, isLoading }) => {
 	const [occupation, setOccupation] = useState(value.occupation);
 	const [employmentStatus, setEmploymentStatus] = useState(value.employmentStatus);
 	const [sourceOfFunds, setSourceOfFunds] = useState(value.sourceOfFunds);
@@ -129,16 +129,17 @@ const FinancePage = ({ value = {}, onChange, onValidate, onApply, isLoading }) =
 	useEffect(() => {
 		const validation = (occupation && employmentStatus && sourceOfFunds && yearIncome) !== undefined;
 		setIsValid(validation);
-		if (validation && onChange) {
+		if (validation) {
+			// eslint-disable-next-line react-hooks/exhaustive-deps
 			onChange({ occupation, employmentStatus, sourceOfFunds, yearIncome });
 		}
 	}, [occupation, employmentStatus, sourceOfFunds, yearIncome]);
 
-	const triggerChange = () => {
-		// if (onChange) {
-		// 	onChange({ occupation, employmentStatus, sourceOfFunds, yearIncome });
-		// }
-	};
+	// const triggerChange = () => {
+	// 	// if (onChange) {
+	// 	// 	onChange({ occupation, employmentStatus, sourceOfFunds, yearIncome });
+	// 	// }
+	// };
 	return (
 		<RegistrationForm>
 			<RegistrationHeader

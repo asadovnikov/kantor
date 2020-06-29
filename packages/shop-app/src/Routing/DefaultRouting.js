@@ -6,7 +6,7 @@ import PrivacyPolicy from '../Pages/Static/PrivacyPolicy';
 import SignInForm from '../Pages/registration/SignInForm';
 import SignUpForm from '../Pages/registration/SignUpForm';
 import ResetPasswordPage from '../Pages/registration/ResetPasswordPage';
-import { HomePage, Transactions, MyWallets, BuyCryptoPage } from '../Pages/secured';
+import { HomePage, Transactions, MyWallets, BuyBTC } from '../Pages/secured';
 
 export const routes = [
 	{
@@ -47,15 +47,15 @@ export const routes = [
 	},
 	{
 		path: '/buy',
-		component: BuyCryptoPage,
+		component: BuyBTC,
 	},
 	{
 		path: '/payment',
-		component: BuyCryptoPage,
+		component: BuyBTC,
 	},
 	{
 		path: '/buybtc',
-		component: BuyCryptoPage,
+		component: BuyBTC,
 	},
 	{
 		path: '/paymentfailed',

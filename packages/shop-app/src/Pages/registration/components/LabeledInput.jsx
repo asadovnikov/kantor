@@ -1,6 +1,6 @@
 // import 'date-fns';
 import React, { useState } from 'react';
-import FloatingLabelInput from 'react-floating-label-paper-input';
+// import FloatingLabelInput from 'react-floating-label-paper-input';
 import TextField from '@material-ui/core/TextField';
 import { KeyboardDatePicker } from '@material-ui/pickers';
 import IconButton from '@material-ui/core/IconButton';
@@ -189,61 +189,61 @@ export const MaterialDatePicker = ({ inputValue, onChange, labelKey }) => {
 	);
 };
 
-export const LabeledInput = ({ value, labelKey, onChange }) => {
-	const [inputState, setInputState] = useState(labelKey);
-	const isValid = () => {
-		return inputState;
-	};
+// export const LabeledInput = ({ value, labelKey, onChange }) => {
+// 	const [inputState, setInputState] = useState(labelKey);
+// 	const isValid = () => {
+// 		return inputState;
+// 	};
 
-	const getValidationMessages = () => {
-		return `${inputState} is require`;
-	};
+// 	const getValidationMessages = () => {
+// 		return `${inputState} is require`;
+// 	};
 
-	return (
-		<FloatingLabelInput
-			type={'text'}
-			labelName={inputState}
-			name={inputState}
-			value={value}
-			isValid={isValid}
-			onChange={(e) => {
-				e.preventDefault();
-				if (onChange) {
-					onChange(e.currentTarget.value);
-				}
-			}}
-			errorMessage={getValidationMessages}
-		/>
-	);
-};
+// 	return (
+// 		<FloatingLabelInput
+// 			type={'text'}
+// 			labelName={inputState}
+// 			name={inputState}
+// 			value={value}
+// 			isValid={isValid}
+// 			onChange={(e) => {
+// 				e.preventDefault();
+// 				if (onChange) {
+// 					onChange(e.currentTarget.value);
+// 				}
+// 			}}
+// 			errorMessage={getValidationMessages}
+// 		/>
+// 	);
+// };
 
-export const LabeledDateInput = ({ value, labelKey, onChange }) => {
-	const [inputState, setInputState] = useState(labelKey);
-	const isValid = () => {
-		return inputState;
-	};
+// export const LabeledDateInput = ({ value, labelKey, onChange }) => {
+// 	const [inputState, setInputState] = useState(labelKey);
+// 	const isValid = () => {
+// 		return inputState;
+// 	};
 
-	const getValidationMessages = () => {
-		return `${inputState} is require`;
-	};
+// 	const getValidationMessages = () => {
+// 		return `${inputState} is require`;
+// 	};
 
-	return (
-		<FloatingLabelInput
-			type={'inputMask'}
-			labelName={labelKey}
-			name={`_${inputState}`}
-			maskChar={' '}
-			mask={99 - 99 - 9999}
-			placeHolder={'MM-DD-YYYYY'}
-			value={value}
-			isValid={isValid}
-			onChange={(e) => {
-				e.preventDefault();
-				if (onChange) {
-					onChange(e.currentTarget.value);
-				}
-			}}
-			errorMessage={getValidationMessages}
-		/>
-	);
-};
+// 	return (
+// 		<FloatingLabelInput
+// 			type={'inputMask'}
+// 			labelName={labelKey}
+// 			name={`_${inputState}`}
+// 			maskChar={' '}
+// 			mask={99 - 99 - 9999}
+// 			placeHolder={'MM-DD-YYYYY'}
+// 			value={value}
+// 			isValid={isValid}
+// 			onChange={(e) => {
+// 				e.preventDefault();
+// 				if (onChange) {
+// 					onChange(e.currentTarget.value);
+// 				}
+// 			}}
+// 			errorMessage={getValidationMessages}
+// 		/>
+// 	);
+// };

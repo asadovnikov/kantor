@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Input, Typography, Space, message } from 'antd';
+import { Typography, Space, message } from 'antd';
 import { Redirect } from 'react-router-dom';
 import { Auth } from 'aws-amplify';
 import { MaterialPass, MaterialTxt } from './components/LabeledInput';
 import { RegistrationHeader, RegistrationForm, RegistrationContent, RegistrationContentRow } from './components';
-import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+// import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 const { Link } = Typography;
 
 const SignInForm = () => {

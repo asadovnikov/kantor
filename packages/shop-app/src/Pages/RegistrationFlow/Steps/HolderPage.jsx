@@ -84,7 +84,14 @@ export const HolderPage = ({ value = {}, onChange, onValidate, onApply }) => {
 			</Grid>
 			<Grid item xs={12}>
 				<FormControlLabel
-					control={<Checkbox color='secondary' name='acceptTerms' value='yes' />}
+					control={
+						<Checkbox
+							onChange={({ target: { checked } }) => setAgree(checked)}
+							color='secondary'
+							name='acceptTerms'
+							checked={agree}
+						/>
+					}
 					label={
 						<>
 							<span>

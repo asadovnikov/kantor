@@ -1,13 +1,13 @@
 import React from 'react';
 import { Auth } from 'aws-amplify';
 import { Result, Button, Card, Col, Row, Avatar } from 'antd';
-import { BrowserRouter as Router, Switch, Route, useParams, useRouteMatch } from 'react-router-dom';
+import { Switch, Route, useRouteMatch } from 'react-router-dom';
 // import axios from 'axios';
 // import { v4 as uuid } from 'uuid';
 const { Meta } = Card;
 
 const KYCValidationState = () => {
-	let { validationId } = useParams();
+	// let { validationId } = useParams();
 	const startJumio = async () => {
 		debugger;
 		try {

@@ -70,7 +70,7 @@ const SignUpForm = () => {
 			});
 	};
 
-	const steps = [];
+	// const steps = [];
 	return (
 		<>
 			{step === 0 && (

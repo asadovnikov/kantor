@@ -4,17 +4,17 @@ import Container from '@material-ui/core/Container';
 // import Container from '@material-ui/core/Container';
 // import Paper from '@material-ui/core/Paper';
 import { AnimatePresence, motion } from 'framer-motion';
-import Box from '@material-ui/core/Box';
+// import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import { Card } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-const useStyles = makeStyles((theme) => ({
-	paper: {
-		// margin: theme.spacing(4),
-		// padding: theme.spacing(12, 4),
-		// width: '550px',
-	},
-}));
+// import { makeStyles } from '@material-ui/core/styles';
+// const useStyles = makeStyles((theme) => ({
+// 	paper: {
+// 		// margin: theme.spacing(4),
+// 		// padding: theme.spacing(12, 4),
+// 		// width: '550px',
+// 	},
+// }));
 
 export const RegistrationForm = ({ children }) => {
 	const pageVariants = {
@@ -34,7 +34,7 @@ export const RegistrationForm = ({ children }) => {
 		ease: 'linear',
 		duration: 0.3,
 	};
-	const classes = useStyles();
+	// const classes = useStyles();
 	return (
 		<Container maxWidth='md'>
 			<Card className='p-4 p-lg-5'>
