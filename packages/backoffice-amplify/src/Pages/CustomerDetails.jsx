@@ -12,6 +12,7 @@ import {
 	PersonTransactionsWidget,
 	PersonCommentsWidget,
 	DocumentsWidget,
+	JumioLogWidget,
 } from '../Widgets';
 import { API, graphqlOperation } from 'aws-amplify';
 import { getCustomer } from '../graphql/queries';
@@ -79,16 +80,19 @@ export const CustomerDetailsPage = () => {
 						</ContentContainer>
 						<ContentContainer>
 							<ContentDivider orientation='left'>Pending Files</ContentDivider>
+							<JumioLogWidget person={customer} />
+						</ContentContainer>
+						<ContentContainer>
+							<ContentDivider orientation='left'>Files</ContentDivider>
 							<DocumentsWidget
 								person={customer}
 								items={customer.KYCVerification?.documents?.items.filter((item) => item.documentType === 'UNKNOWN')}
 							/>
 						</ContentContainer>
 						<ContentContainer>
-							<ContentDivider orientation='left'>Files</ContentDivider>
+							<ContentDivider orientation='left'>Processed Files</ContentDivider>
 							<DocumentsWidget
 								person={customer}
-								showUpload={false}
 								items={customer.KYCVerification?.documents?.items.filter((item) => item.documentType !== 'UNKNOWN')}
 							/>
 						</ContentContainer>

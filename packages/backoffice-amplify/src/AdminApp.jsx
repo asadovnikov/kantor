@@ -59,7 +59,7 @@ export const AdminAppLayout = () => {
 						<Link to='/' />
 					</Menu.Item>
 					<Menu.Item key='/pending' icon={<VideoCameraOutlined />}>
-						Pending KYC
+						KYC Pending customers
 						<Link to='/pending' />
 					</Menu.Item>
 					<Menu.Item key='/transactions' icon={<UploadOutlined />}>

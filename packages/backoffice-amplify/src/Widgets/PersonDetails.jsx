@@ -19,7 +19,7 @@ export const PersonDetailsWidget = ({ person = {} }) => {
 						value: person.Country,
 					},
 					{
-						label: 'State/Provinc',
+						label: 'State/Province',
 						value: person.StateProvince,
 					},
 					{

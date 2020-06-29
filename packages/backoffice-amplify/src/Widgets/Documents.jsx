@@ -18,7 +18,6 @@ export const DocumentsWidget = ({ items = [], person = {}, showUpload = true }) 
 		let subscription;
 		async function setupSubscription() {
 			const user = await Auth.currentAuthenticatedUser();
-			debugger;
 			subscription = API.graphql(graphqlOperation(onCreateKycDocument), { owner: user.username }).subscribe({
 				next: (data) => {
 					debugger;

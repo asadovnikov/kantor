@@ -9,3 +9,4 @@ export { PersonFinanceWidget } from './PersonFinance';
 export { PersonVerificationWidget } from './PersonVerification';
 export { PersonNameWidget } from './PersonName';
 export { DocumentsWidget } from './Documents';
+export { JumioLogWidget } from './JumioLog';

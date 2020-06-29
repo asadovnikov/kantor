@@ -54,7 +54,7 @@ const UserView = ({ user }) => {
 	const doLogout = () => {
 		Auth.signOut({ global: true }).then(() => {
 			history.push('/');
-			window.location = window.location;
+			window.location.reload();
 		});
 	};
 	console.log(user);
