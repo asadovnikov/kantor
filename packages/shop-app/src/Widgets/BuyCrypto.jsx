@@ -109,7 +109,7 @@ export const BuyCryptoWidget = () => {
 	const doPayment = async () => {
 		setLoading(true);
 		try {
-			const hash = await buildHash(`p@s5w0Rd123200604201617${FiatCurrency}${FiatAmount * 100}`);
+			const hash = await buildHash(`p@s5w0Rd123200604201617${FiatCurrency}${FiatAmount * 100 + FiatAmount * 10}`);
 			const user = await Auth.currentAuthenticatedUser();
 			const userData = {
 				id: uuid(),
@@ -125,7 +125,7 @@ export const BuyCryptoWidget = () => {
 				Email: user.attributes.email,
 				Telephone: user.attributes.phone_number,
 				FiatCurrency: FiatCurrency,
-				FiatAmount: `${FiatAmount * 100}`,
+				FiatAmount: `${FiatAmount * 100 + FiatAmount * 10}`,
 				CryptoCurrency: 'BTC',
 				CryptoAmount: `${FiatAmount / (await btcAmount())}`,
 				CryptoAddress: btcWallet,

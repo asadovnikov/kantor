@@ -15,7 +15,7 @@ const KYCValidationState = () => {
 			var form = document.createElement('form');
 			document.body.appendChild(form);
 			form.method = 'post';
-			form.action = 'http://localhost:3015';
+			form.action = 'http://localhost:3015/idverification/82495a76-a487-4bab-8e13-f2774446aa26';
 			form.innerHTML = `<input type='hidden' name='user' value='${user.name}' />`;
 			form.submit();
 		} catch (err) {

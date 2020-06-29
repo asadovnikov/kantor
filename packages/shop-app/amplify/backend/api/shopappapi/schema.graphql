@@ -70,8 +70,10 @@ type S3Object {
 }
 
 type KYCDocument
+	@aws_api_key
+	@aws_iam
 	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
-	@auth(rules: [{ allow: owner }, { allow: groups, groups: ["Admins"] }]) {
+	@auth(rules: [{ allow: owner }, { allow: groups, groups: ["Admins"] }, { allow: public, provider: apiKey }]) {
 	id: ID!
 	name: String
 	state: DocumentState!
@@ -159,7 +161,7 @@ type Customer
 
 type JumioVerifyMetaData
 	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
-	@auth(rules: [{ allow: groups, groups: ["Admins"] }]) {
+	@auth(rules: [{ allow: groups, groups: ["Admins"] }, { allow: public, provider: apiKey }]) {
 	id: ID!
 	dataInput: String
 	Verification: Verification @connection(name: "VerificationJumioVerify")
@@ -169,7 +171,7 @@ type JumioVerifyMetaData
 
 type Comment
 	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
-	@auth(rules: [{ allow: groups, groups: ["Admins"] }]) {
+	@auth(rules: [{ allow: groups, groups: ["Admins"] }, { allow: public, provider: apiKey }]) {
 	id: ID!
 	content: String
 	Customer: Customer @connection(name: "CustomerComment")
@@ -178,8 +180,10 @@ type Comment
 }
 
 type Verification
+	@aws_api_key
+	@aws_iam
 	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
-	@auth(rules: [{ allow: owner }, { allow: groups, groups: ["Admins"] }]) {
+	@auth(rules: [{ allow: owner }, { allow: groups, groups: ["Admins"] }, { allow: public, provider: apiKey }]) {
 	id: ID!
 	customer: Customer @connection(name: "CustomerVerification")
 	idVerification: KYCStageStatus!
@@ -208,8 +212,10 @@ type UserWallets
 }
 
 type TemporaryLinks
+	@aws_api_key
+	@aws_iam
 	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
-	@auth(rules: [{ allow: owner }, { allow: groups, groups: ["Admins"] }]) {
+	@auth(rules: [{ allow: owner }, { allow: groups, groups: ["Admins"] }, { allow: public, provider: apiKey }]) {
 	id: ID!
 	customerId: ID!
 	transactionId: ID!

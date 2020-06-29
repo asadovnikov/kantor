@@ -68,6 +68,27 @@ const SignUpForm = () => {
 			},
 		};
 		console.log(dataObj);
+		// window.grecaptcha
+		// 	.execute('6LfH3_sUAAAAAM7TSfxBwVfwqhZLt2meltrUSJIg', { action: 'submit' })
+		// 	.then(function (token) {
+		// 		Auth.signUp({
+		// 			...dataObj,
+		// 			validationData: {
+		// 				Name: 'recaptchaToken',
+		// 				Value: token,
+		// 			},
+		// 		})
+		// 			.then(({ user }) => {
+		// 				console.log(user);
+		// 				setCurrentUser(user);
+		// 				setStep(3);
+		// 				message.success('Verification email was sent');
+		// 			})
+		// 			.catch((err) => {
+		// 				console.error(err);
+		// 				message.error('Something went wrong, please check provided data');
+		// 			});
+		// 	})
 		Auth.signUp(dataObj)
 			.then(({ user }) => {
 				console.log(user);

@@ -1,162 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getKycDocument = /* GraphQL */ `
-  query GetKycDocument($id: ID!) {
-    getKYCDocument(id: $id) {
-      id
-      name
-      state
-      file {
-        bucket
-        region
-        key
-      }
-      s3Key
-      documentType
-      Verification {
-        id
-        customer {
-          id
-          Firstname
-          Surname
-          DateOfBirth
-          StreetLine1
-          StreetLine2
-          City
-          PostalCode
-          StateProvince
-          Country
-          Email
-          Telephone
-          FiatTotalAmount
-          FiatDailyAmount
-          FiatMonthlyAmount
-          FiatCurrency
-          Tier
-          KYCState
-          VerificationID
-          PaymentTransactions {
-            nextToken
-          }
-          KYCVerification {
-            id
-            idVerification
-            poaVerification
-            financeVerification
-            createdOn
-            updatedOn
-            owner
-          }
-          comments {
-            nextToken
-          }
-          createdOn
-          updatedOn
-          owner
-        }
-        idVerification
-        poaVerification
-        financeVerification
-        documents {
-          items {
-            id
-            name
-            state
-            s3Key
-            documentType
-            createdOn
-            updatedOn
-            owner
-          }
-          nextToken
-        }
-        jumioVerifications {
-          items {
-            id
-            dataInput
-            inputType
-            metaInfo
-            createdOn
-            updatedOn
-          }
-          nextToken
-        }
-        createdOn
-        updatedOn
-        owner
-      }
-      createdOn
-      updatedOn
-      owner
-    }
-  }
-`;
-export const listKycDocuments = /* GraphQL */ `
-  query ListKycDocuments(
-    $filter: ModelKYCDocumentFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listKYCDocuments(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        name
-        state
-        file {
-          bucket
-          region
-          key
-        }
-        s3Key
-        documentType
-        Verification {
-          id
-          customer {
-            id
-            Firstname
-            Surname
-            DateOfBirth
-            StreetLine1
-            StreetLine2
-            City
-            PostalCode
-            StateProvince
-            Country
-            Email
-            Telephone
-            FiatTotalAmount
-            FiatDailyAmount
-            FiatMonthlyAmount
-            FiatCurrency
-            Tier
-            KYCState
-            VerificationID
-            createdOn
-            updatedOn
-            owner
-          }
-          idVerification
-          poaVerification
-          financeVerification
-          documents {
-            nextToken
-          }
-          jumioVerifications {
-            nextToken
-          }
-          createdOn
-          updatedOn
-          owner
-        }
-        createdOn
-        updatedOn
-        owner
-      }
-      nextToken
-    }
-  }
-`;
 export const getPaymentRequest = /* GraphQL */ `
   query GetPaymentRequest($id: ID!) {
     getPaymentRequest(id: $id) {
@@ -279,9 +123,391 @@ export const getTransaction = /* GraphQL */ `
             GWReference
             BankReference
             MerchantRef
+            Customer {
+              id
+              Firstname
+              Surname
+              DateOfBirth
+              StreetLine1
+              StreetLine2
+              City
+              PostalCode
+              StateProvince
+              Country
+              Email
+              Telephone
+              FiatTotalAmount
+              FiatDailyAmount
+              FiatMonthlyAmount
+              FiatCurrency
+              Tier
+              KYCState
+              VerificationID
+              PaymentTransactions {
+                items {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatCurrency
+                  FiatBaseAmount
+                  FiatAmount
+                  CryptoCurrency
+                  CryptoAmount
+                  CryptoAddress
+                  GWReference
+                  BankReference
+                  MerchantRef
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                }
+                nextToken
+              }
+              createdOn
+              updatedOn
+              owner
+              comments {
+                items {
+                  id
+                  content
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  Author
+                  AuthorEmail
+                  createdOn
+                  updatedOn
+                }
+                nextToken
+              }
+              KYCVerification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
             createdOn
             updatedOn
             owner
+          }
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+        comments {
+          items {
+            id
+            content
+            Customer {
+              id
+              Firstname
+              Surname
+              DateOfBirth
+              StreetLine1
+              StreetLine2
+              City
+              PostalCode
+              StateProvince
+              Country
+              Email
+              Telephone
+              FiatTotalAmount
+              FiatDailyAmount
+              FiatMonthlyAmount
+              FiatCurrency
+              Tier
+              KYCState
+              VerificationID
+              PaymentTransactions {
+                items {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatCurrency
+                  FiatBaseAmount
+                  FiatAmount
+                  CryptoCurrency
+                  CryptoAmount
+                  CryptoAddress
+                  GWReference
+                  BankReference
+                  MerchantRef
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                }
+                nextToken
+              }
+              createdOn
+              updatedOn
+              owner
+              comments {
+                items {
+                  id
+                  content
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  Author
+                  AuthorEmail
+                  createdOn
+                  updatedOn
+                }
+                nextToken
+              }
+              KYCVerification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
+            Author
+            AuthorEmail
+            createdOn
+            updatedOn
           }
           nextToken
         }
@@ -307,37 +533,467 @@ export const getTransaction = /* GraphQL */ `
             Tier
             KYCState
             VerificationID
+            PaymentTransactions {
+              items {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatCurrency
+                FiatBaseAmount
+                FiatAmount
+                CryptoCurrency
+                CryptoAmount
+                CryptoAddress
+                GWReference
+                BankReference
+                MerchantRef
+                Customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                createdOn
+                updatedOn
+                owner
+              }
+              nextToken
+            }
             createdOn
             updatedOn
             owner
+            comments {
+              items {
+                id
+                content
+                Customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                Author
+                AuthorEmail
+                createdOn
+                updatedOn
+              }
+              nextToken
+            }
+            KYCVerification {
+              id
+              customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              idVerification
+              poaVerification
+              financeVerification
+              createdOn
+              updatedOn
+              documents {
+                items {
+                  id
+                  name
+                  state
+                  file {
+                    bucket
+                    region
+                    key
+                  }
+                  s3Key
+                  documentType
+                  createdOn
+                  updatedOn
+                  owner
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              jumioVerifications {
+                items {
+                  id
+                  dataInput
+                  inputType
+                  metaInfo
+                  createdOn
+                  updatedOn
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              owner
+            }
           }
           idVerification
           poaVerification
           financeVerification
+          createdOn
+          updatedOn
           documents {
+            items {
+              id
+              name
+              state
+              file {
+                bucket
+                region
+                key
+              }
+              s3Key
+              documentType
+              createdOn
+              updatedOn
+              owner
+              Verification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
             nextToken
           }
           jumioVerifications {
+            items {
+              id
+              dataInput
+              inputType
+              metaInfo
+              createdOn
+              updatedOn
+              Verification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
             nextToken
           }
-          createdOn
-          updatedOn
           owner
         }
-        comments {
-          items {
-            id
-            content
-            Author
-            AuthorEmail
-            createdOn
-            updatedOn
-          }
-          nextToken
-        }
-        createdOn
-        updatedOn
-        owner
       }
       createdOn
       updatedOn
@@ -395,23 +1051,554 @@ export const listTransactions = /* GraphQL */ `
           KYCState
           VerificationID
           PaymentTransactions {
-            nextToken
-          }
-          KYCVerification {
-            id
-            idVerification
-            poaVerification
-            financeVerification
-            createdOn
-            updatedOn
-            owner
-          }
-          comments {
+            items {
+              id
+              Firstname
+              Surname
+              DateOfBirth
+              StreetLine1
+              StreetLine2
+              City
+              PostalCode
+              StateProvince
+              Country
+              Email
+              Telephone
+              FiatCurrency
+              FiatBaseAmount
+              FiatAmount
+              CryptoCurrency
+              CryptoAmount
+              CryptoAddress
+              GWReference
+              BankReference
+              MerchantRef
+              Customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              createdOn
+              updatedOn
+              owner
+            }
             nextToken
           }
           createdOn
           updatedOn
           owner
+          comments {
+            items {
+              id
+              content
+              Customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              Author
+              AuthorEmail
+              createdOn
+              updatedOn
+            }
+            nextToken
+          }
+          KYCVerification {
+            id
+            customer {
+              id
+              Firstname
+              Surname
+              DateOfBirth
+              StreetLine1
+              StreetLine2
+              City
+              PostalCode
+              StateProvince
+              Country
+              Email
+              Telephone
+              FiatTotalAmount
+              FiatDailyAmount
+              FiatMonthlyAmount
+              FiatCurrency
+              Tier
+              KYCState
+              VerificationID
+              PaymentTransactions {
+                items {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatCurrency
+                  FiatBaseAmount
+                  FiatAmount
+                  CryptoCurrency
+                  CryptoAmount
+                  CryptoAddress
+                  GWReference
+                  BankReference
+                  MerchantRef
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                }
+                nextToken
+              }
+              createdOn
+              updatedOn
+              owner
+              comments {
+                items {
+                  id
+                  content
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  Author
+                  AuthorEmail
+                  createdOn
+                  updatedOn
+                }
+                nextToken
+              }
+              KYCVerification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
+            idVerification
+            poaVerification
+            financeVerification
+            createdOn
+            updatedOn
+            documents {
+              items {
+                id
+                name
+                state
+                file {
+                  bucket
+                  region
+                  key
+                }
+                s3Key
+                documentType
+                createdOn
+                updatedOn
+                owner
+                Verification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              nextToken
+            }
+            jumioVerifications {
+              items {
+                id
+                dataInput
+                inputType
+                metaInfo
+                createdOn
+                updatedOn
+                Verification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              nextToken
+            }
+            owner
+          }
         }
         createdOn
         updatedOn
@@ -486,13 +1673,605 @@ export const getCustomer = /* GraphQL */ `
             Tier
             KYCState
             VerificationID
+            PaymentTransactions {
+              items {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatCurrency
+                FiatBaseAmount
+                FiatAmount
+                CryptoCurrency
+                CryptoAmount
+                CryptoAddress
+                GWReference
+                BankReference
+                MerchantRef
+                Customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                createdOn
+                updatedOn
+                owner
+              }
+              nextToken
+            }
             createdOn
             updatedOn
             owner
+            comments {
+              items {
+                id
+                content
+                Customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                Author
+                AuthorEmail
+                createdOn
+                updatedOn
+              }
+              nextToken
+            }
+            KYCVerification {
+              id
+              customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              idVerification
+              poaVerification
+              financeVerification
+              createdOn
+              updatedOn
+              documents {
+                items {
+                  id
+                  name
+                  state
+                  file {
+                    bucket
+                    region
+                    key
+                  }
+                  s3Key
+                  documentType
+                  createdOn
+                  updatedOn
+                  owner
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              jumioVerifications {
+                items {
+                  id
+                  dataInput
+                  inputType
+                  metaInfo
+                  createdOn
+                  updatedOn
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              owner
+            }
           }
           createdOn
           updatedOn
           owner
+        }
+        nextToken
+      }
+      createdOn
+      updatedOn
+      owner
+      comments {
+        items {
+          id
+          content
+          Customer {
+            id
+            Firstname
+            Surname
+            DateOfBirth
+            StreetLine1
+            StreetLine2
+            City
+            PostalCode
+            StateProvince
+            Country
+            Email
+            Telephone
+            FiatTotalAmount
+            FiatDailyAmount
+            FiatMonthlyAmount
+            FiatCurrency
+            Tier
+            KYCState
+            VerificationID
+            PaymentTransactions {
+              items {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatCurrency
+                FiatBaseAmount
+                FiatAmount
+                CryptoCurrency
+                CryptoAmount
+                CryptoAddress
+                GWReference
+                BankReference
+                MerchantRef
+                Customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                createdOn
+                updatedOn
+                owner
+              }
+              nextToken
+            }
+            createdOn
+            updatedOn
+            owner
+            comments {
+              items {
+                id
+                content
+                Customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                Author
+                AuthorEmail
+                createdOn
+                updatedOn
+              }
+              nextToken
+            }
+            KYCVerification {
+              id
+              customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              idVerification
+              poaVerification
+              financeVerification
+              createdOn
+              updatedOn
+              documents {
+                items {
+                  id
+                  name
+                  state
+                  file {
+                    bucket
+                    region
+                    key
+                  }
+                  s3Key
+                  documentType
+                  createdOn
+                  updatedOn
+                  owner
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              jumioVerifications {
+                items {
+                  id
+                  dataInput
+                  inputType
+                  metaInfo
+                  createdOn
+                  updatedOn
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              owner
+            }
+          }
+          Author
+          AuthorEmail
+          createdOn
+          updatedOn
         }
         nextToken
       }
@@ -519,37 +2298,734 @@ export const getCustomer = /* GraphQL */ `
           KYCState
           VerificationID
           PaymentTransactions {
-            nextToken
-          }
-          KYCVerification {
-            id
-            idVerification
-            poaVerification
-            financeVerification
-            createdOn
-            updatedOn
-            owner
-          }
-          comments {
+            items {
+              id
+              Firstname
+              Surname
+              DateOfBirth
+              StreetLine1
+              StreetLine2
+              City
+              PostalCode
+              StateProvince
+              Country
+              Email
+              Telephone
+              FiatCurrency
+              FiatBaseAmount
+              FiatAmount
+              CryptoCurrency
+              CryptoAmount
+              CryptoAddress
+              GWReference
+              BankReference
+              MerchantRef
+              Customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              createdOn
+              updatedOn
+              owner
+            }
             nextToken
           }
           createdOn
           updatedOn
           owner
+          comments {
+            items {
+              id
+              content
+              Customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              Author
+              AuthorEmail
+              createdOn
+              updatedOn
+            }
+            nextToken
+          }
+          KYCVerification {
+            id
+            customer {
+              id
+              Firstname
+              Surname
+              DateOfBirth
+              StreetLine1
+              StreetLine2
+              City
+              PostalCode
+              StateProvince
+              Country
+              Email
+              Telephone
+              FiatTotalAmount
+              FiatDailyAmount
+              FiatMonthlyAmount
+              FiatCurrency
+              Tier
+              KYCState
+              VerificationID
+              PaymentTransactions {
+                items {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatCurrency
+                  FiatBaseAmount
+                  FiatAmount
+                  CryptoCurrency
+                  CryptoAmount
+                  CryptoAddress
+                  GWReference
+                  BankReference
+                  MerchantRef
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                }
+                nextToken
+              }
+              createdOn
+              updatedOn
+              owner
+              comments {
+                items {
+                  id
+                  content
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  Author
+                  AuthorEmail
+                  createdOn
+                  updatedOn
+                }
+                nextToken
+              }
+              KYCVerification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
+            idVerification
+            poaVerification
+            financeVerification
+            createdOn
+            updatedOn
+            documents {
+              items {
+                id
+                name
+                state
+                file {
+                  bucket
+                  region
+                  key
+                }
+                s3Key
+                documentType
+                createdOn
+                updatedOn
+                owner
+                Verification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              nextToken
+            }
+            jumioVerifications {
+              items {
+                id
+                dataInput
+                inputType
+                metaInfo
+                createdOn
+                updatedOn
+                Verification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              nextToken
+            }
+            owner
+          }
         }
         idVerification
         poaVerification
         financeVerification
+        createdOn
+        updatedOn
         documents {
           items {
             id
             name
             state
+            file {
+              bucket
+              region
+              key
+            }
             s3Key
             documentType
             createdOn
             updatedOn
             owner
+            Verification {
+              id
+              customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              idVerification
+              poaVerification
+              financeVerification
+              createdOn
+              updatedOn
+              documents {
+                items {
+                  id
+                  name
+                  state
+                  file {
+                    bucket
+                    region
+                    key
+                  }
+                  s3Key
+                  documentType
+                  createdOn
+                  updatedOn
+                  owner
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              jumioVerifications {
+                items {
+                  id
+                  dataInput
+                  inputType
+                  metaInfo
+                  createdOn
+                  updatedOn
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              owner
+            }
           }
           nextToken
         }
@@ -561,51 +3037,170 @@ export const getCustomer = /* GraphQL */ `
             metaInfo
             createdOn
             updatedOn
+            Verification {
+              id
+              customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              idVerification
+              poaVerification
+              financeVerification
+              createdOn
+              updatedOn
+              documents {
+                items {
+                  id
+                  name
+                  state
+                  file {
+                    bucket
+                    region
+                    key
+                  }
+                  s3Key
+                  documentType
+                  createdOn
+                  updatedOn
+                  owner
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              jumioVerifications {
+                items {
+                  id
+                  dataInput
+                  inputType
+                  metaInfo
+                  createdOn
+                  updatedOn
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              owner
+            }
           }
           nextToken
         }
-        createdOn
-        updatedOn
         owner
       }
-      comments {
-        items {
-          id
-          content
-          Customer {
-            id
-            Firstname
-            Surname
-            DateOfBirth
-            StreetLine1
-            StreetLine2
-            City
-            PostalCode
-            StateProvince
-            Country
-            Email
-            Telephone
-            FiatTotalAmount
-            FiatDailyAmount
-            FiatMonthlyAmount
-            FiatCurrency
-            Tier
-            KYCState
-            VerificationID
-            createdOn
-            updatedOn
-            owner
-          }
-          Author
-          AuthorEmail
-          createdOn
-          updatedOn
-        }
-        nextToken
-      }
-      createdOn
-      updatedOn
-      owner
     }
   }
 `;
@@ -659,9 +3254,391 @@ export const listCustomers = /* GraphQL */ `
             GWReference
             BankReference
             MerchantRef
+            Customer {
+              id
+              Firstname
+              Surname
+              DateOfBirth
+              StreetLine1
+              StreetLine2
+              City
+              PostalCode
+              StateProvince
+              Country
+              Email
+              Telephone
+              FiatTotalAmount
+              FiatDailyAmount
+              FiatMonthlyAmount
+              FiatCurrency
+              Tier
+              KYCState
+              VerificationID
+              PaymentTransactions {
+                items {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatCurrency
+                  FiatBaseAmount
+                  FiatAmount
+                  CryptoCurrency
+                  CryptoAmount
+                  CryptoAddress
+                  GWReference
+                  BankReference
+                  MerchantRef
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                }
+                nextToken
+              }
+              createdOn
+              updatedOn
+              owner
+              comments {
+                items {
+                  id
+                  content
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  Author
+                  AuthorEmail
+                  createdOn
+                  updatedOn
+                }
+                nextToken
+              }
+              KYCVerification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
             createdOn
             updatedOn
             owner
+          }
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+        comments {
+          items {
+            id
+            content
+            Customer {
+              id
+              Firstname
+              Surname
+              DateOfBirth
+              StreetLine1
+              StreetLine2
+              City
+              PostalCode
+              StateProvince
+              Country
+              Email
+              Telephone
+              FiatTotalAmount
+              FiatDailyAmount
+              FiatMonthlyAmount
+              FiatCurrency
+              Tier
+              KYCState
+              VerificationID
+              PaymentTransactions {
+                items {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatCurrency
+                  FiatBaseAmount
+                  FiatAmount
+                  CryptoCurrency
+                  CryptoAmount
+                  CryptoAddress
+                  GWReference
+                  BankReference
+                  MerchantRef
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                }
+                nextToken
+              }
+              createdOn
+              updatedOn
+              owner
+              comments {
+                items {
+                  id
+                  content
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  Author
+                  AuthorEmail
+                  createdOn
+                  updatedOn
+                }
+                nextToken
+              }
+              KYCVerification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
+            Author
+            AuthorEmail
+            createdOn
+            updatedOn
           }
           nextToken
         }
@@ -687,602 +3664,467 @@ export const listCustomers = /* GraphQL */ `
             Tier
             KYCState
             VerificationID
+            PaymentTransactions {
+              items {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatCurrency
+                FiatBaseAmount
+                FiatAmount
+                CryptoCurrency
+                CryptoAmount
+                CryptoAddress
+                GWReference
+                BankReference
+                MerchantRef
+                Customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                createdOn
+                updatedOn
+                owner
+              }
+              nextToken
+            }
             createdOn
             updatedOn
             owner
+            comments {
+              items {
+                id
+                content
+                Customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                Author
+                AuthorEmail
+                createdOn
+                updatedOn
+              }
+              nextToken
+            }
+            KYCVerification {
+              id
+              customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              idVerification
+              poaVerification
+              financeVerification
+              createdOn
+              updatedOn
+              documents {
+                items {
+                  id
+                  name
+                  state
+                  file {
+                    bucket
+                    region
+                    key
+                  }
+                  s3Key
+                  documentType
+                  createdOn
+                  updatedOn
+                  owner
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              jumioVerifications {
+                items {
+                  id
+                  dataInput
+                  inputType
+                  metaInfo
+                  createdOn
+                  updatedOn
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              owner
+            }
           }
           idVerification
           poaVerification
           financeVerification
+          createdOn
+          updatedOn
           documents {
+            items {
+              id
+              name
+              state
+              file {
+                bucket
+                region
+                key
+              }
+              s3Key
+              documentType
+              createdOn
+              updatedOn
+              owner
+              Verification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
             nextToken
           }
           jumioVerifications {
+            items {
+              id
+              dataInput
+              inputType
+              metaInfo
+              createdOn
+              updatedOn
+              Verification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
             nextToken
           }
-          createdOn
-          updatedOn
           owner
         }
-        comments {
-          items {
-            id
-            content
-            Author
-            AuthorEmail
-            createdOn
-            updatedOn
-          }
-          nextToken
-        }
-        createdOn
-        updatedOn
-        owner
-      }
-      nextToken
-    }
-  }
-`;
-export const getJumioVerifyMetaData = /* GraphQL */ `
-  query GetJumioVerifyMetaData($id: ID!) {
-    getJumioVerifyMetaData(id: $id) {
-      id
-      dataInput
-      Verification {
-        id
-        customer {
-          id
-          Firstname
-          Surname
-          DateOfBirth
-          StreetLine1
-          StreetLine2
-          City
-          PostalCode
-          StateProvince
-          Country
-          Email
-          Telephone
-          FiatTotalAmount
-          FiatDailyAmount
-          FiatMonthlyAmount
-          FiatCurrency
-          Tier
-          KYCState
-          VerificationID
-          PaymentTransactions {
-            nextToken
-          }
-          KYCVerification {
-            id
-            idVerification
-            poaVerification
-            financeVerification
-            createdOn
-            updatedOn
-            owner
-          }
-          comments {
-            nextToken
-          }
-          createdOn
-          updatedOn
-          owner
-        }
-        idVerification
-        poaVerification
-        financeVerification
-        documents {
-          items {
-            id
-            name
-            state
-            s3Key
-            documentType
-            createdOn
-            updatedOn
-            owner
-          }
-          nextToken
-        }
-        jumioVerifications {
-          items {
-            id
-            dataInput
-            inputType
-            metaInfo
-            createdOn
-            updatedOn
-          }
-          nextToken
-        }
-        createdOn
-        updatedOn
-        owner
-      }
-      inputType
-      metaInfo
-      createdOn
-      updatedOn
-    }
-  }
-`;
-export const listJumioVerifyMetaDatas = /* GraphQL */ `
-  query ListJumioVerifyMetaDatas(
-    $filter: ModelJumioVerifyMetaDataFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listJumioVerifyMetaDatas(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        dataInput
-        Verification {
-          id
-          customer {
-            id
-            Firstname
-            Surname
-            DateOfBirth
-            StreetLine1
-            StreetLine2
-            City
-            PostalCode
-            StateProvince
-            Country
-            Email
-            Telephone
-            FiatTotalAmount
-            FiatDailyAmount
-            FiatMonthlyAmount
-            FiatCurrency
-            Tier
-            KYCState
-            VerificationID
-            createdOn
-            updatedOn
-            owner
-          }
-          idVerification
-          poaVerification
-          financeVerification
-          documents {
-            nextToken
-          }
-          jumioVerifications {
-            nextToken
-          }
-          createdOn
-          updatedOn
-          owner
-        }
-        inputType
-        metaInfo
-        createdOn
-        updatedOn
-      }
-      nextToken
-    }
-  }
-`;
-export const getComment = /* GraphQL */ `
-  query GetComment($id: ID!) {
-    getComment(id: $id) {
-      id
-      content
-      Customer {
-        id
-        Firstname
-        Surname
-        DateOfBirth
-        StreetLine1
-        StreetLine2
-        City
-        PostalCode
-        StateProvince
-        Country
-        Email
-        Telephone
-        FiatTotalAmount
-        FiatDailyAmount
-        FiatMonthlyAmount
-        FiatCurrency
-        Tier
-        KYCState
-        VerificationID
-        PaymentTransactions {
-          items {
-            id
-            Firstname
-            Surname
-            DateOfBirth
-            StreetLine1
-            StreetLine2
-            City
-            PostalCode
-            StateProvince
-            Country
-            Email
-            Telephone
-            FiatCurrency
-            FiatBaseAmount
-            FiatAmount
-            CryptoCurrency
-            CryptoAmount
-            CryptoAddress
-            GWReference
-            BankReference
-            MerchantRef
-            createdOn
-            updatedOn
-            owner
-          }
-          nextToken
-        }
-        KYCVerification {
-          id
-          customer {
-            id
-            Firstname
-            Surname
-            DateOfBirth
-            StreetLine1
-            StreetLine2
-            City
-            PostalCode
-            StateProvince
-            Country
-            Email
-            Telephone
-            FiatTotalAmount
-            FiatDailyAmount
-            FiatMonthlyAmount
-            FiatCurrency
-            Tier
-            KYCState
-            VerificationID
-            createdOn
-            updatedOn
-            owner
-          }
-          idVerification
-          poaVerification
-          financeVerification
-          documents {
-            nextToken
-          }
-          jumioVerifications {
-            nextToken
-          }
-          createdOn
-          updatedOn
-          owner
-        }
-        comments {
-          items {
-            id
-            content
-            Author
-            AuthorEmail
-            createdOn
-            updatedOn
-          }
-          nextToken
-        }
-        createdOn
-        updatedOn
-        owner
-      }
-      Author
-      AuthorEmail
-      createdOn
-      updatedOn
-    }
-  }
-`;
-export const listComments = /* GraphQL */ `
-  query ListComments(
-    $filter: ModelCommentFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listComments(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        content
-        Customer {
-          id
-          Firstname
-          Surname
-          DateOfBirth
-          StreetLine1
-          StreetLine2
-          City
-          PostalCode
-          StateProvince
-          Country
-          Email
-          Telephone
-          FiatTotalAmount
-          FiatDailyAmount
-          FiatMonthlyAmount
-          FiatCurrency
-          Tier
-          KYCState
-          VerificationID
-          PaymentTransactions {
-            nextToken
-          }
-          KYCVerification {
-            id
-            idVerification
-            poaVerification
-            financeVerification
-            createdOn
-            updatedOn
-            owner
-          }
-          comments {
-            nextToken
-          }
-          createdOn
-          updatedOn
-          owner
-        }
-        Author
-        AuthorEmail
-        createdOn
-        updatedOn
-      }
-      nextToken
-    }
-  }
-`;
-export const getVerification = /* GraphQL */ `
-  query GetVerification($id: ID!) {
-    getVerification(id: $id) {
-      id
-      customer {
-        id
-        Firstname
-        Surname
-        DateOfBirth
-        StreetLine1
-        StreetLine2
-        City
-        PostalCode
-        StateProvince
-        Country
-        Email
-        Telephone
-        FiatTotalAmount
-        FiatDailyAmount
-        FiatMonthlyAmount
-        FiatCurrency
-        Tier
-        KYCState
-        VerificationID
-        PaymentTransactions {
-          items {
-            id
-            Firstname
-            Surname
-            DateOfBirth
-            StreetLine1
-            StreetLine2
-            City
-            PostalCode
-            StateProvince
-            Country
-            Email
-            Telephone
-            FiatCurrency
-            FiatBaseAmount
-            FiatAmount
-            CryptoCurrency
-            CryptoAmount
-            CryptoAddress
-            GWReference
-            BankReference
-            MerchantRef
-            createdOn
-            updatedOn
-            owner
-          }
-          nextToken
-        }
-        KYCVerification {
-          id
-          customer {
-            id
-            Firstname
-            Surname
-            DateOfBirth
-            StreetLine1
-            StreetLine2
-            City
-            PostalCode
-            StateProvince
-            Country
-            Email
-            Telephone
-            FiatTotalAmount
-            FiatDailyAmount
-            FiatMonthlyAmount
-            FiatCurrency
-            Tier
-            KYCState
-            VerificationID
-            createdOn
-            updatedOn
-            owner
-          }
-          idVerification
-          poaVerification
-          financeVerification
-          documents {
-            nextToken
-          }
-          jumioVerifications {
-            nextToken
-          }
-          createdOn
-          updatedOn
-          owner
-        }
-        comments {
-          items {
-            id
-            content
-            Author
-            AuthorEmail
-            createdOn
-            updatedOn
-          }
-          nextToken
-        }
-        createdOn
-        updatedOn
-        owner
-      }
-      idVerification
-      poaVerification
-      financeVerification
-      documents {
-        items {
-          id
-          name
-          state
-          file {
-            bucket
-            region
-            key
-          }
-          s3Key
-          documentType
-          Verification {
-            id
-            idVerification
-            poaVerification
-            financeVerification
-            createdOn
-            updatedOn
-            owner
-          }
-          createdOn
-          updatedOn
-          owner
-        }
-        nextToken
-      }
-      jumioVerifications {
-        items {
-          id
-          dataInput
-          Verification {
-            id
-            idVerification
-            poaVerification
-            financeVerification
-            createdOn
-            updatedOn
-            owner
-          }
-          inputType
-          metaInfo
-          createdOn
-          updatedOn
-        }
-        nextToken
-      }
-      createdOn
-      updatedOn
-      owner
-    }
-  }
-`;
-export const listVerifications = /* GraphQL */ `
-  query ListVerifications(
-    $filter: ModelVerificationFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listVerifications(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        customer {
-          id
-          Firstname
-          Surname
-          DateOfBirth
-          StreetLine1
-          StreetLine2
-          City
-          PostalCode
-          StateProvince
-          Country
-          Email
-          Telephone
-          FiatTotalAmount
-          FiatDailyAmount
-          FiatMonthlyAmount
-          FiatCurrency
-          Tier
-          KYCState
-          VerificationID
-          PaymentTransactions {
-            nextToken
-          }
-          KYCVerification {
-            id
-            idVerification
-            poaVerification
-            financeVerification
-            createdOn
-            updatedOn
-            owner
-          }
-          comments {
-            nextToken
-          }
-          createdOn
-          updatedOn
-          owner
-        }
-        idVerification
-        poaVerification
-        financeVerification
-        documents {
-          items {
-            id
-            name
-            state
-            s3Key
-            documentType
-            createdOn
-            updatedOn
-            owner
-          }
-          nextToken
-        }
-        jumioVerifications {
-          items {
-            id
-            dataInput
-            inputType
-            metaInfo
-            createdOn
-            updatedOn
-          }
-          nextToken
-        }
-        createdOn
-        updatedOn
-        owner
       }
       nextToken
     }
@@ -1375,6 +4217,6914 @@ export const listUserWalletss = /* GraphQL */ `
         owner
       }
       nextToken
+    }
+  }
+`;
+export const getKycDocument = /* GraphQL */ `
+  query GetKycDocument($id: ID!) {
+    getKYCDocument(id: $id) {
+      id
+      name
+      state
+      file {
+        bucket
+        region
+        key
+      }
+      s3Key
+      documentType
+      createdOn
+      updatedOn
+      owner
+      Verification {
+        id
+        customer {
+          id
+          Firstname
+          Surname
+          DateOfBirth
+          StreetLine1
+          StreetLine2
+          City
+          PostalCode
+          StateProvince
+          Country
+          Email
+          Telephone
+          FiatTotalAmount
+          FiatDailyAmount
+          FiatMonthlyAmount
+          FiatCurrency
+          Tier
+          KYCState
+          VerificationID
+          PaymentTransactions {
+            items {
+              id
+              Firstname
+              Surname
+              DateOfBirth
+              StreetLine1
+              StreetLine2
+              City
+              PostalCode
+              StateProvince
+              Country
+              Email
+              Telephone
+              FiatCurrency
+              FiatBaseAmount
+              FiatAmount
+              CryptoCurrency
+              CryptoAmount
+              CryptoAddress
+              GWReference
+              BankReference
+              MerchantRef
+              Customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              createdOn
+              updatedOn
+              owner
+            }
+            nextToken
+          }
+          createdOn
+          updatedOn
+          owner
+          comments {
+            items {
+              id
+              content
+              Customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              Author
+              AuthorEmail
+              createdOn
+              updatedOn
+            }
+            nextToken
+          }
+          KYCVerification {
+            id
+            customer {
+              id
+              Firstname
+              Surname
+              DateOfBirth
+              StreetLine1
+              StreetLine2
+              City
+              PostalCode
+              StateProvince
+              Country
+              Email
+              Telephone
+              FiatTotalAmount
+              FiatDailyAmount
+              FiatMonthlyAmount
+              FiatCurrency
+              Tier
+              KYCState
+              VerificationID
+              PaymentTransactions {
+                items {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatCurrency
+                  FiatBaseAmount
+                  FiatAmount
+                  CryptoCurrency
+                  CryptoAmount
+                  CryptoAddress
+                  GWReference
+                  BankReference
+                  MerchantRef
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                }
+                nextToken
+              }
+              createdOn
+              updatedOn
+              owner
+              comments {
+                items {
+                  id
+                  content
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  Author
+                  AuthorEmail
+                  createdOn
+                  updatedOn
+                }
+                nextToken
+              }
+              KYCVerification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
+            idVerification
+            poaVerification
+            financeVerification
+            createdOn
+            updatedOn
+            documents {
+              items {
+                id
+                name
+                state
+                file {
+                  bucket
+                  region
+                  key
+                }
+                s3Key
+                documentType
+                createdOn
+                updatedOn
+                owner
+                Verification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              nextToken
+            }
+            jumioVerifications {
+              items {
+                id
+                dataInput
+                inputType
+                metaInfo
+                createdOn
+                updatedOn
+                Verification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              nextToken
+            }
+            owner
+          }
+        }
+        idVerification
+        poaVerification
+        financeVerification
+        createdOn
+        updatedOn
+        documents {
+          items {
+            id
+            name
+            state
+            file {
+              bucket
+              region
+              key
+            }
+            s3Key
+            documentType
+            createdOn
+            updatedOn
+            owner
+            Verification {
+              id
+              customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              idVerification
+              poaVerification
+              financeVerification
+              createdOn
+              updatedOn
+              documents {
+                items {
+                  id
+                  name
+                  state
+                  file {
+                    bucket
+                    region
+                    key
+                  }
+                  s3Key
+                  documentType
+                  createdOn
+                  updatedOn
+                  owner
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              jumioVerifications {
+                items {
+                  id
+                  dataInput
+                  inputType
+                  metaInfo
+                  createdOn
+                  updatedOn
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              owner
+            }
+          }
+          nextToken
+        }
+        jumioVerifications {
+          items {
+            id
+            dataInput
+            inputType
+            metaInfo
+            createdOn
+            updatedOn
+            Verification {
+              id
+              customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              idVerification
+              poaVerification
+              financeVerification
+              createdOn
+              updatedOn
+              documents {
+                items {
+                  id
+                  name
+                  state
+                  file {
+                    bucket
+                    region
+                    key
+                  }
+                  s3Key
+                  documentType
+                  createdOn
+                  updatedOn
+                  owner
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              jumioVerifications {
+                items {
+                  id
+                  dataInput
+                  inputType
+                  metaInfo
+                  createdOn
+                  updatedOn
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              owner
+            }
+          }
+          nextToken
+        }
+        owner
+      }
+    }
+  }
+`;
+export const listKycDocuments = /* GraphQL */ `
+  query ListKycDocuments(
+    $filter: ModelKYCDocumentFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listKYCDocuments(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        state
+        file {
+          bucket
+          region
+          key
+        }
+        s3Key
+        documentType
+        createdOn
+        updatedOn
+        owner
+        Verification {
+          id
+          customer {
+            id
+            Firstname
+            Surname
+            DateOfBirth
+            StreetLine1
+            StreetLine2
+            City
+            PostalCode
+            StateProvince
+            Country
+            Email
+            Telephone
+            FiatTotalAmount
+            FiatDailyAmount
+            FiatMonthlyAmount
+            FiatCurrency
+            Tier
+            KYCState
+            VerificationID
+            PaymentTransactions {
+              items {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatCurrency
+                FiatBaseAmount
+                FiatAmount
+                CryptoCurrency
+                CryptoAmount
+                CryptoAddress
+                GWReference
+                BankReference
+                MerchantRef
+                Customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                createdOn
+                updatedOn
+                owner
+              }
+              nextToken
+            }
+            createdOn
+            updatedOn
+            owner
+            comments {
+              items {
+                id
+                content
+                Customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                Author
+                AuthorEmail
+                createdOn
+                updatedOn
+              }
+              nextToken
+            }
+            KYCVerification {
+              id
+              customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              idVerification
+              poaVerification
+              financeVerification
+              createdOn
+              updatedOn
+              documents {
+                items {
+                  id
+                  name
+                  state
+                  file {
+                    bucket
+                    region
+                    key
+                  }
+                  s3Key
+                  documentType
+                  createdOn
+                  updatedOn
+                  owner
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              jumioVerifications {
+                items {
+                  id
+                  dataInput
+                  inputType
+                  metaInfo
+                  createdOn
+                  updatedOn
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              owner
+            }
+          }
+          idVerification
+          poaVerification
+          financeVerification
+          createdOn
+          updatedOn
+          documents {
+            items {
+              id
+              name
+              state
+              file {
+                bucket
+                region
+                key
+              }
+              s3Key
+              documentType
+              createdOn
+              updatedOn
+              owner
+              Verification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
+            nextToken
+          }
+          jumioVerifications {
+            items {
+              id
+              dataInput
+              inputType
+              metaInfo
+              createdOn
+              updatedOn
+              Verification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
+            nextToken
+          }
+          owner
+        }
+      }
+      nextToken
+    }
+  }
+`;
+export const getJumioVerifyMetaData = /* GraphQL */ `
+  query GetJumioVerifyMetaData($id: ID!) {
+    getJumioVerifyMetaData(id: $id) {
+      id
+      dataInput
+      inputType
+      metaInfo
+      createdOn
+      updatedOn
+      Verification {
+        id
+        customer {
+          id
+          Firstname
+          Surname
+          DateOfBirth
+          StreetLine1
+          StreetLine2
+          City
+          PostalCode
+          StateProvince
+          Country
+          Email
+          Telephone
+          FiatTotalAmount
+          FiatDailyAmount
+          FiatMonthlyAmount
+          FiatCurrency
+          Tier
+          KYCState
+          VerificationID
+          PaymentTransactions {
+            items {
+              id
+              Firstname
+              Surname
+              DateOfBirth
+              StreetLine1
+              StreetLine2
+              City
+              PostalCode
+              StateProvince
+              Country
+              Email
+              Telephone
+              FiatCurrency
+              FiatBaseAmount
+              FiatAmount
+              CryptoCurrency
+              CryptoAmount
+              CryptoAddress
+              GWReference
+              BankReference
+              MerchantRef
+              Customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              createdOn
+              updatedOn
+              owner
+            }
+            nextToken
+          }
+          createdOn
+          updatedOn
+          owner
+          comments {
+            items {
+              id
+              content
+              Customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              Author
+              AuthorEmail
+              createdOn
+              updatedOn
+            }
+            nextToken
+          }
+          KYCVerification {
+            id
+            customer {
+              id
+              Firstname
+              Surname
+              DateOfBirth
+              StreetLine1
+              StreetLine2
+              City
+              PostalCode
+              StateProvince
+              Country
+              Email
+              Telephone
+              FiatTotalAmount
+              FiatDailyAmount
+              FiatMonthlyAmount
+              FiatCurrency
+              Tier
+              KYCState
+              VerificationID
+              PaymentTransactions {
+                items {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatCurrency
+                  FiatBaseAmount
+                  FiatAmount
+                  CryptoCurrency
+                  CryptoAmount
+                  CryptoAddress
+                  GWReference
+                  BankReference
+                  MerchantRef
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                }
+                nextToken
+              }
+              createdOn
+              updatedOn
+              owner
+              comments {
+                items {
+                  id
+                  content
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  Author
+                  AuthorEmail
+                  createdOn
+                  updatedOn
+                }
+                nextToken
+              }
+              KYCVerification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
+            idVerification
+            poaVerification
+            financeVerification
+            createdOn
+            updatedOn
+            documents {
+              items {
+                id
+                name
+                state
+                file {
+                  bucket
+                  region
+                  key
+                }
+                s3Key
+                documentType
+                createdOn
+                updatedOn
+                owner
+                Verification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              nextToken
+            }
+            jumioVerifications {
+              items {
+                id
+                dataInput
+                inputType
+                metaInfo
+                createdOn
+                updatedOn
+                Verification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              nextToken
+            }
+            owner
+          }
+        }
+        idVerification
+        poaVerification
+        financeVerification
+        createdOn
+        updatedOn
+        documents {
+          items {
+            id
+            name
+            state
+            file {
+              bucket
+              region
+              key
+            }
+            s3Key
+            documentType
+            createdOn
+            updatedOn
+            owner
+            Verification {
+              id
+              customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              idVerification
+              poaVerification
+              financeVerification
+              createdOn
+              updatedOn
+              documents {
+                items {
+                  id
+                  name
+                  state
+                  file {
+                    bucket
+                    region
+                    key
+                  }
+                  s3Key
+                  documentType
+                  createdOn
+                  updatedOn
+                  owner
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              jumioVerifications {
+                items {
+                  id
+                  dataInput
+                  inputType
+                  metaInfo
+                  createdOn
+                  updatedOn
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              owner
+            }
+          }
+          nextToken
+        }
+        jumioVerifications {
+          items {
+            id
+            dataInput
+            inputType
+            metaInfo
+            createdOn
+            updatedOn
+            Verification {
+              id
+              customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              idVerification
+              poaVerification
+              financeVerification
+              createdOn
+              updatedOn
+              documents {
+                items {
+                  id
+                  name
+                  state
+                  file {
+                    bucket
+                    region
+                    key
+                  }
+                  s3Key
+                  documentType
+                  createdOn
+                  updatedOn
+                  owner
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              jumioVerifications {
+                items {
+                  id
+                  dataInput
+                  inputType
+                  metaInfo
+                  createdOn
+                  updatedOn
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              owner
+            }
+          }
+          nextToken
+        }
+        owner
+      }
+    }
+  }
+`;
+export const listJumioVerifyMetaDatas = /* GraphQL */ `
+  query ListJumioVerifyMetaDatas(
+    $filter: ModelJumioVerifyMetaDataFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listJumioVerifyMetaDatas(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        dataInput
+        inputType
+        metaInfo
+        createdOn
+        updatedOn
+        Verification {
+          id
+          customer {
+            id
+            Firstname
+            Surname
+            DateOfBirth
+            StreetLine1
+            StreetLine2
+            City
+            PostalCode
+            StateProvince
+            Country
+            Email
+            Telephone
+            FiatTotalAmount
+            FiatDailyAmount
+            FiatMonthlyAmount
+            FiatCurrency
+            Tier
+            KYCState
+            VerificationID
+            PaymentTransactions {
+              items {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatCurrency
+                FiatBaseAmount
+                FiatAmount
+                CryptoCurrency
+                CryptoAmount
+                CryptoAddress
+                GWReference
+                BankReference
+                MerchantRef
+                Customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                createdOn
+                updatedOn
+                owner
+              }
+              nextToken
+            }
+            createdOn
+            updatedOn
+            owner
+            comments {
+              items {
+                id
+                content
+                Customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                Author
+                AuthorEmail
+                createdOn
+                updatedOn
+              }
+              nextToken
+            }
+            KYCVerification {
+              id
+              customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              idVerification
+              poaVerification
+              financeVerification
+              createdOn
+              updatedOn
+              documents {
+                items {
+                  id
+                  name
+                  state
+                  file {
+                    bucket
+                    region
+                    key
+                  }
+                  s3Key
+                  documentType
+                  createdOn
+                  updatedOn
+                  owner
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              jumioVerifications {
+                items {
+                  id
+                  dataInput
+                  inputType
+                  metaInfo
+                  createdOn
+                  updatedOn
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              owner
+            }
+          }
+          idVerification
+          poaVerification
+          financeVerification
+          createdOn
+          updatedOn
+          documents {
+            items {
+              id
+              name
+              state
+              file {
+                bucket
+                region
+                key
+              }
+              s3Key
+              documentType
+              createdOn
+              updatedOn
+              owner
+              Verification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
+            nextToken
+          }
+          jumioVerifications {
+            items {
+              id
+              dataInput
+              inputType
+              metaInfo
+              createdOn
+              updatedOn
+              Verification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
+            nextToken
+          }
+          owner
+        }
+      }
+      nextToken
+    }
+  }
+`;
+export const getComment = /* GraphQL */ `
+  query GetComment($id: ID!) {
+    getComment(id: $id) {
+      id
+      content
+      Customer {
+        id
+        Firstname
+        Surname
+        DateOfBirth
+        StreetLine1
+        StreetLine2
+        City
+        PostalCode
+        StateProvince
+        Country
+        Email
+        Telephone
+        FiatTotalAmount
+        FiatDailyAmount
+        FiatMonthlyAmount
+        FiatCurrency
+        Tier
+        KYCState
+        VerificationID
+        PaymentTransactions {
+          items {
+            id
+            Firstname
+            Surname
+            DateOfBirth
+            StreetLine1
+            StreetLine2
+            City
+            PostalCode
+            StateProvince
+            Country
+            Email
+            Telephone
+            FiatCurrency
+            FiatBaseAmount
+            FiatAmount
+            CryptoCurrency
+            CryptoAmount
+            CryptoAddress
+            GWReference
+            BankReference
+            MerchantRef
+            Customer {
+              id
+              Firstname
+              Surname
+              DateOfBirth
+              StreetLine1
+              StreetLine2
+              City
+              PostalCode
+              StateProvince
+              Country
+              Email
+              Telephone
+              FiatTotalAmount
+              FiatDailyAmount
+              FiatMonthlyAmount
+              FiatCurrency
+              Tier
+              KYCState
+              VerificationID
+              PaymentTransactions {
+                items {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatCurrency
+                  FiatBaseAmount
+                  FiatAmount
+                  CryptoCurrency
+                  CryptoAmount
+                  CryptoAddress
+                  GWReference
+                  BankReference
+                  MerchantRef
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                }
+                nextToken
+              }
+              createdOn
+              updatedOn
+              owner
+              comments {
+                items {
+                  id
+                  content
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  Author
+                  AuthorEmail
+                  createdOn
+                  updatedOn
+                }
+                nextToken
+              }
+              KYCVerification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
+            createdOn
+            updatedOn
+            owner
+          }
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+        comments {
+          items {
+            id
+            content
+            Customer {
+              id
+              Firstname
+              Surname
+              DateOfBirth
+              StreetLine1
+              StreetLine2
+              City
+              PostalCode
+              StateProvince
+              Country
+              Email
+              Telephone
+              FiatTotalAmount
+              FiatDailyAmount
+              FiatMonthlyAmount
+              FiatCurrency
+              Tier
+              KYCState
+              VerificationID
+              PaymentTransactions {
+                items {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatCurrency
+                  FiatBaseAmount
+                  FiatAmount
+                  CryptoCurrency
+                  CryptoAmount
+                  CryptoAddress
+                  GWReference
+                  BankReference
+                  MerchantRef
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                }
+                nextToken
+              }
+              createdOn
+              updatedOn
+              owner
+              comments {
+                items {
+                  id
+                  content
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  Author
+                  AuthorEmail
+                  createdOn
+                  updatedOn
+                }
+                nextToken
+              }
+              KYCVerification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
+            Author
+            AuthorEmail
+            createdOn
+            updatedOn
+          }
+          nextToken
+        }
+        KYCVerification {
+          id
+          customer {
+            id
+            Firstname
+            Surname
+            DateOfBirth
+            StreetLine1
+            StreetLine2
+            City
+            PostalCode
+            StateProvince
+            Country
+            Email
+            Telephone
+            FiatTotalAmount
+            FiatDailyAmount
+            FiatMonthlyAmount
+            FiatCurrency
+            Tier
+            KYCState
+            VerificationID
+            PaymentTransactions {
+              items {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatCurrency
+                FiatBaseAmount
+                FiatAmount
+                CryptoCurrency
+                CryptoAmount
+                CryptoAddress
+                GWReference
+                BankReference
+                MerchantRef
+                Customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                createdOn
+                updatedOn
+                owner
+              }
+              nextToken
+            }
+            createdOn
+            updatedOn
+            owner
+            comments {
+              items {
+                id
+                content
+                Customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                Author
+                AuthorEmail
+                createdOn
+                updatedOn
+              }
+              nextToken
+            }
+            KYCVerification {
+              id
+              customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              idVerification
+              poaVerification
+              financeVerification
+              createdOn
+              updatedOn
+              documents {
+                items {
+                  id
+                  name
+                  state
+                  file {
+                    bucket
+                    region
+                    key
+                  }
+                  s3Key
+                  documentType
+                  createdOn
+                  updatedOn
+                  owner
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              jumioVerifications {
+                items {
+                  id
+                  dataInput
+                  inputType
+                  metaInfo
+                  createdOn
+                  updatedOn
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              owner
+            }
+          }
+          idVerification
+          poaVerification
+          financeVerification
+          createdOn
+          updatedOn
+          documents {
+            items {
+              id
+              name
+              state
+              file {
+                bucket
+                region
+                key
+              }
+              s3Key
+              documentType
+              createdOn
+              updatedOn
+              owner
+              Verification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
+            nextToken
+          }
+          jumioVerifications {
+            items {
+              id
+              dataInput
+              inputType
+              metaInfo
+              createdOn
+              updatedOn
+              Verification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
+            nextToken
+          }
+          owner
+        }
+      }
+      Author
+      AuthorEmail
+      createdOn
+      updatedOn
+    }
+  }
+`;
+export const listComments = /* GraphQL */ `
+  query ListComments(
+    $filter: ModelCommentFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listComments(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        content
+        Customer {
+          id
+          Firstname
+          Surname
+          DateOfBirth
+          StreetLine1
+          StreetLine2
+          City
+          PostalCode
+          StateProvince
+          Country
+          Email
+          Telephone
+          FiatTotalAmount
+          FiatDailyAmount
+          FiatMonthlyAmount
+          FiatCurrency
+          Tier
+          KYCState
+          VerificationID
+          PaymentTransactions {
+            items {
+              id
+              Firstname
+              Surname
+              DateOfBirth
+              StreetLine1
+              StreetLine2
+              City
+              PostalCode
+              StateProvince
+              Country
+              Email
+              Telephone
+              FiatCurrency
+              FiatBaseAmount
+              FiatAmount
+              CryptoCurrency
+              CryptoAmount
+              CryptoAddress
+              GWReference
+              BankReference
+              MerchantRef
+              Customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              createdOn
+              updatedOn
+              owner
+            }
+            nextToken
+          }
+          createdOn
+          updatedOn
+          owner
+          comments {
+            items {
+              id
+              content
+              Customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              Author
+              AuthorEmail
+              createdOn
+              updatedOn
+            }
+            nextToken
+          }
+          KYCVerification {
+            id
+            customer {
+              id
+              Firstname
+              Surname
+              DateOfBirth
+              StreetLine1
+              StreetLine2
+              City
+              PostalCode
+              StateProvince
+              Country
+              Email
+              Telephone
+              FiatTotalAmount
+              FiatDailyAmount
+              FiatMonthlyAmount
+              FiatCurrency
+              Tier
+              KYCState
+              VerificationID
+              PaymentTransactions {
+                items {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatCurrency
+                  FiatBaseAmount
+                  FiatAmount
+                  CryptoCurrency
+                  CryptoAmount
+                  CryptoAddress
+                  GWReference
+                  BankReference
+                  MerchantRef
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                }
+                nextToken
+              }
+              createdOn
+              updatedOn
+              owner
+              comments {
+                items {
+                  id
+                  content
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  Author
+                  AuthorEmail
+                  createdOn
+                  updatedOn
+                }
+                nextToken
+              }
+              KYCVerification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
+            idVerification
+            poaVerification
+            financeVerification
+            createdOn
+            updatedOn
+            documents {
+              items {
+                id
+                name
+                state
+                file {
+                  bucket
+                  region
+                  key
+                }
+                s3Key
+                documentType
+                createdOn
+                updatedOn
+                owner
+                Verification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              nextToken
+            }
+            jumioVerifications {
+              items {
+                id
+                dataInput
+                inputType
+                metaInfo
+                createdOn
+                updatedOn
+                Verification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              nextToken
+            }
+            owner
+          }
+        }
+        Author
+        AuthorEmail
+        createdOn
+        updatedOn
+      }
+      nextToken
+    }
+  }
+`;
+export const listVerifications = /* GraphQL */ `
+  query ListVerifications(
+    $filter: ModelVerificationFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listVerifications(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        customer {
+          id
+          Firstname
+          Surname
+          DateOfBirth
+          StreetLine1
+          StreetLine2
+          City
+          PostalCode
+          StateProvince
+          Country
+          Email
+          Telephone
+          FiatTotalAmount
+          FiatDailyAmount
+          FiatMonthlyAmount
+          FiatCurrency
+          Tier
+          KYCState
+          VerificationID
+          PaymentTransactions {
+            items {
+              id
+              Firstname
+              Surname
+              DateOfBirth
+              StreetLine1
+              StreetLine2
+              City
+              PostalCode
+              StateProvince
+              Country
+              Email
+              Telephone
+              FiatCurrency
+              FiatBaseAmount
+              FiatAmount
+              CryptoCurrency
+              CryptoAmount
+              CryptoAddress
+              GWReference
+              BankReference
+              MerchantRef
+              Customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              createdOn
+              updatedOn
+              owner
+            }
+            nextToken
+          }
+          createdOn
+          updatedOn
+          owner
+          comments {
+            items {
+              id
+              content
+              Customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              Author
+              AuthorEmail
+              createdOn
+              updatedOn
+            }
+            nextToken
+          }
+          KYCVerification {
+            id
+            customer {
+              id
+              Firstname
+              Surname
+              DateOfBirth
+              StreetLine1
+              StreetLine2
+              City
+              PostalCode
+              StateProvince
+              Country
+              Email
+              Telephone
+              FiatTotalAmount
+              FiatDailyAmount
+              FiatMonthlyAmount
+              FiatCurrency
+              Tier
+              KYCState
+              VerificationID
+              PaymentTransactions {
+                items {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatCurrency
+                  FiatBaseAmount
+                  FiatAmount
+                  CryptoCurrency
+                  CryptoAmount
+                  CryptoAddress
+                  GWReference
+                  BankReference
+                  MerchantRef
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                }
+                nextToken
+              }
+              createdOn
+              updatedOn
+              owner
+              comments {
+                items {
+                  id
+                  content
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  Author
+                  AuthorEmail
+                  createdOn
+                  updatedOn
+                }
+                nextToken
+              }
+              KYCVerification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
+            idVerification
+            poaVerification
+            financeVerification
+            createdOn
+            updatedOn
+            documents {
+              items {
+                id
+                name
+                state
+                file {
+                  bucket
+                  region
+                  key
+                }
+                s3Key
+                documentType
+                createdOn
+                updatedOn
+                owner
+                Verification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              nextToken
+            }
+            jumioVerifications {
+              items {
+                id
+                dataInput
+                inputType
+                metaInfo
+                createdOn
+                updatedOn
+                Verification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              nextToken
+            }
+            owner
+          }
+        }
+        idVerification
+        poaVerification
+        financeVerification
+        createdOn
+        updatedOn
+        documents {
+          items {
+            id
+            name
+            state
+            file {
+              bucket
+              region
+              key
+            }
+            s3Key
+            documentType
+            createdOn
+            updatedOn
+            owner
+            Verification {
+              id
+              customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              idVerification
+              poaVerification
+              financeVerification
+              createdOn
+              updatedOn
+              documents {
+                items {
+                  id
+                  name
+                  state
+                  file {
+                    bucket
+                    region
+                    key
+                  }
+                  s3Key
+                  documentType
+                  createdOn
+                  updatedOn
+                  owner
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              jumioVerifications {
+                items {
+                  id
+                  dataInput
+                  inputType
+                  metaInfo
+                  createdOn
+                  updatedOn
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              owner
+            }
+          }
+          nextToken
+        }
+        jumioVerifications {
+          items {
+            id
+            dataInput
+            inputType
+            metaInfo
+            createdOn
+            updatedOn
+            Verification {
+              id
+              customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              idVerification
+              poaVerification
+              financeVerification
+              createdOn
+              updatedOn
+              documents {
+                items {
+                  id
+                  name
+                  state
+                  file {
+                    bucket
+                    region
+                    key
+                  }
+                  s3Key
+                  documentType
+                  createdOn
+                  updatedOn
+                  owner
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              jumioVerifications {
+                items {
+                  id
+                  dataInput
+                  inputType
+                  metaInfo
+                  createdOn
+                  updatedOn
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              owner
+            }
+          }
+          nextToken
+        }
+        owner
+      }
+      nextToken
+    }
+  }
+`;
+export const getVerification = /* GraphQL */ `
+  query GetVerification($id: ID!) {
+    getVerification(id: $id) {
+      id
+      customer {
+        id
+        Firstname
+        Surname
+        DateOfBirth
+        StreetLine1
+        StreetLine2
+        City
+        PostalCode
+        StateProvince
+        Country
+        Email
+        Telephone
+        FiatTotalAmount
+        FiatDailyAmount
+        FiatMonthlyAmount
+        FiatCurrency
+        Tier
+        KYCState
+        VerificationID
+        PaymentTransactions {
+          items {
+            id
+            Firstname
+            Surname
+            DateOfBirth
+            StreetLine1
+            StreetLine2
+            City
+            PostalCode
+            StateProvince
+            Country
+            Email
+            Telephone
+            FiatCurrency
+            FiatBaseAmount
+            FiatAmount
+            CryptoCurrency
+            CryptoAmount
+            CryptoAddress
+            GWReference
+            BankReference
+            MerchantRef
+            Customer {
+              id
+              Firstname
+              Surname
+              DateOfBirth
+              StreetLine1
+              StreetLine2
+              City
+              PostalCode
+              StateProvince
+              Country
+              Email
+              Telephone
+              FiatTotalAmount
+              FiatDailyAmount
+              FiatMonthlyAmount
+              FiatCurrency
+              Tier
+              KYCState
+              VerificationID
+              PaymentTransactions {
+                items {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatCurrency
+                  FiatBaseAmount
+                  FiatAmount
+                  CryptoCurrency
+                  CryptoAmount
+                  CryptoAddress
+                  GWReference
+                  BankReference
+                  MerchantRef
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                }
+                nextToken
+              }
+              createdOn
+              updatedOn
+              owner
+              comments {
+                items {
+                  id
+                  content
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  Author
+                  AuthorEmail
+                  createdOn
+                  updatedOn
+                }
+                nextToken
+              }
+              KYCVerification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
+            createdOn
+            updatedOn
+            owner
+          }
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+        comments {
+          items {
+            id
+            content
+            Customer {
+              id
+              Firstname
+              Surname
+              DateOfBirth
+              StreetLine1
+              StreetLine2
+              City
+              PostalCode
+              StateProvince
+              Country
+              Email
+              Telephone
+              FiatTotalAmount
+              FiatDailyAmount
+              FiatMonthlyAmount
+              FiatCurrency
+              Tier
+              KYCState
+              VerificationID
+              PaymentTransactions {
+                items {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatCurrency
+                  FiatBaseAmount
+                  FiatAmount
+                  CryptoCurrency
+                  CryptoAmount
+                  CryptoAddress
+                  GWReference
+                  BankReference
+                  MerchantRef
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                }
+                nextToken
+              }
+              createdOn
+              updatedOn
+              owner
+              comments {
+                items {
+                  id
+                  content
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  Author
+                  AuthorEmail
+                  createdOn
+                  updatedOn
+                }
+                nextToken
+              }
+              KYCVerification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
+            Author
+            AuthorEmail
+            createdOn
+            updatedOn
+          }
+          nextToken
+        }
+        KYCVerification {
+          id
+          customer {
+            id
+            Firstname
+            Surname
+            DateOfBirth
+            StreetLine1
+            StreetLine2
+            City
+            PostalCode
+            StateProvince
+            Country
+            Email
+            Telephone
+            FiatTotalAmount
+            FiatDailyAmount
+            FiatMonthlyAmount
+            FiatCurrency
+            Tier
+            KYCState
+            VerificationID
+            PaymentTransactions {
+              items {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatCurrency
+                FiatBaseAmount
+                FiatAmount
+                CryptoCurrency
+                CryptoAmount
+                CryptoAddress
+                GWReference
+                BankReference
+                MerchantRef
+                Customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                createdOn
+                updatedOn
+                owner
+              }
+              nextToken
+            }
+            createdOn
+            updatedOn
+            owner
+            comments {
+              items {
+                id
+                content
+                Customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                Author
+                AuthorEmail
+                createdOn
+                updatedOn
+              }
+              nextToken
+            }
+            KYCVerification {
+              id
+              customer {
+                id
+                Firstname
+                Surname
+                DateOfBirth
+                StreetLine1
+                StreetLine2
+                City
+                PostalCode
+                StateProvince
+                Country
+                Email
+                Telephone
+                FiatTotalAmount
+                FiatDailyAmount
+                FiatMonthlyAmount
+                FiatCurrency
+                Tier
+                KYCState
+                VerificationID
+                PaymentTransactions {
+                  items {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatCurrency
+                    FiatBaseAmount
+                    FiatAmount
+                    CryptoCurrency
+                    CryptoAmount
+                    CryptoAddress
+                    GWReference
+                    BankReference
+                    MerchantRef
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                createdOn
+                updatedOn
+                owner
+                comments {
+                  items {
+                    id
+                    content
+                    Author
+                    AuthorEmail
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                KYCVerification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              idVerification
+              poaVerification
+              financeVerification
+              createdOn
+              updatedOn
+              documents {
+                items {
+                  id
+                  name
+                  state
+                  file {
+                    bucket
+                    region
+                    key
+                  }
+                  s3Key
+                  documentType
+                  createdOn
+                  updatedOn
+                  owner
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              jumioVerifications {
+                items {
+                  id
+                  dataInput
+                  inputType
+                  metaInfo
+                  createdOn
+                  updatedOn
+                  Verification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                nextToken
+              }
+              owner
+            }
+          }
+          idVerification
+          poaVerification
+          financeVerification
+          createdOn
+          updatedOn
+          documents {
+            items {
+              id
+              name
+              state
+              file {
+                bucket
+                region
+                key
+              }
+              s3Key
+              documentType
+              createdOn
+              updatedOn
+              owner
+              Verification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
+            nextToken
+          }
+          jumioVerifications {
+            items {
+              id
+              dataInput
+              inputType
+              metaInfo
+              createdOn
+              updatedOn
+              Verification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
+            nextToken
+          }
+          owner
+        }
+      }
+      idVerification
+      poaVerification
+      financeVerification
+      createdOn
+      updatedOn
+      documents {
+        items {
+          id
+          name
+          state
+          file {
+            bucket
+            region
+            key
+          }
+          s3Key
+          documentType
+          createdOn
+          updatedOn
+          owner
+          Verification {
+            id
+            customer {
+              id
+              Firstname
+              Surname
+              DateOfBirth
+              StreetLine1
+              StreetLine2
+              City
+              PostalCode
+              StateProvince
+              Country
+              Email
+              Telephone
+              FiatTotalAmount
+              FiatDailyAmount
+              FiatMonthlyAmount
+              FiatCurrency
+              Tier
+              KYCState
+              VerificationID
+              PaymentTransactions {
+                items {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatCurrency
+                  FiatBaseAmount
+                  FiatAmount
+                  CryptoCurrency
+                  CryptoAmount
+                  CryptoAddress
+                  GWReference
+                  BankReference
+                  MerchantRef
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                }
+                nextToken
+              }
+              createdOn
+              updatedOn
+              owner
+              comments {
+                items {
+                  id
+                  content
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  Author
+                  AuthorEmail
+                  createdOn
+                  updatedOn
+                }
+                nextToken
+              }
+              KYCVerification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
+            idVerification
+            poaVerification
+            financeVerification
+            createdOn
+            updatedOn
+            documents {
+              items {
+                id
+                name
+                state
+                file {
+                  bucket
+                  region
+                  key
+                }
+                s3Key
+                documentType
+                createdOn
+                updatedOn
+                owner
+                Verification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              nextToken
+            }
+            jumioVerifications {
+              items {
+                id
+                dataInput
+                inputType
+                metaInfo
+                createdOn
+                updatedOn
+                Verification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              nextToken
+            }
+            owner
+          }
+        }
+        nextToken
+      }
+      jumioVerifications {
+        items {
+          id
+          dataInput
+          inputType
+          metaInfo
+          createdOn
+          updatedOn
+          Verification {
+            id
+            customer {
+              id
+              Firstname
+              Surname
+              DateOfBirth
+              StreetLine1
+              StreetLine2
+              City
+              PostalCode
+              StateProvince
+              Country
+              Email
+              Telephone
+              FiatTotalAmount
+              FiatDailyAmount
+              FiatMonthlyAmount
+              FiatCurrency
+              Tier
+              KYCState
+              VerificationID
+              PaymentTransactions {
+                items {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatCurrency
+                  FiatBaseAmount
+                  FiatAmount
+                  CryptoCurrency
+                  CryptoAmount
+                  CryptoAddress
+                  GWReference
+                  BankReference
+                  MerchantRef
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                }
+                nextToken
+              }
+              createdOn
+              updatedOn
+              owner
+              comments {
+                items {
+                  id
+                  content
+                  Customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  Author
+                  AuthorEmail
+                  createdOn
+                  updatedOn
+                }
+                nextToken
+              }
+              KYCVerification {
+                id
+                customer {
+                  id
+                  Firstname
+                  Surname
+                  DateOfBirth
+                  StreetLine1
+                  StreetLine2
+                  City
+                  PostalCode
+                  StateProvince
+                  Country
+                  Email
+                  Telephone
+                  FiatTotalAmount
+                  FiatDailyAmount
+                  FiatMonthlyAmount
+                  FiatCurrency
+                  Tier
+                  KYCState
+                  VerificationID
+                  PaymentTransactions {
+                    nextToken
+                  }
+                  createdOn
+                  updatedOn
+                  owner
+                  comments {
+                    nextToken
+                  }
+                  KYCVerification {
+                    id
+                    idVerification
+                    poaVerification
+                    financeVerification
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                }
+                idVerification
+                poaVerification
+                financeVerification
+                createdOn
+                updatedOn
+                documents {
+                  items {
+                    id
+                    name
+                    state
+                    s3Key
+                    documentType
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  nextToken
+                }
+                jumioVerifications {
+                  items {
+                    id
+                    dataInput
+                    inputType
+                    metaInfo
+                    createdOn
+                    updatedOn
+                  }
+                  nextToken
+                }
+                owner
+              }
+            }
+            idVerification
+            poaVerification
+            financeVerification
+            createdOn
+            updatedOn
+            documents {
+              items {
+                id
+                name
+                state
+                file {
+                  bucket
+                  region
+                  key
+                }
+                s3Key
+                documentType
+                createdOn
+                updatedOn
+                owner
+                Verification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              nextToken
+            }
+            jumioVerifications {
+              items {
+                id
+                dataInput
+                inputType
+                metaInfo
+                createdOn
+                updatedOn
+                Verification {
+                  id
+                  customer {
+                    id
+                    Firstname
+                    Surname
+                    DateOfBirth
+                    StreetLine1
+                    StreetLine2
+                    City
+                    PostalCode
+                    StateProvince
+                    Country
+                    Email
+                    Telephone
+                    FiatTotalAmount
+                    FiatDailyAmount
+                    FiatMonthlyAmount
+                    FiatCurrency
+                    Tier
+                    KYCState
+                    VerificationID
+                    createdOn
+                    updatedOn
+                    owner
+                  }
+                  idVerification
+                  poaVerification
+                  financeVerification
+                  createdOn
+                  updatedOn
+                  documents {
+                    nextToken
+                  }
+                  jumioVerifications {
+                    nextToken
+                  }
+                  owner
+                }
+              }
+              nextToken
+            }
+            owner
+          }
+        }
+        nextToken
+      }
+      owner
     }
   }
 `;

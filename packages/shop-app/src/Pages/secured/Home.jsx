@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { withAuthenticator } from '@aws-amplify/ui-react';
-import gql from 'graphql-tag';
+// import { withAuthenticator } from '@aws-amplify/ui-react';
+// import gql from 'graphql-tag';
 import { API, graphqlOperation } from 'aws-amplify';
 import * as queries from '../..//graphql/queries';
-import { appClient } from '../../client';
+// import { appClient } from '../../client';
 import { WithKantorAuth } from '../../Components/withKantorAuth';
 import DocumentsForm from '../registration/DocumentsForm';
 import { Tabs, List, Typography, Table } from 'antd';

@@ -12,6 +12,7 @@ import { defaultVerticalSpacing } from '../Utils/constants';
 import SaveIcon from '@material-ui/icons/Save';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import WAValidator from 'wallet-address-validator';
 
 const useStyles = makeStyles((theme) => ({
 	topMargin: {
@@ -38,6 +39,11 @@ export const AddWalletWidget = ({ onWalletAdded }) => {
 	}, [walletName, walletAddress]);
 	const addWallet = async () => {
 		setLoading(true);
+		const { validate } = WAValidator;
+		setValid(validate(walletAddress, 'BTC'));
+		if (!valid) {
+			return;
+		}
 		try {
 			const wallet = await API.graphql(
 				graphqlOperation(createUserWallets, {
