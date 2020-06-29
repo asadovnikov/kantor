@@ -1,62 +1,75 @@
 import React, { useState, useEffect } from 'react';
+import MaskedInput from 'react-maskedinput';
 import { Row, Col, Typography, Space } from 'antd';
-import { RegistrationForm, RegistrationContent } from './components';
-import { MaterialCodeInput } from './components/LabeledInput';
-import { LinkButton } from './components/MaterialButtons';
+import { RegistrationForm, RegistrationContent, RegistrationHeader, RegistrationContentRow } from './components';
+// import { MaterialCodeInput } from './components/LabeledInput';
+// import { LinkButton } from './components/MaterialButtons';
 import { useParams } from 'react-router-dom';
+// import { makeStyles } from '@material-ui/core/styles';
+
+// const useStyles = makeStyles((theme) => ({
+// 	emailCodeInput: {
+// 		backgroundColor: theme.palette.background.paper,
+// 		padding: theme.spacing(6),
+// 		textAlign: 'center',
+// 		fontSize: '3vw',
+// 	},
+// }));
+
 const { Title, Text, Link } = Typography;
 
 const EmailCodePage = ({ email, onChange, onApply, isLoading }) => {
 	let { validationId } = useParams();
+	// const classes = useStyles;
 	if (validationId) {
 		email = validationId;
 	}
-	// const [verfificationState, setVerificationState] = useState();
-	const [isValid, setIsValid] = useState();
-	const [codes, setCodes] = useState({
-		code1: undefined,
-		code2: undefined,
-		code3: undefined,
-		code4: undefined,
-		code5: undefined,
-		code6: undefined,
-	});
-
-	useEffect(() => {
-		const isValid =
-			!isNaN(codes.code1) &&
-			!isNaN(codes.code2) &&
-			!isNaN(codes.code3) &&
-			!isNaN(codes.code4) &&
-			!isNaN(codes.code5) &&
-			!isNaN(codes.code6);
-		setIsValid(isValid);
-
-		if (isValid && onChange) {
-			onChange(`${codes.code1}${codes.code2}${codes.code3}${codes.code4}${codes.code5}${codes.code6}`);
+	const validateValue = (val = '') => {
+		const codes = val.split(' ');
+		if (codes.length === 6) {
+			let validCode = true;
+			codes.forEach((code) => {
+				if (isNaN(code)) {
+					validCode = false;
+				}
+			});
+			// setIsValid(validCode);
+			return validCode;
 		}
+		return false;
+	};
+	// const [verfificationState, setVerificationState] = useState();
+	const [isValid, setIsValid] = useState(false);
+	// const [codes, setCodes] = useState({
+	// 	code1: undefined,
+	// 	code2: undefined,
+	// 	code3: undefined,
+	// 	code4: undefined,
+	// 	code5: undefined,
+	// 	code6: undefined,
+	// });
 
-		return () => {};
-	}, [codes]);
+	// useEffect(() => {
+	// 	const isValid =
+	// 		!isNaN(codes.code1) &&
+	// 		!isNaN(codes.code2) &&
+	// 		!isNaN(codes.code3) &&
+	// 		!isNaN(codes.code4) &&
+	// 		!isNaN(codes.code5) &&
+	// 		!isNaN(codes.code6);
+	// 	setIsValid(isValid);
+
+	// 	if (isValid && onChange) {
+	// 		onChange(`${codes.code1}${codes.code2}${codes.code3}${codes.code4}${codes.code5}${codes.code6}`);
+	// 	}
+
+	// 	return () => {};
+	// }, [codes]);
 
 	return (
 		<RegistrationForm>
-			<Row justify='center'>
-				<Col>
-					<Title level={2}>Enter 6-digit code</Title>
-				</Col>
-			</Row>
-			<Row justify='center'>
-				<Col>
-					<Text type='secondary'>We've sent you a message with the code to:</Text>
-				</Col>
-			</Row>
-			<Row justify='center'>
-				<Col>
-					<Text type='secondary'>email: {email}</Text>
-				</Col>
-			</Row>
-			<Row justify='center'>
+			<RegistrationHeader Main='Enter 6-digit code' Secondary={`We've sent you a message with the code to: ${email}`} />
+			{/* <Row justify='center'>
 				<Col>
 					<LinkButton
 						onClick={() => {
@@ -65,7 +78,7 @@ const EmailCodePage = ({ email, onChange, onApply, isLoading }) => {
 						<Link type='secondary'>Resend message </Link>
 					</LinkButton>
 				</Col>
-			</Row>
+			</Row> */}
 			<RegistrationContent isLoading={isLoading} isValid={isValid} onAction={onApply} actionText={`Verify`}>
 				<Row gutter={[16, 16]} justify='center'>
 					<Col>
@@ -74,7 +87,25 @@ const EmailCodePage = ({ email, onChange, onApply, isLoading }) => {
 						</Text>
 					</Col>
 				</Row>
-				<Row gutter={[16, 16]} justify='center'>
+				<RegistrationContentRow>
+					<Row gutter={[16, 16]} justify='center'>
+						<Col>
+							<MaskedInput
+								name='ValidationCode'
+								id='ValidationCodeInput'
+								mask='1 1 1 1 1 1'
+								onChange={({ target: { value } }) => {
+									const validationResult = validateValue(value);
+									if (validationResult) {
+										onChange(value.split(' ').join(''));
+									}
+									setIsValid(validationResult);
+								}}
+							/>
+						</Col>
+					</Row>
+				</RegistrationContentRow>
+				{/* <Row gutter={[16, 16]} justify='center'>
 					<Col span='14'>
 						<Space>
 							<MaterialCodeInput
@@ -103,7 +134,7 @@ const EmailCodePage = ({ email, onChange, onApply, isLoading }) => {
 							/>
 						</Space>
 					</Col>
-				</Row>
+				</Row> */}
 			</RegistrationContent>
 		</RegistrationForm>
 	);

@@ -180,6 +180,7 @@ export const MaterialDatePicker = ({ inputValue, onChange, labelKey }) => {
 			format='MM/dd/yyyy'
 			label={labelKey}
 			value={inputValue}
+			maxDate={new Date(new Date().setYear(new Date().getFullYear() - 18))}
 			views={['year', 'month', 'date']}
 			onChange={onChange}
 			KeyboardButtonProps={{

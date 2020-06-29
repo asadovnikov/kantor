@@ -71,6 +71,17 @@ export const onCreateKycDocument = /* GraphQL */ `
           }
           nextToken
         }
+        jumioVerifications {
+          items {
+            id
+            dataInput
+            inputType
+            metaInfo
+            createdOn
+            updatedOn
+          }
+          nextToken
+        }
         createdOn
         updatedOn
         owner
@@ -151,6 +162,17 @@ export const onUpdateKycDocument = /* GraphQL */ `
           }
           nextToken
         }
+        jumioVerifications {
+          items {
+            id
+            dataInput
+            inputType
+            metaInfo
+            createdOn
+            updatedOn
+          }
+          nextToken
+        }
         createdOn
         updatedOn
         owner
@@ -228,6 +250,17 @@ export const onDeleteKycDocument = /* GraphQL */ `
             createdOn
             updatedOn
             owner
+          }
+          nextToken
+        }
+        jumioVerifications {
+          items {
+            id
+            dataInput
+            inputType
+            metaInfo
+            createdOn
+            updatedOn
           }
           nextToken
         }
@@ -418,6 +451,9 @@ export const onCreateTransaction = /* GraphQL */ `
           documents {
             nextToken
           }
+          jumioVerifications {
+            nextToken
+          }
           createdOn
           updatedOn
           owner
@@ -548,6 +584,9 @@ export const onUpdateTransaction = /* GraphQL */ `
           documents {
             nextToken
           }
+          jumioVerifications {
+            nextToken
+          }
           createdOn
           updatedOn
           owner
@@ -676,6 +715,9 @@ export const onDeleteTransaction = /* GraphQL */ `
           poaVerification
           financeVerification
           documents {
+            nextToken
+          }
+          jumioVerifications {
             nextToken
           }
           createdOn
@@ -832,6 +874,17 @@ export const onCreateCustomer = /* GraphQL */ `
             createdOn
             updatedOn
             owner
+          }
+          nextToken
+        }
+        jumioVerifications {
+          items {
+            id
+            dataInput
+            inputType
+            metaInfo
+            createdOn
+            updatedOn
           }
           nextToken
         }
@@ -1012,6 +1065,17 @@ export const onUpdateCustomer = /* GraphQL */ `
           }
           nextToken
         }
+        jumioVerifications {
+          items {
+            id
+            dataInput
+            inputType
+            metaInfo
+            createdOn
+            updatedOn
+          }
+          nextToken
+        }
         createdOn
         updatedOn
         owner
@@ -1189,6 +1253,17 @@ export const onDeleteCustomer = /* GraphQL */ `
           }
           nextToken
         }
+        jumioVerifications {
+          items {
+            id
+            dataInput
+            inputType
+            metaInfo
+            createdOn
+            updatedOn
+          }
+          nextToken
+        }
         createdOn
         updatedOn
         owner
@@ -1231,6 +1306,258 @@ export const onDeleteCustomer = /* GraphQL */ `
       createdOn
       updatedOn
       owner
+    }
+  }
+`;
+export const onCreateJumioVerifyMetaData = /* GraphQL */ `
+  subscription OnCreateJumioVerifyMetaData {
+    onCreateJumioVerifyMetaData {
+      id
+      dataInput
+      Verification {
+        id
+        customer {
+          id
+          Firstname
+          Surname
+          DateOfBirth
+          StreetLine1
+          StreetLine2
+          City
+          PostalCode
+          StateProvince
+          Country
+          Email
+          Telephone
+          FiatTotalAmount
+          FiatDailyAmount
+          FiatMonthlyAmount
+          FiatCurrency
+          Tier
+          KYCState
+          VerificationID
+          PaymentTransactions {
+            nextToken
+          }
+          KYCVerification {
+            id
+            idVerification
+            poaVerification
+            financeVerification
+            createdOn
+            updatedOn
+            owner
+          }
+          comments {
+            nextToken
+          }
+          createdOn
+          updatedOn
+          owner
+        }
+        idVerification
+        poaVerification
+        financeVerification
+        documents {
+          items {
+            id
+            name
+            state
+            s3Key
+            documentType
+            createdOn
+            updatedOn
+            owner
+          }
+          nextToken
+        }
+        jumioVerifications {
+          items {
+            id
+            dataInput
+            inputType
+            metaInfo
+            createdOn
+            updatedOn
+          }
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+      }
+      inputType
+      metaInfo
+      createdOn
+      updatedOn
+    }
+  }
+`;
+export const onUpdateJumioVerifyMetaData = /* GraphQL */ `
+  subscription OnUpdateJumioVerifyMetaData {
+    onUpdateJumioVerifyMetaData {
+      id
+      dataInput
+      Verification {
+        id
+        customer {
+          id
+          Firstname
+          Surname
+          DateOfBirth
+          StreetLine1
+          StreetLine2
+          City
+          PostalCode
+          StateProvince
+          Country
+          Email
+          Telephone
+          FiatTotalAmount
+          FiatDailyAmount
+          FiatMonthlyAmount
+          FiatCurrency
+          Tier
+          KYCState
+          VerificationID
+          PaymentTransactions {
+            nextToken
+          }
+          KYCVerification {
+            id
+            idVerification
+            poaVerification
+            financeVerification
+            createdOn
+            updatedOn
+            owner
+          }
+          comments {
+            nextToken
+          }
+          createdOn
+          updatedOn
+          owner
+        }
+        idVerification
+        poaVerification
+        financeVerification
+        documents {
+          items {
+            id
+            name
+            state
+            s3Key
+            documentType
+            createdOn
+            updatedOn
+            owner
+          }
+          nextToken
+        }
+        jumioVerifications {
+          items {
+            id
+            dataInput
+            inputType
+            metaInfo
+            createdOn
+            updatedOn
+          }
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+      }
+      inputType
+      metaInfo
+      createdOn
+      updatedOn
+    }
+  }
+`;
+export const onDeleteJumioVerifyMetaData = /* GraphQL */ `
+  subscription OnDeleteJumioVerifyMetaData {
+    onDeleteJumioVerifyMetaData {
+      id
+      dataInput
+      Verification {
+        id
+        customer {
+          id
+          Firstname
+          Surname
+          DateOfBirth
+          StreetLine1
+          StreetLine2
+          City
+          PostalCode
+          StateProvince
+          Country
+          Email
+          Telephone
+          FiatTotalAmount
+          FiatDailyAmount
+          FiatMonthlyAmount
+          FiatCurrency
+          Tier
+          KYCState
+          VerificationID
+          PaymentTransactions {
+            nextToken
+          }
+          KYCVerification {
+            id
+            idVerification
+            poaVerification
+            financeVerification
+            createdOn
+            updatedOn
+            owner
+          }
+          comments {
+            nextToken
+          }
+          createdOn
+          updatedOn
+          owner
+        }
+        idVerification
+        poaVerification
+        financeVerification
+        documents {
+          items {
+            id
+            name
+            state
+            s3Key
+            documentType
+            createdOn
+            updatedOn
+            owner
+          }
+          nextToken
+        }
+        jumioVerifications {
+          items {
+            id
+            dataInput
+            inputType
+            metaInfo
+            createdOn
+            updatedOn
+          }
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+      }
+      inputType
+      metaInfo
+      createdOn
+      updatedOn
     }
   }
 `;
@@ -1318,6 +1645,9 @@ export const onCreateComment = /* GraphQL */ `
           poaVerification
           financeVerification
           documents {
+            nextToken
+          }
+          jumioVerifications {
             nextToken
           }
           createdOn
@@ -1432,6 +1762,9 @@ export const onUpdateComment = /* GraphQL */ `
           documents {
             nextToken
           }
+          jumioVerifications {
+            nextToken
+          }
           createdOn
           updatedOn
           owner
@@ -1542,6 +1875,9 @@ export const onDeleteComment = /* GraphQL */ `
           poaVerification
           financeVerification
           documents {
+            nextToken
+          }
+          jumioVerifications {
             nextToken
           }
           createdOn
@@ -1655,6 +1991,9 @@ export const onCreateVerification = /* GraphQL */ `
           documents {
             nextToken
           }
+          jumioVerifications {
+            nextToken
+          }
           createdOn
           updatedOn
           owner
@@ -1701,6 +2040,26 @@ export const onCreateVerification = /* GraphQL */ `
           createdOn
           updatedOn
           owner
+        }
+        nextToken
+      }
+      jumioVerifications {
+        items {
+          id
+          dataInput
+          Verification {
+            id
+            idVerification
+            poaVerification
+            financeVerification
+            createdOn
+            updatedOn
+            owner
+          }
+          inputType
+          metaInfo
+          createdOn
+          updatedOn
         }
         nextToken
       }
@@ -1795,6 +2154,9 @@ export const onUpdateVerification = /* GraphQL */ `
           documents {
             nextToken
           }
+          jumioVerifications {
+            nextToken
+          }
           createdOn
           updatedOn
           owner
@@ -1841,6 +2203,26 @@ export const onUpdateVerification = /* GraphQL */ `
           createdOn
           updatedOn
           owner
+        }
+        nextToken
+      }
+      jumioVerifications {
+        items {
+          id
+          dataInput
+          Verification {
+            id
+            idVerification
+            poaVerification
+            financeVerification
+            createdOn
+            updatedOn
+            owner
+          }
+          inputType
+          metaInfo
+          createdOn
+          updatedOn
         }
         nextToken
       }
@@ -1935,6 +2317,9 @@ export const onDeleteVerification = /* GraphQL */ `
           documents {
             nextToken
           }
+          jumioVerifications {
+            nextToken
+          }
           createdOn
           updatedOn
           owner
@@ -1981,6 +2366,26 @@ export const onDeleteVerification = /* GraphQL */ `
           createdOn
           updatedOn
           owner
+        }
+        nextToken
+      }
+      jumioVerifications {
+        items {
+          id
+          dataInput
+          Verification {
+            id
+            idVerification
+            poaVerification
+            financeVerification
+            createdOn
+            updatedOn
+            owner
+          }
+          inputType
+          metaInfo
+          createdOn
+          updatedOn
         }
         nextToken
       }
@@ -2098,6 +2503,48 @@ export const onDeleteUserWallets = /* GraphQL */ `
       Address
       description
       State
+      createdOn
+      updatedOn
+      owner
+    }
+  }
+`;
+export const onCreateTemporaryLinks = /* GraphQL */ `
+  subscription OnCreateTemporaryLinks($owner: String) {
+    onCreateTemporaryLinks(owner: $owner) {
+      id
+      customerId
+      transactionId
+      link
+      comment
+      createdOn
+      updatedOn
+      owner
+    }
+  }
+`;
+export const onUpdateTemporaryLinks = /* GraphQL */ `
+  subscription OnUpdateTemporaryLinks($owner: String) {
+    onUpdateTemporaryLinks(owner: $owner) {
+      id
+      customerId
+      transactionId
+      link
+      comment
+      createdOn
+      updatedOn
+      owner
+    }
+  }
+`;
+export const onDeleteTemporaryLinks = /* GraphQL */ `
+  subscription OnDeleteTemporaryLinks($owner: String) {
+    onDeleteTemporaryLinks(owner: $owner) {
+      id
+      customerId
+      transactionId
+      link
+      comment
       createdOn
       updatedOn
       owner

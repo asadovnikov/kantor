@@ -71,6 +71,17 @@ export const getKycDocument = /* GraphQL */ `
           }
           nextToken
         }
+        jumioVerifications {
+          items {
+            id
+            dataInput
+            inputType
+            metaInfo
+            createdOn
+            updatedOn
+          }
+          nextToken
+        }
         createdOn
         updatedOn
         owner
@@ -129,6 +140,9 @@ export const listKycDocuments = /* GraphQL */ `
           poaVerification
           financeVerification
           documents {
+            nextToken
+          }
+          jumioVerifications {
             nextToken
           }
           createdOn
@@ -301,6 +315,9 @@ export const getTransaction = /* GraphQL */ `
           poaVerification
           financeVerification
           documents {
+            nextToken
+          }
+          jumioVerifications {
             nextToken
           }
           createdOn
@@ -536,6 +553,17 @@ export const getCustomer = /* GraphQL */ `
           }
           nextToken
         }
+        jumioVerifications {
+          items {
+            id
+            dataInput
+            inputType
+            metaInfo
+            createdOn
+            updatedOn
+          }
+          nextToken
+        }
         createdOn
         updatedOn
         owner
@@ -669,6 +697,9 @@ export const listCustomers = /* GraphQL */ `
           documents {
             nextToken
           }
+          jumioVerifications {
+            nextToken
+          }
           createdOn
           updatedOn
           owner
@@ -687,6 +718,152 @@ export const listCustomers = /* GraphQL */ `
         createdOn
         updatedOn
         owner
+      }
+      nextToken
+    }
+  }
+`;
+export const getJumioVerifyMetaData = /* GraphQL */ `
+  query GetJumioVerifyMetaData($id: ID!) {
+    getJumioVerifyMetaData(id: $id) {
+      id
+      dataInput
+      Verification {
+        id
+        customer {
+          id
+          Firstname
+          Surname
+          DateOfBirth
+          StreetLine1
+          StreetLine2
+          City
+          PostalCode
+          StateProvince
+          Country
+          Email
+          Telephone
+          FiatTotalAmount
+          FiatDailyAmount
+          FiatMonthlyAmount
+          FiatCurrency
+          Tier
+          KYCState
+          VerificationID
+          PaymentTransactions {
+            nextToken
+          }
+          KYCVerification {
+            id
+            idVerification
+            poaVerification
+            financeVerification
+            createdOn
+            updatedOn
+            owner
+          }
+          comments {
+            nextToken
+          }
+          createdOn
+          updatedOn
+          owner
+        }
+        idVerification
+        poaVerification
+        financeVerification
+        documents {
+          items {
+            id
+            name
+            state
+            s3Key
+            documentType
+            createdOn
+            updatedOn
+            owner
+          }
+          nextToken
+        }
+        jumioVerifications {
+          items {
+            id
+            dataInput
+            inputType
+            metaInfo
+            createdOn
+            updatedOn
+          }
+          nextToken
+        }
+        createdOn
+        updatedOn
+        owner
+      }
+      inputType
+      metaInfo
+      createdOn
+      updatedOn
+    }
+  }
+`;
+export const listJumioVerifyMetaDatas = /* GraphQL */ `
+  query ListJumioVerifyMetaDatas(
+    $filter: ModelJumioVerifyMetaDataFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listJumioVerifyMetaDatas(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        dataInput
+        Verification {
+          id
+          customer {
+            id
+            Firstname
+            Surname
+            DateOfBirth
+            StreetLine1
+            StreetLine2
+            City
+            PostalCode
+            StateProvince
+            Country
+            Email
+            Telephone
+            FiatTotalAmount
+            FiatDailyAmount
+            FiatMonthlyAmount
+            FiatCurrency
+            Tier
+            KYCState
+            VerificationID
+            createdOn
+            updatedOn
+            owner
+          }
+          idVerification
+          poaVerification
+          financeVerification
+          documents {
+            nextToken
+          }
+          jumioVerifications {
+            nextToken
+          }
+          createdOn
+          updatedOn
+          owner
+        }
+        inputType
+        metaInfo
+        createdOn
+        updatedOn
       }
       nextToken
     }
@@ -776,6 +953,9 @@ export const getComment = /* GraphQL */ `
           poaVerification
           financeVerification
           documents {
+            nextToken
+          }
+          jumioVerifications {
             nextToken
           }
           createdOn
@@ -947,6 +1127,9 @@ export const getVerification = /* GraphQL */ `
           documents {
             nextToken
           }
+          jumioVerifications {
+            nextToken
+          }
           createdOn
           updatedOn
           owner
@@ -993,6 +1176,26 @@ export const getVerification = /* GraphQL */ `
           createdOn
           updatedOn
           owner
+        }
+        nextToken
+      }
+      jumioVerifications {
+        items {
+          id
+          dataInput
+          Verification {
+            id
+            idVerification
+            poaVerification
+            financeVerification
+            createdOn
+            updatedOn
+            owner
+          }
+          inputType
+          metaInfo
+          createdOn
+          updatedOn
         }
         nextToken
       }
@@ -1063,6 +1266,17 @@ export const listVerifications = /* GraphQL */ `
             createdOn
             updatedOn
             owner
+          }
+          nextToken
+        }
+        jumioVerifications {
+          items {
+            id
+            dataInput
+            inputType
+            metaInfo
+            createdOn
+            updatedOn
           }
           nextToken
         }
@@ -1156,6 +1370,41 @@ export const listUserWalletss = /* GraphQL */ `
         Address
         description
         State
+        createdOn
+        updatedOn
+        owner
+      }
+      nextToken
+    }
+  }
+`;
+export const getTemporaryLinks = /* GraphQL */ `
+  query GetTemporaryLinks($id: ID!) {
+    getTemporaryLinks(id: $id) {
+      id
+      customerId
+      transactionId
+      link
+      comment
+      createdOn
+      updatedOn
+      owner
+    }
+  }
+`;
+export const listTemporaryLinkss = /* GraphQL */ `
+  query ListTemporaryLinkss(
+    $filter: ModelTemporaryLinksFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listTemporaryLinkss(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        customerId
+        transactionId
+        link
+        comment
         createdOn
         updatedOn
         owner

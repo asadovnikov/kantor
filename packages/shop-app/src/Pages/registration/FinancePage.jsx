@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { RegistrationHeader, RegistrationForm, RegistrationContent, RegistrationContentRow } from './components';
 import Select from '@material-ui/core/Select';
 // import { MaterialTxt } from './components/LabeledInput';
@@ -125,6 +125,13 @@ const FinancePage = ({ value = {}, onChange = () => {}, onValidate, onApply, isL
 	const [isValid, setIsValid] = useState(false);
 
 	const classes = useStyles();
+
+	// const useCallback(
+	// 	() => {
+	// 		callback
+	// 	},
+	// 	[input],
+	// )
 
 	useEffect(() => {
 		const validation = (occupation && employmentStatus && sourceOfFunds && yearIncome) !== undefined;

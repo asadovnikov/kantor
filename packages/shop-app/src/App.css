@@ -105,3 +105,9 @@
 .app-footer {
 	height: auto !important;
 }
+
+#ValidationCodeInput {
+	font-size: 5em;
+	width: 332px;
+	border: 0;
+}

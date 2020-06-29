@@ -8,6 +8,20 @@ import FinancePage from './FinancePage';
 import EmailCodePage from './EmailCodePage';
 
 const SignUpForm = () => {
+	const userRegistrationInfo = {
+		firstName: '',
+		lastName: '',
+		email: '',
+		dateOfBirth: '',
+		password: '',
+		agree: false,
+		region: '',
+		country: '',
+		homeAddress: '',
+		homeAddress2: '',
+		city: '',
+		postalCode: '',
+	};
 	const [step, setStep] = useState(0);
 	const [basicInfo, setBasicInfo] = useState({});
 	const [extendedInfo, setExtendedInfo] = useState({});

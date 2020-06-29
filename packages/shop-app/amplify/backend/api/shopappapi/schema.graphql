@@ -157,6 +157,16 @@ type Customer
 	comments: [Comment] @connection(name: "CustomerComment")
 }
 
+type JumioVerifyMetaData
+	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
+	@auth(rules: [{ allow: groups, groups: ["Admins"] }]) {
+	id: ID!
+	dataInput: String
+	Verification: Verification @connection(name: "VerificationJumioVerify")
+	inputType: String
+	metaInfo: String
+}
+
 type Comment
 	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
 	@auth(rules: [{ allow: groups, groups: ["Admins"] }]) {
@@ -176,6 +186,7 @@ type Verification
 	poaVerification: KYCStageStatus!
 	financeVerification: KYCStageStatus!
 	documents: [KYCDocument] @connection(name: "VerificationDocument")
+	jumioVerifications: [JumioVerifyMetaData] @connection(name: "VerificationJumioVerify")
 }
 
 type UserMeata
@@ -194,6 +205,16 @@ type UserWallets
 	Address: String!
 	description: String
 	State: UserWalletState
+}
+
+type TemporaryLinks
+	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
+	@auth(rules: [{ allow: owner }, { allow: groups, groups: ["Admins"] }]) {
+	id: ID!
+	customerId: ID!
+	transactionId: ID!
+	link: String!
+	comment: String
 }
 
 enum UserWalletState {

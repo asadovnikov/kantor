@@ -1,5 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
+import { ProgressButton } from '../../../Components';
 import Button from '@material-ui/core/Button';
 
 export const RegistrationContent = (props) => {
@@ -13,14 +14,14 @@ export const RegistrationContent = (props) => {
 			</Grid>
 			{showAction !== false && (
 				<Grid item xs={12}>
-					<Button
+					<ProgressButton
 						disabled={!isValid}
 						loading={isLoading}
 						className='btn-primary py-4 mt-5 px-5 font-weight-bold font-size-lg'
 						fullWidth
 						onClick={onAction}>
 						{actionText}
-					</Button>
+					</ProgressButton>
 				</Grid>
 			)}
 		</>

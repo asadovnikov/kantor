@@ -22,7 +22,7 @@ const NavigationSection = ({ title, links = [] }) => {
 			<Box mt={3} mb={1}>
 				<Typography variant='button'>{title}</Typography>
 			</Box>
-			<Grid container direction='column' justify='flex-start' spacing={0.9}>
+			<Grid container direction='column' justify='flex-start' spacing={0}>
 				{links.map((link) => {
 					return (
 						<Grid item>
@@ -61,6 +61,7 @@ export const AppFooter = () => {
 			<Grid item xs={12}>
 				<Grid container direction='row' justify='space-between' alignItems='flex-start'>
 					<NavigationSection
+						key='About'
 						title='About'
 						links={[
 							{
@@ -75,6 +76,7 @@ export const AppFooter = () => {
 						]}
 					/>
 					<NavigationSection
+						key='Address'
 						title='Address'
 						links={[
 							{
@@ -95,6 +97,7 @@ export const AppFooter = () => {
 						]}
 					/>
 					<NavigationSection
+						key='Contact'
 						title='Contact'
 						links={[
 							{
