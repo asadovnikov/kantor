@@ -1,0 +1,16 @@
+{
+    "trigger": true,
+    "modules": [
+        "captcha-verify"
+    ],
+    "parentResource": "shopapp53b8683e",
+    "functionName": "shopapp53b8683eVerifyAuthChallengeResponse",
+    "resourceName": "shopapp53b8683eVerifyAuthChallengeResponse",
+    "parentStack": "auth",
+    "triggerEnvs": [],
+    "triggerDir": "/usr/local/lib/node_modules/@aws-amplify/cli/node_modules/amplify-category-auth/provider-utils/awscloudformation/utils/../triggers/VerifyAuthChallengeResponse",
+    "triggerTemplate": "VerifyAuthChallengeResponse.json.ejs",
+    "roleName": "shopapp53b8683eVerifyAuthChallengeResponse",
+    "skipEdit": true,
+    "RECAPTCHASECRET": "6LfH3_sUAAAAAME1Tja4PU_WtrM-VqkyQ-oDORRL"
+}

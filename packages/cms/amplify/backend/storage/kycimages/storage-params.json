@@ -1,0 +1,13 @@
+{
+    "groupPermissionMap": {
+        "Customers": [
+            "create/update",
+            "read"
+        ],
+        "Admins": [
+            "create/update",
+            "read",
+            "delete"
+        ]
+    }
+}

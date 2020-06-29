@@ -1,0 +1,229 @@
+enum PaymentRequestStatus {
+	RECEIVED
+	APPROVED
+	DECLINED
+	COMMITED
+}
+
+enum DocumentState {
+	NEW
+	VERIFIED
+	FAILED
+	JUMIO_VERIFIED
+}
+
+enum DocumentClassification {
+	UNKNOWN
+	IDENTITY
+	POA
+	SOW
+	PHOTO
+	DOCUMENT
+}
+
+enum KYCStageStatus {
+	INITIATED
+	VALIDATED
+	NOT_REQUIRED
+	FAILED
+}
+
+enum CustomerTier {
+	INITIAL
+	LOW
+	UPPER
+	HIGH
+}
+
+interface IPerson {
+	Firstname: String!
+	Surname: String!
+	DateOfBirth: String
+	StreetLine1: String!
+	StreetLine2: String
+	City: String!
+	PostalCode: Int!
+	StateProvince: String!
+	Country: String!
+	Email: String!
+	Telephone: String
+}
+
+interface IPaymentRequest {
+	FiatCurrency: String!
+	FiatAmount: Int!
+}
+
+interface IPaymentTransaction {
+	CryptoCurrency: String!
+	CryptoAmount: Int!
+	CryptoAddress: String!
+	GWReference: String
+	BankReference: String
+	MerchantRef: String
+}
+
+type S3Object {
+	bucket: String!
+	region: String!
+	key: String!
+}
+
+type KYCDocument
+	@aws_api_key
+	@aws_iam
+	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
+	@auth(rules: [{ allow: owner }, { allow: groups, groups: ["Admins"] }, { allow: public, provider: apiKey }]) {
+	id: ID!
+	name: String
+	state: DocumentState!
+	file: S3Object
+	s3Key: String!
+	documentType: DocumentClassification!
+	Verification: Verification @connection(name: "VerificationDocument")
+}
+
+type PaymentRequest
+	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
+	@auth(rules: [{ allow: owner }, { allow: groups, groups: ["Admins"] }]) {
+	id: ID!
+	Firstname: String!
+	Surname: String!
+	DateOfBirth: String
+	StreetLine1: String!
+	StreetLine2: String
+	City: String!
+	PostalCode: String!
+	StateProvince: String!
+	Country: String!
+	Email: String!
+	Telephone: String
+	FiatCurrency: String!
+	FiatAmount: String!
+	Status: PaymentRequestStatus!
+}
+
+type Transaction
+	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
+	@key(name: "byMerchantRef", fields: ["MerchantRef", "id"])
+	@auth(rules: [{ allow: owner }, { allow: groups, groups: ["Admins"] }]) {
+	id: ID!
+	Firstname: String!
+	Surname: String!
+	DateOfBirth: String
+	StreetLine1: String!
+	StreetLine2: String
+	City: String!
+	PostalCode: String!
+	StateProvince: String!
+	Country: String!
+	Email: String!
+	Telephone: String
+	FiatCurrency: String!
+	FiatBaseAmount: String
+	FiatAmount: String!
+	CryptoCurrency: String!
+	CryptoAmount: String!
+	CryptoAddress: String!
+	GWReference: String
+	BankReference: String
+	MerchantRef: ID!
+	Customer: Customer @connection(name: "CustomerPaymentTransaction")
+}
+
+type Customer
+	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
+	@key(name: "byEmail", fields: ["Email"])
+	@auth(rules: [{ allow: owner }, { allow: groups, groups: ["Admins"] }]) {
+	id: ID!
+	Firstname: String!
+	Surname: String!
+	DateOfBirth: String
+	StreetLine1: String!
+	StreetLine2: String
+	City: String!
+	PostalCode: Int!
+	StateProvince: String!
+	Country: String!
+	Email: String!
+	Telephone: String
+	FiatTotalAmount: String
+	FiatDailyAmount: String
+	FiatMonthlyAmount: String
+	FiatCurrency: String
+	Tier: CustomerTier!
+	KYCState: KYCStageStatus!
+	VerificationID: ID!
+	PaymentTransactions: [Transaction] @connection(name: "CustomerPaymentTransaction")
+	KYCVerification: Verification @connection(name: "CustomerVerification")
+	comments: [Comment] @connection(name: "CustomerComment")
+}
+
+type JumioVerifyMetaData
+	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
+	@auth(rules: [{ allow: groups, groups: ["Admins"] }, { allow: public, provider: apiKey }]) {
+	id: ID!
+	dataInput: String
+	Verification: Verification @connection(name: "VerificationJumioVerify")
+	inputType: String
+	metaInfo: String
+}
+
+type Comment
+	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
+	@auth(rules: [{ allow: groups, groups: ["Admins"] }, { allow: public, provider: apiKey }]) {
+	id: ID!
+	content: String
+	Customer: Customer @connection(name: "CustomerComment")
+	Author: String
+	AuthorEmail: String
+}
+
+type Verification
+	@aws_api_key
+	@aws_iam
+	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
+	@auth(rules: [{ allow: owner }, { allow: groups, groups: ["Admins"] }, { allow: public, provider: apiKey }]) {
+	id: ID!
+	customer: Customer @connection(name: "CustomerVerification")
+	idVerification: KYCStageStatus!
+	poaVerification: KYCStageStatus!
+	financeVerification: KYCStageStatus!
+	documents: [KYCDocument] @connection(name: "VerificationDocument")
+	jumioVerifications: [JumioVerifyMetaData] @connection(name: "VerificationJumioVerify")
+}
+
+type UserMeata
+	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
+	@auth(rules: [{ allow: owner }, { allow: groups, groups: ["Admins"] }]) {
+	id: ID!
+	email: String!
+	Wallets: [UserWallets]! @connection
+}
+
+type UserWallets
+	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
+	@auth(rules: [{ allow: owner }, { allow: groups, groups: ["Admins"] }]) {
+	id: ID!
+	name: String!
+	Address: String!
+	description: String
+	State: UserWalletState
+}
+
+type TemporaryLinks
+	@aws_api_key
+	@aws_iam
+	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
+	@auth(rules: [{ allow: owner }, { allow: groups, groups: ["Admins"] }, { allow: public, provider: apiKey }]) {
+	id: ID!
+	customerId: ID!
+	transactionId: ID!
+	link: String!
+	comment: String
+}
+
+enum UserWalletState {
+	ACTIVE
+	INACTIVE
+}
