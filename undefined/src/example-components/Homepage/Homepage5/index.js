@@ -64,7 +64,7 @@ export default function LivePreviewExample() {
                       <div className="d-block mt-4">
                         <Button
                           component="a"
-                          href="https://dev.kantor.kosevych.info/signup"
+                          href="http://localhost:3001/signup"
                           className="btn-success px-5 font-size-sm font-weight-bold btn-animated-icon text-uppercase rounded shadow-none py-3 hover-scale-sm hover-scale-lg mr-3">
                           <span className="btn-wrapper--label">
                             Get started

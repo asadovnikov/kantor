@@ -175,7 +175,7 @@ export default function LivePreviewExample() {
                     <div className="pt-3">
                       <Button
                         component="a"
-                        href="https://dev.kantor.kosevych.info/signup"
+                        href="http://localhost:3001/signup"
                         size="large"
                         className="rounded-sm font-weight-bold shadow-second-sm btn-first">
                         <span className="btn-wrapper--label">Get started</span>

@@ -130,7 +130,7 @@ export default function LivePreviewExample() {
             <span className="d-none d-lg-block">
               <Button
                 component="a"
-                href="https://dev.kantor.kosevych.info/signup"
+                href="http://localhost:3001/signup"
                 className="rounded-sm text-nowrap font-size-xs font-weight-bold text-uppercase shadow-second-sm btn-warning">
                 Register
               </Button>
