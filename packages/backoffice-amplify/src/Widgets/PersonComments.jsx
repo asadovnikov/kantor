@@ -20,6 +20,7 @@ const AddComment = ({ person }) => {
 			const {
 				attributes: { email },
 			} = await Auth.currentAuthenticatedUser();
+			debugger;
 			await API.graphql(
 				graphqlOperation(createComment, {
 					input: {

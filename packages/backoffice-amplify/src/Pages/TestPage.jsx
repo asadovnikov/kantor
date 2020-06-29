@@ -16,7 +16,7 @@ const getRandomInt = (min, max) => {
 export const TestPage = () => {
 	const [message, setMessage] = useState();
 
-	const userId = 'e1a01a65-313c-421c-9f78-1854990ca488';
+	const userId = '82495a76-a487-4bab-8e13-f2774446aa26';
 
 	const createCustomerTransaction = async () => {
 		try {
