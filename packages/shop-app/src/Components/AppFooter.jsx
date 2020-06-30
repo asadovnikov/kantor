@@ -25,7 +25,7 @@ const NavigationSection = ({ title, links = [] }) => {
 			<Grid container direction='column' justify='flex-start' spacing={0}>
 				{links.map((link) => {
 					return (
-						<Grid item>
+						<Grid key={`${link.direction}_${link.title}`} item>
 							{link.direction ? (
 								<NavLink to={link.direction}>
 									<Typography variant='body2'>{link.title}</Typography>

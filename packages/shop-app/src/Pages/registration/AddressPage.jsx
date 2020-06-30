@@ -109,7 +109,6 @@ const AddressPage = ({ value = {}, onChange, onValidate, onApply }) => {
 							setHomeAddress(value);
 							triggerChange();
 						}}
-						size='large'
 						labelKey='Home address'
 					/>
 				</RegistrationContentRow>
@@ -120,7 +119,6 @@ const AddressPage = ({ value = {}, onChange, onValidate, onApply }) => {
 							setCity(value);
 							triggerChange();
 						}}
-						size='large'
 						labelKey='City'
 					/>
 				</RegistrationContentRow>
@@ -131,7 +129,6 @@ const AddressPage = ({ value = {}, onChange, onValidate, onApply }) => {
 							setPostalCode(value);
 							triggerChange();
 						}}
-						size='large'
 						labelKey='Postal code'
 					/>
 				</RegistrationContentRow>

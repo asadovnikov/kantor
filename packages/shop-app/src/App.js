@@ -1,6 +1,6 @@
 import React from 'react';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import MomentUtils from '@date-io/moment';
+import DateFnsUtils from '@date-io/date-fns';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { AntdApp } from './AntdApp';
 // import { AuthContext } from './Components/AuthContext';
@@ -275,7 +275,7 @@ function App() {
 	return (
 		<RootContext>
 			<Router>
-				<MuiPickersUtilsProvider utils={MomentUtils}>
+				<MuiPickersUtilsProvider utils={DateFnsUtils}>
 					{/* <MaterialApp /> */}
 					<AntdApp />
 				</MuiPickersUtilsProvider>

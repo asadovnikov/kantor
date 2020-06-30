@@ -4,7 +4,7 @@ import { shadows } from './shadows';
 export const bigFontsTheme = createMuiTheme({
 	palette: {
 		primary: {
-			main: '#3c44b1',
+			main: '#1b6ca8',
 		},
 		grey: {
 			300: '#fefefe',
@@ -26,7 +26,7 @@ export const bigFontsTheme = createMuiTheme({
 			main: '#f4772e',
 		},
 		helpers: {
-			primary: '#3c44b1',
+			primary: '#1b6ca8',
 			main: 'rgba(25, 46, 91, .035)',
 		},
 		contrastThreshold: 3,
@@ -39,6 +39,14 @@ export const bigFontsTheme = createMuiTheme({
 		MuiTab: {
 			root: {
 				fontWeight: 'bold',
+			},
+		},
+		MuiTypography: {
+			h6: {
+				fontWeight: 300,
+			},
+			h4: {
+				fontWeight: 500,
 			},
 		},
 		MuiButton: {
@@ -100,8 +108,8 @@ export const bigFontsTheme = createMuiTheme({
 		},
 	},
 	typography: {
-		fontFamily: ['Rubik', 'sans-serif'].join(','),
-		fontSize: 14,
+		fontFamily: ['Lato', 'sans-serif'].join(','),
+		fontSize: 16,
 	},
 	shadows,
 });

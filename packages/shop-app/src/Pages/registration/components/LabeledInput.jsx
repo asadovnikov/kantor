@@ -103,16 +103,7 @@ export const MaterialTxt = (props) => {
 	const { inputValue, onChange, labelKey, children, ...rest } = props;
 	return (
 		<div>
-			<TextField
-				required
-				style={{ width: '100%' }}
-				value={inputValue}
-				onChange={onChange}
-				fullWidth={false}
-				outlined={true}
-				{...rest}
-				label={labelKey}
-			/>
+			<TextField required style={{ width: '100%' }} value={inputValue} onChange={onChange} {...rest} label={labelKey} />
 		</div>
 	);
 };
@@ -146,10 +137,11 @@ export const MaterialPass = ({ inputValue, onChange, children, ...rest }) => {
 
 	return (
 		<FormControl fullWidth>
-			<InputLabel htmlFor='standard-adornment-password'>Password</InputLabel>
+			<InputLabel required={true} htmlFor='standard-adornment-password'>
+				Password
+			</InputLabel>
 			<Input
 				{...rest}
-				required
 				id='password'
 				autoComplete='current-password'
 				type={showPassword ? 'text' : 'password'}
@@ -157,7 +149,6 @@ export const MaterialPass = ({ inputValue, onChange, children, ...rest }) => {
 				value={inputValue}
 				onChange={onChange}
 				fullWidth={false}
-				outlined
 				endAdornment={
 					<InputAdornment position='end'>
 						<IconButton
@@ -176,9 +167,9 @@ export const MaterialPass = ({ inputValue, onChange, children, ...rest }) => {
 export const MaterialDatePicker = ({ inputValue, onChange, labelKey }) => {
 	return (
 		<KeyboardDatePicker
-			disableFuture
+			disableFuture={true}
 			openTo='year'
-			format='MM/dd/yyyy'
+			format='dd/MM/yyyy'
 			label={labelKey}
 			value={inputValue}
 			maxDate={new Date(new Date().setYear(new Date().getFullYear() - 18))}

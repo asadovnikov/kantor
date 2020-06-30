@@ -257,7 +257,7 @@ export const BuyCryptoWidget = () => {
 					<Grid container spacing={6} justify='center' alignItems='center'>
 						<Grid item xs={12}>
 							<Typography align='center' variant='h4'>
-								Enter Fiat Amount
+								Buy Crypto
 							</Typography>
 						</Grid>
 						<Grid item xs={12}>

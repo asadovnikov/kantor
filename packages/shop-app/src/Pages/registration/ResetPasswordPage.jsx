@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Auth } from 'aws-amplify';
-import { Link, Redirect } from 'react-router-dom';
-import { Typography } from 'antd';
+import { Redirect, useHistory } from 'react-router-dom';
+import { Button, Grid } from '@material-ui/core';
 import { RegistrationHeader, RegistrationForm, RegistrationContent, RegistrationContentRow } from './components';
 import { MaterialPass, MaterialTxt } from './components/LabeledInput';
 // const { Title } = Typography;
 
 const ResetPasswordPage = () => {
+	const history = useHistory();
 	const [userName, setUserName] = useState();
 	const [code, setCode] = useState();
 	const [pass, setPass] = useState();
@@ -55,51 +56,28 @@ const ResetPasswordPage = () => {
 				Main={`Reset your password`}
 				Secondary={`Provide your registration email so we can send a verification code there`}
 				Extra={
-					<Typography.Link>
-						<Link to='/signin'>Back to Sign in</Link>
-					</Typography.Link>
+					<Button
+						color='primary'
+						onClick={() => {
+							history.push('/signin');
+						}}>
+						Back to Sign In
+					</Button>
 				}
 			/>
 			<RegistrationContent
 				onAction={onApply}
 				loading={loadingState}
 				actionText={codeWasSent === true ? 'Change password' : 'Send code'}>
-				{codeWasSent === false && (
-					<RegistrationContentRow>
-						<MaterialTxt
-							value={userName}
-							onChange={({ target: { value } }) => {
-								setUserName(value);
-							}}
-							size='large'
-							labelKey='Email'
-						/>
-					</RegistrationContentRow>
-				)}
-
-				{codeWasSent === true && (
-					<>
-						<RegistrationContentRow>
-							<MaterialTxt
-								value={code}
-								onChange={({ target: { value } }) => {
-									setCode(value);
-								}}
-								size='large'
-								labelKey='Enter your code'
-							/>
-						</RegistrationContentRow>
-						<RegistrationContentRow>
-							<MaterialPass
-								value={pass}
-								onChange={({ target: { value } }) => {
-									setPass(value);
-								}}
-								labelKey='Enter new password'
-							/>
-						</RegistrationContentRow>
-					</>
-				)}
+				<RegistrationContentRow>
+					<MaterialTxt
+						value={userName}
+						onChange={({ target: { value } }) => {
+							setUserName(value);
+						}}
+						labelKey='Email'
+					/>
+				</RegistrationContentRow>
 			</RegistrationContent>
 		</RegistrationForm>
 	);

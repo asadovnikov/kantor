@@ -1,32 +1,32 @@
 import React from 'react';
-import { Space } from 'antd';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-// import Title from 'antd/lib/skeleton/Title';
-// const { Title, Text } = Typography;
+import { Grid, Typography, Box } from '@material-ui/core';
+
+import { makeStyles } from '@material-ui/core/styles';
+// import { grey } from '@material-ui/core/colors';
+
+const useStyles = makeStyles((theme) => ({
+	subHeader: {
+		fontWeight: `300 !important;`,
+	},
+	header: {},
+}));
 
 export const RegistrationHeader = (params) => {
 	const { Main, Secondary = '', SecondaryExtra, Extra } = params;
+	const classes = useStyles();
 	return (
-		<>
-			<Grid item xs={12}>
-				<Typography component='h1' variant='h3' align='center' color='textPrimary' gutterBottom>
-					{Main}
-				</Typography>
-			</Grid>
+		<Grid item xs={12}>
+			<Typography variant='h3' className={classes.header} gutterBottom align='center'>
+				{Main}
+			</Typography>
 			{Secondary.length > 0 && (
-				<Grid item xs={12}>
-					<Typography variant='h5' align='center' color='textSecondary' component='p'>
-						<Space>
-							{Secondary}
-							{SecondaryExtra}
-						</Space>
+				<>
+					<Typography variant='h6' className={classes.subHeader} gutterBottom align='center'>
+						{Secondary} {SecondaryExtra}
 					</Typography>
-				</Grid>
+				</>
 			)}
-			<Grid item xs={12}>
-				{Extra}
-			</Grid>
-		</>
+			<Box align='center'>{Extra}</Box>
+		</Grid>
 	);
 };

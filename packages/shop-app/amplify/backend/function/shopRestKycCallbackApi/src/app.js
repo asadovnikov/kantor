@@ -60,7 +60,7 @@ app.post('/kycresult/callback/:templinkId', async (req, res) => {
 	res.json({ success: 'OK!', url: req.url });
 });
 
-app.listen(3030, function () {
+app.listen(3000, function () {
 	console.log('App started');
 });
 

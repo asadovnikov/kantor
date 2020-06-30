@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Checkbox, Typography } from 'antd';
-import { RegistrationHeader, RegistrationForm, RegistrationContent, RegistrationContentRow } from './components';
+import { RegistrationHeader, RegistrationForm, RegistrationContent } from './components';
+import Grid from '@material-ui/core/Grid';
 import { MaterialPass, MaterialTxt, MaterialDatePicker } from './components/LabeledInput';
 
 const { Link } = Typography;
@@ -39,74 +40,71 @@ const HolderPage = ({ value = {}, onChange, onApply }) => {
 		<RegistrationForm>
 			<RegistrationHeader Main='Welcome to Kantor' Secondary='To begin, create your account.' />
 			<RegistrationContent isValid={isValid} onAction={onApply}>
-				<RegistrationContentRow>
-					<Row gutter={[16, 16]}>
-						<Col span='12'>
-							<MaterialTxt
-								value={firstName}
-								onChange={({ target: { value } }) => {
-									setFirstName(value);
-									triggerChange();
-								}}
-								labelKey='First name'
-							/>
-						</Col>
-						<Col span='12'>
-							<MaterialTxt
-								value={lastName}
-								onChange={({ target: { value } }) => {
-									setLastName(value);
-									triggerChange();
-								}}
-								labelKey='Last name'
-							/>
-						</Col>
-					</Row>
-				</RegistrationContentRow>
-
-				<RegistrationContentRow>
-					<MaterialDatePicker
-						inputValue={dateOfBirth}
-						onChange={(date) => {
-							setDateOfBirth(date);
-							triggerChange();
-						}}
-						labelKey='Date of birth'
-					/>
-				</RegistrationContentRow>
-				<RegistrationContentRow>
-					<MaterialTxt
-						inputValue={email}
-						error={notValidEmail}
-						onChange={({ target: { value } }) => {
-							setEmail(value);
-							validateEmail(value);
-						}}
-						labelKey={`Email`}
-						helperText={notValidEmail && 'Provide valid email'}
-					/>
-				</RegistrationContentRow>
-				<RegistrationContentRow>
-					<MaterialPass
-						value={password}
-						onChange={({ target: { value } }) => {
-							setPassword(value);
-							triggerChange();
-						}}
-						labelKey='Enter password'
-					/>
-				</RegistrationContentRow>
-				<RegistrationContentRow>
-					<Checkbox
-						size='large'
-						checked={agree}
-						onChange={({ target: { checked } }) => {
-							setAgree(checked);
-							triggerChange();
-						}}>
-						I agree to Kantor's <Link>Terms of use</Link> and <Link>Privacy Policy.</Link>
-					</Checkbox>
-				</RegistrationContentRow>
+				<Grid container spacing={3}>
+					<Grid item xs={12} sm={6}>
+						<MaterialTxt
+							value={firstName}
+							onChange={({ target: { value } }) => {
+								setFirstName(value);
+								triggerChange();
+							}}
+							labelKey='First name'
+						/>
+					</Grid>
+					<Grid item xs={12} sm={6}>
+						<MaterialTxt
+							value={lastName}
+							onChange={({ target: { value } }) => {
+								setLastName(value);
+								triggerChange();
+							}}
+							labelKey='Last name'
+						/>
+					</Grid>
+					<Grid item xs={12}>
+						<MaterialDatePicker
+							inputValue={dateOfBirth}
+							onChange={(date) => {
+								setDateOfBirth(date);
+								triggerChange();
+							}}
+							labelKey='Date of birth'
+						/>
+					</Grid>
+					<Grid item xs={12}>
+						<MaterialTxt
+							inputValue={email}
+							error={notValidEmail}
+							onChange={({ target: { value } }) => {
+								setEmail(value);
+								validateEmail(value);
+							}}
+							labelKey={`Email`}
+							helperText={notValidEmail && 'Provide valid email'}
+						/>
+					</Grid>
+					<Grid item xs={12}>
+						<MaterialPass
+							value={password}
+							onChange={({ target: { value } }) => {
+								setPassword(value);
+								triggerChange();
+							}}
+							labelKey='Enter password'
+						/>
+					</Grid>
+					<Grid item xs={12}>
+						<Checkbox
+							size='large'
+							checked={agree}
+							onChange={({ target: { checked } }) => {
+								setAgree(checked);
+								triggerChange();
+							}}>
+							I agree to Kantor's <Link>Terms of use</Link> and <Link>Privacy Policy.</Link>
+						</Checkbox>
+					</Grid>
+				</Grid>
 			</RegistrationContent>
 		</RegistrationForm>
 	);

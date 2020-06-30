@@ -2,7 +2,7 @@
 import { FailedPage } from '../Pages/Static/Failed';
 import { SuccessPage } from '../Pages/Static/Success';
 import { KYCPage } from '../Pages/KYC';
-import PrivacyPolicy from '../Pages/Static/PrivacyPolicy';
+import { PrivacyPolicy, CookiesPolicy, TermsPage } from '../Pages/Static';
 import SignInForm from '../Pages/registration/SignInForm';
 import SignUpForm from '../Pages/registration/SignUpForm';
 import ResetPasswordPage from '../Pages/registration/ResetPasswordPage';
@@ -88,5 +88,13 @@ export const routes = [
 	{
 		path: '/privacy-policy',
 		component: PrivacyPolicy,
+	},
+	{
+		path: '/terms-and-conditions',
+		component: TermsPage,
+	},
+	{
+		path: '/cookies-policy',
+		component: CookiesPolicy,
 	},
 ];

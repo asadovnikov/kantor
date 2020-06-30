@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col } from 'antd';
+import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
 	spacer: {
@@ -12,10 +12,8 @@ const useStyles = makeStyles((theme) => ({
 export const RegistrationContentRow = ({ children }) => {
 	const classes = useStyles();
 	return (
-		<Row gutter={[16, 16]} className='registration-content_item-row'>
-			<Col className='registration-content_item-column' span='24'>
-				<div className={classes.spacer}>{children}</div>
-			</Col>
-		</Row>
+		<Grid item xs={12}>
+			{children}
+		</Grid>
 	);
 };
