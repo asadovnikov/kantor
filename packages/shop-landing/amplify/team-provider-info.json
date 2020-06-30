@@ -1,20 +1,41 @@
 {
-    "landing": {
+    "dev": {
         "awscloudformation": {
-            "AuthRoleName": "amplify-shoplanding-landing-05822-authRole",
-            "UnauthRoleArn": "arn:aws:iam::293562257411:role/amplify-shoplanding-landing-05822-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::293562257411:role/amplify-shoplanding-landing-05822-authRole",
+            "AuthRoleName": "amplify-shopapp-dev-145203-authRole",
+            "UnauthRoleArn": "arn:aws:iam::293562257411:role/amplify-shopapp-dev-145203-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::293562257411:role/amplify-shopapp-dev-145203-authRole",
             "Region": "us-east-1",
-            "DeploymentBucketName": "amplify-shoplanding-landing-05822-deployment",
-            "UnauthRoleName": "amplify-shoplanding-landing-05822-unauthRole",
-            "StackName": "amplify-shoplanding-landing-05822",
-            "StackId": "arn:aws:cloudformation:us-east-1:293562257411:stack/amplify-shoplanding-landing-05822/a88805c0-ba53-11ea-bd9a-0a254e00bc9f",
-            "AmplifyAppId": "d28qw7bupr50ox"
+            "DeploymentBucketName": "amplify-shopapp-dev-145203-deployment",
+            "UnauthRoleName": "amplify-shopapp-dev-145203-unauthRole",
+            "StackName": "amplify-shopapp-dev-145203",
+            "StackId": "arn:aws:cloudformation:us-east-1:293562257411:stack/amplify-shopapp-dev-145203/523a3af0-a3fe-11ea-917c-0ea6b7109c22",
+            "AmplifyAppId": "d1of2l2xhwe01x"
         },
         "categories": {
             "hosting": {
                 "amplifyhosting": {
-                    "appId": "d28qw7bupr50ox",
+                    "appId": "d1of2l2xhwe01x",
+                    "type": "manual"
+                }
+            }
+        }
+    },
+    "landing": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-shopapp-landing-60814-authRole",
+            "UnauthRoleArn": "arn:aws:iam::293562257411:role/amplify-shopapp-landing-60814-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::293562257411:role/amplify-shopapp-landing-60814-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-shopapp-landing-60814-deployment",
+            "UnauthRoleName": "amplify-shopapp-landing-60814-unauthRole",
+            "StackName": "amplify-shopapp-landing-60814",
+            "StackId": "arn:aws:cloudformation:us-east-1:293562257411:stack/amplify-shopapp-landing-60814/f1686de0-ba7e-11ea-868e-12305fa4f4bd",
+            "AmplifyAppId": "d1of2l2xhwe01x"
+        },
+        "categories": {
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d1of2l2xhwe01x",
                     "type": "manual"
                 }
             }
