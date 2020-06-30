@@ -9,8 +9,8 @@
                         {
                             "authenticationType": "API_KEY",
                             "apiKeyConfig": {
-                                "description": "shopAppApiKey",
-                                "apiKeyExpirationDays": "30"
+                                "description": "shopApiAccess",
+                                "apiKeyExpirationDays": "90"
                             }
                         },
                         {
@@ -41,6 +41,62 @@
                 {
                     "category": "function",
                     "resourceName": "registertransaction",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                }
+            ]
+        },
+        "shopRestApi": {
+            "service": "API Gateway",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": [
+                {
+                    "category": "function",
+                    "resourceName": "shopRestApi",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                }
+            ]
+        },
+        "kycRestLink": {
+            "service": "API Gateway",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": [
+                {
+                    "category": "function",
+                    "resourceName": "kycRestLinkApi",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                }
+            ]
+        },
+        "shopRestKycSuccess": {
+            "service": "API Gateway",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": [
+                {
+                    "category": "function",
+                    "resourceName": "shopRestKycSucessApi",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                }
+            ]
+        },
+        "shopRestKycCallback": {
+            "service": "API Gateway",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": [
+                {
+                    "category": "function",
+                    "resourceName": "shopRestKycCallbackApi",
                     "attributes": [
                         "Name",
                         "Arn"
@@ -172,7 +228,8 @@
         "shopapp53b8683ePostConfirmation": {
             "build": true,
             "providerPlugin": "awscloudformation",
-            "service": "Lambda"
+            "service": "Lambda",
+            "dependsOn": []
         },
         "manageCustomers": {
             "build": true,
@@ -207,6 +264,87 @@
             "build": true,
             "providerPlugin": "awscloudformation",
             "service": "Lambda"
+        },
+        "shopRestApi": {
+            "build": true,
+            "providerPlugin": "awscloudformation",
+            "service": "Lambda",
+            "dependsOn": [
+                {
+                    "category": "api",
+                    "resourceName": "shopappapi",
+                    "attributes": [
+                        "GraphQLAPIIdOutput",
+                        "GraphQLAPIEndpointOutput"
+                    ]
+                },
+                {
+                    "category": "storage",
+                    "resourceName": "kycimages",
+                    "attributes": [
+                        "BucketName"
+                    ]
+                }
+            ]
+        },
+        "kycRestLinkApi": {
+            "build": true,
+            "providerPlugin": "awscloudformation",
+            "service": "Lambda",
+            "dependsOn": [
+                {
+                    "category": "api",
+                    "resourceName": "shopappapi",
+                    "attributes": [
+                        "GraphQLAPIIdOutput",
+                        "GraphQLAPIEndpointOutput"
+                    ]
+                }
+            ]
+        },
+        "shopRestKycSucessApi": {
+            "build": true,
+            "providerPlugin": "awscloudformation",
+            "service": "Lambda",
+            "dependsOn": [
+                {
+                    "category": "api",
+                    "resourceName": "shopappapi",
+                    "attributes": [
+                        "GraphQLAPIIdOutput",
+                        "GraphQLAPIEndpointOutput"
+                    ]
+                },
+                {
+                    "category": "storage",
+                    "resourceName": "kycimages",
+                    "attributes": [
+                        "BucketName"
+                    ]
+                }
+            ]
+        },
+        "shopRestKycCallbackApi": {
+            "build": true,
+            "providerPlugin": "awscloudformation",
+            "service": "Lambda",
+            "dependsOn": [
+                {
+                    "category": "api",
+                    "resourceName": "shopappapi",
+                    "attributes": [
+                        "GraphQLAPIIdOutput",
+                        "GraphQLAPIEndpointOutput"
+                    ]
+                },
+                {
+                    "category": "storage",
+                    "resourceName": "kycimages",
+                    "attributes": [
+                        "BucketName"
+                    ]
+                }
+            ]
         }
     },
     "hosting": {

@@ -2,6 +2,7 @@ import React from 'react';
 import { Auth } from 'aws-amplify';
 import { Result, Button, Card, Col, Row, Avatar } from 'antd';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
+import { KYCStatusWidget } from '../Widgets';
 // import axios from 'axios';
 // import { v4 as uuid } from 'uuid';
 const { Meta } = Card;
@@ -96,7 +97,7 @@ export const KYCPage = () => {
 				/>
 			</Route>
 			<Route path={`${path}/:validationId`}>
-				<KYCValidationState />
+				<KYCStatusWidget />
 			</Route>
 		</Switch>
 	);

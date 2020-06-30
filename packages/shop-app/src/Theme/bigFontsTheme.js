@@ -100,7 +100,7 @@ export const bigFontsTheme = createMuiTheme({
 		},
 	},
 	typography: {
-		fontFamily: ['Heebo', 'sans-serif'].join(','),
+		fontFamily: ['Rubik', 'sans-serif'].join(','),
 		fontSize: 14,
 	},
 	shadows,

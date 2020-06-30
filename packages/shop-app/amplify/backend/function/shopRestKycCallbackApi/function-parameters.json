@@ -1,0 +1,48 @@
+{
+    "permissions": {
+        "api": {
+            "shopappapi": [
+                "create",
+                "read",
+                "update"
+            ]
+        },
+        "storage": {
+            "kycimages": [
+                "create",
+                "read",
+                "update"
+            ],
+            "KYCDocument:@model(appsync)": [
+                "create",
+                "read",
+                "update"
+            ],
+            "Customer:@model(appsync)": [
+                "create",
+                "read",
+                "update"
+            ],
+            "JumioVerifyMetaData:@model(appsync)": [
+                "create",
+                "read",
+                "update"
+            ],
+            "Comment:@model(appsync)": [
+                "create",
+                "read",
+                "update"
+            ],
+            "Verification:@model(appsync)": [
+                "create",
+                "read",
+                "update"
+            ],
+            "TemporaryLinks:@model(appsync)": [
+                "create",
+                "read",
+                "update"
+            ]
+        }
+    }
+}

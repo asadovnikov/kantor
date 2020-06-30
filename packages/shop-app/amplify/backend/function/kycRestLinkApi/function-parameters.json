@@ -1,0 +1,18 @@
+{
+    "permissions": {
+        "api": {
+            "shopappapi": [
+                "create",
+                "read",
+                "update"
+            ]
+        },
+        "storage": {
+            "TemporaryLinks:@model(appsync)": [
+                "create",
+                "read",
+                "update"
+            ]
+        }
+    }
+}

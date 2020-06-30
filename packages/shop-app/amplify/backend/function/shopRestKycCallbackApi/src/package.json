@@ -1,0 +1,21 @@
+{
+  "name": "shopRestKycCallbackApi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "aws-serverless-express": "^3.3.5",
+    "axios": "^0.19.2",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "graphql": "^15.2.0",
+    "graphql-tag": "^2.10.3",
+    "uuid": "^8.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

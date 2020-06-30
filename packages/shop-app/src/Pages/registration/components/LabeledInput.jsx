@@ -109,9 +109,10 @@ export const MaterialTxt = (props) => {
 				value={inputValue}
 				onChange={onChange}
 				fullWidth={false}
-				outlined
+				outlined={true}
 				{...rest}
-				label={labelKey}></TextField>
+				label={labelKey}
+			/>
 		</div>
 	);
 };
@@ -126,7 +127,7 @@ export const MaterialCodeInput = ({ value, onChange }) => {
 			value={value}
 			onChange={onChange}
 			fullWidth={false}
-			outlined
+			outlined={true}
 			size='medium'
 		/>
 	);

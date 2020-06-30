@@ -1,0 +1,41 @@
+{
+    "paths": [
+        {
+            "name": "/startkyc/{customerId}",
+            "lambdaFunction": "kycRestLinkApi",
+            "privacy": {
+                "protected": true,
+                "auth": [
+                    "/POST"
+                ],
+                "unauth": [
+                    "/POST"
+                ]
+            }
+        }
+    ],
+    "resourceName": "kycRestLink",
+    "apiName": "kycRestLink",
+    "functionArns": [
+        {
+            "lambdaFunction": "kycRestLinkApi"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 1,
+        "authRoleName": "amplify-shopapp-dev-145203-authRole",
+        "unAuthRoleName": "amplify-shopapp-dev-145203-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "kycRestLinkApi",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ],
+    "uuid": "5d539373"
+}

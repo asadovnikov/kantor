@@ -1,0 +1,47 @@
+{
+    "paths": [
+        {
+            "name": "/kycresult/success",
+            "lambdaFunction": "shopRestKycSucessApi",
+            "privacy": {
+                "protected": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH"
+                ],
+                "unauth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH"
+                ]
+            }
+        }
+    ],
+    "resourceName": "shopRestKycSuccess",
+    "apiName": "shopRestKycSuccess",
+    "functionArns": [
+        {
+            "lambdaFunction": "shopRestKycSucessApi"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 1,
+        "authRoleName": "amplify-shopapp-dev-145203-authRole",
+        "unAuthRoleName": "amplify-shopapp-dev-145203-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "shopRestKycSucessApi",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ],
+    "uuid": "a729d143"
+}

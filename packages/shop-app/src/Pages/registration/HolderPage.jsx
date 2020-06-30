@@ -9,7 +9,9 @@ const HolderPage = ({ value = {}, onChange, onApply }) => {
 	const [firstName, setFirstName] = useState(value.firstName);
 	const [lastName, setLastName] = useState(value.lastName);
 	const [email, setEmail] = useState(value.email);
-	const [dateOfBirth, setDateOfBirth] = useState(value.dateOfBirth || new Date('2002-08-18T21:11:54'));
+	const [dateOfBirth, setDateOfBirth] = useState(
+		value.dateOfBirth || new Date(new Date().setYear(new Date().getFullYear() - 18))
+	);
 	const [password, setPassword] = useState(value.password);
 	const [agree, setAgree] = useState(value.agree);
 	const [isValid, setIsValid] = useState(false);

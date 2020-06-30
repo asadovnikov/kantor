@@ -132,9 +132,18 @@ type Transaction
 }
 
 type Customer
+	@aws_api_key
+	@aws_iam
 	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
 	@key(name: "byEmail", fields: ["Email"])
-	@auth(rules: [{ allow: owner }, { allow: groups, groups: ["Admins"] }]) {
+	@auth(
+		rules: [
+			{ allow: owner }
+			{ allow: groups, groups: ["Admins"] }
+			{ allow: public, provider: apiKey }
+			{ allow: groups, groups: ["Customers"], operations: [read], queries: [get] }
+		]
+	) {
 	id: ID!
 	Firstname: String!
 	Surname: String!
@@ -183,7 +192,14 @@ type Verification
 	@aws_api_key
 	@aws_iam
 	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
-	@auth(rules: [{ allow: owner }, { allow: groups, groups: ["Admins"] }, { allow: public, provider: apiKey }]) {
+	@auth(
+		rules: [
+			{ allow: owner }
+			{ allow: groups, groups: ["Admins"] }
+			{ allow: public, provider: apiKey }
+			{ allow: groups, groups: ["Customers"], operations: [read], queries: [get] }
+		]
+	) {
 	id: ID!
 	customer: Customer @connection(name: "CustomerVerification")
 	idVerification: KYCStageStatus!

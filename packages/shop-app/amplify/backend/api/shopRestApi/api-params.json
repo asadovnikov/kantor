@@ -1,0 +1,46 @@
+{
+    "paths": [
+        {
+            "name": "/processing",
+            "lambdaFunction": "shopRestApi",
+            "privacy": {
+                "protected": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH"
+                ],
+                "unauth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH"
+                ]
+            }
+        }
+    ],
+    "resourceName": "shopRestApi",
+    "apiName": "shopRestApi",
+    "functionArns": [
+        {
+            "lambdaFunction": "shopRestApi"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 1,
+        "authRoleName": "amplify-shopapp-dev-145203-authRole",
+        "unAuthRoleName": "amplify-shopapp-dev-145203-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "shopRestApi",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

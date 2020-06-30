@@ -1,0 +1,46 @@
+{
+    "paths": [
+        {
+            "name": "/kycresult/callback",
+            "lambdaFunction": "shopRestKycCallbackApi",
+            "privacy": {
+                "protected": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH"
+                ],
+                "unauth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH"
+                ]
+            }
+        }
+    ],
+    "resourceName": "shopRestKycCallback",
+    "apiName": "shopRestKycCallback",
+    "functionArns": [
+        {
+            "lambdaFunction": "shopRestKycCallbackApi"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 1,
+        "authRoleName": "amplify-shopapp-dev-145203-authRole",
+        "unAuthRoleName": "amplify-shopapp-dev-145203-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "shopRestKycCallbackApi",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
