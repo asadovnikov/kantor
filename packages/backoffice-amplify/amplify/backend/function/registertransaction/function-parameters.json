@@ -1,9 +1,0 @@
-{
-    "permissions": {
-        "storage": {
-            "Transaction:@model(appsync)": [
-                "create"
-            ]
-        }
-    }
-}
