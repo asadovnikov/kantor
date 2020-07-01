@@ -35,7 +35,7 @@ var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware'
 // declare a new express app
 var app = express();
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.urlencoded({ extended: true }));
 app.use(awsServerlessExpressMiddleware.eventContext());
 
 // Enable CORS for all methods
@@ -49,10 +49,12 @@ app.use(function (req, res, next) {
  * Example get method *
  **********************/
 
-app.post('/kycresult/callback/:templinkId', async (req, res) => {
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+
+app.post('/kycresult/callback/:templinkId', urlencodedParser, async (req, res) => {
 	const { templinkId } = req.params;
 	try {
-		await saveCallBack(templinkId);
+		await saveCallBack(templinkId, req);
 	} catch (err) {
 		console.log(JSON.stringify(err));
 		res.json(err);

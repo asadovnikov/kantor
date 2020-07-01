@@ -70,6 +70,7 @@ exports.addCustomer = async (event) => {
 			Surname: userAttributes['custom:lastName'],
 			DateOfBirth: userAttributes['custom:dateOfBirth'],
 			StreetLine1: userAttributes['custom:homeAddress'],
+			StreetLine2: userAttributes['custom:homeAddress2'],
 			City: userAttributes['custom:city'],
 			PostalCode: userAttributes['custom:postalCode'],
 			StateProvince: userAttributes['custom:region'],

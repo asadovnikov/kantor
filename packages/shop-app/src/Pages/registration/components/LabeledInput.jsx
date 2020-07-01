@@ -168,6 +168,7 @@ export const MaterialDatePicker = ({ inputValue, onChange, labelKey }) => {
 	return (
 		<KeyboardDatePicker
 			disableFuture={true}
+			style={{ width: '100%' }}
 			openTo='year'
 			format='dd/MM/yyyy'
 			label={labelKey}

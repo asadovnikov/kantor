@@ -102,7 +102,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-shopapp-dev-145203-deployment",
-					"S3Key": "amplify-builds/shopapp53b8683ePostConfirmation-6a716267754b7a757055-build.zip"
+					"S3Key": "amplify-builds/shopapp53b8683ePostConfirmation-672f4142446c33674e31-build.zip"
 				}
 			}
 		},

@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Auth } from 'aws-amplify';
 import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Menu, Button, List, ListItem } from '@material-ui/core';
-
+import { Menu, Button, List, ListItem, CircularProgress, Backdrop } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 // import CountUp from 'react-countup';
 
 import BusinessCenterTwoToneIcon from '@material-ui/icons/BusinessCenterTwoTone';
@@ -12,8 +12,17 @@ import VerifiedUserTwoToneIcon from '@material-ui/icons/VerifiedUserTwoTone';
 import ExitToAppTwoToneIcon from '@material-ui/icons/ExitToAppTwoTone';
 import Avatar from 'react-avatar';
 
+const useStyles = makeStyles((theme) => ({
+	backdrop: {
+		zIndex: theme.zIndex.drawer + 100,
+		color: '#fff',
+	},
+}));
+
 export const HeaderUserbox = ({ firstName, lastName, email }) => {
+	const classes = useStyles();
 	const [anchorEl, setAnchorEl] = useState(null);
+	const [open, setOpen] = useState(false);
 	const history = useHistory();
 
 	const handleClick = (event) => {
@@ -26,6 +35,9 @@ export const HeaderUserbox = ({ firstName, lastName, email }) => {
 
 	return (
 		<>
+			<Backdrop className={classes.backdrop} open={open}>
+				<CircularProgress color='inherit' />
+			</Backdrop>
 			<Button
 				variant='text'
 				onClick={handleClick}
@@ -126,7 +138,10 @@ export const HeaderUserbox = ({ firstName, lastName, email }) => {
 							href='#/'
 							onClick={async (e) => {
 								e.preventDefault();
+								setOpen(true);
+								history.push('/');
 								await Auth.signOut({ global: true });
+								setOpen(false);
 							}}>
 							<div className='mr-2'>
 								<ExitToAppTwoToneIcon />

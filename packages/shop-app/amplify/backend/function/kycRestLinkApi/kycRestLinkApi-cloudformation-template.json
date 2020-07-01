@@ -108,7 +108,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-shopapp-dev-145203-deployment",
-					"S3Key": "amplify-builds/kycRestLinkApi-6364584a354c4c337243-build.zip"
+					"S3Key": "amplify-builds/kycRestLinkApi-656134334e5062644258-build.zip"
 				}
 			}
 		},

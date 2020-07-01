@@ -60,7 +60,7 @@ const addJumioMeta = async (verificationId, data, meta, verType) => {
 	}
 };
 
-module.exports = async (tempLinkId) => {
+module.exports = async (tempLinkId, req) => {
 	try {
 		const { transactionId } = await resolveLink(tempLinkId);
 		await addJumioMeta(transactionId, JSON.stringify(req.body), JSON.stringify(req.body), 'ID Verify');

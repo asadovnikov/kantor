@@ -14,6 +14,7 @@ import notFoundIllustration from './images/kantor/illustrations/404.svg';
 import notAuthorized from './images/kantor/illustrations/notAuthorized.svg';
 import paymentFailed from './images/kantor/illustrations/paymentFailed.svg';
 import paymentSuccessfull from './images/kantor/illustrations/paymentSuccessfull.svg';
+import processingKYC from './images/kantor/illustrations/processingKYC.svg';
 import logoImage from './images/kantor/logoColored.svg';
 
 const finance = finance1;
@@ -35,4 +36,5 @@ export {
 	paymentFailed,
 	paymentSuccessfull,
 	logoImage,
+	processingKYC,
 };

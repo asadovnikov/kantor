@@ -1,6 +1,13 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { successIllustration, notFoundIllustration, notAuthorized, paymentFailed, paymentSuccessfull } from '../assets';
+import {
+	successIllustration,
+	notFoundIllustration,
+	notAuthorized,
+	paymentFailed,
+	paymentSuccessfull,
+	processingKYC,
+} from '../assets';
 import { Container, Typography, Button } from '@material-ui/core';
 
 const IllustrationWidget = ({ message, subMessage, illustration, children }) => {
@@ -11,7 +18,7 @@ const IllustrationWidget = ({ message, subMessage, illustration, children }) => 
 				<Typography variant='h6' align='center' gutterBottom={true}>
 					{message}
 				</Typography>
-				<Typography variant='body2' align='center'>
+				<Typography variant='body2' align='center' gutterBottom={true}>
 					{subMessage}
 				</Typography>
 				<Container align='center'>{children}</Container>
@@ -34,6 +41,26 @@ export const PaymentFailedWidget = () => {
 					}}
 					color='primary'>
 					Go to payments
+				</Button>
+			</IllustrationWidget>
+		</>
+	);
+};
+
+export const ProcessingKYCDocumentsWidget = () => {
+	const history = useHistory();
+	return (
+		<>
+			<IllustrationWidget
+				message='We are processing your documents'
+				subMessage='This process can take some time.'
+				illustration={processingKYC}>
+				<Button
+					onClick={() => {
+						history.push('/kyc/0');
+					}}
+					color='primary'>
+					Continue with other documents
 				</Button>
 			</IllustrationWidget>
 		</>

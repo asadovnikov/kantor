@@ -14,4 +14,5 @@ export {
 	NotAuthorizedWidget,
 	PaymentFailedWidget,
 	PaymentSuccessWidget,
+	ProcessingKYCDocumentsWidget,
 } from './IllustrateResult';

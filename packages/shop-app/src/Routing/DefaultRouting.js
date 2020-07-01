@@ -2,7 +2,7 @@
 import { FailedPage } from '../Pages/Static/Failed';
 import { SuccessPage } from '../Pages/Static/Success';
 import { KYCPage } from '../Pages/KYC';
-import { PrivacyPolicy, CookiesPolicy, TermsPage } from '../Pages/Static';
+import { PrivacyPolicy, CookiesPolicy, TermsPage, ProcessingKYCPage } from '../Pages/Static';
 import SignInForm from '../Pages/registration/SignInForm';
 import SignUpForm from '../Pages/registration/SignUpForm';
 import ResetPasswordPage from '../Pages/registration/ResetPasswordPage';
@@ -101,5 +101,10 @@ export const routes = [
 	{
 		path: '/email-code',
 		component: EmailCodePage,
+	},
+
+	{
+		path: '/processingkyc',
+		component: ProcessingKYCPage,
 	},
 ];

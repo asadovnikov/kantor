@@ -62,7 +62,8 @@ module.exports = async (customerId, verificationId) => {
 			userReference: `${verificationId}`,
 			successUrl: `${redirectAddress}/processingkyc/${internalLinkId}`,
 			errorUrl: `${redirectAddress}/kycfailed/${internalLinkId}`,
-			callbackUrl: `${callBackURI}/callback/${internalLinkId}`,
+			callbackUrl: `${callBackURI}/kycresult/callback/${internalLinkId}`,
+			workflowId: 100,
 		},
 		{
 			headers: {

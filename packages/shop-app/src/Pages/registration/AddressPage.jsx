@@ -25,6 +25,7 @@ const AddressPage = ({ value = {}, onChange, onValidate, onApply }) => {
 	const [region, setRegion] = useState(regionData[234].regions[0].shortCode);
 	const [country, setCountry] = useState(value.country || 'US');
 	const [homeAddress, setHomeAddress] = useState(value.homeAddress);
+	const [streetAddress2, setStreetAddress2] = useState(value.streetAddress2);
 	const [city, setCity] = useState(value.city);
 	const [postalCode, setPostalCode] = useState(value.postalCode);
 	const [isValid, setIsValid] = useState(false);
@@ -34,15 +35,17 @@ const AddressPage = ({ value = {}, onChange, onValidate, onApply }) => {
 		const valid = (region && country && homeAddress && city && postalCode) !== undefined;
 		setIsValid(valid);
 		if (valid && onChange) {
+			const homeAddress2 = streetAddress2 || 'not set';
 			onChange({
 				country,
 				region,
 				city,
 				postalCode,
 				homeAddress,
+				homeAddress2,
 			});
 		}
-	}, [country, region, city, postalCode, homeAddress]);
+	}, [country, region, city, postalCode, homeAddress, streetAddress2]);
 
 	const handleCountryChange = ({ target: { value } }) => {
 		const result = regionData.filter(({ countryShortCode }) => countryShortCode === value)[0].regions;
@@ -113,6 +116,17 @@ const AddressPage = ({ value = {}, onChange, onValidate, onApply }) => {
 							triggerChange();
 						}}
 						labelKey='Home address'
+					/>
+				</RegistrationContentRow>
+				<RegistrationContentRow>
+					<MaterialTxt
+						value={streetAddress2}
+						required={false}
+						onChange={({ target: { value } }) => {
+							setStreetAddress2(value);
+							triggerChange();
+						}}
+						labelKey='Home address 2'
 					/>
 				</RegistrationContentRow>
 				<RegistrationContentRow>

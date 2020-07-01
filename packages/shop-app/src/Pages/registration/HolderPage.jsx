@@ -10,6 +10,7 @@ const { Link } = Typography;
 const HolderPage = ({ value = {}, onChange, onApply }) => {
 	const [firstName, setFirstName] = useState(value.firstName);
 	const [lastName, setLastName] = useState(value.lastName);
+	const [phoneNumber, setPhoneNumber] = useState(value.phoneNumber);
 	const [email, setEmail] = useState(value.email);
 	const [dateOfBirth, setDateOfBirth] = useState(
 		value.dateOfBirth || new Date(new Date().setYear(new Date().getFullYear() - 18))
@@ -19,14 +20,16 @@ const HolderPage = ({ value = {}, onChange, onApply }) => {
 	const [isValid, setIsValid] = useState(false);
 	const [notValidEmail, setNotValidEmail] = useState(false);
 
-	useEffect(() => {
-		const valid = (firstName && lastName && email && dateOfBirth && password && agree) === true;
+	const notEmptyStr = (val = '') => val.length > 0;
 
-		setIsValid((firstName && lastName && email && dateOfBirth && password && agree) === true);
+	useEffect(() => {
+		const valid = firstName && lastName && email && dateOfBirth && password && phoneNumber && agree === true;
+
+		setIsValid((firstName && lastName && email && dateOfBirth && password && phoneNumber && agree) === true);
 		if (valid) {
-			onChange({ firstName, lastName, email, dateOfBirth, password });
+			onChange({ firstName, lastName, email, dateOfBirth, password, phoneNumber });
 		}
-	}, [firstName, lastName, email, dateOfBirth, password, agree]);
+	}, [firstName, lastName, email, dateOfBirth, password, agree, phoneNumber]);
 
 	const triggerChange = () => {
 		// if (onChange) {
@@ -62,7 +65,7 @@ const HolderPage = ({ value = {}, onChange, onApply }) => {
 							labelKey='Last name'
 						/>
 					</Grid>
-					<Grid item xs={12}>
+					<Grid item xs={12} sm={6}>
 						<MaterialDatePicker
 							inputValue={dateOfBirth}
 							onChange={(date) => {
@@ -70,6 +73,16 @@ const HolderPage = ({ value = {}, onChange, onApply }) => {
 								triggerChange();
 							}}
 							labelKey='Date of birth'
+						/>
+					</Grid>
+					<Grid item xs={12} sm={6}>
+						<MaterialTxt
+							value={phoneNumber}
+							onChange={({ target: { value } }) => {
+								setPhoneNumber(value);
+								triggerChange();
+							}}
+							labelKey='Phone number'
 						/>
 					</Grid>
 					<Grid item xs={12}>
