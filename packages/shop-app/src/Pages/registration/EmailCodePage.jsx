@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import MaskedInput from 'react-maskedinput';
-import { Row, Col, Typography, Space } from 'antd';
+import { Row, Col, Space } from 'antd';
+import { Typography, Container } from '@material-ui/core';
 import { RegistrationForm, RegistrationContent, RegistrationHeader, RegistrationContentRow } from './components';
 // import { MaterialCodeInput } from './components/LabeledInput';
 // import { LinkButton } from './components/MaterialButtons';
@@ -18,7 +19,7 @@ import { useParams } from 'react-router-dom';
 
 const { Title, Text, Link } = Typography;
 
-const EmailCodePage = ({ email, onChange, onApply, isLoading }) => {
+export const EmailCodePage = ({ email, onChange = () => {}, onApply, isLoading }) => {
 	let { validationId } = useParams();
 	// const classes = useStyles;
 	if (validationId) {
@@ -80,30 +81,26 @@ const EmailCodePage = ({ email, onChange, onApply, isLoading }) => {
 				</Col>
 			</Row> */}
 			<RegistrationContent isLoading={isLoading} isValid={isValid} onAction={onApply} actionText={`Verify`}>
-				<Row gutter={[16, 16]} justify='center'>
-					<Col>
-						<Text type='secondary' style={{ textAlign: 'center' }}>
-							Verify the code from our message
-						</Text>
-					</Col>
-				</Row>
 				<RegistrationContentRow>
-					<Row gutter={[16, 16]} justify='center'>
-						<Col>
-							<MaskedInput
-								name='ValidationCode'
-								id='ValidationCodeInput'
-								mask='1 1 1 1 1 1'
-								onChange={({ target: { value } }) => {
-									const validationResult = validateValue(value);
-									if (validationResult) {
-										onChange(value.split(' ').join(''));
-									}
-									setIsValid(validationResult);
-								}}
-							/>
-						</Col>
-					</Row>
+					<Typography variant='body2' align='center'>
+						Verify the code from our message
+					</Typography>
+				</RegistrationContentRow>
+				<RegistrationContentRow>
+					<Container align='center'>
+						<MaskedInput
+							name='ValidationCode'
+							id='ValidationCodeInput'
+							mask='1 1 1 1 1 1'
+							onChange={({ target: { value } }) => {
+								const validationResult = validateValue(value);
+								if (validationResult) {
+									onChange(value.split(' ').join(''));
+								}
+								setIsValid(validationResult);
+							}}
+						/>
+					</Container>
 				</RegistrationContentRow>
 				{/* <Row gutter={[16, 16]} justify='center'>
 					<Col span='14'>
@@ -140,4 +137,4 @@ const EmailCodePage = ({ email, onChange, onApply, isLoading }) => {
 	);
 };
 
-export default EmailCodePage;
+//export default EmailCodePage;

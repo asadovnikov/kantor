@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 import HolderPage from './HolderPage';
 import AddressPage from './AddressPage';
 import FinancePage from './FinancePage';
-import EmailCodePage from './EmailCodePage';
+import { EmailCodePage } from './EmailCodePage';
 
 const SignUpForm = () => {
 	const userRegistrationInfo = {

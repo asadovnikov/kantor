@@ -6,6 +6,7 @@ import { PrivacyPolicy, CookiesPolicy, TermsPage } from '../Pages/Static';
 import SignInForm from '../Pages/registration/SignInForm';
 import SignUpForm from '../Pages/registration/SignUpForm';
 import ResetPasswordPage from '../Pages/registration/ResetPasswordPage';
+import { EmailCodePage } from '../Pages/registration';
 import { HomePage, Transactions, MyWallets, BuyBTC } from '../Pages/secured';
 
 export const routes = [
@@ -96,5 +97,9 @@ export const routes = [
 	{
 		path: '/cookies-policy',
 		component: CookiesPolicy,
+	},
+	{
+		path: '/email-code',
+		component: EmailCodePage,
 	},
 ];

@@ -63,7 +63,10 @@ const AddressPage = ({ value = {}, onChange, onValidate, onApply }) => {
 	};
 	return (
 		<RegistrationForm>
-			<RegistrationHeader Main='Where are you from?' />
+			<RegistrationHeader
+				Main='Where are you from?'
+				Secondary='As a regulated business, we are required to collect this info .'
+			/>
 			<RegistrationContent isValid={isValid} onAction={onApply}>
 				<RegistrationContentRow>
 					<FormControl className={classes.formControl} fullWidth>

@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { AuthContext } from '../Components/AuthContext';
+import React, { useEffect, useState } from 'react';
+
 import { Auth } from 'aws-amplify';
 import { Input } from 'antd';
 import { makeStyles } from '@material-ui/core/styles';
@@ -13,7 +13,6 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { Container, Grid } from '@material-ui/core';
 import { v4 as uuid } from 'uuid';
-import { KYCStatusWidget } from './KYCStatus';
 
 import { API, graphqlOperation } from 'aws-amplify';
 import { listUserWalletss } from '../graphql/queries';
@@ -56,12 +55,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const BuyCryptoWidget = () => {
-	const { customer = {} } = useContext(AuthContext);
-	const { KYCVerification = {} } = customer;
-	const goodStatus = 'VALIDATED';
-
-	const { poaVerification = 'FAILED', idVerification = 'FAILED', financeVerification = 'FAILED' } = KYCVerification;
-
 	const classes = useStyles();
 	const [FiatAmount, setFiatAmount] = useState(0);
 	const [FiatCurrency, setFiatCurrency] = useState('EUR');
@@ -252,76 +245,72 @@ export const BuyCryptoWidget = () => {
 
 	return (
 		<>
-			{poaVerification === goodStatus && idVerification === goodStatus && financeVerification === goodStatus ? (
-				<Container maxWidth='xs' className={classes.formContainer}>
-					<Grid container spacing={6} justify='center' alignItems='center'>
-						<Grid item xs={12}>
-							<Typography align='center' variant='h4'>
-								Buy Crypto
-							</Typography>
-						</Grid>
-						<Grid item xs={12}>
-							<Grid container justify='center' alignItems='center'>
-								<Input className='fiat-amount-input' type='text' value={FiatAmount} onChange={onFiatAmountChange} />
-							</Grid>
-						</Grid>
-						<Grid item xs={12}>
-							<CurrencySelect value={FiatCurrency} onChange={onFiatCurrencyChange} />
-						</Grid>
-						<Grid item xs={12}>
-							<List>
-								<ListItem disableGutters dense>
-									<ListItemText primary='Will be charged' />
-									<Typography variant='subtitle1' className={classes.total}>
-										{fee} {FiatCurrency}
-									</Typography>
-								</ListItem>
-								<ListItem disableGutters dense className={classes.fee}>
-									<ListItemText primary='Fee' />
-									<Typography variant='body2'>10%</Typography>
-								</ListItem>
-								<ListItem disableGutters>
-									<ListItemText primary='Receive approximately' />
-									<Typography variant='body2'>{btc} BTC</Typography>
-								</ListItem>
-							</List>
-						</Grid>
-						<Grid item xs={12}>
-							<FormControl className={classes.formControl} fullWidth>
-								<InputLabel htmlFor='destination-wallet-address'>Destination wallet</InputLabel>
-								<Select
-									fullWidth
-									id='destination-wallet-address'
-									size='large'
-									placeholder='Select destination wallet'
-									value={btcWallet}
-									onChange={({ target: { value } }) => {
-										setBTCWallet(value);
-									}}>
-									{wallets.map((wallet) => (
-										<MenuItem value={wallet.Address}>{wallet.name}</MenuItem>
-									))}
-								</Select>
-							</FormControl>
-						</Grid>
-						<Grid item xs={12}>
-							<Grid container justify='center' alignItems='center'>
-								<ProgressButton
-									disabled={!valid}
-									fullWidth
-									onClick={doPayment}
-									loading={loading}
-									size='large'
-									className='btn-success py-4 mt-5 px-5 text-uppercase font-weight-bold font-size-lg'>
-									Buy{btc > 0 ? ` ${btc} BTC` : ''}
-								</ProgressButton>
-							</Grid>
+			<Container maxWidth='xs' className={classes.formContainer}>
+				<Grid container spacing={6} justify='center' alignItems='center'>
+					<Grid item xs={12}>
+						<Typography align='center' variant='h4'>
+							Buy Crypto
+						</Typography>
+					</Grid>
+					<Grid item xs={12}>
+						<Grid container justify='center' alignItems='center'>
+							<Input className='fiat-amount-input' type='text' value={FiatAmount} onChange={onFiatAmountChange} />
 						</Grid>
 					</Grid>
-				</Container>
-			) : (
-				<KYCStatusWidget />
-			)}
+					<Grid item xs={12}>
+						<CurrencySelect value={FiatCurrency} onChange={onFiatCurrencyChange} />
+					</Grid>
+					<Grid item xs={12}>
+						<List>
+							<ListItem disableGutters dense>
+								<ListItemText primary='Will be charged' />
+								<Typography variant='subtitle1' className={classes.total}>
+									{fee} {FiatCurrency}
+								</Typography>
+							</ListItem>
+							<ListItem disableGutters dense className={classes.fee}>
+								<ListItemText primary='Fee' />
+								<Typography variant='body2'>10%</Typography>
+							</ListItem>
+							<ListItem disableGutters>
+								<ListItemText primary='Receive approximately' />
+								<Typography variant='body2'>{btc} BTC</Typography>
+							</ListItem>
+						</List>
+					</Grid>
+					<Grid item xs={12}>
+						<FormControl className={classes.formControl} fullWidth>
+							<InputLabel htmlFor='destination-wallet-address'>Destination wallet</InputLabel>
+							<Select
+								fullWidth
+								id='destination-wallet-address'
+								size='large'
+								placeholder='Select destination wallet'
+								value={btcWallet}
+								onChange={({ target: { value } }) => {
+									setBTCWallet(value);
+								}}>
+								{wallets.map((wallet) => (
+									<MenuItem value={wallet.Address}>{wallet.name}</MenuItem>
+								))}
+							</Select>
+						</FormControl>
+					</Grid>
+					<Grid item xs={12}>
+						<Grid container justify='center' alignItems='center'>
+							<ProgressButton
+								disabled={!valid}
+								fullWidth
+								onClick={doPayment}
+								loading={loading}
+								size='large'
+								className='btn-success py-4 mt-5 px-5 text-uppercase font-weight-bold font-size-lg'>
+								Buy{btc > 0 ? ` ${btc} BTC` : ''}
+							</ProgressButton>
+						</Grid>
+					</Grid>
+				</Grid>
+			</Container>
 		</>
 	);
 };
