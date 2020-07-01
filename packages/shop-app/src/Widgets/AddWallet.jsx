@@ -14,6 +14,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import WAValidator from 'wallet-address-validator';
 
+const { validate: walletValidator } = WAValidator;
 const useStyles = makeStyles((theme) => ({
 	topMargin: {
 		marginTop: theme.spacing(4),
@@ -33,17 +34,15 @@ export const AddWalletWidget = ({ onWalletAdded }) => {
 	const [valid, setValid] = useState(false);
 	const [walletAddress, setWalletAddress] = useState('');
 	const [loading, setLoading] = useState(false);
+	const [isWalletValid, setIsWalletValid] = useState(true);
 
 	useEffect(() => {
-		setValid(walletName.length > 0 && walletAddress.length > 0);
+		setValid(walletValidator(walletAddress, 'bitcoin') === true && walletName.length > 0);
+		// setValid(walletName.length > 0 && walletAddress.length > 0);
 	}, [walletName, walletAddress]);
 	const addWallet = async () => {
 		setLoading(true);
-		const { validate } = WAValidator;
-		setValid(validate(walletAddress, 'BTC'));
-		if (!valid) {
-			return;
-		}
+
 		try {
 			const wallet = await API.graphql(
 				graphqlOperation(createUserWallets, {
@@ -78,7 +77,12 @@ export const AddWalletWidget = ({ onWalletAdded }) => {
 				<TextInput
 					labelKey={`Wallet address`}
 					value={walletAddress}
-					onChange={({ target: { value } }) => setWalletAddress(value)}
+					error={!isWalletValid}
+					helperText={!isWalletValid ? 'Incorrect wallet address' : ''}
+					onChange={({ target: { value } }) => {
+						setIsWalletValid(walletValidator(walletAddress, 'bitcoin'));
+						setWalletAddress(value);
+					}}
 				/>
 			</Grid>
 			<Grid item xs={12}>
@@ -86,7 +90,7 @@ export const AddWalletWidget = ({ onWalletAdded }) => {
 					<Button
 						startIcon={<SaveIcon />}
 						onClick={addWallet}
-						disabled={!valid}
+						disabled={valid !== true}
 						variant='contained'
 						className='text-uppercase font-weight-bold'
 						color='primary'>

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Auth } from 'aws-amplify';
-import { Result, Button, Card, Col, Row, Avatar } from 'antd';
+import { Card, Col, Row, Avatar } from 'antd';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
-import { KYCStatusWidget } from '../Widgets';
+import { KYCStatusWidget, NotAuthorizedWidget } from '../Widgets';
 // import axios from 'axios';
 // import { v4 as uuid } from 'uuid';
 const { Meta } = Card;
@@ -89,12 +89,7 @@ export const KYCPage = () => {
 	return (
 		<Switch>
 			<Route exact path={path}>
-				<Result
-					status='403'
-					title='403'
-					subTitle='Sorry, you are not authorized to access this page.'
-					extra={<Button type='primary'>Back Home</Button>}
-				/>
+				<NotAuthorizedWidget />
 			</Route>
 			<Route path={`${path}/:validationId`}>
 				<KYCStatusWidget />

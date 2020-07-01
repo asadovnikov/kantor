@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Components/AuthContext';
 import { AppPage, WidgetContainer } from '../../Layouts';
-import { BuyCryptoWidget, VerifyDocumentsBanner } from '../../Widgets';
+import { BuyCryptoWidget, VerifyDocumentsBanner, PaymentProvidersWidget } from '../../Widgets';
 import { motion, AnimatePresence } from 'framer-motion';
 import MonetizationOnTwoToneIcon from '@material-ui/icons/MonetizationOnTwoTone';
 
@@ -17,6 +17,7 @@ export const BuyCryptoPage = () => {
 			<AppPage
 				title={`Buy BTC`}
 				description={`Change your fiat to a crypto value`}
+				actions={<PaymentProvidersWidget />}
 				icon={<MonetizationOnTwoToneIcon className='text-primary' />}>
 				<AnimatePresence>
 					<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>

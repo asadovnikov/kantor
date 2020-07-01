@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import { Row, Col, Checkbox, Typography } from 'antd';
 import { RegistrationHeader, RegistrationForm, RegistrationContent } from './components';
 import Grid from '@material-ui/core/Grid';
@@ -101,7 +102,8 @@ const HolderPage = ({ value = {}, onChange, onApply }) => {
 								setAgree(checked);
 								triggerChange();
 							}}>
-							I agree to Kantor's <Link>Terms of use</Link> and <Link>Privacy Policy.</Link>
+							I agree to Kantor's <NavLink to='/terms-and-conditions'>Terms of use</NavLink> and{' '}
+							<NavLink to='/privacy-policy'>Privacy Policy.</NavLink>
 						</Checkbox>
 					</Grid>
 				</Grid>

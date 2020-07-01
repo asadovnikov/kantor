@@ -1,4 +1,5 @@
 import React from 'react';
+import { PaymentSuccessWidget } from '../../Widgets';
 import { Result, Button } from 'antd';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 
@@ -17,16 +18,5 @@ export const SuccessPage = () => {
 };
 
 const SuccessResult = () => {
-	return (
-		<Result
-			status='success'
-			title='Payment completed'
-			// subTitle={`Query: ${query}. Params: ${loc.pathname}`}
-			extra={[
-				<Button type='primary' key='console'>
-					Show my transactions
-				</Button>,
-			]}
-		/>
-	);
+	return <PaymentSuccessWidget />;
 };

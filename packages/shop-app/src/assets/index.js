@@ -9,9 +9,30 @@ import shield from './images/kantor/shield.png';
 import resetPassword from './images/kantor/resetPassword1.png';
 import cancelAccount from './images/kantor/cancelAccount1.png';
 import welcome from './images/kantor/pluto-10.png';
+import successIllustration from './images/kantor/illustrations/success.svg';
+import notFoundIllustration from './images/kantor/illustrations/404.svg';
+import notAuthorized from './images/kantor/illustrations/notAuthorized.svg';
+import paymentFailed from './images/kantor/illustrations/paymentFailed.svg';
+import paymentSuccessfull from './images/kantor/illustrations/paymentSuccessfull.svg';
+import logoImage from './images/kantor/logoColored.svg';
 
 const finance = finance1;
 const address = address1;
 const id = id1;
 
-export { finance, address, id, waiting, shield, resetPassword, cancelAccount, welcome };
+export {
+	finance,
+	address,
+	id,
+	waiting,
+	shield,
+	resetPassword,
+	cancelAccount,
+	welcome,
+	successIllustration,
+	notFoundIllustration,
+	notAuthorized,
+	paymentFailed,
+	paymentSuccessfull,
+	logoImage,
+};

@@ -48,7 +48,7 @@ const UserAppLayout = ({ children }) => {
 					<main className='app-wrapper'>
 						<div className={classes.toolbar} />
 						<div className='app-main'>
-							<TopToolbar mobileOpen={mobileOpen} handleDrawerToggle={handleDrawerToggle} />
+							<TopToolbar mobileOpen={isAuthenticated} handleDrawerToggle={handleDrawerToggle} />
 							<div className='app-content'>
 								<div className='app-content--inner'>
 									<div className='app-content--inner__wrapper'>{children}</div>

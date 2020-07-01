@@ -125,3 +125,40 @@ select:-webkit-autofill:focus {
 	width: 332px;
 	border: 0;
 }
+
+.logo-exchange-name {
+	fill: #285a84;
+	fill-opacity: 1;
+}
+
+.logo-exchange-icon-orange {
+	fill: #ef6f53;
+	fill-opacity: 1;
+}
+
+.logo-exchange-icon-blue {
+	fill: #285a84;
+	fill-opacity: 1;
+}
+
+.logo-exchange-icon-pink {
+	fill: #ffa8c5;
+	fill-opacity: 1;
+}
+
+.logo-exchange-stroke-blue {
+	stroke: #285a84;
+	stroke-opacity: 1;
+}
+
+.logo-exchange-text-blue {
+	fill: #285a84;
+	fill-opacity: 1;
+}
+
+.application-name-header {
+	color: black;
+}
+.application-name-footer {
+	color: black;
+}

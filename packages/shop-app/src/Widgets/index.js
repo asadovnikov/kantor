@@ -7,3 +7,11 @@ export { BuyCryptoWidget } from './BuyCrypto';
 export { UserWidget } from './UsersWidget';
 export { CustomerDetailsWidget } from './CustomerDetails';
 export { KYCStatusWidget } from './KYCStatus';
+export { PaymentProvidersWidget } from './PaymentProviders';
+export {
+	VerificationSuccessWidget,
+	NotFoundWidget,
+	NotAuthorizedWidget,
+	PaymentFailedWidget,
+	PaymentSuccessWidget,
+} from './IllustrateResult';

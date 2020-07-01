@@ -12,7 +12,7 @@ import { Auth, Hub } from 'aws-amplify';
 import { makeStyles } from '@material-ui/core/styles';
 import { HeaderUserbox } from './HeaderUserbox';
 import { navigationDefaultWidth } from '../Utils/constants';
-import { AppName } from './AppName';
+import { ApplicationName } from './ApplicationName';
 
 function Alert(props) {
 	return <MuiAlert elevation={6} variant='filled' {...props} />;
@@ -108,7 +108,7 @@ export const TopToolbar = ({ mobileOpen, handleDrawerToggle }) => {
 					className={classes.menuButton}>
 					<MenuIcon />
 				</IconButton>
-				<AppName />
+				<ApplicationName />
 				<div className={classes.grow} />
 				{isAuth === true ? (
 					<HeaderUserbox firstName={firstName} lastName={lastName} email={email} />

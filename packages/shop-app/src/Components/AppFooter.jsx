@@ -11,8 +11,12 @@ const useStyles = makeStyles((theme) => ({
 	providerLogo: {
 		height: '1.625rem',
 	},
-	dividerMargin: {
-		marginBottom: theme.spacing(2),
+	dividerMargin: {},
+	footerContainer: {
+		minHeight: '300px',
+	},
+	footerEndRow: {
+		padding: theme.spacing(2),
 	},
 }));
 
@@ -54,27 +58,80 @@ function Copyright() {
 	);
 }
 
-export const AppFooter = () => {
+const FooterEndRow = ({ children }) => {
 	const classes = useStyles();
 	return (
-		<Grid container>
+		<Grid item xs={12} className={classes.footerEndRow}>
+			{children}
+		</Grid>
+	);
+};
+
+const FooterContainer = ({ children }) => {
+	const classes = useStyles();
+	return (
+		<Grid container className={classes.footerContainer}>
 			<Grid item xs={12}>
-				<Grid container direction='row' justify='space-between' alignItems='flex-start'>
+				{children}
+			</Grid>
+		</Grid>
+	);
+};
+
+const FooterEndContent = () => {
+	const classes = useStyles();
+	return (
+		<>
+			<Grid container direction='row' justify='space-between' alignItems='flex-start'>
+				<Box>
+					<Copyright />
+				</Box>
+				<Box>
+					<Grid container direction='row' justify='center' alignItems='center'>
+						<Grid item>
+							<img alt='Visa' className={classes.providerLogo} src={visa} />
+						</Grid>
+						<Grid item>
+							<img alt='Master Card' className={classes.providerLogo} src={mastercard} />
+						</Grid>
+
+						<Grid item>
+							<img alt='Maestro' className={classes.providerLogo} src={maestro} />
+						</Grid>
+					</Grid>
+				</Box>
+				<Box className='app-sidebar--light'>
+					<span>crypto </span> <b style={{ textTransform: 'lowercase' }}>kantor</b>
+				</Box>
+			</Grid>
+		</>
+	);
+};
+
+const FooterNavigationSection = () => {
+	return (
+		<Grid item xs={12}>
+			<Grid container>
+				<Grid item xs={6} md={3}>
 					<NavigationSection
 						key='About'
 						title='About'
 						links={[
 							{
 								title: 'Terms and conditions',
+								direction: '/terms-and-conditions',
 							},
 							{
 								title: 'Privacy Policy',
+								direction: '/privacy-policy',
 							},
 							{
 								title: 'FAQ',
 							},
 						]}
 					/>
+				</Grid>
+				<Grid item xs={6} md={3}>
 					<NavigationSection
 						key='Address'
 						title='Address'
@@ -96,6 +153,8 @@ export const AppFooter = () => {
 							},
 						]}
 					/>
+				</Grid>
+				<Grid item xs={6} md={6} container justify='flex-end'>
 					<NavigationSection
 						key='Contact'
 						title='Contact'
@@ -110,31 +169,26 @@ export const AppFooter = () => {
 					/>
 				</Grid>
 			</Grid>
-			<Grid item xs={12}>
-				<Divider className={classes.dividerMargin} />
-				<Grid container direction='row' justify='space-between' alignItems='flex-start'>
-					<Box>
-						<Copyright />
-					</Box>
-					<Box>
-						<Grid container direction='row' justify='center' alignItems='center'>
-							<Grid item>
-								<img alt='Visa' className={classes.providerLogo} src={visa} />
-							</Grid>
-							<Grid item>
-								<img alt='Master Card' className={classes.providerLogo} src={mastercard} />
-							</Grid>
+		</Grid>
+	);
+};
 
-							<Grid item>
-								<img alt='Maestro' className={classes.providerLogo} src={maestro} />
-							</Grid>
-						</Grid>
-					</Box>
-					<Box className='app-sidebar--light'>
-						<span>crypto </span> <b style={{ textTransform: 'lowercase' }}>kantor</b>
-					</Box>
+export const AppFooter = () => {
+	const classes = useStyles();
+	return (
+		<FooterContainer>
+			<Grid container direction='column' justify='space-between' alignItems='stretch' style={{ height: '100%' }}>
+				<Grid item>
+					<FooterNavigationSection />
+				</Grid>
+				<Grid item></Grid>
+				<Grid item>
+					<Divider className={classes.dividerMargin} />
+					<FooterEndRow>
+						<FooterEndContent />
+					</FooterEndRow>
 				</Grid>
 			</Grid>
-		</Grid>
+		</FooterContainer>
 	);
 };

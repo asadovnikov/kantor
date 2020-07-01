@@ -3,6 +3,8 @@ import { AuthContext } from '../Components/AuthContext';
 import { id, address, finance } from '../assets';
 import { Card, Col, Row, Avatar } from 'antd';
 
+import { VerificationSuccessWidget } from './IllustrateResult';
+
 const { Meta } = Card;
 const StageItem = ({ onClick, icon, title, description }) => {
 	return (
@@ -64,6 +66,9 @@ export const KYCStatusWidget = () => {
 					title='Financial documents'
 					description='You should prove your income'
 				/>
+			)}
+			{idVerification === goodStatus && poaVerification === goodStatus && financeVerification === goodStatus && (
+				<VerificationSuccessWidget />
 			)}
 		</div>
 	);
