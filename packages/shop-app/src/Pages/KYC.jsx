@@ -10,7 +10,6 @@ const { Meta } = Card;
 const KYCValidationState = () => {
 	// let { validationId } = useParams();
 	const startJumio = async () => {
-		debugger;
 		try {
 			const user = Auth.currentAuthenticatedUser();
 			var form = document.createElement('form');

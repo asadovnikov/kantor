@@ -1,0 +1,37 @@
+{
+    "paths": [
+        {
+            "name": "/jumiodata",
+            "lambdaFunction": "jumioDataRequestor",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/GET"
+                ]
+            }
+        }
+    ],
+    "resourceName": "api6c829185",
+    "apiName": "api6c829185",
+    "functionArns": [
+        {
+            "lambdaFunction": "jumioDataRequestor"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 0,
+        "authRoleName": "amplify-shopapp-dev-145203-authRole",
+        "unAuthRoleName": "amplify-shopapp-dev-145203-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "jumioDataRequestor",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

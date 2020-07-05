@@ -18,14 +18,15 @@ Amplify Params - DO NOT EDIT */
 var express = require('express');
 var bodyParser = require('body-parser');
 const buildLink = require('./processing');
+const buildDocVerifyLink = require('./documentVerifyProcessing');
 
-var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware');
+// var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware');
 
 // declare a new express app
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(awsServerlessExpressMiddleware.eventContext());
+// app.use(awsServerlessExpressMiddleware.eventContext());
 
 // Enable CORS for all methods
 app.use(function (req, res, next) {
@@ -45,7 +46,18 @@ app.post('/startkyc/:customerId.:verificationId', async (req, res) => {
 	}
 });
 
-app.listen(3000, function () {
+app.post('/startkyc/document/:documentType.:customerId.:verificationId', async (req, res) => {
+	const { customerId, verificationId, documentType } = req.params;
+	try {
+		const link = await buildDocVerifyLink(customerId, verificationId, documentType);
+		res.redirect(link);
+	} catch (err) {
+		console.log(JSON.stringify(err));
+		res.json(err);
+	}
+});
+
+app.listen(3030, function () {
 	console.log('App started');
 });
 

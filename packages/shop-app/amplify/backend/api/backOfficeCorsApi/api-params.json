@@ -1,0 +1,53 @@
+{
+    "paths": [
+        {
+            "name": "/jumio",
+            "lambdaFunction": "backOfficCorsApiRes",
+            "privacy": {
+                "userPoolGroups": {
+                    "Admins": [
+                        "/GET"
+                    ]
+                }
+            }
+        }
+    ],
+    "resourceName": "backOfficeCorsApi",
+    "apiName": "backOfficeCorsApi",
+    "authResourceName": "shopapp53b8683e",
+    "functionArns": [
+        {
+            "lambdaFunction": "backOfficCorsApiRes"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-shopapp-dev-145203-authRole",
+        "unAuthRoleName": "amplify-shopapp-dev-145203-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "backOfficCorsApiRes",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "auth",
+            "resourceName": "shopapp53b8683e",
+            "attributes": [
+                "UserPoolId"
+            ]
+        },
+        {
+            "category": "auth",
+            "resourceName": "userPoolGroups",
+            "attributes": [
+                "AdminsGroupRole"
+            ]
+        }
+    ]
+}
