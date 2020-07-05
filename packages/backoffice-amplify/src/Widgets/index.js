@@ -10,3 +10,4 @@ export { PersonVerificationWidget } from './PersonVerification';
 export { PersonNameWidget } from './PersonName';
 export { DocumentsWidget } from './Documents';
 export { JumioLogWidget } from './JumioLog';
+export { PendingUserWidget } from './PendingUsers';

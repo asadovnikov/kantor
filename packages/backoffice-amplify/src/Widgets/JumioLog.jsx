@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { DataTable } from '../Components';
 import { Empty } from 'antd';
 import { API, graphqlOperation } from 'aws-amplify';
@@ -45,6 +46,15 @@ const dataColumns = [
 export const JumioLogWidget = ({ person = {} }) => {
 	const { KYCVerification = {} } = person;
 	const [logs, setLogs] = useState([]);
+	const history = useHistory();
+
+	const onJumioRowClick = (record) => {
+		return {
+			onClick: () => {
+				history.push(`/customer/${person.id}/${record.jumioIdScanReference}`);
+			},
+		};
+	};
 
 	const { id } = KYCVerification;
 
@@ -81,6 +91,7 @@ export const JumioLogWidget = ({ person = {} }) => {
 					scroll={{ y: 300 }}
 					bordered={true}
 					size='small'
+					onRowClick={onJumioRowClick}
 					data={logs.map((item) => {
 						return {
 							...item,

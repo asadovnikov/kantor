@@ -20,7 +20,6 @@ export const TestPage = () => {
 
 	const createCustomerTransaction = async () => {
 		try {
-			// debugger;
 			const {
 				data: { getCustomer: customer },
 			} = await API.graphql(graphqlOperation(getCustomer, { id: userId }));

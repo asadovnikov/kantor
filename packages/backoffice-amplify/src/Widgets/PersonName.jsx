@@ -19,19 +19,17 @@ const PersonNameContainer = styled.div`
 
 export const PersonNameWidget = ({ person = {} }) => {
 	return (
-		<Sticky enabled={true} top={64} innerZ={30}>
-			<PersonNameContainer>
-				<Row>
-					<Col span={6}>
-						<Avatar name={`${person.Firstname} ${person.Surname}`} />
-					</Col>
-					<Col span={18}>
-						<FirstNameTitle level={4}>{person.Firstname}</FirstNameTitle>
-						<SecondNameTitle level={4}>{person.Surname}</SecondNameTitle>
-						<Typography.Text type='secondary'>{person.Email}</Typography.Text>
-					</Col>
-				</Row>
-			</PersonNameContainer>
-		</Sticky>
+		<PersonNameContainer>
+			<Row>
+				<Col span={6}>
+					<Avatar name={`${person.Firstname} ${person.Surname}`} />
+				</Col>
+				<Col span={18}>
+					<FirstNameTitle level={4}>{person.Firstname}</FirstNameTitle>
+					<SecondNameTitle level={4}>{person.Surname}</SecondNameTitle>
+					<Typography.Text type='secondary'>{person.Email}</Typography.Text>
+				</Col>
+			</Row>
+		</PersonNameContainer>
 	);
 };

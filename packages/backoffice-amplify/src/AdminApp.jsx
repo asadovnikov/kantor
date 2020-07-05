@@ -37,7 +37,7 @@ const HeadingOffset = styled.div`
 
 const SiteLayout = styled(Layout)`
 	transition: all 0.2s;
-	padding-left: ${(props) => (props.collapsed ? '80px' : '200px')};
+	padding-left: ${(props) => (props.collapsed ? '80px' : '300px')};
 `;
 
 const SiteContent = styled(Content)`
@@ -49,9 +49,10 @@ const SiteContent = styled(Content)`
 export const AdminAppLayout = () => {
 	const [collapsed, setCollapsed] = useState(false);
 	let location = useLocation();
+	console.log(location);
 	return (
 		<Layout>
-			<FixedSider trigger={null} collapsible collapsed={collapsed ? true : undefined}>
+			<FixedSider width={300} trigger={null} collapsible collapsed={collapsed ? true : undefined}>
 				<div className='logo' />
 				<Menu theme='dark' mode='inline' selectedKeys={[location.pathname]}>
 					<Menu.Item key='/' icon={<UserOutlined />}>

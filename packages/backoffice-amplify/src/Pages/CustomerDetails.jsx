@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { Layout, Divider, Spin } from 'antd';
+import { StylePageHeader } from '../Components/StyledControls';
 import { LoadingOutlined } from '@ant-design/icons';
+import Sticky from 'react-stickynode';
 
 import {
 	PersonNameWidget,
@@ -39,6 +41,7 @@ const AntdContent = styled(Content)`
 
 export const CustomerDetailsPage = () => {
 	let { customerId } = useParams();
+	const history = useHistory();
 	const [loading, setLoading] = useState(true);
 	const [customer, setCustomer] = useState();
 	const [loaded, setLoaded] = useState(false);
@@ -60,49 +63,54 @@ export const CustomerDetailsPage = () => {
 		return () => (canceled = true);
 	}, [customerId]);
 	return (
-		<Spin indicator={loadingIndicator} spinning={loading} tip='Loading...'>
-			{loaded === true && (
-				<Layout>
-					<LeftPart theme='light'>
-						<PersonNameWidget person={customer} />
-						<Divider orientation='left'>KYC</Divider>
-						<PersonVerificationWidget person={customer} />
-						<Divider orientation='left'>General</Divider>
-						<PersonDetailsWidget person={customer} />
-						{/* <VerticalSpace /> */}
-						<Divider orientation='left'>Finance</Divider>
-						<PersonFinanceWidget person={customer} />
-					</LeftPart>
-					<AntdContent>
-						<ContentContainer>
-							<ContentDivider orientation='left'>Transactions</ContentDivider>
-							<PersonTransactionsWidget person={customer} />
-						</ContentContainer>
-						<ContentContainer>
-							<ContentDivider orientation='left'>Pending Files</ContentDivider>
-							<JumioLogWidget person={customer} />
-						</ContentContainer>
-						<ContentContainer>
-							<ContentDivider orientation='left'>Files</ContentDivider>
-							<DocumentsWidget
-								person={customer}
-								items={customer.KYCVerification?.documents?.items.filter((item) => item.documentType === 'UNKNOWN')}
-							/>
-						</ContentContainer>
-						<ContentContainer>
-							<ContentDivider orientation='left'>Processed Files</ContentDivider>
-							<DocumentsWidget
-								person={customer}
-								items={customer.KYCVerification?.documents?.items.filter((item) => item.documentType !== 'UNKNOWN')}
-							/>
-						</ContentContainer>
-						<ContentContainer>
-							<ContentDivider orientation='left'>Comments</ContentDivider>
-							<PersonCommentsWidget person={customer} />
-						</ContentContainer>
-					</AntdContent>
-				</Layout>
-			)}
-		</Spin>
+		<>
+			<Spin indicator={loadingIndicator} spinning={loading} tip='Loading...'>
+				{loaded === true && (
+					<Layout>
+						<LeftPart theme='light'>
+							<Sticky enabled={true} top={64} innerZ={30}>
+								<StylePageHeader title='Customers' onBack={() => history.goBack()} />
+							</Sticky>
+							<PersonNameWidget person={customer} />
+							<Divider orientation='left'>KYC</Divider>
+							<PersonVerificationWidget person={customer} />
+							<Divider orientation='left'>General</Divider>
+							<PersonDetailsWidget person={customer} />
+							{/* <VerticalSpace /> */}
+							<Divider orientation='left'>Finance</Divider>
+							<PersonFinanceWidget person={customer} />
+						</LeftPart>
+						<AntdContent>
+							<ContentContainer>
+								<ContentDivider orientation='left'>Transactions</ContentDivider>
+								<PersonTransactionsWidget person={customer} />
+							</ContentContainer>
+							<ContentContainer>
+								<ContentDivider orientation='left'>Pending Files</ContentDivider>
+								<JumioLogWidget person={customer} />
+							</ContentContainer>
+							<ContentContainer>
+								<ContentDivider orientation='left'>Files</ContentDivider>
+								<DocumentsWidget
+									person={customer}
+									items={customer.KYCVerification?.documents?.items.filter((item) => item.documentType === 'UNKNOWN')}
+								/>
+							</ContentContainer>
+							<ContentContainer>
+								<ContentDivider orientation='left'>Processed Files</ContentDivider>
+								<DocumentsWidget
+									person={customer}
+									items={customer.KYCVerification?.documents?.items.filter((item) => item.documentType !== 'UNKNOWN')}
+								/>
+							</ContentContainer>
+							<ContentContainer>
+								<ContentDivider orientation='left'>Comments</ContentDivider>
+								<PersonCommentsWidget person={customer} />
+							</ContentContainer>
+						</AntdContent>
+					</Layout>
+				)}
+			</Spin>
+		</>
 	);
 };

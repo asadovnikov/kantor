@@ -20,7 +20,6 @@ export const DocumentsWidget = ({ items = [], person = {}, showUpload = true }) 
 			const user = await Auth.currentAuthenticatedUser();
 			subscription = API.graphql(graphqlOperation(onCreateKycDocument), { owner: user.username }).subscribe({
 				next: (data) => {
-					debugger;
 					const document = data.value.data.onCreateKycDocument;
 					setDocumentItems((a) => a.concat([document]));
 				},

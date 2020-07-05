@@ -4,3 +4,4 @@ export { DocumentUploader } from './DocumentUploader';
 export { DocumentPreview } from './DocumentPreview';
 export { DocumentsGallery } from './DocumentsGallery';
 export { CurrentUser } from './CurrentUser';
+export { ImagePreview } from './ImagePreview';

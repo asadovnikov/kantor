@@ -5,12 +5,22 @@ import { LoadingOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { API, graphqlOperation } from 'aws-amplify';
 import { listCustomers } from '../graphql/queries';
+import { UserSwitchOutlined, MinusSquareOutlined, CheckOutlined } from '@ant-design/icons';
 
 const { Text } = Typography;
 
+const getKycIcon = (state) => {
+	if (state === 'NOT_REQUIRED') {
+		return <MinusSquareOutlined />;
+	} else if (state === 'FAILED') {
+		return <UserSwitchOutlined />;
+	} else {
+		return <CheckOutlined />;
+	}
+};
 const loadingIndicator = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
-export const UserWidget = ({ kycState, showAll = false }) => {
+export const PendingUserWidget = ({ kycState, showAll = false }) => {
 	const dataColumns = [
 		{
 			title: 'Name',
@@ -31,14 +41,28 @@ export const UserWidget = ({ kycState, showAll = false }) => {
 			},
 		},
 		{
-			title: 'KYC',
+			title: 'ID',
+			key: 'IDVerification',
 			dataIndex: 'KYCState',
-			key: 'KYCState',
+			render: (text, record) => {
+				return getKycIcon(record.KYCVerification.idVerification);
+			},
 		},
 		{
-			title: 'Tier',
-			dataIndex: 'Tier',
-			key: 'Tier',
+			title: 'POA',
+			key: 'POAVerification',
+			dataIndex: 'KYCState',
+			render: (text, record) => {
+				return getKycIcon(record.KYCVerification.poaVerification);
+			},
+		},
+		{
+			title: 'Finance',
+			key: 'FinanceVerification',
+			dataIndex: 'KYCState',
+			render: (text, record) => {
+				return getKycIcon(record.KYCVerification.financeVerification);
+			},
 		},
 		{
 			title: 'Country',

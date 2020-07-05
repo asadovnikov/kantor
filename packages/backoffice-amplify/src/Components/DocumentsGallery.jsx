@@ -59,7 +59,6 @@ export const DocumentsGallery = ({ s3Items }) => {
 		setLoading(true);
 		processItems(s3Items)
 			.then((data) => {
-				debugger;
 				setImages(data);
 			})
 			.catch((err) => console.error(err))

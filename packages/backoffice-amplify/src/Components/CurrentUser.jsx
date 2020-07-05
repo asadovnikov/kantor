@@ -9,7 +9,7 @@ import { Auth } from 'aws-amplify';
 import { LoadingOutlined } from '@ant-design/icons';
 
 const UserContainer = styled.div`
-	padding-right: 200px;
+	padding-right: 300px;
 	margin: 0 25px;
 `;
 const UserAvatar = styled.div`

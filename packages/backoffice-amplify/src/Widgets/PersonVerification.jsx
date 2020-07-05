@@ -39,8 +39,6 @@ const VerificationState = ({ state }) => {
 };
 
 export const PersonVerificationWidget = ({ person = {} }) => {
-	// debugger;
-
 	const [idVerification, setIdVerification] = useState();
 	const [poaVerification, setPoaVerification] = useState();
 	const [financeVerification, setFinanceVerification] = useState();

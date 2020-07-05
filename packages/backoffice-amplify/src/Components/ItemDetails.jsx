@@ -14,13 +14,13 @@ const DetailsContainer = styled.div`
 	}
 `;
 
-export const ItemDetails = ({ details = [] }) => {
+export const ItemDetails = ({ details = [], size = 'small' }) => {
 	return (
 		<DetailsContainer>
 			{details.map((item) => {
 				return (
 					<DetailsItemRow key={item.label} className='details-item-row'>
-						<Col flex='150px'>
+						<Col flex={size === 'small' ? '150px' : '250px'}>
 							<TextRow>
 								<Typography.Text type='secondary'>{item.label}</Typography.Text>
 							</TextRow>
