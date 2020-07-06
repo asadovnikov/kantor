@@ -2,6 +2,11 @@ import React from 'react';
 
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
+import {
+  applicationDomainName,
+  shopAppURI,
+  applicationFullName
+} from '../../utils/const';
 
 import { List, ListItem } from '@material-ui/core';
 
@@ -43,14 +48,14 @@ const Footer = (props) => {
           </List>
         </div>
         <div className="app-footer--second">
-          <span>Kantor Crypto Shop</span> © 2020 - crafted with{' '}
+          <span>{applicationFullName}</span> © 2020 - crafted with{' '}
           <span className="text-danger px-1">❤</span> by{' '}
           <a
-            href="https://kantor.kosevych.info"
+            href={shopAppURI}
             target="_blank"
             rel="noopener noreferrer"
-            title="kantor.kosevych.info">
-            kantor.kosevych.info
+            title={applicationDomainName}>
+            {applicationDomainName}
           </a>
         </div>
       </div>

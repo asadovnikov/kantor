@@ -4,6 +4,8 @@ import { Grid, Container, Card, Button } from '@material-ui/core';
 
 import GaugeChart from 'react-gauge-chart';
 
+import { shopAppURI } from '../../../utils/const';
+
 import { NavLink } from 'react-router-dom';
 
 import crypto from '../../../assets/images/apps/crypto-app-material-ui-pro.jpg';
@@ -45,7 +47,7 @@ export default function LivePreviewExample() {
               <Grid container spacing={6}>
                 <Grid item md={6}>
                   <a
-                    href="https://dev.kantor.kosevych.info"
+                    href={shopAppURI}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="card modal-content card-box-hover-rise rounded-lg bg-transparent">
@@ -61,7 +63,7 @@ export default function LivePreviewExample() {
                 </Grid>
                 <Grid item md={6}>
                   <a
-                    href="https://dev.kantor.kosevych.info"
+                    href={shopAppURI}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="card modal-content card-box-hover-rise rounded-lg bg-transparent">

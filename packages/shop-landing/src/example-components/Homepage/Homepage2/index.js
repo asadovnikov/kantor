@@ -3,8 +3,9 @@ import React from 'react';
 import { Grid, Container } from '@material-ui/core';
 
 import Slider from 'react-slick';
+import { applicationFullName } from '../../../utils/const';
 
-import illustration1 from '../../../assets/images/illustrations/pack2/financial_analyst.svg';
+import illustration1 from '../../../assets/images/illustrations/kantor/taxi-successful-business.svg';
 
 export default function LivePreviewExample() {
   return (
@@ -19,7 +20,7 @@ export default function LivePreviewExample() {
               <div className="py-0 pb-5 py-xl-5">
                 <div className="pr-0 pr-xl-5">
                   <h1 className="display-3 mb-3 font-weight-bold">
-                    Kantor Crypto Shop
+                    {applicationFullName}
                   </h1>
                   <p className="font-size-lg text-black-50">
                     Welcome to reliable crypto shop with mature approach for

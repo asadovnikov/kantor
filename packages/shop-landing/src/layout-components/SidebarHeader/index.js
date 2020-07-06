@@ -1,6 +1,11 @@
 import React from 'react';
 
 import clsx from 'clsx';
+import {
+  applicationName,
+  applicationDescription,
+  applicationFullName
+} from '../../utils/const';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button, Tooltip } from '@material-ui/core';
@@ -36,15 +41,15 @@ const SidebarHeader = (props) => {
         <div className="app-sidebar-logo">
           <NavLink
             to="/"
-            title="Kantor Crypto Shop"
+            title={applicationFullName}
             className="app-sidebar-logo">
             <div className="app-sidebar-logo--icon">
-              <img alt="Kantor Crypto Shop" src={projectLogo} />
+              <img alt={applicationFullName} src={projectLogo} />
             </div>
             <div className="app-sidebar-logo--text">
-              <span>Crypto</span>
+              <span>{applicationDescription}</span>
 
-              <b>Kantor Crypto Shop</b>
+              <b>{applicationName}</b>
             </div>
           </NavLink>
         </div>

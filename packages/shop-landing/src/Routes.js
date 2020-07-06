@@ -128,13 +128,13 @@ const Routes = () => {
                     exit="out"
                     variants={pageVariants}
                     transition={pageTransition}>
-                    <Route path="/Overview" component={Overview} />
-                    <Route path="/Accounts" component={Accounts} />
-                    <Route path="/Wallets" component={Wallets} />
-                    <Route path="/BuySell" component={BuySell} />
-                    <Route path="/Transactions" component={Transactions} />
-                    <Route path="/Profile" component={Profile} />
-                    <Route path="/Settings" component={Settings} />
+                    <Route path="/Overview" component={PageError404} />
+                    <Route path="/Accounts" component={PageError404} />
+                    <Route path="/Wallets" component={PageError404} />
+                    <Route path="/BuySell" component={PageError404} />
+                    <Route path="/Transactions" component={PageError404} />
+                    <Route path="/Profile" component={PageError404} />
+                    <Route path="/Settings" component={PageError404} />
                   </motion.div>
                 </Switch>
               </LeftSidebar>
@@ -155,15 +155,9 @@ const Routes = () => {
                     exit="out"
                     variants={pageVariants}
                     transition={pageTransition}>
-                    <Route path="/PageLoginCover" component={PageLoginCover} />
-                    <Route
-                      path="/PageRegisterCover"
-                      component={PageRegisterCover}
-                    />
-                    <Route
-                      path="/PageRecoverCover"
-                      component={PageRecoverCover}
-                    />
+                    <Route path="/PageLoginCover" component={PageError404} />
+                    <Route path="/PageRegisterCover" component={PageError404} />
+                    <Route path="/PageRecoverCover" component={PageError404} />
                     <Route path="/PageError404" component={PageError404} />
                   </motion.div>
                 </Switch>

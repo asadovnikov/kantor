@@ -1,27 +1,28 @@
 import React from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { applicationDomainName } from '../../../utils/const';
 import { Grid, Container, List, ListItem } from '@material-ui/core';
 
-import projectLogo from '../../../assets/images/react.svg';
+import projectLogo from '../../../assets/images/logoColored.svg';
 
 export default function LivePreviewExample() {
   return (
     <>
       <div className="bg-second font-size-sm py-5">
-        <div className="py-3">
+        {/* <div className="py-3">
           <a
             href="#/"
             onClick={(e) => e.preventDefault()}
-            title="Bamburgh React Admin Dashboard with Material-UI PRO"
+            title="Cryptomine exchange"
             className="d-70 d-block mx-auto bg-white rounded-circle">
             <img
-              alt="Bamburgh React Admin Dashboard with Material-UI PRO"
+              alt="Cryptomine exchange"
               className="img-fluid p-2"
               src={projectLogo}
             />
           </a>
-        </div>
+        </div> */}
         <Container className="pt-5">
           <Grid container spacing={6} className="pb-3">
             <Grid item md={6} xl={3}>
@@ -178,7 +179,7 @@ export default function LivePreviewExample() {
           <div className="divider mb-4 bg-white opacity-2" />
           <div className="py-3 d-block d-lg-flex align-items-center justify-content-between">
             <div className="text-center d-block mb-3 mb-md-0 text-white">
-              Copyright &copy; 2020 - kantor.kosevych.info
+              Copyright &copy; 2020 - {applicationDomainName}
             </div>
             <List
               component="div"

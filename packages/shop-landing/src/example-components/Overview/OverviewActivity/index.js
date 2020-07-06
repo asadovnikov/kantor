@@ -13,6 +13,7 @@ import avatar6 from '../../../assets/images/avatars/avatar6.jpg';
 
 import people3 from '../../../assets/images/stock-photos/people-3.jpg';
 import people1 from '../../../assets/images/stock-photos/people-1.jpg';
+import { applicationFullName } from '../../../utils/const';
 
 import TrendingUpTwoToneIcon from '@material-ui/icons/TrendingUpTwoTone';
 import TrendingDownTwoToneIcon from '@material-ui/icons/TrendingDownTwoTone';
@@ -155,7 +156,7 @@ export default function LivePreviewExample() {
                     <div className="timeline-item--content">
                       <div className="timeline-item--icon" />
                       <h4 className="timeline-item--label mb-2 font-weight-bold">
-                        Joined Kantor Crypto Shop
+                        Joined {applicationFullName}
                       </h4>
                       <p>Welcome to the platform. Enjoy your stay here!</p>
                     </div>

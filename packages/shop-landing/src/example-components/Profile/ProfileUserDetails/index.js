@@ -27,7 +27,7 @@ export default function LivePreviewExample() {
                 <div className="bg-composed-wrapper--content text-center p-5">
                   <div className="text-white">
                     <h1 className="display-3 my-3 font-weight-bold">
-                      Kantor Crypto Shop
+                      Cryptomine Crypto Shop
                     </h1>
                     <p className="font-size-lg mb-0 text-white-50">
                       Easy to use application with a mature provided approach

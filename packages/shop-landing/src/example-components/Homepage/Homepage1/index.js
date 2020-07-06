@@ -3,12 +3,14 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Grid, Container, Card, Button } from '@material-ui/core';
 
+import { applicationFullName } from '../../../utils/const';
+
 import Chart from 'react-apexcharts';
 
 import { NavLink } from 'react-router-dom';
 
 import hero8 from '../../../assets/images/hero-bg/hero-10.jpg';
-import illustration1 from '../../../assets/images/illustrations/pack2/graduation.svg';
+import illustration1 from '../../../assets/images/illustrations/kantor/taxi-time-to-make-money-online.svg';
 
 import CryptoHeader from './CryptoHeader.js';
 
@@ -166,7 +168,7 @@ export default function LivePreviewExample() {
                 <Grid item lg={6}>
                   <div className="pt-3 text-white pt-xl-5 pr-0 pr-xl-5">
                     <h2 className="display-3 font-weight-bold">
-                      Kantor Crypto Shop
+                      {applicationFullName}
                     </h2>
                     <p className="font-size-xl py-3 text-white-50">
                       Easy to use application with a mature provided approach

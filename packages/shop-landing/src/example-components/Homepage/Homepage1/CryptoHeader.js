@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
 
 import clsx from 'clsx';
-
+import {
+  applicationFullName,
+  applicationName,
+  applicationDescription,
+  shopAppURI,
+  shopAppSigninURI,
+  shopAppSignupURI
+} from '../../../utils/const';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Collapse, Container, Button, List, ListItem } from '@material-ui/core';
 
-import projectLogo from '../../../assets/images/react.svg';
+import projectLogo from '../../../assets/images/logoColored.svg';
 import { NavLink } from 'react-router-dom';
 
 import { FlagIcon } from 'react-flag-kit';
@@ -77,7 +84,7 @@ export default function LivePreviewExample() {
             <li className="mr-0">
               <a
                 className="rounded-sm py-1 px-3 font-size-xs text-uppercase"
-                href="https://dev.kantor.kosevych.info/">
+                href={shopAppURI}>
                 Members Login
               </a>
             </li>
@@ -89,15 +96,15 @@ export default function LivePreviewExample() {
           <div className="app-nav-logo">
             <NavLink
               to="/Home"
-              title="Kantor Crypto Shop"
+              title={`${applicationFullName}`}
               className="app-nav-logo app-nav-logo--light">
               <div className="app-nav-logo--icon shadow-second-sm bg-secondary border-0">
-                <img alt="Kantor Crypto Shop" src={projectLogo} />
+                <img alt="Cryptomine Crypto Shop" src={projectLogo} />
               </div>
               <div className="app-nav-logo--text">
-                <span>Crypto</span>
+                <span>{applicationDescription}</span>
 
-                <b>Kantor Shop</b>
+                <b>{applicationName}</b>
               </div>
             </NavLink>
           </div>
@@ -105,21 +112,21 @@ export default function LivePreviewExample() {
             <ul className="d-flex nav nav-neutral-first justify-content-center">
               <li>
                 <NavLink
-                  to="/Overview"
+                  to="/#"
                   className="font-weight-bold rounded-sm text-white px-3">
                   Overview
                 </NavLink>
               </li>
               <li>
                 <NavLink
-                  to="/BuySell"
+                  to="/#"
                   className="font-weight-bold rounded-sm text-white px-3">
                   FAQ
                 </NavLink>
               </li>
               <li>
                 <NavLink
-                  to="/Settings"
+                  to="/#"
                   className="font-weight-bold rounded-sm text-white px-3">
                   About us
                 </NavLink>
@@ -130,7 +137,7 @@ export default function LivePreviewExample() {
             <span className="d-none d-lg-block">
               <Button
                 component="a"
-                href="https://shop.kantor.kosevych.info/signup"
+                href={shopAppSignupURI}
                 className="rounded-sm text-nowrap font-size-xs font-weight-bold text-uppercase shadow-second-sm btn-warning">
                 Register
               </Button>

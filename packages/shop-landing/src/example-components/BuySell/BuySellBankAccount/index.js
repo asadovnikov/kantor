@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Card, Button } from '@material-ui/core';
 
+import { applicationName, applicationDescription } from '../../../utils/const';
+
 import {
   CircularProgressbarWithChildren,
   buildStyles
@@ -14,7 +16,8 @@ export default function LivePreviewExample() {
         <div className="bg-composed-wrapper--content d-block text-center text-xl-left d-xl-flex justify-content-between align-items-center">
           <div className="text-white">
             <h5 className="display-4 font-weight-bold mb-3">
-              Link your bank account to your kantor crypto shop profile.
+              Link your bank account to your {applicationName}{' '}
+              {applicationDescription} profile.
             </h5>
             <p className="font-size-lg opacity-7 mb-4">
               In order for you to be able to execute transactions, deposit or

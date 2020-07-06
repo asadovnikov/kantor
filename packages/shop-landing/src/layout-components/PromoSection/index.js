@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { applicationDomainName, shopAppURI } from '../../utils/const';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Popover, Button, Tooltip } from '@material-ui/core';
 
@@ -35,7 +35,7 @@ export default function PromoSection() {
             <Tooltip arrow title="View documentation" placement="left">
               <Button
                 className="bg-neutral-danger text-danger my-1 p-0 d-50 d-flex align-items-center justify-content-center"
-                href="https://dev.kantor.kosevych.info"
+                href={shopAppURI}
                 rel="noopener"
                 target="_blank">
                 <FontAwesomeIcon
@@ -47,7 +47,7 @@ export default function PromoSection() {
             <Tooltip arrow title="View product details" placement="left">
               <Button
                 className="bg-neutral-success text-success p-0 d-50 d-flex align-items-center justify-content-center"
-                href="https://dev.kantor.kosevych.info"
+                href={shopAppURI}
                 rel="noopener"
                 target="_blank">
                 <FontAwesomeIcon
@@ -157,12 +157,12 @@ export default function PromoSection() {
             <Button
               variant="contained"
               className="px-4 btn-primary"
-              href="https://kantor.kosevych.info"
+              href={shopAppURI}
               rel="noopener"
               target="_blank"
               title="Powerful admin dashboard templates & ui kits that are easy to use and customize.">
               <span className="btn-wrapper--label">
-                Visit kantor.kosevych.info
+                Visit {applicationDomainName}
               </span>
               <span className="btn-wrapper--icon">
                 <FontAwesomeIcon icon={['fas', 'arrow-right']} />

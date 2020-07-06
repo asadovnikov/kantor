@@ -2,7 +2,7 @@ import React from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Grid, Container, Card, Button } from '@material-ui/core';
-
+import { shopAppSignupURI } from '../../../utils/const';
 import particles3 from '../../../assets/images/hero-bg/particles-3.svg';
 import { NavLink } from 'react-router-dom';
 
@@ -49,7 +49,7 @@ export default function LivePreviewExample() {
                   <div className="mt-4 mt-xl-0 py-4 py-xl-5">
                     <div className="px-4 text-white">
                       <h1 className="display-3 mb-3 font-weight-bold">
-                        Kantor Crypto Shop
+                        Cryptomine Crypto Shop
                       </h1>
                       <p className="font-size-xxl m-0 py-3 text-white-50">
                         We provide premium access to crypto trading for
@@ -64,7 +64,7 @@ export default function LivePreviewExample() {
                       <div className="d-block mt-4">
                         <Button
                           component="a"
-                          href="https://shop.kantor.kosevych.info/signup"
+                          href={shopAppSignupURI}
                           className="btn-success px-5 font-size-sm font-weight-bold btn-animated-icon text-uppercase rounded shadow-none py-3 hover-scale-sm hover-scale-lg mr-3">
                           <span className="btn-wrapper--label">
                             Get started

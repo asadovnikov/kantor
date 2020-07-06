@@ -1,13 +1,9 @@
 {
-  "name": "kantor-crypto-shop",
+  "name": "Cryptomine-crypto-shop",
   "version": "2.0.0",
-  "title": "Kantor Crypto Shop",
-  "homepage": "https://dev.kantor.kosevych.info",
+  "title": "Cryptomine Exchange",
+  "homepage": "https://www.kantor.kosevych.info",
   "description": "Easy to customize application inspired by the crypto currency products niche.",
-  "author": {
-    "name": "UiFort.com",
-    "url": "https://uifort.com"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/"
