@@ -31,13 +31,13 @@ const Footer = (props) => {
 					</List>
 				</div>
 				<div className='app-footer--second'>
-					<span>Kantor Crypto Shop</span> © 2020 - crafted with <span className='text-danger px-1'>❤</span> by{' '}
+					<span>Cryptomine Crypto Shop</span> © 2020 - crafted with <span className='text-danger px-1'>❤</span> by{' '}
 					<a
-						href='https://dev.kantor.kosevych.info'
+						href='https://dev.Cryptomine.kosevych.info'
 						target='_blank'
 						rel='noopener noreferrer'
-						title='kantor.kosevych.info'>
-						kantor.kosevych.info
+						title='Cryptomine.kosevych.info'>
+						Cryptomine.kosevych.info
 					</a>
 				</div>
 			</div>

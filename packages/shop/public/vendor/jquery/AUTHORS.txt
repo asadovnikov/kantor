@@ -209,7 +209,7 @@ Ronny Springer <springer.ronny@gmail.com>
 Chris Antaki <ChrisAntaki@gmail.com>
 Marian Sollmann <marian.sollmann@cargomedia.ch>
 njhamann <njhamann@gmail.com>
-Ilya Kantor <iliakan@gmail.com>
+Ilya Cryptomine <iliakan@gmail.com>
 David Hong <d.hong@me.com>
 John Paul <john@johnkpaul.com>
 Jakob Stoeck <jakob@pokermania.de>

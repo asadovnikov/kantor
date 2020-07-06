@@ -31,14 +31,14 @@ const SidebarHeader = (props) => {
 		<>
 			<div className='app-sidebar--header'>
 				<div className='app-sidebar-logo'>
-					<NavLink to='/' title='Kantor Crypto Shop' className='app-sidebar-logo'>
+					<NavLink to='/' title='Cryptomine Crypto Shop' className='app-sidebar-logo'>
 						<div className='app-sidebar-logo--icon'>
-							<img alt='Kantor Crypto Shop' src={projectLogo} />
+							<img alt='Cryptomine Crypto Shop' src={projectLogo} />
 						</div>
 						<div className='app-sidebar-logo--text'>
 							<span>Crypto</span>
 
-							<b>Kantor Shop</b>
+							<b>Cryptomine Shop</b>
 						</div>
 					</NavLink>
 				</div>

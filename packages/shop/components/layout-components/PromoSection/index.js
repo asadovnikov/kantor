@@ -32,7 +32,7 @@ export default function PromoSection() {
 						<Tooltip arrow title='View documentation' placement='left'>
 							<Button
 								className='bg-neutral-danger text-danger my-1 p-0 d-50 d-flex align-items-center justify-content-center'
-								href='https://dev.kantor.kosevych.info'
+								href='https://dev.Cryptomine.kosevych.info'
 								rel='noopener'
 								target='_blank'>
 								<FontAwesomeIcon icon={['far', 'life-ring']} className='font-size-lg' />
@@ -41,7 +41,7 @@ export default function PromoSection() {
 						<Tooltip arrow title='View product details' placement='left'>
 							<Button
 								className='bg-neutral-success text-success p-0 d-50 d-flex align-items-center justify-content-center'
-								href='https://dev.kantor.kosevych.info'
+								href='https://dev.Cryptomine.kosevych.info'
 								rel='noopener'
 								target='_blank'>
 								<FontAwesomeIcon icon={['fas', 'info-circle']} className='font-size-lg' />
@@ -130,11 +130,11 @@ export default function PromoSection() {
 						<Button
 							variant='contained'
 							className='px-4 btn-primary'
-							href='https://dev.kantor.kosevych.info'
+							href='https://dev.Cryptomine.kosevych.info'
 							rel='noopener'
 							target='_blank'
-							title='Kantor crypto shop.'>
-							<span className='btn-wrapper--label'>Visit dev.kantor.kosevych.info</span>
+							title='Cryptomine crypto shop.'>
+							<span className='btn-wrapper--label'>Visit dev.Cryptomine.kosevych.info</span>
 							<span className='btn-wrapper--icon'>
 								<FontAwesomeIcon icon={['fas', 'arrow-right']} />
 							</span>
