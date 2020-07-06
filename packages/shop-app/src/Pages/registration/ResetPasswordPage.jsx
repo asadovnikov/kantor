@@ -6,6 +6,29 @@ import { RegistrationHeader, RegistrationForm, RegistrationContent, Registration
 import { MaterialPass, MaterialTxt } from './components/LabeledInput';
 // const { Title } = Typography;
 
+const ChangePasword = ({ code, pass, onCodeChange, onPassChange }) => {
+	return (
+		<>
+			<RegistrationContentRow>
+				<MaterialTxt
+					value={code}
+					onChange={({ target: { value } }) => {
+						onCodeChange(value);
+					}}
+					labelKey='Enter provided code'
+				/>
+			</RegistrationContentRow>
+			<RegistrationContentRow>
+				<MaterialPass
+					inputValue={pass}
+					onChange={(props) => onPassChange(props.target.value)}
+					labelKey='Enter new password'
+				/>
+			</RegistrationContentRow>
+		</>
+	);
+};
+
 const ResetPasswordPage = () => {
 	const history = useHistory();
 	const [userName, setUserName] = useState();
@@ -70,13 +93,17 @@ const ResetPasswordPage = () => {
 				loading={loadingState}
 				actionText={codeWasSent === true ? 'Change password' : 'Send code'}>
 				<RegistrationContentRow>
-					<MaterialTxt
-						value={userName}
-						onChange={({ target: { value } }) => {
-							setUserName(value);
-						}}
-						labelKey='Email'
-					/>
+					{codeWasSent === true ? (
+						<ChangePasword code={code} onCodeChange={setCode} pass={pass} onPassChange={setPass} />
+					) : (
+						<MaterialTxt
+							value={userName}
+							onChange={({ target: { value } }) => {
+								setUserName(value);
+							}}
+							labelKey='Email'
+						/>
+					)}
 				</RegistrationContentRow>
 			</RegistrationContent>
 		</RegistrationForm>

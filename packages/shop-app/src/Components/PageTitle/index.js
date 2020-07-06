@@ -1,4 +1,5 @@
 import React from 'react';
+import { Typography } from '@material-ui/core';
 // import HomeWorkTwoToneIcon from '@material-ui/icons/HomeWorkTwoTone';
 
 export const PageTitle = (props) => {
@@ -15,7 +16,8 @@ export const PageTitle = (props) => {
 							</div>
 						</div>
 						<div className='app-page-title--heading'>
-							<h1>{title}</h1>
+							<Typography variant='h5'>{title}</Typography>
+							{/* <h1>{title}</h1> */}
 							<div className='app-page-title--description'>{description}</div>
 						</div>
 					</div>

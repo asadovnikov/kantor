@@ -15,8 +15,8 @@ export const RegistrationHeader = (params) => {
 	const { Main, Secondary = '', SecondaryExtra, Extra } = params;
 	const classes = useStyles();
 	return (
-		<Grid item xs={12}>
-			<Typography variant='h3' className={classes.header} gutterBottom align='center'>
+		<Grid item xs={12} gutterBottom>
+			<Typography variant='h5' className={classes.header} gutterBottom align='center'>
 				{Main}
 			</Typography>
 			{Secondary.length > 0 && (
@@ -26,7 +26,10 @@ export const RegistrationHeader = (params) => {
 					</Typography>
 				</>
 			)}
-			<Box align='center'>{Extra}</Box>
+			<Box align='center' gutterBottom>
+				{Extra}
+			</Box>
+			<Box height={25} width='100%'></Box>
 		</Grid>
 	);
 };

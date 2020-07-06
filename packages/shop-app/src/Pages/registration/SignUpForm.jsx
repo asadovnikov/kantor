@@ -47,7 +47,7 @@ const SignUpForm = () => {
 	const doSignUp = () => {
 		setLoadingState(true);
 
-		const { email, password, phoneNumber, ...rest } = basicInfo;
+		const { email, password, ...rest } = basicInfo;
 		const username = email;
 		const pre = {
 			...rest,
@@ -62,7 +62,6 @@ const SignUpForm = () => {
 		const dataObj = {
 			username,
 			password,
-			phoneNumber,
 			attributes: {
 				email,
 				...attrs,

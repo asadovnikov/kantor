@@ -5,8 +5,7 @@ import { VerifyDocumentsBanner, QuickLinks } from '../../Widgets';
 import { motion, AnimatePresence } from 'framer-motion';
 // import Grow from '@material-ui/core/Grow';
 import { Button } from '@material-ui/core';
-import HomeTwoToneIcon from '@material-ui/icons/HomeTwoTone';
-import CardTravelRoundedIcon from '@material-ui/icons/CardTravelRounded';
+import { HomeIcon, BuyBitcoinIcon } from '../../assets/Icons';
 
 export const HomePage = ({ isAdmin }) => {
 	// const [showAdd, setShowAdd] = useState(false);
@@ -18,7 +17,7 @@ export const HomePage = ({ isAdmin }) => {
 				description={`Don't hesitate, buy some crypto.`}
 				actions={
 					<Button
-						startIcon={<CardTravelRoundedIcon />}
+						startIcon={<BuyBitcoinIcon />}
 						onClick={() => {
 							history.push('/payment');
 						}}
@@ -28,7 +27,7 @@ export const HomePage = ({ isAdmin }) => {
 						Buy crypto
 					</Button>
 				}
-				icon={<HomeTwoToneIcon className='text-primary' />}>
+				icon={<HomeIcon />}>
 				<AnimatePresence>
 					<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
 						<VerifyDocumentsBanner />

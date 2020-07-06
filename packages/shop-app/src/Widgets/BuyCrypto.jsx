@@ -49,8 +49,8 @@ const useStyles = makeStyles((theme) => ({
 		minWidth: 120,
 	},
 	formContainer: {
-		marginTop: theme.spacing(6),
-		marginBottom: theme.spacing(6),
+		marginTop: theme.spacing(3),
+		marginBottom: theme.spacing(3),
 	},
 }));
 
@@ -95,6 +95,9 @@ export const BuyCryptoWidget = () => {
 				}) => {
 					if (!isCancelled) {
 						setWallets(items);
+						// if (items.length > 0) {
+						// 	setBTCWallet(items[0].Address);
+						// }
 					}
 				}
 			);
@@ -143,9 +146,9 @@ export const BuyCryptoWidget = () => {
 			formData.append('MerchantRef', '200604201617');
 			formData.append('Currency', userData.FiatCurrency);
 			formData.append('Amount', userData.FiatAmount);
-			formData.append('SuccessURL', 'https://dev.kantor.kosevych.info/success');
-			formData.append('FailURL', 'https://dev.kantor.kosevych.info/failed');
-			formData.append('CallbackURL', 'https://dev.kantor.kosevych.info/kyc');
+			formData.append('SuccessURL', 'https://shop.kantor.kosevych.info/success');
+			formData.append('FailURL', 'https://shop.kantor.kosevych.info/failed');
+			formData.append('CallbackURL', 'https://shop.kantor.kosevych.info/kyc');
 			formData.append('Firstname', userData.Firstname);
 			formData.append('Surname', userData.Surname);
 			formData.append('StreetLine1', userData.StreetLine1);
@@ -246,7 +249,7 @@ export const BuyCryptoWidget = () => {
 	return (
 		<>
 			<Container maxWidth='xs' className={classes.formContainer}>
-				<Grid container spacing={6} justify='center' alignItems='center'>
+				<Grid container spacing={3} justify='center' alignItems='center'>
 					<Grid item xs={12}>
 						<Typography align='center' variant='h4'>
 							Buy Crypto
@@ -260,23 +263,25 @@ export const BuyCryptoWidget = () => {
 					<Grid item xs={12}>
 						<CurrencySelect value={FiatCurrency} onChange={onFiatCurrencyChange} />
 					</Grid>
-					<Grid item xs={12}>
-						<List>
-							<ListItem disableGutters dense>
-								<ListItemText primary='Will be charged' />
-								<Typography variant='subtitle1' className={classes.total}>
-									{fee} {FiatCurrency}
-								</Typography>
-							</ListItem>
-							<ListItem disableGutters dense className={classes.fee}>
-								<ListItemText primary='Fee' />
-								<Typography variant='body2'>10%</Typography>
-							</ListItem>
-							<ListItem disableGutters>
-								<ListItemText primary='Receive approximately' />
-								<Typography variant='body2'>{btc} BTC</Typography>
-							</ListItem>
-						</List>
+					<Grid item container xs={12} spacing={1}>
+						<Grid item xs={12}>
+							<List>
+								<ListItem disableGutters dense>
+									<ListItemText primary='Will be charged' />
+									<Typography variant='subtitle1' className={classes.total}>
+										{fee} {FiatCurrency}
+									</Typography>
+								</ListItem>
+								<ListItem disableGutters dense className={classes.fee}>
+									<ListItemText primary='Fee' />
+									<Typography variant='body2'>10%</Typography>
+								</ListItem>
+								<ListItem disableGutters>
+									<ListItemText primary='Receive approximately' />
+									<Typography variant='body2'>{btc} BTC</Typography>
+								</ListItem>
+							</List>
+						</Grid>
 					</Grid>
 					<Grid item xs={12}>
 						<FormControl className={classes.formControl} fullWidth>
@@ -291,7 +296,9 @@ export const BuyCryptoWidget = () => {
 									setBTCWallet(value);
 								}}>
 								{wallets.map((wallet) => (
-									<MenuItem value={wallet.Address}>{wallet.name}</MenuItem>
+									<MenuItem key={wallet.Address} value={wallet.Address}>
+										{wallet.name}
+									</MenuItem>
 								))}
 							</Select>
 						</FormControl>
@@ -305,7 +312,7 @@ export const BuyCryptoWidget = () => {
 								loading={loading}
 								size='large'
 								className='btn-success py-4 mt-5 px-5 text-uppercase font-weight-bold font-size-lg'>
-								Buy{btc > 0 ? ` ${btc} BTC` : ''}
+								Buy{btc > 0 ? ` ~${btc} BTC` : ''}
 							</ProgressButton>
 						</Grid>
 					</Grid>

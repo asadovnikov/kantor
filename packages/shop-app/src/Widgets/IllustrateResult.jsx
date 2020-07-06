@@ -37,10 +37,10 @@ export const PaymentFailedWidget = () => {
 				illustration={paymentFailed}>
 				<Button
 					onClick={() => {
-						history.push('/mytransactions');
+						history.push('/payment');
 					}}
 					color='primary'>
-					Go to payments
+					Go try again
 				</Button>
 			</IllustrationWidget>
 		</>

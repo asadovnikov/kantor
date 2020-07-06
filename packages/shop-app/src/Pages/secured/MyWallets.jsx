@@ -3,16 +3,18 @@ import { AppPage, WidgetContainer } from '../../Layouts';
 import { WalletListWidget, AddWalletWidget } from '../../Widgets';
 import { motion, AnimatePresence } from 'framer-motion';
 import Grow from '@material-ui/core/Grow';
-import BusinessCenterTwoToneIcon from '@material-ui/icons/BusinessCenterTwoTone';
+import { WalletIcon } from '../../assets/Icons';
 
 export const MyWallets = () => {
 	const [showAdd, setShowAdd] = useState(false);
+	// console.log(WalletIcon);
 	return (
 		<>
 			<AppPage
 				title={`Wallets`}
 				description={`This is you registered wallets`}
-				icon={<BusinessCenterTwoToneIcon className='text-primary' />}>
+				// icon={<WalletIcon />}
+				icon={<WalletIcon />}>
 				<AnimatePresence>
 					<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
 						{showAdd === true ? (

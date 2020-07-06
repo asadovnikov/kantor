@@ -2,7 +2,7 @@ const axios = require('axios');
 const { v4: uuid } = require('uuid');
 const { awsmobile } = require('./aws-exports');
 const graphql = require('graphql');
-const { createJumioVerifyMetaData } = require('./graphql/mutations');
+const { createJumioVerifyMetaData, updateVerification } = require('./graphql/mutations');
 const { getTemporaryLinks } = require('./graphql/queries');
 
 const { print } = graphql;
@@ -60,10 +60,40 @@ const addJumioMeta = async (verificationId, data, meta, verType) => {
 	}
 };
 
+const updateVerificationState = async (verificationId, jumioData) => {
+	if (jumioData.callBackType === 'NETVERIFYID') {
+		if (jumioData.verificationStatus === 'APPROVED_VERIFIED') {
+			const verificationData = {
+				input: {
+					id: verificationId,
+					idVerification: 'VALIDATED',
+				},
+			};
+			try {
+				const jumioData = await axios({
+					url: appsyncUrl,
+					method: 'post',
+					headers: {
+						'x-api-key': apiKey,
+					},
+					data: {
+						query: print(updateVerification),
+						variables: verificationData,
+					},
+				});
+				console.log(JSON.stringify(jumioData));
+			} catch (error) {
+				console.log(error);
+			}
+		}
+	}
+};
+
 module.exports = async (tempLinkId, req) => {
 	try {
 		const { transactionId } = await resolveLink(tempLinkId);
 		await addJumioMeta(transactionId, JSON.stringify(req.body), JSON.stringify(req.body), 'ID Verify');
+		await updateVerificationState(transactionId, req.body);
 	} catch (error) {
 		console.log(error);
 	}

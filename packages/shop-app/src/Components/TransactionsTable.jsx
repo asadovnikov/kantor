@@ -51,9 +51,9 @@ function stableSort(array, comparator) {
 const transactionFormat = (transaction) => {
 	return {
 		date: Moment(transaction.createdOn).fromNow(),
-		cryptoAmount: `${transaction.CryptoAmount} ${transaction.CryptoCurrency}`,
+		cryptoAmount: `${parseFloat(transaction.CryptoAmount).toFixed(8)} ${transaction.CryptoCurrency}`,
 		destination: transaction.CryptoAddress,
-		Withdraw: `${transaction.FiatCurrency} ${transaction.FiatAmount / 100}`,
+		Withdraw: `${transaction.FiatCurrency} ${(transaction.FiatAmount / 100).toFixed(2)}`,
 	};
 };
 

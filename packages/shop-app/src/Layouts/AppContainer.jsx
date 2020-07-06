@@ -3,7 +3,6 @@ import React, { useState, useContext } from 'react';
 // import Link from '@material-ui/core/Link';
 import { TopToolbar } from '../Components/TopToolbar';
 import { NavigationMenu } from '../Components/NavigationMenu';
-import { AdminNavigationMenu } from '../Components/AdminNavigationMenu';
 import { makeStyles } from '@material-ui/core/styles';
 import { navigationDefaultWidth } from '../Utils/constants';
 import Box from '@material-ui/core/Box';
@@ -14,8 +13,8 @@ import { AuthContext } from '../Components/AuthContext';
 // 	return (
 // 		<Typography variant='body2' color='textSecondary' align='center'>
 // 			{'Copyright © '}
-// 			<Link color='inherit' href='https://dev.kantor.kosevych.info'>
-// 				kantor.kosevych.info
+// 			<Link color='inherit' href='https://dev.Cryptomine.kosevych.info'>
+// 				Cryptomine.kosevych.info
 // 			</Link>{' '}
 // 			{new Date().getFullYear()}
 // 			{'.'}
@@ -49,40 +48,7 @@ const UserAppLayout = ({ children }) => {
 						<div className={classes.toolbar} />
 						<div className='app-main'>
 							<TopToolbar mobileOpen={isAuthenticated} handleDrawerToggle={handleDrawerToggle} />
-							<div className='app-content'>
-								<div className='app-content--inner'>
-									<div className='app-content--inner__wrapper'>{children}</div>
-								</div>
-							</div>
-						</div>
-					</main>
-				</div>
-				<footer className='app-footer text-black-50 app-footer--opacity-bg'>
-					<AppFooter />
-				</footer>
-			</Box>
-		</div>
-	);
-};
-const AdminAppLayout = ({ children }) => {
-	const classes = useStyles();
-	const [mobileOpen, setMobileOpen] = useState(false);
-
-	const handleDrawerToggle = () => {
-		setMobileOpen(!mobileOpen);
-	};
-	return (
-		<div className='app-wrapper'>
-			<AdminNavigationMenu mobileOpen={mobileOpen} handleDrawerToggle={handleDrawerToggle} />
-
-			<Box className={mobileOpen && classes.navigationVisible} style={{ width: '100%', paddingTop: '64px' }}>
-				{/* <Box className={classes.toolbar}>&nbsp;</Box> */}
-				<div>
-					<main className='app-wrapper'>
-						<div className={classes.toolbar} />
-						<div className='app-main'>
-							<TopToolbar mobileOpen={mobileOpen} handleDrawerToggle={handleDrawerToggle} />
-							<div className='app-content'>
+							<div className={`app-content ${isAuthenticated && 'withNavigation'}`}>
 								<div className='app-content--inner'>
 									<div className='app-content--inner__wrapper'>{children}</div>
 								</div>
@@ -99,5 +65,5 @@ const AdminAppLayout = ({ children }) => {
 };
 
 export const AppContainer = ({ children, isAdmin }) => {
-	return <>{isAdmin ? <AdminAppLayout>{children}</AdminAppLayout> : <UserAppLayout>{children}</UserAppLayout>}</>;
+	return <UserAppLayout>{children}</UserAppLayout>;
 };

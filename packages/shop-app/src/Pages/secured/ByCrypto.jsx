@@ -3,7 +3,7 @@ import { AuthContext } from '../../Components/AuthContext';
 import { AppPage, WidgetContainer } from '../../Layouts';
 import { BuyCryptoWidget, VerifyDocumentsBanner, PaymentProvidersWidget } from '../../Widgets';
 import { motion, AnimatePresence } from 'framer-motion';
-import MonetizationOnTwoToneIcon from '@material-ui/icons/MonetizationOnTwoTone';
+import { BuyBitcoinIcon } from '../../assets/Icons';
 
 export const BuyCryptoPage = () => {
 	// const [showAdd, setShowAdd] = useState(false);
@@ -18,7 +18,7 @@ export const BuyCryptoPage = () => {
 				title={`Buy BTC`}
 				description={`Change your fiat to a crypto value`}
 				actions={<PaymentProvidersWidget />}
-				icon={<MonetizationOnTwoToneIcon className='text-primary' />}>
+				icon={<BuyBitcoinIcon />}>
 				<AnimatePresence>
 					<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
 						{poaVerification === goodStatus && idVerification === goodStatus && financeVerification === goodStatus ? (

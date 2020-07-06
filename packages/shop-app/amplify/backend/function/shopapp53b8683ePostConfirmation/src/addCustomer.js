@@ -76,7 +76,7 @@ exports.addCustomer = async (event) => {
 			StateProvince: userAttributes['custom:region'],
 			Country: userAttributes['custom:country'],
 			Email: userAttributes.email,
-			Telephone: userAttributes.phone_number || '',
+			Telephone: userAttributes['custom:phoneNumber'],
 			FiatCurrency: 'EUR',
 			FiatTotalAmount: `0`,
 			FiatDailyAmount: '0',

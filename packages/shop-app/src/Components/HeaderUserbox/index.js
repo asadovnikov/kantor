@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Auth } from 'aws-amplify';
+import { AuthContext } from '../AuthContext';
 import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Menu, Button, List, ListItem, CircularProgress, Backdrop } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 // import CountUp from 'react-countup';
 
-import BusinessCenterTwoToneIcon from '@material-ui/icons/BusinessCenterTwoTone';
-import SettingsTwoToneIcon from '@material-ui/icons/SettingsTwoTone';
-import VerifiedUserTwoToneIcon from '@material-ui/icons/VerifiedUserTwoTone';
-import ExitToAppTwoToneIcon from '@material-ui/icons/ExitToAppTwoTone';
+import { SettingsIcon, ProfileIcon, WalletIcon, LogoutIcon } from '../../assets/Icons';
 import Avatar from 'react-avatar';
 
 const useStyles = makeStyles((theme) => ({
@@ -20,6 +18,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const HeaderUserbox = ({ firstName, lastName, email }) => {
+	const { customer = {} } = useContext(AuthContext);
+	const { KYCVerification = {} } = customer;
+	const goodStatus = 'VALIDATED';
+
+	const { poaVerification = 'FAILED', idVerification = 'FAILED', financeVerification = 'FAILED' } = KYCVerification;
+	const isVerfied =
+		poaVerification === goodStatus && idVerification === goodStatus && financeVerification === goodStatus;
 	const classes = useStyles();
 	const [anchorEl, setAnchorEl] = useState(null);
 	const [open, setOpen] = useState(false);
@@ -47,9 +52,16 @@ export const HeaderUserbox = ({ firstName, lastName, email }) => {
 					<Avatar size={40} name={`${firstName} ${lastName}`} />
 				</div>
 				<div className='d-none d-xl-block pl-2'>
-					<span className='text-danger'>
-						<small>Account not verified</small>
-					</span>
+					{isVerfied === true ? (
+						<span className='text-success'>
+							<small>Account verified</small>
+						</span>
+					) : (
+						<span className='text-danger'>
+							<small>Account not verified</small>
+						</span>
+					)}
+
 					<div className='font-weight-bold'>
 						{firstName} {lastName}
 					</div>
@@ -97,7 +109,7 @@ export const HeaderUserbox = ({ firstName, lastName, email }) => {
 								history.push('/settings');
 							}}>
 							<div className='mr-2'>
-								<SettingsTwoToneIcon />
+								<SettingsIcon />
 							</div>
 							<span className='font-size-md'>Settings</span>
 						</ListItem>
@@ -111,7 +123,7 @@ export const HeaderUserbox = ({ firstName, lastName, email }) => {
 								history.push('/profile');
 							}}>
 							<div className='mr-2'>
-								<VerifiedUserTwoToneIcon />
+								<ProfileIcon />
 							</div>
 							<span className='font-size-md'>Profile</span>
 						</ListItem>
@@ -125,7 +137,7 @@ export const HeaderUserbox = ({ firstName, lastName, email }) => {
 								history.push('/walletlist');
 							}}>
 							<div className='mr-2'>
-								<BusinessCenterTwoToneIcon />
+								<WalletIcon size='small' />
 							</div>
 							<span className='font-size-md'>Wallets</span>
 						</ListItem>
@@ -135,16 +147,15 @@ export const HeaderUserbox = ({ firstName, lastName, email }) => {
 						<ListItem
 							component='a'
 							button
-							href='#/'
 							onClick={async (e) => {
 								e.preventDefault();
 								setOpen(true);
 								history.push('/');
-								await Auth.signOut({ global: true });
+								await Auth.signOut();
 								setOpen(false);
 							}}>
 							<div className='mr-2'>
-								<ExitToAppTwoToneIcon />
+								<LogoutIcon />
 							</div>
 							<span>Log out</span>
 						</ListItem>

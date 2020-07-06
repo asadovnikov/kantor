@@ -37,6 +37,7 @@ export const AddWalletWidget = ({ onWalletAdded }) => {
 	const [isWalletValid, setIsWalletValid] = useState(true);
 
 	useEffect(() => {
+		debugger;
 		setValid(walletValidator(walletAddress, 'bitcoin') === true && walletName.length > 0);
 		// setValid(walletName.length > 0 && walletAddress.length > 0);
 	}, [walletName, walletAddress]);
@@ -80,7 +81,7 @@ export const AddWalletWidget = ({ onWalletAdded }) => {
 					error={!isWalletValid}
 					helperText={!isWalletValid ? 'Incorrect wallet address' : ''}
 					onChange={({ target: { value } }) => {
-						setIsWalletValid(walletValidator(walletAddress, 'bitcoin'));
+						setIsWalletValid(walletValidator(value, 'bitcoin'));
 						setWalletAddress(value);
 					}}
 				/>

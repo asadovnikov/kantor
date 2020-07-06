@@ -1,6 +1,7 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { logoImage } from '../assets';
-import { Grid, Typography, Box } from '@material-ui/core';
+import { Grid, Typography, Box, ButtonBase } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -11,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
 		padding: theme.spacing(2),
 		margin: 'auto',
 		maxWidth: 500,
+		minWidth: 250,
 	},
 	image: {
 		width: 70,
@@ -40,30 +42,33 @@ const useStyles = makeStyles((theme) => ({
 
 const LogoBlock = () => {
 	const classes = useStyles();
+	const history = useHistory();
 	return (
 		<div className={classes.root}>
-			<Grid container spacing={2}>
-				<Grid item>
-					<Box className={classes.image}>
-						<img className={classes.img} alt='logo' src={logoImage} />
-					</Box>
-				</Grid>
-				<Grid item spacing={3}>
-					<Box className={classes.dividerStroke}></Box>
-				</Grid>
-				<Grid item xs={12} sm container spacing={0}>
-					<Grid item xs container direction='column' spacing={0}>
-						<Grid item xs>
-							<Typography className={classes.main} variant='body2'>
-								Cryptomine
-							</Typography>
-							<Typography className={classes.secondary} variant='body2'>
-								Exchange
-							</Typography>
+			<ButtonBase onClick={() => history.push('/')} component='div'>
+				<Grid container spacing={2}>
+					<Grid item xs>
+						<Box className={classes.image}>
+							<img className={classes.img} alt='logo' src={logoImage} />
+						</Box>
+					</Grid>
+					<Grid item xs spacing={3}>
+						<Box className={classes.dividerStroke}></Box>
+					</Grid>
+					<Grid item xs container spacing={0}>
+						<Grid item xs container direction='column' spacing={0}>
+							<Grid item xs>
+								<Typography className={classes.main} variant='body2'>
+									Cryptomine
+								</Typography>
+								<Typography className={classes.secondary} variant='body2'>
+									Exchange
+								</Typography>
+							</Grid>
 						</Grid>
 					</Grid>
 				</Grid>
-			</Grid>
+			</ButtonBase>
 		</div>
 	);
 };

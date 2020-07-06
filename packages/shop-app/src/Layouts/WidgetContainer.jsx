@@ -15,7 +15,7 @@ export const WidgetContainer = ({ show = true, showHeader = true, children, titl
 						{showHeader === true && (
 							<Box mb={3}>
 								<Grid container direction='row' justify='space-between' alignItems='center'>
-									<Typography gutterBottom variant='h4' component='h2'>
+									<Typography gutterBottom variant='h5'>
 										{title}
 									</Typography>
 									<Box>

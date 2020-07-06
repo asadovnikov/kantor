@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col, Typography, Button, Card, Space } from 'antd';
 import { RegistrationHeader, RegistrationForm, RegistrationContent } from './components';
+import { appFullName } from '../../Utils/constants';
 const { Title, Text } = Typography;
 
 const GetVerifiedPage = () => {
@@ -8,7 +9,7 @@ const GetVerifiedPage = () => {
 		<RegistrationForm>
 			<RegistrationHeader
 				Main='Get Verified'
-				Secondary='Before you can start using Kantor, you will need to complete the following steps.'
+				Secondary={`Before you can start using ${appFullName}, you will need to complete the following steps.`}
 			/>
 			<RegistrationContent actionText='Start Your Verification'>
 				<Row gutter={[16, 16]}>

@@ -31,7 +31,7 @@ export const TermsPage = () => {
 						<li>
 							<p>
 								<strong>Company</strong> (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot;
-								or &quot;Our&quot; in this Agreement) refers to Crypto Kantor, 1 Cupertino, CA 95014.
+								or &quot;Our&quot; in this Agreement) refers to Crypto Cryptomine, 1 Cupertino, CA 95014.
 							</p>
 						</li>
 						<li>
@@ -70,9 +70,9 @@ export const TermsPage = () => {
 						</li>
 						<li>
 							<p>
-								<strong>Website</strong> refers to Crypto Kantor, accessible from{' '}
-								<a href='https://shop.kantor.kosevych.info' rel='external nofollow noopener' target='_blank'>
-									https://shop.kantor.kosevych.info
+								<strong>Website</strong> refers to Crypto Cryptomine, accessible from{' '}
+								<a href='https://shop.Cryptomine.kosevych.info' rel='external nofollow noopener' target='_blank'>
+									https://shop.Cryptomine.kosevych.info
 								</a>
 							</p>
 						</li>
@@ -236,7 +236,7 @@ export const TermsPage = () => {
 					<h1>Contact Us</h1>
 					<p>If you have any questions about these Terms and Conditions, You can contact us:</p>
 					<ul>
-						<li>By email: office@shop.kantor.kosevych.info</li>
+						<li>By email: office@shop.Cryptomine.kosevych.info</li>
 					</ul>
 				</Box>
 			</Paper>

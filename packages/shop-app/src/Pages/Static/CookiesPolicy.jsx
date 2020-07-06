@@ -39,7 +39,7 @@ export const CookiesPolicy = () => (
 				<ul>
 					<li>
 						<strong>Company</strong> (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or
-						&quot;Our&quot; in this Cookies Policy) refers to Crypto Kantor, 1 Cupertino, CA 95014.
+						&quot;Our&quot; in this Cookies Policy) refers to Crypto Cryptomine, 1 Cupertino, CA 95014.
 					</li>
 					<li>
 						<strong>You</strong> means the individual accessing or using the Website, or a company, or any legal entity
@@ -50,9 +50,9 @@ export const CookiesPolicy = () => (
 						device by a website, containing details of your browsing history on that website among its many uses.
 					</li>
 					<li>
-						<strong>Website</strong> refers to Crypto Kantor, accessible from{' '}
-						<a href='https://shop.kantor.kosevych.info' rel='external nofollow noopener' target='_blank'>
-							https://shop.kantor.kosevych.info
+						<strong>Website</strong> refers to Crypto Cryptomine, accessible from{' '}
+						<a href='https://shop.Cryptomine.kosevych.info' rel='external nofollow noopener' target='_blank'>
+							https://shop.Cryptomine.kosevych.info
 						</a>
 						.
 					</li>
@@ -161,7 +161,7 @@ export const CookiesPolicy = () => (
 				<h2>Contact Us</h2>
 				<p>If you have any questions about this Cookies Policy, You can contact us:</p>
 				<ul>
-					<li>By email: office@shop.kantor.kosevych.info</li>
+					<li>By email: office@shop.Cryptomine.kosevych.info</li>
 				</ul>
 			</Box>
 		</Paper>

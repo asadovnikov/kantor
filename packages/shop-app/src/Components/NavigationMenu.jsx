@@ -1,17 +1,17 @@
 import React from 'react';
+import { Auth } from 'aws-amplify';
 
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
+import { Button } from '@material-ui/core';
 
-import BusinessCenterTwoToneIcon from '@material-ui/icons/BusinessCenterTwoTone';
-import AttachMoneyTwoToneIcon from '@material-ui/icons/AttachMoneyTwoTone';
-import VerifiedUserTwoToneIcon from '@material-ui/icons/VerifiedUserTwoTone';
-import FilterListTwoToneIcon from '@material-ui/icons/FilterListTwoTone';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+
+import { WalletIcon, TransactionIcon, VerificationIcon, BuyBitcoinIcon, LogoutIcon } from '../assets/Icons';
 
 import SidebarWidget from './SidebarWidget';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
 		minHeight: 22,
 	},
 	drawerPaper: {
-		width: navigationDefaultWidth,
+		width: navigationDefaultWidth + 1,
 	},
 	content: {
 		flexGrow: 1,
@@ -74,7 +74,7 @@ export const NavigationMenu = (props) => {
 					}}>
 					<ListItemIcon>
 						<span className='sidebar-icon'>
-							<AttachMoneyTwoToneIcon />
+							<BuyBitcoinIcon />
 						</span>
 					</ListItemIcon>
 					<ListItemText primary={'Buy BTC'} />
@@ -88,7 +88,7 @@ export const NavigationMenu = (props) => {
 					}}>
 					<ListItemIcon>
 						<span className='sidebar-icon'>
-							<FilterListTwoToneIcon />
+							<TransactionIcon />
 						</span>
 					</ListItemIcon>
 					<ListItemText primary={'My transactions'} />
@@ -101,7 +101,7 @@ export const NavigationMenu = (props) => {
 					}}>
 					<ListItemIcon>
 						<div className='mr-2'>
-							<BusinessCenterTwoToneIcon />
+							<WalletIcon />
 						</div>
 					</ListItemIcon>
 					<ListItemText primary={'My wallets'} />
@@ -114,7 +114,7 @@ export const NavigationMenu = (props) => {
 					}}>
 					<ListItemIcon>
 						<span className='sidebar-icon'>
-							<VerifiedUserTwoToneIcon />
+							<VerificationIcon />
 						</span>
 					</ListItemIcon>
 					<ListItemText primary={'Verification'} />
@@ -151,7 +151,19 @@ export const NavigationMenu = (props) => {
 					}}
 					variant='permanent'
 					open>
-					{drawer}
+					<div className=' app-sidebar app-sidebar-fixed app-sidebar--light'>
+						<div className='app-sidebar--content'>{drawer}</div>
+						<div className='app-sidebar--footer'>
+							<Button
+								onClick={async () => {
+									routing.push('/signin');
+									await Auth.signOut();
+								}}
+								startIcon={<LogoutIcon />}>
+								Sign out
+							</Button>
+						</div>
+					</div>
 				</Drawer>
 			</Hidden>
 		</nav>

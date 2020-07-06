@@ -1,7 +1,7 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Grid, Card } from '@material-ui/core';
+import { Grid, Card, ButtonBase } from '@material-ui/core';
 
 export const QuickLinkBanner = ({ title, description, illustration, action = {} }) => {
 	return (
@@ -25,12 +25,13 @@ export const QuickLinkBanner = ({ title, description, illustration, action = {} 
 				</Grid>
 			</div>
 			<div className='divider' />
-			<NavLink
+			<ButtonBase
+				component={RouterLink}
 				to={action.route}
 				className='px-4 py-3 text-first btn btn-white shadow-none d-flex justify-content-between align-items-center'>
 				<div>{action.name}</div>
 				<FontAwesomeIcon icon={['fas', 'chevron-right']} />
-			</NavLink>
+			</ButtonBase>
 		</Card>
 	);
 };

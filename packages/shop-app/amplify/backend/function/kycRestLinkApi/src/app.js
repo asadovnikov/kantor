@@ -35,7 +35,7 @@ app.use(function (req, res, next) {
 	next();
 });
 
-app.post('/startkyc', async (req, res) => {
+app.post('/startkyc/:customerId', async (req, res) => {
 	const { verificationType, customerInfo, verificationId, documentType } = req.body;
 	try {
 		const customer = JSON.parse(customerInfo);

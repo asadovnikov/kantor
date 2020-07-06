@@ -2,12 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Space, Result, Button } from 'antd';
 import { welcome } from '../../assets';
+import { appFullName } from '../../Utils/constants';
 import { RegistrationHeader, RegistrationForm, RegistrationContent, RegistrationContentRow } from './components';
 
 const LandingForm = () => {
 	return (
 		<RegistrationForm>
-			<RegistrationHeader Main={`Welcome to kantor shop`} Secondary={`Best place o buy crypto currency`} />
+			<RegistrationHeader Main={`Welcome to ${appFullName}`} Secondary={`Best place o buy crypto currency`} />
 			<RegistrationContent>
 				<RegistrationContentRow>
 					<Result

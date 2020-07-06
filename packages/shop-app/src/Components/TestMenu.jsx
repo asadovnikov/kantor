@@ -16,6 +16,7 @@ import Typography from '@material-ui/core/Typography';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import { TemporaryDrawer } from './CustomerNavigationMenu';
 import { HeaderUserbox } from './HeaderUserbox';
+import { appFullName } from '../Utils/constants';
 
 function Alert(props) {
 	return <MuiAlert elevation={6} variant='filled' {...props} />;
@@ -148,7 +149,7 @@ export const TestMenu = () => {
 			<Toolbar>
 				{isAuth === true && <TemporaryDrawer />}
 				<Typography className={classes.title} color='inherit' variant='h6' noWrap>
-					Kantor Shop
+					{appFullName}
 				</Typography>
 				<div className={classes.grow} />
 				{isAuth === false && <Link to='/signin'>Sign in </Link>}

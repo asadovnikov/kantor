@@ -1,11 +1,20 @@
 import React from 'react';
 // import { AppName } from './AppName';
-import { Grid, Typography, Box, Link, Divider } from '@material-ui/core';
-import { NavLink } from 'react-router-dom';
+import { Grid, Typography, Box, Link, Divider, ButtonBase } from '@material-ui/core';
+import { Link as RouterLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import visa from '../assets/images/providers/visa.svg';
 import mastercard from '../assets/images/providers/mastercard.svg';
 import maestro from '../assets/images/providers/maestro.svg';
+import {
+	shopAppURI,
+	appName,
+	appNameDetail,
+	applicationAdminEmail,
+	applicationContactEmail,
+	appCompanyName,
+	applicationDomainName,
+} from '../Utils/constants';
 
 const useStyles = makeStyles((theme) => ({
 	providerLogo: {
@@ -26,14 +35,16 @@ const NavigationSection = ({ title, links = [] }) => {
 			<Box mt={3} mb={1}>
 				<Typography variant='button'>{title}</Typography>
 			</Box>
-			<Grid container direction='column' justify='flex-start' spacing={0}>
+			<Grid container direction='column' justify='flex-start' spacing={1}>
 				{links.map((link) => {
 					return (
 						<Grid key={`${link.direction}_${link.title}`} item>
 							{link.direction ? (
-								<NavLink to={link.direction}>
-									<Typography variant='body2'>{link.title}</Typography>
-								</NavLink>
+								<ButtonBase component={RouterLink} to={link.direction}>
+									<Typography variant='body2' color='primary'>
+										{link.title}
+									</Typography>
+								</ButtonBase>
 							) : (
 								<Typography variant='body2'>{link.title}</Typography>
 							)}
@@ -49,8 +60,8 @@ function Copyright() {
 	return (
 		<Typography variant='body2' color='textSecondary' align='center'>
 			{'All rights reserved © '}
-			<Link color='inherit' href='https://dev.kantor.kosevych.info/'>
-				kantor.kosevych.info
+			<Link color='inherit' href={shopAppURI}>
+				{applicationDomainName}
 			</Link>{' '}
 			{new Date().getFullYear()}
 			{'.'}
@@ -101,7 +112,7 @@ const FooterEndContent = () => {
 					</Grid>
 				</Box>
 				<Box className='app-sidebar--light'>
-					<span>crypto </span> <b style={{ textTransform: 'lowercase' }}>kantor</b>
+					<span>{appNameDetail} </span> <b style={{ textTransform: 'lowercase' }}>{appName}</b>
 				</Box>
 			</Grid>
 		</>
@@ -137,7 +148,7 @@ const FooterNavigationSection = () => {
 						title='Address'
 						links={[
 							{
-								title: 'Crypto Kantor LTD',
+								title: appCompanyName,
 							},
 							{
 								title: '4 Private Drive',
@@ -160,10 +171,10 @@ const FooterNavigationSection = () => {
 						title='Contact'
 						links={[
 							{
-								title: 'kantor@kosevych.info',
+								title: applicationContactEmail,
 							},
 							{
-								title: 'admin.kantor@kosevych.info',
+								title: applicationAdminEmail,
 							},
 						]}
 					/>

@@ -31,7 +31,7 @@ select:-webkit-autofill:focus {
 
 @media (prefers-reduced-motion: no-preference) {
 	.App-logo {
-		animation: App-logo-spin infinite 20s linear;
+		/* animation: App-logo-spin infinite 20s linear; */
 	}
 }
 
@@ -162,3 +162,10 @@ select:-webkit-autofill:focus {
 .application-name-footer {
 	color: black;
 }
+
+/* .app-content {
+	width: calc(100vw - 320px);
+} */
+/* .app-page-title {
+	width: 100%;
+} */

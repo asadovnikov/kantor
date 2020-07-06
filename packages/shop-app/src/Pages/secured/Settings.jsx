@@ -1,24 +1,32 @@
 import React from 'react';
-import { withAuthenticator } from '@aws-amplify/ui-react';
-// import { Row, Col } from 'antd';
-// import finance from './assets/financeVerification1.png';
-import { resetPassword, cancelAccount } from '../../assets';
-import { FormLayout, FormContent, FormContentRow, FormHeader, ActionTile } from '../../Components';
+import { AppPage } from '../../Layouts';
+import { SettingsWidget } from '../../Widgets';
+import { motion, AnimatePresence } from 'framer-motion';
+// import Grow from '@material-ui/core/Grow';
+import { SettingsIcon } from '../../assets/Icons';
+import {
+	RegistrationHeader,
+	RegistrationForm,
+	RegistrationContent,
+	RegistrationContentRow,
+} from '../registration/components';
 
-const SettingsForm = () => {
+export const SettingsPage = () => {
 	return (
-		<FormLayout>
-			<FormHeader Main={`Settings`} />
-			<FormContent>
-				<FormContentRow>
-					<ActionTile icon={resetPassword} title='Change password' />
-				</FormContentRow>
-				<FormContentRow>
-					<ActionTile icon={cancelAccount} title='Close account' />
-				</FormContentRow>
-			</FormContent>
-		</FormLayout>
+		<>
+			<AppPage title={`Settings`} description={`Available list of application settings`} icon={<SettingsIcon />}>
+				<AnimatePresence>
+					<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+						<RegistrationForm>
+							<RegistrationContent showAction={false}>
+								<RegistrationContentRow>
+									<SettingsWidget />
+								</RegistrationContentRow>
+							</RegistrationContent>
+						</RegistrationForm>
+					</motion.div>
+				</AnimatePresence>
+			</AppPage>
+		</>
 	);
 };
-
-export default withAuthenticator(SettingsForm);

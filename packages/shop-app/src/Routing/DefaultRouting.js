@@ -7,7 +7,7 @@ import SignInForm from '../Pages/registration/SignInForm';
 import SignUpForm from '../Pages/registration/SignUpForm';
 import ResetPasswordPage from '../Pages/registration/ResetPasswordPage';
 import { EmailCodePage } from '../Pages/registration';
-import { HomePage, Transactions, MyWallets, BuyBTC } from '../Pages/secured';
+import { HomePage, Transactions, MyWallets, BuyBTC, ProfilePage, SettingsPage } from '../Pages/secured';
 
 export const routes = [
 	{
@@ -25,6 +25,15 @@ export const routes = [
 	{
 		path: '/home',
 		component: HomePage,
+	},
+	{
+		path: '/profile',
+		component: ProfilePage,
+	},
+
+	{
+		path: '/settings',
+		component: SettingsPage,
 	},
 	{
 		path: '/transaction',

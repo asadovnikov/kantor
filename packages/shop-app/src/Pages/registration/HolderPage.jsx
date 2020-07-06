@@ -4,7 +4,7 @@ import { Row, Col, Checkbox, Typography } from 'antd';
 import { RegistrationHeader, RegistrationForm, RegistrationContent } from './components';
 import Grid from '@material-ui/core/Grid';
 import { MaterialPass, MaterialTxt, MaterialDatePicker } from './components/LabeledInput';
-
+import { appFullName } from '../../Utils/constants';
 const { Link } = Typography;
 
 const HolderPage = ({ value = {}, onChange, onApply }) => {
@@ -42,7 +42,7 @@ const HolderPage = ({ value = {}, onChange, onApply }) => {
 	};
 	return (
 		<RegistrationForm>
-			<RegistrationHeader Main='Welcome to Kantor' Secondary='To begin, create your account.' />
+			<RegistrationHeader Main={`Welcome to ${appFullName}`} Secondary='To begin, create your account.' />
 			<RegistrationContent isValid={isValid} onAction={onApply}>
 				<Grid container spacing={3}>
 					<Grid item xs={12} sm={6}>
@@ -115,7 +115,7 @@ const HolderPage = ({ value = {}, onChange, onApply }) => {
 								setAgree(checked);
 								triggerChange();
 							}}>
-							I agree to Kantor's <NavLink to='/terms-and-conditions'>Terms of use</NavLink> and{' '}
+							I agree to {appFullName} <NavLink to='/terms-and-conditions'>Terms of use</NavLink> and{' '}
 							<NavLink to='/privacy-policy'>Privacy Policy.</NavLink>
 						</Checkbox>
 					</Grid>
