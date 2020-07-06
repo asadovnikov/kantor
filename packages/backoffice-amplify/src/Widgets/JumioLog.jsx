@@ -1,60 +1,55 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { DataTable } from '../Components';
 import { Empty } from 'antd';
 import { API, graphqlOperation } from 'aws-amplify';
 import { getVerification } from '../graphql/queries';
 
-const dataColumns = [
-	{
-		title: 'Status',
-		dataIndex: 'idScanSource',
-		key: 'idScanSource',
-	},
-	{
-		title: 'Verification Status',
-		dataIndex: 'verificationStatus',
-		key: 'verificationStatus',
-	},
-	{
-		title: 'Source',
-		dataIndex: 'idScanSource',
-		key: 'idScanSource',
-	},
-	{
-		title: 'Transaction date',
-		dataIndex: 'createdOn',
-		key: 'CreatedOn',
-	},
-	{
-		title: 'Type',
-		dataIndex: 'idType',
-		key: 'idType',
-	},
-	{
-		title: 'Country',
-		dataIndex: 'idCountry',
-		key: 'idCountry',
-	},
-	{
-		title: 'Jumio transaction id',
-		dataIndex: 'jumioIdScanReference',
-		key: 'jumioIdScanReference',
-	},
-];
-
 export const JumioLogWidget = ({ person = {} }) => {
+	const dataColumns = [
+		{
+			title: 'Date',
+			dataIndex: 'createdOn',
+			key: 'CreatedOn',
+		},
+		{
+			title: 'Type',
+			dataIndex: 'idType',
+			key: 'idType',
+		},
+		{
+			title: 'Verification Status',
+			dataIndex: 'verificationStatus',
+			key: 'verificationStatus',
+		},
+		{
+			title: 'Country',
+			dataIndex: 'idCountry',
+			key: 'idCountry',
+		},
+		{
+			title: 'Action',
+			dataIndex: 'jumioIdScanReference',
+			key: 'jumioIdScanReference',
+			fixed: 'right',
+			width: 100,
+			render: (text, record) => {
+				console.log(record);
+				return <Link to={`/customer/${person.id}/${record.scanReference}`}>Details</Link>;
+			},
+		},
+	];
 	const { KYCVerification = {} } = person;
 	const [logs, setLogs] = useState([]);
 	const history = useHistory();
 
-	const onJumioRowClick = (record) => {
-		return {
-			onClick: () => {
-				history.push(`/customer/${person.id}/${record.jumioIdScanReference}`);
-			},
-		};
-	};
+	// const onJumioRowClick = (record) => {
+	// 	return {
+	// 		onClick: () => {
+	// 			history.push(`/customer/${person.id}/${record.jumioIdScanReference}`);
+	// 		},
+	// 	};
+	// };
 
 	const { id } = KYCVerification;
 
@@ -91,10 +86,11 @@ export const JumioLogWidget = ({ person = {} }) => {
 					scroll={{ y: 300 }}
 					bordered={true}
 					size='small'
-					onRowClick={onJumioRowClick}
 					data={logs.map((item) => {
+						// console.log(item);
 						return {
 							...item,
+							key: item.scanReference || item.jumioIdScanReference,
 							createdOn: new Date(item.createdOn).toLocaleString(),
 						};
 					})}

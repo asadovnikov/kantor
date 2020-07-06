@@ -13,15 +13,15 @@ const apiKey = awsmobile.aws_appsync_apiKey;
 const callBackURI = awsmobile.aws_cloud_logic_custom.find((resource) => resource.name === 'shopRestKycCallback')
 	.endpoint;
 
-// const shopSuccessUri = 'http://shop.kantor.kosevych.info/waitingkyc';
-// const shopFailedUri = 'http://shop.kantor.kosevych.info/kycfailed';
+// const shopSuccessUri = 'http://shop.Cryptomine.kosevych.info/waitingkyc';
+// const shopFailedUri = 'http://shop.Cryptomine.kosevych.info/kycfailed';
 
 const verifyAddress = 'https://lon.netverify.com/api/v4/initiate';
 
 const redirectAddress = 'https://shop.kantor.kosevych.info';
 const headers = {
 	'Content-Type': 'application/json',
-	'User-Agent': 'kantorClient kantorApp/v.1.1',
+	'User-Agent': 'CryptomineClient CryptomineApp/v.1.1',
 };
 
 const storeTempLink = async (linkID, customerId, verificationId, redirectLink) => {

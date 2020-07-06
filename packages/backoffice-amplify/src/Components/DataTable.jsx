@@ -44,8 +44,8 @@ export const DataTable = ({ columns, data, pagination, scroll, bordered, size, o
 				setTimeout(() => searchInput.select());
 			}
 		},
-		render: (text, record) =>
-			searchedColumn === dataIndex ? (
+		render: (text, record) => {
+			return searchedColumn === dataIndex ? (
 				<Highlighter
 					highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
 					searchWords={[searchText]}
@@ -54,7 +54,8 @@ export const DataTable = ({ columns, data, pagination, scroll, bordered, size, o
 				/>
 			) : (
 				<>{column.render ? column.render(text, record) : text}</>
-			),
+			);
+		},
 	});
 
 	const handleSearch = (selectedKeys, confirm, dataIndex) => {

@@ -20,13 +20,13 @@ var bodyParser = require('body-parser');
 const buildLink = require('./processing');
 const buildDocVerifyLink = require('./documentVerifyProcessing');
 
-// var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware');
+var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware');
 
 // declare a new express app
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(awsServerlessExpressMiddleware.eventContext());
+app.use(awsServerlessExpressMiddleware.eventContext());
 
 // Enable CORS for all methods
 app.use(function (req, res, next) {
@@ -35,29 +35,51 @@ app.use(function (req, res, next) {
 	next();
 });
 
-app.post('/startkyc/:customerId.:verificationId', async (req, res) => {
-	const { customerId, verificationId } = req.params;
+app.post('/startkyc', async (req, res) => {
+	const { verificationType, customerInfo, verificationId, documentType } = req.body;
 	try {
-		const link = await buildLink(customerId, verificationId);
-		res.redirect(link);
-	} catch (err) {
+		const customer = JSON.parse(customerInfo);
+		if (verificationType === 'document') {
+			const link = await buildDocVerifyLink(customer.id, verificationId, documentType);
+			res.redirect(link);
+		} else if (verificationType === 'netverify') {
+			const link = await buildLink(customer.id, verificationId);
+			res.redirect(link);
+		} else {
+			res.json({
+				status: 'failed',
+				reason: 'Unsupported verification type',
+			});
+		}
+	} catch (error) {
 		console.log(JSON.stringify(err));
 		res.json(err);
 	}
 });
 
-app.post('/startkyc/document/:documentType.:customerId.:verificationId', async (req, res) => {
-	const { customerId, verificationId, documentType } = req.params;
-	try {
-		const link = await buildDocVerifyLink(customerId, verificationId, documentType);
-		res.redirect(link);
-	} catch (err) {
-		console.log(JSON.stringify(err));
-		res.json(err);
-	}
-});
+// app.post('/startkyc/:customerId.:verificationId', async (req, res) => {
+// 	const { customerId, verificationId } = req.params;
+// 	try {
+// 		const link = await buildLink(customerId, verificationId);
+// 		res.redirect(link);
+// 	} catch (err) {
+// 		console.log(JSON.stringify(err));
+// 		res.json(err);
+// 	}
+// });
 
-app.listen(3030, function () {
+// app.post('/startkyc/document/:documentType.:customerId.:verificationId', async (req, res) => {
+// 	const { customerId, verificationId, documentType } = req.params;
+// 	try {
+// 		const link = await buildDocVerifyLink(customerId, verificationId, documentType);
+// 		res.redirect(link);
+// 	} catch (err) {
+// 		console.log(JSON.stringify(err));
+// 		res.json(err);
+// 	}
+// });
+
+app.listen(3000, function () {
 	console.log('App started');
 });
 
