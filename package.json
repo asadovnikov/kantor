@@ -1,8 +1,8 @@
 {
-	"name": "kantor",
+	"name": "Cryptomine",
 	"version": "1.0.0",
 	"private": true,
-	"repository": "https://github.com/asadovnikov/kantor.git",
+	"repository": "https://github.com/asadovnikov/Cryptomine.git",
 	"author": "Oleksandr Kosevych <rn.cruger@gmail.com>",
 	"workspaces": [
 		"packages/*"

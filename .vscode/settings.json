@@ -1,24 +1,24 @@
 {
-  "cSpell.words": [
-    "Firstname",
-    "Sendpoint",
-    "back",
-    "backoffice",
-    "cross",
-    "cutting",
-    "dbaccess",
-    "dbevents",
-    "forgotpassword",
-    "kantor",
-    "kosevych",
-    "kycverification",
-    "moduler",
-    "office",
-    "oleksandr",
-    "operationlog",
-    "paymentfailed",
-    "paymentsuccessfull",
-    "registerconfirm"
-  ],
-  // "jest.pathToJest": "/Users/oleksandrkosevich/Documents/GitHub/kantor/packages/transaction-utility/node_modules/.bin/jest"
+	"cSpell.words": [
+		"Firstname",
+		"Sendpoint",
+		"back",
+		"backoffice",
+		"cross",
+		"cutting",
+		"dbaccess",
+		"dbevents",
+		"forgotpassword",
+		"Cryptomine",
+		"kosevych",
+		"kycverification",
+		"moduler",
+		"office",
+		"oleksandr",
+		"operationlog",
+		"paymentfailed",
+		"paymentsuccessfull",
+		"registerconfirm"
+	]
+	// "jest.pathToJest": "/Users/oleksandrkosevich/Documents/GitHub/Cryptomine/packages/transaction-utility/node_modules/.bin/jest"
 }
