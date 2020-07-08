@@ -13,57 +13,71 @@ const loadingIndicator = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 export const UserWidget = ({ kycState, showAll = false }) => {
 	const dataColumns = [
 		{
-			title: 'Name',
-			dataIndex: 'Firstname',
-			key: 'Firstname',
-			render: (text, record) => {
-				console.log(record);
-				return (
-					<Link to={`/customer/${record.id}`}>
-						<Space direction='vertical'>
-							<Text strong>
-								{text} {record.Surname}
-							</Text>
-							<Text type='secondary'>{record.Email}</Text>
-						</Space>
-					</Link>
-				);
+			title: 'Email',
+			dataIndex: 'Email',
+			key: 'Email',
+			ellipsis: true,
+			width: 250,
+			sorter: {
+				compare: (a, b) => (a.Email > b.Email) - (a.Email < b.Email),
+				multiple: 1,
 			},
 		},
 		{
-			title: 'KYC',
-			dataIndex: 'KYCState',
-			key: 'KYCState',
-		},
-		{
-			title: 'Tier',
-			dataIndex: 'Tier',
-			key: 'Tier',
+			title: 'Name',
+			dataIndex: 'customerName',
+			key: 'customerName',
+			width: 300,
+			ellipsis: true,
+			sorter: {
+				compare: (a, b) => (a.customerName > b.customerName) - (a.customerName < b.customerName),
+				multiple: 1,
+			},
 		},
 		{
 			title: 'Country',
 			dataIndex: 'Country',
 			key: 'Country',
+			ellipsis: true,
 		},
 		{
 			title: 'City',
 			dataIndex: 'City',
 			key: 'City',
+			ellipsis: true,
 		},
 		{
-			title: 'State/Province',
+			title: 'Area',
 			dataIndex: 'StateProvince',
 			key: 'StateProvince',
+			ellipsis: true,
 		},
 		{
-			title: 'Postal code',
+			title: 'Zip',
 			dataIndex: 'PostalCode',
 			key: 'PostalCode',
+			ellipsis: true,
 		},
 		{
 			title: 'Created',
 			dataIndex: 'createdOn',
 			key: 'CreatedOn',
+			width: 200,
+			sorter: {
+				compare: (a, b) => new Date(a.createdOn) - new Date(b.createdOn),
+				multiple: 1,
+			},
+		},
+		{
+			title: 'Action',
+			dataIndex: 'id',
+			key: 'id',
+			fixed: 'right',
+			width: 100,
+			render: (text, record) => {
+				console.log(record);
+				return <Link to={`/customer/${record.id}`}>Details</Link>;
+			},
 		},
 	];
 	const [users, setUsers] = useState([]);
@@ -112,6 +126,7 @@ export const UserWidget = ({ kycState, showAll = false }) => {
 					data={users.map((user) => {
 						return {
 							...user,
+							customerName: `${user.Firstname}, ${user.Surname}`,
 							createdOn: new Date(user.createdOn).toLocaleString(),
 						};
 					})}

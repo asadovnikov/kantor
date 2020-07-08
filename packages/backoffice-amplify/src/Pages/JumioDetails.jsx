@@ -77,15 +77,11 @@ export const JumioDetailsPage = () => {
 						</LeftPart>
 						<AntdContent>
 							<ContentContainer>
-								<ContentDivider orientation='left'>WPJ Services Aps</ContentDivider>
-								<WPJServiceWidget jumioData={jumoioData.scanData} />
-							</ContentContainer>
-							<ContentContainer>
 								<ContentDivider orientation='left'>Document Data</ContentDivider>
 								<DocumentDataWidget jumioData={jumoioData.scanData} />
 							</ContentContainer>
 							<ContentContainer>
-								<ContentDivider orientation='left'>Customer Data</ContentDivider>
+								<ContentDivider orientation='left'>Person Data</ContentDivider>
 								<CustomerDataWidget jumioData={jumoioData.scanData} />
 							</ContentContainer>
 							<ContentContainer>
@@ -95,6 +91,10 @@ export const JumioDetailsPage = () => {
 							<ContentContainer>
 								<ContentDivider orientation='left'>Transaction log</ContentDivider>
 								<TransactionLogWidget jumioData={jumoioData.scanData} />
+							</ContentContainer>
+							<ContentContainer>
+								<ContentDivider orientation='left'>WPJ Services Aps</ContentDivider>
+								<WPJServiceWidget jumioData={jumoioData.scanData} />
 							</ContentContainer>
 						</AntdContent>
 					</Layout>

@@ -12,27 +12,27 @@ export const SecurityChecksWidget = ({ jumioData = {} }) => {
 					details={[
 						{
 							label: 'Similarity',
-							value: `Find how to retrieve`,
+							value: `N/A`,
 						},
 						{
 							label: 'Validity',
-							value: `Find how to retrieve`,
+							value: `N/A`,
 						},
 						{
 							label: 'MRZ code',
-							value: `Find how to retrieve`,
+							value: `N/A`,
 						},
 						{
 							label: 'Data positions',
-							value: `Find how to retrieve`,
+							value: `N/A`,
 						},
 						{
 							label: 'Security features',
-							value: `Find how to retrieve`,
+							value: `N/A`,
 						},
 						{
 							label: 'ID check document validation',
-							value: `Find how to retrieve`,
+							value: `N/A`,
 						},
 					]}
 				/>
@@ -43,23 +43,23 @@ export const SecurityChecksWidget = ({ jumioData = {} }) => {
 					details={[
 						{
 							label: 'Reason',
-							value: `Find how to retrieve`,
+							value: `N/A`,
 						},
 						{
 							label: 'Issuing datHand written note',
-							value: `Find how to retrieve`,
+							value: `N/A`,
 						},
 						{
 							label: 'Signature',
-							value: `Find how to retrieve`,
+							value: `N/A`,
 						},
 						{
 							label: 'Microprint',
-							value: `Find how to retrieve`,
+							value: `N/A`,
 						},
 						{
 							label: 'Hologram',
-							value: `Find how to retrieve`,
+							value: `N/A`,
 						},
 					]}
 				/>

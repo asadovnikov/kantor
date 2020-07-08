@@ -4,13 +4,16 @@ import { Link } from 'react-router-dom';
 import { Layout, Menu, Row, Col } from 'antd';
 import { motion, AnimatePresence } from 'framer-motion';
 import styled from 'styled-components';
+import Icon, { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
+
 import {
-	UserOutlined,
-	MenuUnfoldOutlined,
-	MenuFoldOutlined,
-	VideoCameraOutlined,
-	UploadOutlined,
-} from '@ant-design/icons';
+	UsersIcon,
+	BulkUploadIcon,
+	LogoutIcon,
+	KycPendingFilesIcon,
+	TransactionIcon,
+	KycPendingCustomersIcon,
+} from './assets';
 
 import { CurrentUser } from './Components';
 
@@ -55,23 +58,23 @@ export const AdminAppLayout = () => {
 			<FixedSider width={300} trigger={null} collapsible collapsed={collapsed ? true : undefined}>
 				<div className='logo' />
 				<Menu theme='dark' mode='inline' selectedKeys={[location.pathname]}>
-					<Menu.Item key='/' icon={<UserOutlined />}>
+					<Menu.Item key='/' icon={<Icon component={UsersIcon} />}>
 						Customers
 						<Link to='/' />
 					</Menu.Item>
-					<Menu.Item key='/pending' icon={<VideoCameraOutlined />}>
+					<Menu.Item key='/pending' icon={<Icon component={KycPendingCustomersIcon} />}>
 						KYC Pending customers
 						<Link to='/pending' />
 					</Menu.Item>
-					<Menu.Item key='/pendingfiles' icon={<VideoCameraOutlined />}>
+					<Menu.Item key='/pendingfiles' icon={<Icon component={KycPendingFilesIcon} />}>
 						KYC Pending files
 						<Link to='/pendingfiles' />
 					</Menu.Item>
-					<Menu.Item key='/transactions' icon={<UploadOutlined />}>
+					<Menu.Item key='/transactions' icon={<Icon component={TransactionIcon} />}>
 						Transactions
 						<Link to='/transactions' />
 					</Menu.Item>
-					<Menu.Item key='/kycbulk' icon={<UploadOutlined />}>
+					<Menu.Item key='/kycbulk' icon={<Icon component={BulkUploadIcon} />}>
 						Bulk KYC
 						<Link to='/kycbulk' />
 					</Menu.Item>

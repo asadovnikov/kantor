@@ -14,7 +14,7 @@ export const WPJServiceWidget = ({ jumioData = {} }) => {
 					},
 					{
 						label: 'Additional Information',
-						value: `Find how to retrieve`,
+						value: `N/A`,
 					},
 					{
 						label: 'Merchant reference',
@@ -26,7 +26,7 @@ export const WPJServiceWidget = ({ jumioData = {} }) => {
 					},
 					{
 						label: 'Personal number',
-						value: `Find how to retrieve`,
+						value: `N/A`,
 					},
 				]}
 			/>

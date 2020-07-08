@@ -42,7 +42,8 @@ const headers = {
 	'User-Agent': reqData.JumioUserAgent,
 	responseType: 'blob',
 };
-
+const imgUri = 'https://ngh7wgco35.execute-api.us-east-1.amazonaws.com/dev/jumio/document';
+const localUri = 'http://localhost:3010/jumio/document';
 export const ImagePreview = ({ document = {} }) => {
 	const [loading, setLoading] = useState(false);
 	const [imgData, setImgData] = useState();
@@ -56,10 +57,11 @@ export const ImagePreview = ({ document = {} }) => {
 		let isCancelled = false;
 		setLoading(true);
 		axios
-			.get(`http://localhost:3010/jumio/document/${encodeURIComponent(document.href)}`, { responseType: 'blob' })
+			.get(`${imgUri}/${encodeURIComponent(document.href)}`, { responseType: 'blob' })
 			.then((result) => {
 				if (!isCancelled) {
 					console.log(result);
+					debugger;
 					const uri = URL.createObjectURL(result.data);
 					setImgData(uri);
 				}

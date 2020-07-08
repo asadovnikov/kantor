@@ -90,13 +90,6 @@ export const CustomerDetailsPage = () => {
 								<JumioLogWidget person={customer} />
 							</ContentContainer>
 							<ContentContainer>
-								<ContentDivider orientation='left'>Files</ContentDivider>
-								<DocumentsWidget
-									person={customer}
-									items={customer.KYCVerification?.documents?.items.filter((item) => item.documentType === 'UNKNOWN')}
-								/>
-							</ContentContainer>
-							<ContentContainer>
 								<ContentDivider orientation='left'>Processed Files</ContentDivider>
 								<DocumentsWidget
 									person={customer}

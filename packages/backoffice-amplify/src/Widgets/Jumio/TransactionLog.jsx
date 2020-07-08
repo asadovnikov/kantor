@@ -2,7 +2,9 @@ import React from 'react';
 import { ItemDetails } from '../../Components';
 
 export const TransactionLogWidget = ({ jumioData = {} }) => {
-	const { transaction } = jumioData;
+	const { transaction, document, verification } = jumioData;
+	const { rejectReason = {} } = verification;
+	const { rejectReasonDetails = [] } = rejectReason;
 	return (
 		<>
 			<ItemDetails
@@ -14,7 +16,7 @@ export const TransactionLogWidget = ({ jumioData = {} }) => {
 					},
 					{
 						label: 'Verification status',
-						value: transaction.status,
+						value: document.status || 'N/A',
 					},
 
 					{
@@ -35,11 +37,11 @@ export const TransactionLogWidget = ({ jumioData = {} }) => {
 					},
 					{
 						label: 'Reject reason',
-						value: transaction.status,
+						value: rejectReason.rejectReasonDescription || 'N/A',
 					},
 					{
 						label: 'Reason details',
-						value: transaction.status,
+						value: rejectReasonDetails.map((reason) => reason.detailsDescription).join('; '),
 					},
 				]}
 			/>

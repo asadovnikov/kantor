@@ -10,22 +10,29 @@ export const JumioLogWidget = ({ person = {} }) => {
 		{
 			title: 'Date',
 			dataIndex: 'createdOn',
-			key: 'CreatedOn',
+			key: 'createdOn',
+			sorter: {
+				compare: (a, b) => new Date(a.createdOn) - new Date(b.createdOn),
+				multiple: 1,
+			},
 		},
 		{
 			title: 'Type',
 			dataIndex: 'idType',
 			key: 'idType',
+			ellipsis: true,
 		},
 		{
 			title: 'Verification Status',
 			dataIndex: 'verificationStatus',
 			key: 'verificationStatus',
+			ellipsis: true,
 		},
 		{
 			title: 'Country',
 			dataIndex: 'idCountry',
 			key: 'idCountry',
+			ellipsis: true,
 		},
 		{
 			title: 'Action',
@@ -35,7 +42,7 @@ export const JumioLogWidget = ({ person = {} }) => {
 			width: 100,
 			render: (text, record) => {
 				console.log(record);
-				return <Link to={`/customer/${person.id}/${record.scanReference}`}>Details</Link>;
+				return <Link to={`/customer/${person.id}/${record.key}`}>Review</Link>;
 			},
 		},
 	];
@@ -70,9 +77,11 @@ export const JumioLogWidget = ({ person = {} }) => {
 				},
 			} = result;
 			setLogs(
-				items.map((logItem) => {
-					return { createdOn: logItem.createdOn, ...JSON.parse(logItem.dataInput) };
-				})
+				items
+					.map((logItem) => {
+						return { createdOn: logItem.createdOn, ...JSON.parse(logItem.dataInput) };
+					})
+					.filter((logItem) => logItem.callBackType && logItem.callBackType.length > 0)
 			);
 			console.log(result);
 		});

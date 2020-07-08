@@ -14,52 +14,45 @@ const dataColumns = [
 	{
 		title: 'Date',
 		dataIndex: 'createdOn',
-		key: 'CreatedOn',
-	},
-	{
-		title: 'User',
-		dataIndex: 'Firstname',
-		key: 'Firstname',
-		render: (text, record) => {
-			// console.log(record);
-			return (
-				<Space direction='vertical'>
-					<Text strong>
-						{text} {record.Surname}
-					</Text>
-					<Text type='secondary'>{record.Email}</Text>
-				</Space>
-			);
+		key: 'createdOn',
+		sorter: {
+			compare: (a, b) => new Date(a.createdOn) - new Date(b.createdOn),
+			multiple: 1,
 		},
 	},
 	{
-		title: 'Fiat Amount',
-		dataIndex: 'FiatAmount',
-		key: 'FiatAmount',
-		render: (text, record) => {
-			return (
-				<Text>
-					{parseInt(text) / 100} {record.FiatCurrency}
-				</Text>
-			);
+		title: 'Name',
+		dataIndex: 'customerName',
+		key: 'customerName',
+		ellipsis: true,
+	},
+	{
+		title: 'Email',
+		dataIndex: 'Email',
+		key: 'Email',
+		ellipsis: true,
+		sorter: {
+			compare: (a, b) => (a.Email > b.Email) - (a.Email < b.Email),
+			multiple: 1,
 		},
 	},
 	{
-		title: 'BTC Amount',
-		dataIndex: 'CryptoAmount',
-		key: 'CryptoAmount',
-		render: (text, record) => {
-			return (
-				<Text>
-					{text} {record.CryptoCurrency}
-				</Text>
-			);
-		},
+		title: 'Fiat',
+		dataIndex: 'transactionFiat',
+		key: 'transactionFiat',
+		ellipsis: true,
+	},
+	{
+		title: 'BTC',
+		dataIndex: 'transactionCrypto',
+		key: 'transactionCrypto',
+		ellipsis: true,
 	},
 	{
 		title: 'BTC address',
 		dataIndex: 'CryptoAddress',
 		key: 'CryptoAddress',
+		ellipsis: true,
 	},
 ];
 
@@ -95,6 +88,9 @@ export const TransactionsWidget = () => {
 					data={transactions.map((transaction) => {
 						return {
 							...transaction,
+							customerName: `${transaction.Firstname}, ${transaction.Surname}`,
+							transactionFiat: `${(parseInt(transaction.FiatAmount) / 100).toFixed(2)} ${transaction.FiatCurrency}`,
+							transactionCrypto: `${parseFloat(transaction.CryptoAmount).toFixed(8)} ${transaction.CryptoCurrency}`,
 							createdOn: new Date(transaction.createdOn).toLocaleString(),
 						};
 					})}

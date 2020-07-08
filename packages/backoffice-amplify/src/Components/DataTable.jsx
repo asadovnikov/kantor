@@ -4,7 +4,7 @@ import { Table, Input, Button, Space } from 'antd';
 import Highlighter from 'react-highlight-words';
 import { SearchOutlined } from '@ant-design/icons';
 
-export const DataTable = ({ columns, data, pagination, scroll, bordered, size, onRowClick = () => {} }) => {
+export const DataTable = ({ columns, data, pagination, scroll, bordered, size = 'small', onRowClick = () => {} }) => {
 	const [searchText, setSearchText] = useState();
 	const [searchedColumn, setSearchedColumn] = useState();
 	let searchInput;
@@ -72,6 +72,7 @@ export const DataTable = ({ columns, data, pagination, scroll, bordered, size, o
 	return (
 		<Table
 			pagination={pagination}
+			tableLayout='fixed'
 			scroll={scroll}
 			bordered={bordered}
 			size={size}
