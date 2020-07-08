@@ -26,25 +26,22 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
+export const ProgressElementButton = (props) => {
+	const { loading, children, ...rest } = props;
+	const classes = useStyles();
+	return (
+		<>
+			<Button disabled={loading} {...rest}>
+				{children}
+			</Button>
+			{loading && <CircularProgress size={24} className={classes.buttonProgress} />}
+		</>
+	);
+};
+
 export const ProgressButton = (props) => {
 	const { loading, children, disabled, ...rest } = props;
 	const classes = useStyles();
-	// const timer = React.useRef();
-
-	// const buttonClassName = clsx({
-	//   [classes.buttonSuccess]: success,
-	// });
-
-	// const handleButtonClick = () => {
-	//   if (!loading) {
-	//     setSuccess(false);
-	//     setLoading(true);
-	//     timer.current = setTimeout(() => {
-	//       setSuccess(true);
-	//       setLoading(false);
-	//     }, 2000);
-	//   }
-	// };
 
 	return (
 		<div className={classes.wrapper}>

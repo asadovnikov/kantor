@@ -9,6 +9,9 @@ export { KYCStatusWidget } from './KYCStatus';
 export { PaymentProvidersWidget } from './PaymentProviders';
 export { UserProfileWidget } from './UserProfile';
 export { SettingsWidget } from './Settings';
+export { ResetPasswordWidget } from './PasswordChange/ResetPassword';
+export { ChangePasswordWidget } from './PasswordChange/ChangePassword';
+export { ChangeCurrentPasswordWidget } from './PasswordChange/ChangeCurrentPassword';
 export {
 	VerificationSuccessWidget,
 	NotFoundWidget,

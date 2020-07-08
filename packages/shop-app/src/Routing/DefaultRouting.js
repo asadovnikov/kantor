@@ -5,11 +5,22 @@ import { KYCPage } from '../Pages/KYC';
 import { PrivacyPolicy, CookiesPolicy, TermsPage, ProcessingKYCPage } from '../Pages/Static';
 import SignInForm from '../Pages/registration/SignInForm';
 import SignUpForm from '../Pages/registration/SignUpForm';
-import ResetPasswordPage from '../Pages/registration/ResetPasswordPage';
-import { EmailCodePage } from '../Pages/registration';
-import { HomePage, Transactions, MyWallets, BuyBTC, ProfilePage, SettingsPage } from '../Pages/secured';
+import { EmailCodePage, ResetPasswordPage } from '../Pages/registration';
+import {
+	HomePage,
+	Transactions,
+	MyWallets,
+	BuyBTC,
+	ProfilePage,
+	SettingsPage,
+	ChangePasswordPage,
+} from '../Pages/secured';
 
 export const routes = [
+	{
+		path: '/change-password',
+		component: ChangePasswordPage,
+	},
 	{
 		path: '/reset-password',
 		component: ResetPasswordPage,

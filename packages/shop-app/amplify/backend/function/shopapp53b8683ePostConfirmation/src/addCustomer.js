@@ -85,6 +85,10 @@ exports.addCustomer = async (event) => {
 			KYCState: 'INITIATED',
 			VerificationID: verificationId,
 			customerKYCVerificationId: verificationId,
+			EmploymentStatus: userAttributes['custom:employmentStatus'],
+			SourceOfFunds: userAttributes['custom:sourceOfFunds'],
+			Occupation: userAttributes['custom:occupation'],
+			AnnualDeposit: userAttributes['custom:yearIncome'],
 		},
 	};
 

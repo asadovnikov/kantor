@@ -1,10 +1,7 @@
 import React from 'react';
-import { AuthContext } from '../Components/AuthContext';
-import { id, address, finance } from '../assets';
-import { Card, Col, Row, Avatar } from 'antd';
+import { useHistory } from 'react-router-dom';
 import { Container, Paper, Grid, Typography, ButtonBase } from '@material-ui/core';
 import { resetPassword, cancelAccount } from '../assets';
-import { VerificationSuccessWidget } from './IllustrateResult';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -32,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 const SettingsAction = ({ onClick, icon, title }) => {
 	const classes = useStyles();
 	return (
-		<ButtonBase className={classes.root} component='div'>
+		<ButtonBase className={classes.root} onClick={onClick} component='div'>
 			<div className={classes.root}>
 				<Paper className={classes.paper}>
 					<Grid container spacing={2}>
@@ -54,10 +51,11 @@ const SettingsAction = ({ onClick, icon, title }) => {
 };
 
 export const SettingsWidget = () => {
+	const history = useHistory();
 	return (
 		<>
 			<Grid container direction='column' justify='center' alignItems='stretch'>
-				<SettingsAction icon={resetPassword} title='Change password' />
+				<SettingsAction onClick={() => history.push('/change-password')} icon={resetPassword} title='Change password' />
 				<SettingsAction icon={cancelAccount} title='Close account' />
 			</Grid>
 		</>

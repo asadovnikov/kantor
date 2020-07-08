@@ -6,6 +6,7 @@ import HolderPage from './HolderPage';
 import AddressPage from './AddressPage';
 import FinancePage from './FinancePage';
 import { EmailCodePage } from './EmailCodePage';
+import { ErrorMessage } from '../../Components';
 
 const SignUpForm = () => {
 	const userRegistrationInfo = {
@@ -30,6 +31,7 @@ const SignUpForm = () => {
 	const [currentUser, setCurrentUser] = useState();
 	const [loadingState, setLoadingState] = useState(false);
 	const [commitUser, setCommitUser] = useState(false);
+	const [showMessage, setShowMessage] = useState(false);
 
 	const doVerify = () => {
 		setLoadingState(true);
@@ -98,7 +100,7 @@ const SignUpForm = () => {
 			})
 			.catch((err) => {
 				console.error(err);
-				message.error('Something went wrong, please check provided data');
+				showMessage(true);
 			})
 			.finally(() => {
 				setLoadingState(false);
@@ -108,6 +110,11 @@ const SignUpForm = () => {
 	// const steps = [];
 	return (
 		<>
+			<ErrorMessage
+				message={`Something went wrong, please check provided data!`}
+				open={showMessage}
+				onClose={() => setShowMessage(false)}
+			/>
 			{step === 0 && (
 				<HolderPage value={basicInfo} onChange={(props) => setBasicInfo(props)} onApply={() => setStep(1)} />
 			)}

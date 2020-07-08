@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
-
-import { Typography, Space, message } from 'antd';
-import { Redirect } from 'react-router-dom';
+import { ButtonBase, Typography } from '@material-ui/core';
+import { Space, message } from 'antd';
+import { Redirect, Link as RouterLink } from 'react-router-dom';
 import { Auth } from 'aws-amplify';
 import { MaterialPass, MaterialTxt } from './components/LabeledInput';
 import { RegistrationHeader, RegistrationForm, RegistrationContent, RegistrationContentRow } from './components';
-// import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
-const { Link } = Typography;
-
 const SignInForm = () => {
 	const [userName, setUserName] = useState('');
 	const [password, setPassword] = useState('');
@@ -33,6 +30,15 @@ const SignInForm = () => {
 			})
 			.finally(() => setLoadingState(false));
 	};
+	const RegistrationLink = () => {
+		return (
+			<ButtonBase component={RouterLink} to='/signup'>
+				<Typography variant='body2' color='primary'>
+					Register now for free.
+				</Typography>
+			</ButtonBase>
+		);
+	};
 	return (
 		<RegistrationForm>
 			{isLoggedIn === true && <Redirect to='/' />}
@@ -40,7 +46,7 @@ const SignInForm = () => {
 			<RegistrationHeader
 				Main='Sign in to your account'
 				Secondary={`Don't have account?`}
-				SecondaryExtra={<Link href='/signup'>Register now for free.</Link>}
+				Extra={<RegistrationLink />}
 			/>
 
 			<RegistrationContent isLoading={loadingState} onAction={doSignIn} actionText='Sign in'>
@@ -64,8 +70,10 @@ const SignInForm = () => {
 				</RegistrationContentRow>
 				<RegistrationContentRow>
 					<Space>
-						<Typography.Text type='secondary'>Forgot your password?</Typography.Text>
-						<Link href='/reset-password'>Reset password</Link>
+						<Typography color='primary' variant='body2' type='secondary'>
+							Forgot your password?
+						</Typography>
+						<RouterLink to='/reset-password'>Reset password</RouterLink>
 					</Space>
 				</RegistrationContentRow>
 			</RegistrationContent>

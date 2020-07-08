@@ -1,3 +1,35 @@
+enum EmploymentStatus {
+	STUDENT
+	EMPLOYED
+	SELFEMPLOYED
+	RETIRED
+}
+
+enum SourceOfFunds {
+	SALARY
+	DIVIDENDS
+	INHERITANCE
+	SAVINGS
+	GIFT
+	OTHER
+}
+
+enum Occupation {
+	CONSTRUCTIONREALESTATE
+	EDUCATION
+	EMERGENCYSERVICE
+	FINANCIALSERVICEBANKING
+	FINANCIALSERVICEINSURANCE
+}
+
+enum AnnualDeposit {
+	UP10K
+	FROM10KTO50K
+	FROM50KTO150K
+	FROM150KTO500K
+	MORE500K
+}
+
 enum PaymentRequestStatus {
 	RECEIVED
 	APPROVED
@@ -166,6 +198,10 @@ type Customer
 	PaymentTransactions: [Transaction] @connection(name: "CustomerPaymentTransaction")
 	KYCVerification: Verification @connection(name: "CustomerVerification")
 	comments: [Comment] @connection(name: "CustomerComment")
+	EmploymentStatus: EmploymentStatus
+	SourceOfFunds: SourceOfFunds
+	Occupation: Occupation
+	AnnualDeposit: AnnualDeposit
 }
 
 type JumioVerifyMetaData

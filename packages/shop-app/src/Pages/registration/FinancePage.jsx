@@ -11,98 +11,98 @@ import FormControl from '@material-ui/core/FormControl';
 const occupationData = [
 	{
 		name: 'Student',
-		value: 'student',
+		value: 'STUDENT',
 	},
 	{
 		name: 'Employed',
-		value: 'employed',
+		value: 'EMPLOYED',
 	},
 	{
 		name: 'Self Employed',
-		value: 'selfEmployed',
+		value: 'SELFEMPLOYED',
 	},
 	{
 		name: 'Unemployed',
-		value: 'unemployed',
+		value: 'UNEMPLOYED',
 	},
 	{
 		name: 'Retired',
-		value: 'retired',
+		value: 'RETIRED',
 	},
 ];
 
 const professionData = [
 	{
 		name: 'Construction/Real estate',
-		value: 'constructionRealEstate',
+		value: 'CONSTRUCTIONREALESTATE',
 	},
 	{
 		name: 'Education',
-		value: 'education',
+		value: 'EDUCATION',
 	},
 	{
 		name: 'Emergency service',
-		value: 'emergencyService',
+		value: 'EMERGENCYSERVICE',
 	},
 	{
 		name: 'Financial Service - Banking',
-		value: 'financialServiceBanking',
+		value: 'FINANCIALSERVICEBANKING',
 	},
 	{
 		name: 'Financial Service - Insurance',
-		value: 'financialServiceInsurance',
+		value: 'FINANCIALSERVICEINSURANCE',
 	},
 ];
 const annualDepositeData = [
 	{
 		name: 'Up to €10,000',
-		value: 'up10k',
+		value: 'UP10K',
 	},
 	{
 		name: 'From €10,000 to €50,000',
-		value: 'from10kto50k',
+		value: 'FROM10KTO50K',
 	},
 	{
 		name: 'From €50,000 to €150,000',
-		value: 'from50kto150k',
+		value: 'FROM50KTO150K',
 	},
 	{
 		name: 'From $150,000 to €500,000',
-		value: 'from150kto500k',
+		value: 'FROM150KTO500K',
 	},
 	{
 		name: 'More than €500k',
-		value: 'more500k',
+		value: 'MORE500K',
 	},
 ];
 const sourceOfFundsData = [
 	{
 		name: 'Salary',
-		value: 'salary',
+		value: 'SALARY',
 	},
 	{
-		name: 'Dividents',
-		value: 'dividents',
+		name: 'Dividends',
+		value: 'DIVIDENDS',
 	},
 	{
 		name: 'Inheritance',
-		value: 'inheritance',
+		value: 'INHERITANCE',
 	},
 	{
 		name: 'Savings',
-		value: 'Savings',
+		value: 'SAVINGS',
 	},
 	{
 		name: 'Investment proceed',
-		value: 'investmentProceed',
+		value: 'INVESTMENTPROCEED',
 	},
 	{
 		name: 'Gift',
-		value: 'gift',
+		value: 'GIFT',
 	},
 	{
 		name: 'Other',
-		value: 'other',
+		value: 'OTHER',
 	},
 ];
 
