@@ -112,6 +112,7 @@ app.get('/jumio/document/:documentRef', async (req, res) => {
 	const { documentRef } = req.params;
 	try {
 		const result = await getJumioImage(documentRef);
+		res.type('blob');
 		result.data.pipe(res);
 
 		// res.json({ success: 'get call succeed!', doc: documentRef });
