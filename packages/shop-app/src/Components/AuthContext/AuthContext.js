@@ -2,7 +2,7 @@ import React, { useEffect, useState, createContext } from 'react';
 import { v4 as uuid } from 'uuid';
 import { Auth, Hub } from 'aws-amplify';
 import { API, graphqlOperation } from 'aws-amplify';
-import { getCustomer } from '../../graphql/queries';
+import { getCustomer } from '../../shopGraph/queries';
 
 export const AuthContext = createContext();
 

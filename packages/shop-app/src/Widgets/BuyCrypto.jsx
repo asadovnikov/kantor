@@ -15,8 +15,8 @@ import { Container, Grid } from '@material-ui/core';
 import { v4 as uuid } from 'uuid';
 
 import { API, graphqlOperation } from 'aws-amplify';
-import { listUserWalletss } from '../graphql/queries';
-import { createTransaction } from '../graphql/mutations';
+import { listUserWalletss } from '../shopGraph/queries';
+import { createTransaction } from '../shopGraph/mutations';
 import { CurrencySelect } from '../Components/Inputs';
 import { ProgressButton } from '../Components';
 // import { withAuthenticator } from '@aws-amplify/ui-react';

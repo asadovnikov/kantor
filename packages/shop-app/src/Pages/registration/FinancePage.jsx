@@ -8,7 +8,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 // import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 
-const occupationData = [
+const employmentStatusData = [
 	{
 		name: 'Student',
 		value: 'STUDENT',
@@ -31,7 +31,7 @@ const occupationData = [
 	},
 ];
 
-const professionData = [
+const occupationData = [
 	{
 		name: 'Construction/Real estate',
 		value: 'CONSTRUCTIONREALESTATE',
@@ -161,12 +161,14 @@ const FinancePage = ({ value = {}, onChange = () => {}, onValidate, onApply, isL
 							fullWidth
 							size='large'
 							placeholder='Select one'
-							value={occupation}
+							value={employmentStatus}
 							onChange={({ target: { value } }) => {
-								setOccupation(value);
+								setEmploymentStatus(value);
 							}}>
-							{occupationData.map((occupation) => (
-								<MenuItem value={occupation.value}>{occupation.name}</MenuItem>
+							{employmentStatusData.map((employmentStatusItem) => (
+								<MenuItem key={employmentStatusItem.value} value={employmentStatusItem.value}>
+									{employmentStatusItem.name}
+								</MenuItem>
 							))}
 						</Select>
 					</FormControl>
@@ -178,12 +180,14 @@ const FinancePage = ({ value = {}, onChange = () => {}, onValidate, onApply, isL
 							fullWidth
 							size='large'
 							placeholder='Select one'
-							value={employmentStatus}
+							value={occupation}
 							onChange={({ target: { value } }) => {
-								setEmploymentStatus(value);
+								setOccupation(value);
 							}}>
-							{professionData.map((profession) => (
-								<MenuItem value={profession.value}>{profession.name}</MenuItem>
+							{occupationData.map((occupationItem) => (
+								<MenuItem key={occupationItem.value} value={occupationItem.value}>
+									{occupationItem.name}
+								</MenuItem>
 							))}
 						</Select>
 					</FormControl>
@@ -195,12 +199,14 @@ const FinancePage = ({ value = {}, onChange = () => {}, onValidate, onApply, isL
 							fullWidth
 							size='large'
 							placeholder='Select one'
-							value={sourceOfFunds}
+							value={yearIncome}
 							onChange={({ target: { value } }) => {
-								setSourceOfFunds(value);
+								setYearIncome(value);
 							}}>
 							{annualDepositeData.map((deposite) => (
-								<MenuItem value={deposite.value}>{deposite.name}</MenuItem>
+								<MenuItem key={deposite.value} value={deposite.value}>
+									{deposite.name}
+								</MenuItem>
 							))}
 						</Select>
 					</FormControl>
@@ -212,12 +218,14 @@ const FinancePage = ({ value = {}, onChange = () => {}, onValidate, onApply, isL
 							fullWidth
 							size='large'
 							placeholder='Select one'
-							value={yearIncome}
+							value={sourceOfFunds}
 							onChange={({ target: { value } }) => {
-								setYearIncome(value);
+								setSourceOfFunds(value);
 							}}>
 							{sourceOfFundsData.map((source) => (
-								<MenuItem value={source.value}>{source.name}</MenuItem>
+								<MenuItem key={source.value} value={source.value}>
+									{source.name}
+								</MenuItem>
 							))}
 						</Select>
 					</FormControl>

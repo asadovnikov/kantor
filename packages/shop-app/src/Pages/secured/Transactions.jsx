@@ -2,8 +2,6 @@ import React from 'react';
 import { AppPage } from '../../Layouts';
 import { TransactionsWidget } from '../../Widgets';
 import { motion, AnimatePresence } from 'framer-motion';
-// import Grow from '@material-ui/core/Grow';
-import ReceiptTwoToneIcon from '@material-ui/icons/ReceiptTwoTone';
 import { TransactionIcon } from '../../assets/Icons';
 
 export const Transactions = () => {

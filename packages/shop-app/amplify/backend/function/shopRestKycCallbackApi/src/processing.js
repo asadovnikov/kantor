@@ -37,9 +37,10 @@ const addJumioMeta = async (verificationId, data, meta, verType) => {
 		input: {
 			id: uuid(),
 			dataInput: data,
-			metaInfo: meta,
+			verificationID: verificationId,
 			inputType: verType,
-			jumioVerifyMetaDataVerificationId: verificationId,
+			metaInfo: meta,			
+			JumioVerifyStatus: 'PENDING',			
 		},
 	};
 	try {
@@ -54,7 +55,8 @@ const addJumioMeta = async (verificationId, data, meta, verType) => {
 				variables: jumioMeta,
 			},
 		});
-		console.log(JSON.stringify(jumioData));
+		const {data} = jumioData;
+		console.log(JSON.stringify(data));
 	} catch (error) {
 		console.log(error);
 	}
@@ -81,7 +83,8 @@ const updateVerificationState = async (verificationId, jumioData) => {
 						variables: verificationData,
 					},
 				});
-				console.log(JSON.stringify(jumioData));
+				const {data} = jumioData;
+				console.log(JSON.stringify(data));
 			} catch (error) {
 				console.log(error);
 			}

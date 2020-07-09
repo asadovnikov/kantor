@@ -91,6 +91,7 @@ const SignUpForm = () => {
 		// 				message.error('Something went wrong, please check provided data');
 		// 			});
 		// 	})
+		debugger;
 		Auth.signUp(dataObj)
 			.then(({ user }) => {
 				console.log(user);

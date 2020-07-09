@@ -9,7 +9,7 @@ const createCustomerQuery = require('./customer.js').mutation;
 const createVerificationQuery = require('./verification.js').mutation;
 const apiKey = 'da2-ay7fisbaqrd3tid7nrisjksjka';
 
-const createVerification = async (verificationId) => {
+const createVerification = async (verificationId, customerId) => {
 	console.log('Add verification');
 	const req = new AWS.HttpRequest(appsyncUrl, region);
 	const verification = {
@@ -18,6 +18,7 @@ const createVerification = async (verificationId) => {
 			idVerification: 'FAILED',
 			poaVerification: 'FAILED',
 			financeVerification: 'FAILED',
+			customerID:customerId
 		},
 	};
 
@@ -48,6 +49,7 @@ const createVerification = async (verificationId) => {
 		httpRequest.end();
 	});
 
+	console.log(JSON.stringify(data));
 	return {
 		statusCode: 200,
 		body: data,
@@ -61,7 +63,7 @@ exports.addCustomer = async (event) => {
 		request: { userAttributes },
 	} = event;
 
-	await createVerification(verificationId);
+	await createVerification(verificationId, event.userName);
 
 	const customer = {
 		input: {
@@ -84,11 +86,12 @@ exports.addCustomer = async (event) => {
 			Tier: 'HIGH',
 			KYCState: 'INITIATED',
 			VerificationID: verificationId,
-			customerKYCVerificationId: verificationId,
+			kycVerificationID: verificationId,
 			EmploymentStatus: userAttributes['custom:employmentStatus'],
 			SourceOfFunds: userAttributes['custom:sourceOfFunds'],
 			Occupation: userAttributes['custom:occupation'],
 			AnnualDeposit: userAttributes['custom:yearIncome'],
+			State: 'ACTIVE'
 		},
 	};
 
@@ -113,12 +116,11 @@ exports.addCustomer = async (event) => {
 			result.on('data', (data) => {
 				resolve(JSON.parse(data.toString()));
 			});
-		});
-
+		});		
 		httpRequest.write(req.body);
 		httpRequest.end();
 	});
-
+	console.log(JSON.stringify(data));
 	return {
 		statusCode: 200,
 		body: data,

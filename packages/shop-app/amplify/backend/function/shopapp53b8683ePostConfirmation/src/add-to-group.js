@@ -23,7 +23,7 @@ exports.handler = async (event, context, callback) => {
 	}
 
 	try {
-		addCustomer(event);
+		await addCustomer(event);
 	} catch (error) {
 		console.log(error);
 	}

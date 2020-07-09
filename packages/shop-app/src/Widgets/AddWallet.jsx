@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 // import { message } from 'antd';
 import { makeStyles } from '@material-ui/core/styles';
 import { API, graphqlOperation } from 'aws-amplify';
-import { createUserWallets } from '../graphql/mutations';
+import { createUserWallets } from '../shopGraph/mutations';
 import { v4 as uuid } from 'uuid';
 import { TextInput } from '../Components/Inputs';
 import Grid from '@material-ui/core/Grid';
