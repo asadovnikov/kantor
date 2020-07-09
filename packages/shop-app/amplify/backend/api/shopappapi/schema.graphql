@@ -14,6 +14,11 @@ enum SourceOfFunds {
 	OTHER
 }
 
+enum JumioVerifyStatus {
+	PENDING
+	VERIFIED
+}
+
 enum Occupation {
 	CONSTRUCTIONREALESTATE
 	EDUCATION
@@ -173,7 +178,7 @@ type Customer
 			{ allow: owner }
 			{ allow: groups, groups: ["Admins"] }
 			{ allow: public, provider: apiKey }
-			{ allow: groups, groups: ["Customers"], operations: [read], queries: [get] }
+			{ allow: groups, groups: ["Customers"], operations: [read] }
 		]
 	) {
 	id: ID!
@@ -212,6 +217,7 @@ type JumioVerifyMetaData
 	Verification: Verification @connection(name: "VerificationJumioVerify")
 	inputType: String
 	metaInfo: String
+	JumioVerifyStatus: JumioVerifyStatus
 }
 
 type Comment
