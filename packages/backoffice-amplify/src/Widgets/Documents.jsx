@@ -3,13 +3,7 @@ import { DocumentPreview, DocumentUploader } from '../Components';
 import { Row, Col } from 'antd';
 import { Auth } from 'aws-amplify';
 import API, { graphqlOperation } from '@aws-amplify/api';
-import { onCreateKycDocument } from '../graphql/subscriptions';
-// import { Auth } from 'aws-amplify';
-// import { Upload, message } from 'antd';
-// import { v4 as uuid } from 'uuid';
-// import { API, graphqlOperation } from 'aws-amplify';
-// import { createKycDocument } from '../graphql/mutations';
-// import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
+import { onCreateKycDocument } from '../backGraph/subscriptions';
 
 export const DocumentsWidget = ({ items = [], person = {}, showUpload = true }) => {
 	const [documentItems, setDocumentItems] = useState(items);

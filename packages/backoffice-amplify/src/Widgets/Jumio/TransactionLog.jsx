@@ -3,8 +3,10 @@ import { ItemDetails } from '../../Components';
 
 export const TransactionLogWidget = ({ jumioData = {} }) => {
 	const { transaction, document, verification } = jumioData;
+	debugger;
 	const { rejectReason = {} } = verification;
-	const { rejectReasonDetails = [] } = rejectReason;
+	const { rejectReasonDetails } = rejectReason;
+	const reason = Array.isArray(rejectReasonDetails) ? rejectReasonDetails : (rejectReasonDetails ? [rejectReasonDetails] : [])
 	return (
 		<>
 			<ItemDetails
@@ -41,7 +43,7 @@ export const TransactionLogWidget = ({ jumioData = {} }) => {
 					},
 					{
 						label: 'Reason details',
-						value: rejectReasonDetails.map((reason) => reason.detailsDescription).join('; '),
+						value: reason.map((reason) => reason.detailsDescription).join('; '),
 					},
 				]}
 			/>

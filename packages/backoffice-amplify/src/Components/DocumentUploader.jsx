@@ -3,7 +3,7 @@ import { Upload } from 'antd';
 import Storage from '@aws-amplify/storage';
 import { v4 as uuid } from 'uuid';
 import { API, graphqlOperation } from 'aws-amplify';
-import { createKycDocument } from '../graphql/mutations';
+import { createKycDocument } from '../backGraph/mutations';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 
 export const DocumentUploader = ({ person: { KYCVerification } }) => {

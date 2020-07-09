@@ -6,7 +6,7 @@ import moment from 'moment';
 import Avatar from 'react-avatar';
 
 import { API, graphqlOperation } from 'aws-amplify';
-import { createComment } from '../graphql/mutations';
+import { createComment } from '../backGraph/mutations';
 
 const { TextArea } = Input;
 

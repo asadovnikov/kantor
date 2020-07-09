@@ -4,7 +4,7 @@ import { Empty, Spin, Typography, Space } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 
 import { API, graphqlOperation } from 'aws-amplify';
-import { listTransactions } from '../graphql/queries';
+import { listTransactions } from '../backGraph/queries';
 
 const { Text } = Typography;
 

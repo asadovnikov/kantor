@@ -3,7 +3,7 @@ import { LoadingOutlined } from '@ant-design/icons';
 import { DataTable } from '../Components';
 import { Empty, Typography, Spin, Space } from 'antd';
 import { API, graphqlOperation } from 'aws-amplify';
-import { listTransactions } from '../graphql/queries';
+import { listTransactions } from '../backGraph/queries';
 
 const { Text } = Typography;
 

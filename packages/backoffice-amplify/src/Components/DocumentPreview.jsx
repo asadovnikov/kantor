@@ -6,7 +6,7 @@ import { LoadingOutlined } from '@ant-design/icons';
 import axios from 'axios';
 
 import { API, graphqlOperation } from 'aws-amplify';
-import { updateKycDocument } from '../graphql/mutations';
+import { updateKycDocument } from '../backGraph/mutations';
 // import { S3Image } from 'aws-amplify-react';
 
 const { Option } = Select;

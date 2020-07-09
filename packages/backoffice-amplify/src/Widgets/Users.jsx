@@ -4,7 +4,7 @@ import { Empty, Spin, Typography, Space } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { API, graphqlOperation } from 'aws-amplify';
-import { listCustomers } from '../graphql/queries';
+import { listCustomers } from '../backGraph/queries';
 
 const { Text } = Typography;
 

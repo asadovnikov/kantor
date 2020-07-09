@@ -17,7 +17,7 @@ import {
 	JumioLogWidget,
 } from '../Widgets';
 import { API, graphqlOperation } from 'aws-amplify';
-import { getCustomer } from '../graphql/queries';
+import { getCustomer } from '../backGraph/queries';
 const { Sider, Content } = Layout;
 const loadingIndicator = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { DataTable } from '../Components';
 import { Empty } from 'antd';
 import { API, graphqlOperation } from 'aws-amplify';
-import { getVerification } from '../backGraph/queries';
+import { listJumioVerifyMetaDatas } from '../backGraph/queries';
 
-export const JumioLogWidget = ({ person = {} }) => {
+export const PendingJumioFilesWidget = () => {
 	const dataColumns = [
 		{
 			title: 'Date',
@@ -42,41 +42,25 @@ export const JumioLogWidget = ({ person = {} }) => {
 			width: 100,
 			render: (text, record) => {
 				console.log(record);
-				return <Link to={`/customer/${person.id}/${record.key}`}>Review</Link>;
+				return <Link to={`/customer/${record.id}/${record.key}`}>Review</Link>;
 			},
 		},
 	];
-	const { KYCVerification = {} } = person;
-	const [logs, setLogs] = useState([]);
-	const history = useHistory();
-
-	// const onJumioRowClick = (record) => {
-	// 	return {
-	// 		onClick: () => {
-	// 			history.push(`/customer/${person.id}/${record.jumioIdScanReference}`);
-	// 		},
-	// 	};
-	// };
-
-	const { id } = KYCVerification;
-
-	// const items = [];
-
+	const [files, setFiles] = useState([]);
 	useEffect(() => {
 		let isCancelled = false;
 		API.graphql(
-			graphqlOperation(getVerification, {
-				id: id,
-			})
+			graphqlOperation(listJumioVerifyMetaDatas)
 		).then((result) => {
+			debugger;
 			const {
 				data: {
-					getVerification: {
-						jumioVerifications: { items = [] },
+					listJumioVerifyMetaDatas: {
+						items = [] ,
 					},
 				},
 			} = result;
-			setLogs(
+			setFiles(
 				items
 					.map((logItem) => {
 						return { createdOn: logItem.createdOn, ...JSON.parse(logItem.dataInput) };
@@ -86,16 +70,16 @@ export const JumioLogWidget = ({ person = {} }) => {
 			console.log(result);
 		});
 		return () => (isCancelled = true);
-	}, [id]);
+	}, []);
 	return (
 		<>
-			{logs.length > 0 ? (
+			{files.length > 0 ? (
 				<DataTable
 					pagination={{ pageSize: 5 }}
 					scroll={{ y: 300 }}
 					bordered={true}
 					size='small'
-					data={logs.map((item) => {
+					data={files.map((item) => {
 						// console.log(item);
 						return {
 							...item,

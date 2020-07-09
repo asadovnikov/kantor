@@ -8,6 +8,7 @@ import {
 	PendingCustomersPage,
 	CustomerDetailsPage,
 	JumioDetailsPage,
+	PendingJumioFilesPage
 } from '../Pages';
 
 import { TestPage } from '../Pages/TestPage';
@@ -24,6 +25,10 @@ export const BaseRoutes = () => {
 			<Route path='/customers'>
 				<CustomersPage />
 			</Route>
+			<Route path='/pendingfiles'>
+				<PendingJumioFilesPage />
+			</Route>
+			
 			<Route exact path='/customer/:customerId'>
 				<CustomerDetailsPage />
 			</Route>

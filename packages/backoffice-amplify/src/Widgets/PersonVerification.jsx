@@ -6,7 +6,7 @@ import { KYCValidationWidget } from './KYCValidation';
 import { UserSwitchOutlined, MinusSquareOutlined, CheckOutlined } from '@ant-design/icons';
 
 import { API, graphqlOperation } from 'aws-amplify';
-import { updateVerification } from '../graphql/mutations';
+import { updateVerification } from '../backGraph/mutations';
 
 const SetManualBtn = styled(Button)``;
 const ActionContainer = styled.div`
