@@ -224,6 +224,10 @@ export const createTransaction = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -231,6 +235,10 @@ export const createTransaction = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -262,6 +270,10 @@ export const createTransaction = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -312,6 +324,10 @@ export const createTransaction = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -345,6 +361,10 @@ export const createTransaction = /* GraphQL */ `
           }
           nextToken
         }
+        EmploymentStatus
+        SourceOfFunds
+        Occupation
+        AnnualDeposit
         createdOn
         updatedOn
         owner
@@ -422,6 +442,10 @@ export const createTransaction = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -429,6 +453,10 @@ export const createTransaction = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -460,6 +488,10 @@ export const createTransaction = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -510,6 +542,10 @@ export const createTransaction = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -608,6 +644,10 @@ export const createTransaction = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -709,6 +749,10 @@ export const createTransaction = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -728,6 +772,10 @@ export const createTransaction = /* GraphQL */ `
               }
               nextToken
             }
+            EmploymentStatus
+            SourceOfFunds
+            Occupation
+            AnnualDeposit
             createdOn
             updatedOn
             owner
@@ -762,6 +810,10 @@ export const createTransaction = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -864,6 +916,10 @@ export const createTransaction = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -908,6 +964,10 @@ export const createTransaction = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -992,6 +1052,10 @@ export const createTransaction = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -1172,6 +1236,10 @@ export const updateTransaction = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -1179,6 +1247,10 @@ export const updateTransaction = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -1210,6 +1282,10 @@ export const updateTransaction = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -1260,6 +1336,10 @@ export const updateTransaction = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -1293,6 +1373,10 @@ export const updateTransaction = /* GraphQL */ `
           }
           nextToken
         }
+        EmploymentStatus
+        SourceOfFunds
+        Occupation
+        AnnualDeposit
         createdOn
         updatedOn
         owner
@@ -1370,6 +1454,10 @@ export const updateTransaction = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -1377,6 +1465,10 @@ export const updateTransaction = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -1408,6 +1500,10 @@ export const updateTransaction = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -1458,6 +1554,10 @@ export const updateTransaction = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -1556,6 +1656,10 @@ export const updateTransaction = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -1657,6 +1761,10 @@ export const updateTransaction = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -1676,6 +1784,10 @@ export const updateTransaction = /* GraphQL */ `
               }
               nextToken
             }
+            EmploymentStatus
+            SourceOfFunds
+            Occupation
+            AnnualDeposit
             createdOn
             updatedOn
             owner
@@ -1710,6 +1822,10 @@ export const updateTransaction = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -1812,6 +1928,10 @@ export const updateTransaction = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -1856,6 +1976,10 @@ export const updateTransaction = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -1940,6 +2064,10 @@ export const updateTransaction = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -2120,6 +2248,10 @@ export const deleteTransaction = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -2127,6 +2259,10 @@ export const deleteTransaction = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -2158,6 +2294,10 @@ export const deleteTransaction = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -2208,6 +2348,10 @@ export const deleteTransaction = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -2241,6 +2385,10 @@ export const deleteTransaction = /* GraphQL */ `
           }
           nextToken
         }
+        EmploymentStatus
+        SourceOfFunds
+        Occupation
+        AnnualDeposit
         createdOn
         updatedOn
         owner
@@ -2318,6 +2466,10 @@ export const deleteTransaction = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -2325,6 +2477,10 @@ export const deleteTransaction = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -2356,6 +2512,10 @@ export const deleteTransaction = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -2406,6 +2566,10 @@ export const deleteTransaction = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -2504,6 +2668,10 @@ export const deleteTransaction = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -2605,6 +2773,10 @@ export const deleteTransaction = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -2624,6 +2796,10 @@ export const deleteTransaction = /* GraphQL */ `
               }
               nextToken
             }
+            EmploymentStatus
+            SourceOfFunds
+            Occupation
+            AnnualDeposit
             createdOn
             updatedOn
             owner
@@ -2658,6 +2834,10 @@ export const deleteTransaction = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -2760,6 +2940,10 @@ export const deleteTransaction = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -2804,6 +2988,10 @@ export const deleteTransaction = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -2888,6 +3076,10 @@ export const deleteTransaction = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -3182,6 +3374,10 @@ export const createKycDocument = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -3226,6 +3422,10 @@ export const createKycDocument = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -3356,6 +3556,10 @@ export const createKycDocument = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -3400,6 +3604,10 @@ export const createKycDocument = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -3413,6 +3621,10 @@ export const createKycDocument = /* GraphQL */ `
             }
             nextToken
           }
+          EmploymentStatus
+          SourceOfFunds
+          Occupation
+          AnnualDeposit
           createdOn
           updatedOn
           owner
@@ -3473,6 +3685,10 @@ export const createKycDocument = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -3517,6 +3733,10 @@ export const createKycDocument = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -3582,6 +3802,10 @@ export const createKycDocument = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -3660,6 +3884,10 @@ export const createKycDocument = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -3667,6 +3895,10 @@ export const createKycDocument = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -3698,6 +3930,10 @@ export const createKycDocument = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -3748,6 +3984,10 @@ export const createKycDocument = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -3816,6 +4056,10 @@ export const createKycDocument = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -3922,6 +4166,10 @@ export const createKycDocument = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -3966,6 +4214,10 @@ export const createKycDocument = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -4130,6 +4382,10 @@ export const updateKycDocument = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -4174,6 +4430,10 @@ export const updateKycDocument = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -4304,6 +4564,10 @@ export const updateKycDocument = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -4348,6 +4612,10 @@ export const updateKycDocument = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -4361,6 +4629,10 @@ export const updateKycDocument = /* GraphQL */ `
             }
             nextToken
           }
+          EmploymentStatus
+          SourceOfFunds
+          Occupation
+          AnnualDeposit
           createdOn
           updatedOn
           owner
@@ -4421,6 +4693,10 @@ export const updateKycDocument = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -4465,6 +4741,10 @@ export const updateKycDocument = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -4530,6 +4810,10 @@ export const updateKycDocument = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -4608,6 +4892,10 @@ export const updateKycDocument = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -4615,6 +4903,10 @@ export const updateKycDocument = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -4646,6 +4938,10 @@ export const updateKycDocument = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -4696,6 +4992,10 @@ export const updateKycDocument = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -4764,6 +5064,10 @@ export const updateKycDocument = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -4870,6 +5174,10 @@ export const updateKycDocument = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -4914,6 +5222,10 @@ export const updateKycDocument = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -5078,6 +5390,10 @@ export const deleteKycDocument = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -5122,6 +5438,10 @@ export const deleteKycDocument = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -5252,6 +5572,10 @@ export const deleteKycDocument = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -5296,6 +5620,10 @@ export const deleteKycDocument = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -5309,6 +5637,10 @@ export const deleteKycDocument = /* GraphQL */ `
             }
             nextToken
           }
+          EmploymentStatus
+          SourceOfFunds
+          Occupation
+          AnnualDeposit
           createdOn
           updatedOn
           owner
@@ -5369,6 +5701,10 @@ export const deleteKycDocument = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -5413,6 +5749,10 @@ export const deleteKycDocument = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -5478,6 +5818,10 @@ export const deleteKycDocument = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -5556,6 +5900,10 @@ export const deleteKycDocument = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -5563,6 +5911,10 @@ export const deleteKycDocument = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -5594,6 +5946,10 @@ export const deleteKycDocument = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -5644,6 +6000,10 @@ export const deleteKycDocument = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -5712,6 +6072,10 @@ export const deleteKycDocument = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -5818,6 +6182,10 @@ export const deleteKycDocument = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -5862,6 +6230,10 @@ export const deleteKycDocument = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -6022,6 +6394,10 @@ export const createCustomer = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -6041,6 +6417,10 @@ export const createCustomer = /* GraphQL */ `
               }
               nextToken
             }
+            EmploymentStatus
+            SourceOfFunds
+            Occupation
+            AnnualDeposit
             createdOn
             updatedOn
             owner
@@ -6075,6 +6455,10 @@ export const createCustomer = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -6177,6 +6561,10 @@ export const createCustomer = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -6221,6 +6609,10 @@ export const createCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -6257,6 +6649,10 @@ export const createCustomer = /* GraphQL */ `
         }
         nextToken
       }
+      EmploymentStatus
+      SourceOfFunds
+      Occupation
+      AnnualDeposit
       createdOn
       updatedOn
       owner
@@ -6337,6 +6733,10 @@ export const createCustomer = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -6356,6 +6756,10 @@ export const createCustomer = /* GraphQL */ `
               }
               nextToken
             }
+            EmploymentStatus
+            SourceOfFunds
+            Occupation
+            AnnualDeposit
             createdOn
             updatedOn
             owner
@@ -6390,6 +6794,10 @@ export const createCustomer = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -6492,6 +6900,10 @@ export const createCustomer = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -6536,6 +6948,10 @@ export const createCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -6677,6 +7093,10 @@ export const createCustomer = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -6721,6 +7141,10 @@ export const createCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -6851,6 +7275,10 @@ export const createCustomer = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -6895,6 +7323,10 @@ export const createCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -6908,6 +7340,10 @@ export const createCustomer = /* GraphQL */ `
             }
             nextToken
           }
+          EmploymentStatus
+          SourceOfFunds
+          Occupation
+          AnnualDeposit
           createdOn
           updatedOn
           owner
@@ -6968,6 +7404,10 @@ export const createCustomer = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -7012,6 +7452,10 @@ export const createCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -7077,6 +7521,10 @@ export const createCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -7155,6 +7603,10 @@ export const createCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -7162,6 +7614,10 @@ export const createCustomer = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -7193,6 +7649,10 @@ export const createCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -7243,6 +7703,10 @@ export const createCustomer = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -7311,6 +7775,10 @@ export const createCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -7417,6 +7885,10 @@ export const createCustomer = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -7461,6 +7933,10 @@ export const createCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -7621,6 +8097,10 @@ export const updateCustomer = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -7640,6 +8120,10 @@ export const updateCustomer = /* GraphQL */ `
               }
               nextToken
             }
+            EmploymentStatus
+            SourceOfFunds
+            Occupation
+            AnnualDeposit
             createdOn
             updatedOn
             owner
@@ -7674,6 +8158,10 @@ export const updateCustomer = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -7776,6 +8264,10 @@ export const updateCustomer = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -7820,6 +8312,10 @@ export const updateCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -7856,6 +8352,10 @@ export const updateCustomer = /* GraphQL */ `
         }
         nextToken
       }
+      EmploymentStatus
+      SourceOfFunds
+      Occupation
+      AnnualDeposit
       createdOn
       updatedOn
       owner
@@ -7936,6 +8436,10 @@ export const updateCustomer = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -7955,6 +8459,10 @@ export const updateCustomer = /* GraphQL */ `
               }
               nextToken
             }
+            EmploymentStatus
+            SourceOfFunds
+            Occupation
+            AnnualDeposit
             createdOn
             updatedOn
             owner
@@ -7989,6 +8497,10 @@ export const updateCustomer = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -8091,6 +8603,10 @@ export const updateCustomer = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -8135,6 +8651,10 @@ export const updateCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -8276,6 +8796,10 @@ export const updateCustomer = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -8320,6 +8844,10 @@ export const updateCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -8450,6 +8978,10 @@ export const updateCustomer = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -8494,6 +9026,10 @@ export const updateCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -8507,6 +9043,10 @@ export const updateCustomer = /* GraphQL */ `
             }
             nextToken
           }
+          EmploymentStatus
+          SourceOfFunds
+          Occupation
+          AnnualDeposit
           createdOn
           updatedOn
           owner
@@ -8567,6 +9107,10 @@ export const updateCustomer = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -8611,6 +9155,10 @@ export const updateCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -8676,6 +9224,10 @@ export const updateCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -8754,6 +9306,10 @@ export const updateCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -8761,6 +9317,10 @@ export const updateCustomer = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -8792,6 +9352,10 @@ export const updateCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -8842,6 +9406,10 @@ export const updateCustomer = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -8910,6 +9478,10 @@ export const updateCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -9016,6 +9588,10 @@ export const updateCustomer = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -9060,6 +9636,10 @@ export const updateCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -9220,6 +9800,10 @@ export const deleteCustomer = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -9239,6 +9823,10 @@ export const deleteCustomer = /* GraphQL */ `
               }
               nextToken
             }
+            EmploymentStatus
+            SourceOfFunds
+            Occupation
+            AnnualDeposit
             createdOn
             updatedOn
             owner
@@ -9273,6 +9861,10 @@ export const deleteCustomer = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -9375,6 +9967,10 @@ export const deleteCustomer = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -9419,6 +10015,10 @@ export const deleteCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -9455,6 +10055,10 @@ export const deleteCustomer = /* GraphQL */ `
         }
         nextToken
       }
+      EmploymentStatus
+      SourceOfFunds
+      Occupation
+      AnnualDeposit
       createdOn
       updatedOn
       owner
@@ -9535,6 +10139,10 @@ export const deleteCustomer = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -9554,6 +10162,10 @@ export const deleteCustomer = /* GraphQL */ `
               }
               nextToken
             }
+            EmploymentStatus
+            SourceOfFunds
+            Occupation
+            AnnualDeposit
             createdOn
             updatedOn
             owner
@@ -9588,6 +10200,10 @@ export const deleteCustomer = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -9690,6 +10306,10 @@ export const deleteCustomer = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -9734,6 +10354,10 @@ export const deleteCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -9875,6 +10499,10 @@ export const deleteCustomer = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -9919,6 +10547,10 @@ export const deleteCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -10049,6 +10681,10 @@ export const deleteCustomer = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -10093,6 +10729,10 @@ export const deleteCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -10106,6 +10746,10 @@ export const deleteCustomer = /* GraphQL */ `
             }
             nextToken
           }
+          EmploymentStatus
+          SourceOfFunds
+          Occupation
+          AnnualDeposit
           createdOn
           updatedOn
           owner
@@ -10166,6 +10810,10 @@ export const deleteCustomer = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -10210,6 +10858,10 @@ export const deleteCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -10275,6 +10927,10 @@ export const deleteCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -10353,6 +11009,10 @@ export const deleteCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -10360,6 +11020,10 @@ export const deleteCustomer = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -10391,6 +11055,10 @@ export const deleteCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -10441,6 +11109,10 @@ export const deleteCustomer = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -10509,6 +11181,10 @@ export const deleteCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -10615,6 +11291,10 @@ export const deleteCustomer = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -10659,6 +11339,10 @@ export const deleteCustomer = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -10816,6 +11500,10 @@ export const createJumioVerifyMetaData = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -10860,6 +11548,10 @@ export const createJumioVerifyMetaData = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -10990,6 +11682,10 @@ export const createJumioVerifyMetaData = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -11034,6 +11730,10 @@ export const createJumioVerifyMetaData = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -11047,6 +11747,10 @@ export const createJumioVerifyMetaData = /* GraphQL */ `
             }
             nextToken
           }
+          EmploymentStatus
+          SourceOfFunds
+          Occupation
+          AnnualDeposit
           createdOn
           updatedOn
           owner
@@ -11107,6 +11811,10 @@ export const createJumioVerifyMetaData = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -11151,6 +11859,10 @@ export const createJumioVerifyMetaData = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -11216,6 +11928,10 @@ export const createJumioVerifyMetaData = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -11294,6 +12010,10 @@ export const createJumioVerifyMetaData = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -11301,6 +12021,10 @@ export const createJumioVerifyMetaData = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -11332,6 +12056,10 @@ export const createJumioVerifyMetaData = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -11382,6 +12110,10 @@ export const createJumioVerifyMetaData = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -11450,6 +12182,10 @@ export const createJumioVerifyMetaData = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -11556,6 +12292,10 @@ export const createJumioVerifyMetaData = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -11600,6 +12340,10 @@ export const createJumioVerifyMetaData = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -11757,6 +12501,10 @@ export const updateJumioVerifyMetaData = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -11801,6 +12549,10 @@ export const updateJumioVerifyMetaData = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -11931,6 +12683,10 @@ export const updateJumioVerifyMetaData = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -11975,6 +12731,10 @@ export const updateJumioVerifyMetaData = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -11988,6 +12748,10 @@ export const updateJumioVerifyMetaData = /* GraphQL */ `
             }
             nextToken
           }
+          EmploymentStatus
+          SourceOfFunds
+          Occupation
+          AnnualDeposit
           createdOn
           updatedOn
           owner
@@ -12048,6 +12812,10 @@ export const updateJumioVerifyMetaData = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -12092,6 +12860,10 @@ export const updateJumioVerifyMetaData = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -12157,6 +12929,10 @@ export const updateJumioVerifyMetaData = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -12235,6 +13011,10 @@ export const updateJumioVerifyMetaData = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -12242,6 +13022,10 @@ export const updateJumioVerifyMetaData = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -12273,6 +13057,10 @@ export const updateJumioVerifyMetaData = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -12323,6 +13111,10 @@ export const updateJumioVerifyMetaData = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -12391,6 +13183,10 @@ export const updateJumioVerifyMetaData = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -12497,6 +13293,10 @@ export const updateJumioVerifyMetaData = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -12541,6 +13341,10 @@ export const updateJumioVerifyMetaData = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -12698,6 +13502,10 @@ export const deleteJumioVerifyMetaData = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -12742,6 +13550,10 @@ export const deleteJumioVerifyMetaData = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -12872,6 +13684,10 @@ export const deleteJumioVerifyMetaData = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -12916,6 +13732,10 @@ export const deleteJumioVerifyMetaData = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -12929,6 +13749,10 @@ export const deleteJumioVerifyMetaData = /* GraphQL */ `
             }
             nextToken
           }
+          EmploymentStatus
+          SourceOfFunds
+          Occupation
+          AnnualDeposit
           createdOn
           updatedOn
           owner
@@ -12989,6 +13813,10 @@ export const deleteJumioVerifyMetaData = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -13033,6 +13861,10 @@ export const deleteJumioVerifyMetaData = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -13098,6 +13930,10 @@ export const deleteJumioVerifyMetaData = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -13176,6 +14012,10 @@ export const deleteJumioVerifyMetaData = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -13183,6 +14023,10 @@ export const deleteJumioVerifyMetaData = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -13214,6 +14058,10 @@ export const deleteJumioVerifyMetaData = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -13264,6 +14112,10 @@ export const deleteJumioVerifyMetaData = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -13332,6 +14184,10 @@ export const deleteJumioVerifyMetaData = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -13438,6 +14294,10 @@ export const deleteJumioVerifyMetaData = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -13482,6 +14342,10 @@ export const deleteJumioVerifyMetaData = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -13646,6 +14510,10 @@ export const createComment = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -13653,6 +14521,10 @@ export const createComment = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -13684,6 +14556,10 @@ export const createComment = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -13734,6 +14610,10 @@ export const createComment = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -13767,6 +14647,10 @@ export const createComment = /* GraphQL */ `
           }
           nextToken
         }
+        EmploymentStatus
+        SourceOfFunds
+        Occupation
+        AnnualDeposit
         createdOn
         updatedOn
         owner
@@ -13844,6 +14728,10 @@ export const createComment = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -13851,6 +14739,10 @@ export const createComment = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -13882,6 +14774,10 @@ export const createComment = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -13932,6 +14828,10 @@ export const createComment = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -14030,6 +14930,10 @@ export const createComment = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -14131,6 +15035,10 @@ export const createComment = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -14150,6 +15058,10 @@ export const createComment = /* GraphQL */ `
               }
               nextToken
             }
+            EmploymentStatus
+            SourceOfFunds
+            Occupation
+            AnnualDeposit
             createdOn
             updatedOn
             owner
@@ -14184,6 +15096,10 @@ export const createComment = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -14286,6 +15202,10 @@ export const createComment = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -14330,6 +15250,10 @@ export const createComment = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -14414,6 +15338,10 @@ export const createComment = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -14576,6 +15504,10 @@ export const updateComment = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -14583,6 +15515,10 @@ export const updateComment = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -14614,6 +15550,10 @@ export const updateComment = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -14664,6 +15604,10 @@ export const updateComment = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -14697,6 +15641,10 @@ export const updateComment = /* GraphQL */ `
           }
           nextToken
         }
+        EmploymentStatus
+        SourceOfFunds
+        Occupation
+        AnnualDeposit
         createdOn
         updatedOn
         owner
@@ -14774,6 +15722,10 @@ export const updateComment = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -14781,6 +15733,10 @@ export const updateComment = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -14812,6 +15768,10 @@ export const updateComment = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -14862,6 +15822,10 @@ export const updateComment = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -14960,6 +15924,10 @@ export const updateComment = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -15061,6 +16029,10 @@ export const updateComment = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -15080,6 +16052,10 @@ export const updateComment = /* GraphQL */ `
               }
               nextToken
             }
+            EmploymentStatus
+            SourceOfFunds
+            Occupation
+            AnnualDeposit
             createdOn
             updatedOn
             owner
@@ -15114,6 +16090,10 @@ export const updateComment = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -15216,6 +16196,10 @@ export const updateComment = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -15260,6 +16244,10 @@ export const updateComment = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -15344,6 +16332,10 @@ export const updateComment = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -15506,6 +16498,10 @@ export const deleteComment = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -15513,6 +16509,10 @@ export const deleteComment = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -15544,6 +16544,10 @@ export const deleteComment = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -15594,6 +16598,10 @@ export const deleteComment = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -15627,6 +16635,10 @@ export const deleteComment = /* GraphQL */ `
           }
           nextToken
         }
+        EmploymentStatus
+        SourceOfFunds
+        Occupation
+        AnnualDeposit
         createdOn
         updatedOn
         owner
@@ -15704,6 +16716,10 @@ export const deleteComment = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -15711,6 +16727,10 @@ export const deleteComment = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -15742,6 +16762,10 @@ export const deleteComment = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -15792,6 +16816,10 @@ export const deleteComment = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -15890,6 +16918,10 @@ export const deleteComment = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -15991,6 +17023,10 @@ export const deleteComment = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -16010,6 +17046,10 @@ export const deleteComment = /* GraphQL */ `
               }
               nextToken
             }
+            EmploymentStatus
+            SourceOfFunds
+            Occupation
+            AnnualDeposit
             createdOn
             updatedOn
             owner
@@ -16044,6 +17084,10 @@ export const deleteComment = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -16146,6 +17190,10 @@ export const deleteComment = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -16190,6 +17238,10 @@ export const deleteComment = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -16274,6 +17326,10 @@ export const deleteComment = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -16391,6 +17447,10 @@ export const createVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -16469,6 +17529,10 @@ export const createVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -16476,6 +17540,10 @@ export const createVerification = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -16507,6 +17575,10 @@ export const createVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -16557,6 +17629,10 @@ export const createVerification = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -16625,6 +17701,10 @@ export const createVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -16754,6 +17834,10 @@ export const createVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -16761,6 +17845,10 @@ export const createVerification = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -16792,6 +17880,10 @@ export const createVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -16842,6 +17934,10 @@ export const createVerification = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -16875,6 +17971,10 @@ export const createVerification = /* GraphQL */ `
           }
           nextToken
         }
+        EmploymentStatus
+        SourceOfFunds
+        Occupation
+        AnnualDeposit
         createdOn
         updatedOn
         owner
@@ -16952,6 +18052,10 @@ export const createVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -16959,6 +18063,10 @@ export const createVerification = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -16990,6 +18098,10 @@ export const createVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -17040,6 +18152,10 @@ export const createVerification = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -17138,6 +18254,10 @@ export const createVerification = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -17239,6 +18359,10 @@ export const createVerification = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -17258,6 +18382,10 @@ export const createVerification = /* GraphQL */ `
               }
               nextToken
             }
+            EmploymentStatus
+            SourceOfFunds
+            Occupation
+            AnnualDeposit
             createdOn
             updatedOn
             owner
@@ -17292,6 +18420,10 @@ export const createVerification = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -17394,6 +18526,10 @@ export const createVerification = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -17438,6 +18574,10 @@ export const createVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -17522,6 +18662,10 @@ export const createVerification = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -17617,6 +18761,10 @@ export const createVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -17695,6 +18843,10 @@ export const createVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -17702,6 +18854,10 @@ export const createVerification = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -17733,6 +18889,10 @@ export const createVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -17783,6 +18943,10 @@ export const createVerification = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -17851,6 +19015,10 @@ export const createVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -17951,6 +19119,10 @@ export const updateVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -18029,6 +19201,10 @@ export const updateVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -18036,6 +19212,10 @@ export const updateVerification = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -18067,6 +19247,10 @@ export const updateVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -18117,6 +19301,10 @@ export const updateVerification = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -18185,6 +19373,10 @@ export const updateVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -18314,6 +19506,10 @@ export const updateVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -18321,6 +19517,10 @@ export const updateVerification = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -18352,6 +19552,10 @@ export const updateVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -18402,6 +19606,10 @@ export const updateVerification = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -18435,6 +19643,10 @@ export const updateVerification = /* GraphQL */ `
           }
           nextToken
         }
+        EmploymentStatus
+        SourceOfFunds
+        Occupation
+        AnnualDeposit
         createdOn
         updatedOn
         owner
@@ -18512,6 +19724,10 @@ export const updateVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -18519,6 +19735,10 @@ export const updateVerification = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -18550,6 +19770,10 @@ export const updateVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -18600,6 +19824,10 @@ export const updateVerification = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -18698,6 +19926,10 @@ export const updateVerification = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -18799,6 +20031,10 @@ export const updateVerification = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -18818,6 +20054,10 @@ export const updateVerification = /* GraphQL */ `
               }
               nextToken
             }
+            EmploymentStatus
+            SourceOfFunds
+            Occupation
+            AnnualDeposit
             createdOn
             updatedOn
             owner
@@ -18852,6 +20092,10 @@ export const updateVerification = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -18954,6 +20198,10 @@ export const updateVerification = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -18998,6 +20246,10 @@ export const updateVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -19082,6 +20334,10 @@ export const updateVerification = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -19177,6 +20433,10 @@ export const updateVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -19255,6 +20515,10 @@ export const updateVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -19262,6 +20526,10 @@ export const updateVerification = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -19293,6 +20561,10 @@ export const updateVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -19343,6 +20615,10 @@ export const updateVerification = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -19411,6 +20687,10 @@ export const updateVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -19511,6 +20791,10 @@ export const deleteVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -19589,6 +20873,10 @@ export const deleteVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -19596,6 +20884,10 @@ export const deleteVerification = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -19627,6 +20919,10 @@ export const deleteVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -19677,6 +20973,10 @@ export const deleteVerification = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -19745,6 +21045,10 @@ export const deleteVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -19874,6 +21178,10 @@ export const deleteVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -19881,6 +21189,10 @@ export const deleteVerification = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -19912,6 +21224,10 @@ export const deleteVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -19962,6 +21278,10 @@ export const deleteVerification = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -19995,6 +21315,10 @@ export const deleteVerification = /* GraphQL */ `
           }
           nextToken
         }
+        EmploymentStatus
+        SourceOfFunds
+        Occupation
+        AnnualDeposit
         createdOn
         updatedOn
         owner
@@ -20072,6 +21396,10 @@ export const deleteVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -20079,6 +21407,10 @@ export const deleteVerification = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -20110,6 +21442,10 @@ export const deleteVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -20160,6 +21496,10 @@ export const deleteVerification = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -20258,6 +21598,10 @@ export const deleteVerification = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -20359,6 +21703,10 @@ export const deleteVerification = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -20378,6 +21726,10 @@ export const deleteVerification = /* GraphQL */ `
               }
               nextToken
             }
+            EmploymentStatus
+            SourceOfFunds
+            Occupation
+            AnnualDeposit
             createdOn
             updatedOn
             owner
@@ -20412,6 +21764,10 @@ export const deleteVerification = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -20514,6 +21870,10 @@ export const deleteVerification = /* GraphQL */ `
                   }
                   nextToken
                 }
+                EmploymentStatus
+                SourceOfFunds
+                Occupation
+                AnnualDeposit
                 createdOn
                 updatedOn
                 owner
@@ -20558,6 +21918,10 @@ export const deleteVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -20642,6 +22006,10 @@ export const deleteVerification = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -20737,6 +22105,10 @@ export const deleteVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -20815,6 +22187,10 @@ export const deleteVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -20822,6 +22198,10 @@ export const deleteVerification = /* GraphQL */ `
                 }
                 nextToken
               }
+              EmploymentStatus
+              SourceOfFunds
+              Occupation
+              AnnualDeposit
               createdOn
               updatedOn
               owner
@@ -20853,6 +22233,10 @@ export const deleteVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner
@@ -20903,6 +22287,10 @@ export const deleteVerification = /* GraphQL */ `
                   PaymentTransactions {
                     nextToken
                   }
+                  EmploymentStatus
+                  SourceOfFunds
+                  Occupation
+                  AnnualDeposit
                   createdOn
                   updatedOn
                   owner
@@ -20971,6 +22359,10 @@ export const deleteVerification = /* GraphQL */ `
                     Tier
                     KYCState
                     VerificationID
+                    EmploymentStatus
+                    SourceOfFunds
+                    Occupation
+                    AnnualDeposit
                     createdOn
                     updatedOn
                     owner

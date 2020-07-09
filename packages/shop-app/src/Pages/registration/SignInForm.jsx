@@ -69,12 +69,11 @@ const SignInForm = () => {
 					/>
 				</RegistrationContentRow>
 				<RegistrationContentRow>
-					<Space>
+					<ButtonBase component={RouterLink} to='/reset-password'>
 						<Typography color='primary' variant='body2' type='secondary'>
 							Forgot your password?
 						</Typography>
-						<RouterLink to='/reset-password'>Reset password</RouterLink>
-					</Space>
+					</ButtonBase>
 				</RegistrationContentRow>
 			</RegistrationContent>
 		</RegistrationForm>

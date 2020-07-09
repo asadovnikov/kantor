@@ -21,7 +21,7 @@ const axios = require('axios');
 // declare a new express app
 var app = express();
 app.use(bodyParser.json());
-// app.use(awsServerlessExpressMiddleware.eventContext());
+app.use(awsServerlessExpressMiddleware.eventContext());
 
 // Enable CORS for all methods
 app.use(function (req, res, next) {
@@ -121,7 +121,7 @@ app.get('/jumio/document/:documentRef', async (req, res) => {
 	}
 });
 
-app.listen(3010, function () {
+app.listen(3000, function () {
 	console.log('App started');
 });
 
