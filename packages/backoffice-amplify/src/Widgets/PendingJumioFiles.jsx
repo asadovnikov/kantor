@@ -42,33 +42,30 @@ export const PendingJumioFilesWidget = () => {
 			width: 100,
 			render: (text, record) => {
 				console.log(record);
-				return <Link to={`/customer/${record.id}/${record.key}`}>Review</Link>;
+				return <Link to={`/customer/${record.customerId}/${record.jumioIdScanReference}`}>Review</Link>;
 			},
 		},
 	];
 	const [files, setFiles] = useState([]);
 	useEffect(() => {
 		let isCancelled = false;
-		API.graphql(
-			graphqlOperation(listJumioVerifyMetaDatas)
-		).then((result) => {
-			debugger;
-			const {
-				data: {
-					listJumioVerifyMetaDatas: {
-						items = [] ,
+		API.graphql(graphqlOperation(listJumioVerifyMetaDatas, { filter: { JumioVerifyStatus: { eq: 'PENDING' } } })).then(
+			(result) => {
+				const {
+					data: {
+						listJumioVerifyMetaDatas: { items = [] },
 					},
-				},
-			} = result;
-			setFiles(
-				items
-					.map((logItem) => {
-						return { createdOn: logItem.createdOn, ...JSON.parse(logItem.dataInput) };
-					})
-					.filter((logItem) => logItem.callBackType && logItem.callBackType.length > 0)
-			);
-			console.log(result);
-		});
+				} = result;
+				setFiles(
+					items
+						.map((logItem) => {
+							return { createdOn: logItem.createdOn, ...JSON.parse(logItem.dataInput) };
+						})
+						.filter((logItem) => logItem.callBackType && logItem.callBackType.length > 0)
+				);
+				console.log(result);
+			}
+		);
 		return () => (isCancelled = true);
 	}, []);
 	return (

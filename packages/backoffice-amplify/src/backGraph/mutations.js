@@ -80,3 +80,21 @@ export const updateVerification = /* GraphQL */ `
     }
   }
 `;
+
+export const updateJumioVerifyMetaData = /* GraphQL */ `
+  mutation UpdateJumioVerifyMetaData(
+    $input: UpdateJumioVerifyMetaDataInput!
+    $condition: ModelJumioVerifyMetaDataConditionInput
+  ) {
+    updateJumioVerifyMetaData(input: $input, condition: $condition) {
+      id
+      dataInput
+      verificationID
+      inputType
+      metaInfo
+      JumioVerifyStatus
+      createdOn
+      updatedOn
+    }
+  }
+`;

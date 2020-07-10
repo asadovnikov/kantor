@@ -3,10 +3,13 @@ import { ItemDetails } from '../../Components';
 
 export const TransactionLogWidget = ({ jumioData = {} }) => {
 	const { transaction, document, verification } = jumioData;
-	debugger;
 	const { rejectReason = {} } = verification;
 	const { rejectReasonDetails } = rejectReason;
-	const reason = Array.isArray(rejectReasonDetails) ? rejectReasonDetails : (rejectReasonDetails ? [rejectReasonDetails] : [])
+	const reason = Array.isArray(rejectReasonDetails)
+		? rejectReasonDetails
+		: rejectReasonDetails
+		? [rejectReasonDetails]
+		: [];
 	return (
 		<>
 			<ItemDetails

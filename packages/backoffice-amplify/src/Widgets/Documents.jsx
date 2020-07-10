@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { DocumentPreview, DocumentUploader } from '../Components';
 import { Row, Col } from 'antd';
 import { Auth } from 'aws-amplify';
+import { JumioLogWidget } from './JumioLog';
 import API, { graphqlOperation } from '@aws-amplify/api';
 import { onCreateKycDocument } from '../backGraph/subscriptions';
 
@@ -26,6 +27,7 @@ export const DocumentsWidget = ({ items = [], person = {}, showUpload = true }) 
 
 	return (
 		<>
+			<JumioLogWidget person={person} status='VERIFIED' />
 			<Row gutter={16}>
 				{/* <DocumentsGallery s3Items={items} /> */}
 				{documentItems.map((item) => {

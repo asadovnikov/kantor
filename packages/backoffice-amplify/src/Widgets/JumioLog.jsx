@@ -3,9 +3,9 @@ import { useHistory, Link } from 'react-router-dom';
 import { DataTable } from '../Components';
 import { Empty } from 'antd';
 import { API, graphqlOperation } from 'aws-amplify';
-import { getVerification } from '../backGraph/queries';
+import { listJumioVerifyMetaDatas } from '../backGraph/queries';
 
-export const JumioLogWidget = ({ person = {} }) => {
+export const JumioLogWidget = ({ person = {}, status = 'PENDING' }) => {
 	const dataColumns = [
 		{
 			title: 'Date',
@@ -47,6 +47,8 @@ export const JumioLogWidget = ({ person = {} }) => {
 		},
 	];
 	const { KYCVerification = {} } = person;
+	console.log(`Person`);
+	console.log(person);
 	const [logs, setLogs] = useState([]);
 	const history = useHistory();
 
@@ -65,15 +67,13 @@ export const JumioLogWidget = ({ person = {} }) => {
 	useEffect(() => {
 		let isCancelled = false;
 		API.graphql(
-			graphqlOperation(getVerification, {
-				id: id,
+			graphqlOperation(listJumioVerifyMetaDatas, {
+				filter: { JumioVerifyStatus: { eq: status }, verificationID: { eq: id } },
 			})
 		).then((result) => {
 			const {
 				data: {
-					getVerification: {
-						jumioVerifications: { items = [] },
-					},
+					listJumioVerifyMetaDatas: { items = [] },
 				},
 			} = result;
 			setLogs(

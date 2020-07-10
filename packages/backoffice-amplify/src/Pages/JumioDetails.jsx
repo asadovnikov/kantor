@@ -14,6 +14,7 @@ import {
 	SecurityChecksWidget,
 	TransactionLogWidget,
 	WPJServiceWidget,
+	ReviewDocumentWidget,
 } from '../Widgets/Jumio';
 
 const { Sider, Content } = Layout;
@@ -74,6 +75,7 @@ export const JumioDetailsPage = () => {
 						<LeftPart theme='light'>
 							<StylePageHeader title='Customer details' onBack={() => history.goBack()} />
 							<ProvidedDocumentsWidget documents={jumoioData.providedDocumentsData.images} />
+							<ReviewDocumentWidget jumioDocId={scanReference} status={jumoioData.JumioVerifyStatus} />
 						</LeftPart>
 						<AntdContent>
 							<ContentContainer>

@@ -87,7 +87,7 @@ export const CustomerDetailsPage = () => {
 							</ContentContainer>
 							<ContentContainer>
 								<ContentDivider orientation='left'>Pending Files</ContentDivider>
-								<JumioLogWidget person={customer} />
+								<JumioLogWidget person={customer} status='PENDING' />
 							</ContentContainer>
 							<ContentContainer>
 								<ContentDivider orientation='left'>Processed Files</ContentDivider>

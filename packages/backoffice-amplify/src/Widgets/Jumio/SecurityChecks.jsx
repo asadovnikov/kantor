@@ -46,7 +46,7 @@ export const SecurityChecksWidget = ({ jumioData = {} }) => {
 							value: `N/A`,
 						},
 						{
-							label: 'Issuing datHand written note',
+							label: 'Hand written note',
 							value: `N/A`,
 						},
 						{

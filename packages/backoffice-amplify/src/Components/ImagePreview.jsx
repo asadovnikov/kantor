@@ -60,8 +60,6 @@ export const ImagePreview = ({ document = {} }) => {
 			.get(`${imgUri}/${encodeURIComponent(document.href)}`, { responseType: 'blob' })
 			.then((result) => {
 				if (!isCancelled) {
-					console.log(result);
-					debugger;
 					const uri = URL.createObjectURL(result.data);
 					setImgData(uri);
 				}
