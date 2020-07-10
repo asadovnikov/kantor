@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { message } from 'antd';
 import { API, graphqlOperation } from 'aws-amplify';
-import { createUserMeata, createUserWallets } from '../../graphql/mutations';
+import { createUserWallets } from '../../graphql/mutations';
 import { v4 as uuid } from 'uuid';
 import { MaterialTxt } from '../registration/components/LabeledInput';
 

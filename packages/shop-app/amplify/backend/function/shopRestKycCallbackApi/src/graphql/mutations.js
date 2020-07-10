@@ -36,3 +36,19 @@ exports.updateVerification = gql`
     }
   }
 `;
+exports.createComment = gql`
+  mutation CreateComment(
+    $input: CreateCommentInput!
+    $condition: ModelCommentConditionInput
+  ) {
+    createComment(input: $input, condition: $condition) {
+      id
+      content
+      customerID
+      Author
+      AuthorEmail
+      createdOn
+      updatedOn
+    }
+  }
+`;

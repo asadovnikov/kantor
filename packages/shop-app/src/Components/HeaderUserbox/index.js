@@ -19,6 +19,11 @@ const useStyles = makeStyles((theme) => ({
 
 export const HeaderUserbox = ({ firstName, lastName, email }) => {
 	const { customer = {} } = useContext(AuthContext);
+	if(customer === null){
+		Auth.signOut()
+			.then(data => console.log(data))
+			.catch(err => console.log(err));
+	}
 	const { KYCVerification = {} } = customer;
 	const goodStatus = 'VALIDATED';
 

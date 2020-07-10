@@ -195,7 +195,7 @@ type Customer
 type JumioVerifyMetaData
 	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
 	@auth(rules: [{ allow: groups, groups: ["Admins"] }, { allow: public, provider: apiKey }])
-	@key(name: "byJumioVerification", fields: ["verificationID", "inputType", "dataInput", "JumioVerifyStatus"]) {
+	@key(name: "byJumioVerification", fields: ["verificationID", "inputType", "JumioVerifyStatus"]) {
 	id: ID!
 	dataInput: String!
 	verificationID: ID!
