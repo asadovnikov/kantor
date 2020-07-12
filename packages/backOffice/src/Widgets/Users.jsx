@@ -16,7 +16,6 @@ const dataColumns = [
 		dataIndex: 'Firstname',
 		key: 'Firstname',
 		render: (text, record) => {
-			console.log(record);
 			return (
 				<Space direction='vertical'>
 					<Text strong>
@@ -79,7 +78,6 @@ export const UserWidget = () => {
 					},
 				}) => {
 					if (!canceled) {
-						console.log(items);
 						setUsers(items);
 					}
 				}
