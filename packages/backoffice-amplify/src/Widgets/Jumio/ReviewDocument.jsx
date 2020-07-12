@@ -4,11 +4,6 @@ import { CheckOutlined } from '@ant-design/icons';
 import { API, graphqlOperation } from 'aws-amplify';
 import { updateJumioVerifyMetaData } from '../../backGraph/mutations';
 
-const retriveJumioData = async (scanRef) => {
-	const { data } = await API.get('api6c829185', `/jumiodata/${scanRef}`);
-	return data;
-};
-
 export const ReviewDocumentWidget = ({ status = 'PENDING', jumioDocId }) => {
 	const [reviewedSate, setReviewedState] = useState(status === 'VERIFIED');
 	const [saving, setSaving] = useState(false);

@@ -8,7 +8,7 @@ export const PersonDetailsWidget = ({ person = {} }) => {
 				details={[
 					{
 						label: 'Date of birth',
-						value: person.DateOfBirth,
+						value: new Date().toISOString(person.DateOfBirth).slice(0, 10),
 					},
 					{
 						label: 'Phone',

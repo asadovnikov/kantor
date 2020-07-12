@@ -7,3 +7,5 @@ export const RetrieveJumioScanDocuments = (scanRef) => `${jumioScanUri}/${scanRe
 export const JumioToken = '665a4231-b257-4c05-95a8-0a5fbc5c6e0c';
 export const JumioSecret = 'HCrEE23pJJDO1rY2kNwK43PDtCALyJKj';
 export const JumioUserAgent = `${appName} BackOffice/v1.0`;
+
+export {KycIcon} from './KYCStatusHelper'

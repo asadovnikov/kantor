@@ -41,14 +41,11 @@ export const JumioLogWidget = ({ person = {}, status = 'PENDING' }) => {
 			fixed: 'right',
 			width: 100,
 			render: (text, record) => {
-				console.log(record);
-				return <Link to={`/customer/${person.id}/${record.key}`}>Review</Link>;
+				return <Link to={`/customer/${person.id}/${record.jumioLogId}`}>Review</Link>;
 			},
 		},
 	];
 	const { KYCVerification = {} } = person;
-	console.log(`Person`);
-	console.log(person);
 	const [logs, setLogs] = useState([]);
 	const history = useHistory();
 
@@ -79,11 +76,10 @@ export const JumioLogWidget = ({ person = {}, status = 'PENDING' }) => {
 			setLogs(
 				items
 					.map((logItem) => {
-						return { createdOn: logItem.createdOn, ...JSON.parse(logItem.dataInput) };
+						return { createdOn: logItem.createdOn, jumioLogId: logItem.id, ...JSON.parse(logItem.dataInput) };
 					})
 					.filter((logItem) => logItem.callBackType && logItem.callBackType.length > 0)
 			);
-			console.log(result);
 		});
 		return () => (isCancelled = true);
 	}, [id]);
@@ -96,7 +92,6 @@ export const JumioLogWidget = ({ person = {}, status = 'PENDING' }) => {
 					bordered={true}
 					size='small'
 					data={logs.map((item) => {
-						// console.log(item);
 						return {
 							...item,
 							key: item.scanReference || item.jumioIdScanReference,

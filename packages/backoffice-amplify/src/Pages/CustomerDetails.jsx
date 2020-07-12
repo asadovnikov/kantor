@@ -15,6 +15,7 @@ import {
 	PersonCommentsWidget,
 	DocumentsWidget,
 	JumioLogWidget,
+	CustomerStatusWidget,
 } from '../Widgets';
 import { API, graphqlOperation } from 'aws-amplify';
 import { getCustomer } from '../backGraph/queries';
@@ -51,7 +52,6 @@ export const CustomerDetailsPage = () => {
 		API.graphql(graphqlOperation(getCustomer, { id: customerId }))
 			.then(({ data: { getCustomer } }) => {
 				if (!canceled) {
-					console.log(getCustomer);
 					setCustomer(getCustomer);
 				}
 			})
@@ -72,6 +72,7 @@ export const CustomerDetailsPage = () => {
 								<StylePageHeader title='Customers' onBack={() => history.goBack()} />
 							</Sticky>
 							<PersonNameWidget person={customer} />
+							<CustomerStatusWidget status={customer.State} customerId={customer.id} />
 							<Divider orientation='left'>KYC</Divider>
 							<PersonVerificationWidget person={customer} />
 							<Divider orientation='left'>General</Divider>

@@ -42,7 +42,7 @@ const processItems = async (items) => {
 				});
 				return { source: URL.createObjectURL(data) };
 			} catch (err) {
-				console.log(err);
+				console.error(err);
 			}
 		})
 	);

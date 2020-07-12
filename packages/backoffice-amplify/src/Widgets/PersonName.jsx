@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import Avatar from 'react-avatar';
-import Sticky from 'react-stickynode';
 import { Row, Col, Typography } from 'antd';
 
-const SecondNameTitle = styled(Typography.Title)`
-	margin-top: 0 !important;
+const PersonEmail = styled(Typography.Text)`
+	margin-left: 15px;
 `;
 const FirstNameTitle = styled(Typography.Title)`
 	margin-bottom: 0.2em !important;
 	margin-top: 0.2em !important;
+	margin-left: 15px;
 `;
 
 const PersonNameContainer = styled.div`
@@ -21,13 +21,14 @@ export const PersonNameWidget = ({ person = {} }) => {
 	return (
 		<PersonNameContainer>
 			<Row>
-				<Col span={6}>
-					<Avatar name={`${person.Firstname} ${person.Surname}`} />
+				<Col>
+					<Avatar size='64' name={`${person.Firstname} ${person.Surname}`} />
 				</Col>
-				<Col span={18}>
-					<FirstNameTitle level={4}>{person.Firstname}</FirstNameTitle>
-					<SecondNameTitle level={4}>{person.Surname}</SecondNameTitle>
-					<Typography.Text type='secondary'>{person.Email}</Typography.Text>
+				<Col>
+					<FirstNameTitle level={4}>
+						{person.Firstname} {person.Surname}
+					</FirstNameTitle>
+					<PersonEmail type='secondary'>{person.Email}</PersonEmail>
 				</Col>
 			</Row>
 		</PersonNameContainer>

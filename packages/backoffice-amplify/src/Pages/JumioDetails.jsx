@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { Layout, Divider, Spin } from 'antd';
 import { StylePageHeader } from '../Components/StyledControls';
 import { LoadingOutlined } from '@ant-design/icons';
-import { API } from 'aws-amplify';
-import * as requestData from '../Utils';
+import { API, graphqlOperation } from 'aws-amplify';
+import { getJumioVerifyMetaData } from '../backGraph/queries';
 
 import {
 	CustomerDataWidget,
@@ -44,27 +44,48 @@ const retriveJumioData = async (scanRef) => {
 };
 
 export const JumioDetailsPage = () => {
-	let { scanReference } = useParams();
+	let { jumioLogId } = useParams();
 	const history = useHistory();
 	const [loading, setLoading] = useState(true);
 	const [jumoioData, setJumioData] = useState();
 	const [loaded, setLoaded] = useState(false);
-	console.log('jumio');
+	const [scanReference, setScanReference] = useState();
+	const [jumioLogItem, setJumioLogItem] = useState();
+
 	useEffect(() => {
-		setLoading(true);
+		let isCancelled = false;
+		if (jumioLogId) {
+			setLoading(true);
+			API.graphql(graphqlOperation(getJumioVerifyMetaData, { id: jumioLogId }))
+				.then(({ data: { getJumioVerifyMetaData } }) => {
+					setJumioLogItem(getJumioVerifyMetaData);
+					const { jumioIdScanReference } = JSON.parse(getJumioVerifyMetaData.dataInput);
+					setScanReference(jumioIdScanReference);
+				})
+				.catch((err) => console.error(err))
+				.finally(() => setLoading(false));
+		}
+		return () => (isCancelled = true);
+	}, [jumioLogId]);
+
+	useEffect(() => {
 		let canceled = false;
-		retriveJumioData(scanReference)
-			.then((data) => {
-				if (!canceled) {
-					console.log(data);
-					setJumioData(data);
-				}
-			})
-			.catch((err) => console.error(err))
-			.finally(() => {
-				setLoading(false);
-				setLoaded(true);
-			});
+		if (scanReference) {
+			setLoading(true);
+			retriveJumioData(scanReference)
+				.then((data) => {
+					if (!canceled) {
+						if (!canceled) {
+							setJumioData(data);
+						}
+					}
+				})
+				.catch((err) => console.error(err))
+				.finally(() => {
+					setLoading(false);
+					setLoaded(true);
+				});
+		}
 		return () => (canceled = true);
 	}, [scanReference]);
 	return (
@@ -75,7 +96,7 @@ export const JumioDetailsPage = () => {
 						<LeftPart theme='light'>
 							<StylePageHeader title='Customer details' onBack={() => history.goBack()} />
 							<ProvidedDocumentsWidget documents={jumoioData.providedDocumentsData.images} />
-							<ReviewDocumentWidget jumioDocId={scanReference} status={jumoioData.JumioVerifyStatus} />
+							<ReviewDocumentWidget jumioDocId={jumioLogItem.id} status={jumioLogItem.JumioVerifyStatus} />
 						</LeftPart>
 						<AntdContent>
 							<ContentContainer>

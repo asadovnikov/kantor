@@ -17,7 +17,6 @@ export const DocumentUploader = ({ person: { KYCVerification } }) => {
 			const s3 = await Storage.put(`${key}_${file.name}`, file, {
 				contentType: file.type,
 			});
-			console.log(s3);
 			const result = await API.graphql(
 				graphqlOperation(createKycDocument, {
 					input: {
@@ -35,7 +34,6 @@ export const DocumentUploader = ({ person: { KYCVerification } }) => {
 					},
 				})
 			);
-			console.log(result);
 		} catch (err) {
 			console.error(err);
 		} finally {

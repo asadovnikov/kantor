@@ -10,4 +10,7 @@ export { PersonNameWidget } from './PersonName';
 export { DocumentsWidget } from './Documents';
 export { JumioLogWidget } from './JumioLog';
 export { PendingUserWidget } from './PendingUsers';
+export { CustomerStatusWidget } from './CustomerStatus';
 export { PendingJumioFilesWidget } from './PendingJumioFiles';
+export { CustomersWidget } from './Customers';
+export { CustomersListWidget } from './CustomersList';

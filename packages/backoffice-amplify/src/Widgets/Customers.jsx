@@ -4,8 +4,7 @@ import { Empty, Spin, Typography, Space } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { API, graphqlOperation } from 'aws-amplify';
-import { listCustomers } from '../backGraph/queries';
-import { KycIcon } from '../Utils';
+import { listCustomers, searchCustomers } from '../backGraph/queries';
 import { UserSwitchOutlined, MinusSquareOutlined, CheckOutlined } from '@ant-design/icons';
 
 const { Text } = Typography;
@@ -21,7 +20,55 @@ const getKycIcon = (state) => {
 };
 const loadingIndicator = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
-export const PendingUserWidget = ({ kycState, showAll = false }) => {
+const lookupByEmailCustomers = async (email) => {
+	const {
+		data: {
+			searchCustomers: { items },
+		},
+	} = await API.graphql(
+		graphqlOperation(searchCustomers, {
+			filter: {
+				Email: {
+					match: email,
+				},
+			},
+		})
+	);
+	return items;
+};
+
+const getAllCustomers = async () => {
+	const {
+		data: {
+			listCustomers: { items },
+		},
+	} = await API.graphql(graphqlOperation(listCustomers));
+	return items;
+};
+
+const hasKYCStatus = (verification, kycState) => {
+	return (
+		verification.financeVerification === kycState ||
+		verification.poaVerification === kycState ||
+		verification.idVerification === kycState
+	);
+};
+
+const listRegisteredCustomers = async (kycState, email) => {
+	let customers = [];
+	if (email && email.length > 0) {
+		customers = await lookupByEmailCustomers(email);
+	} else {
+		customers = await getAllCustomers();
+	}
+
+	if (kycState && kycState.length > 0) {
+		return (customers || []).map((customer) => hasKYCStatus(customer.KYCVerification, kycState));
+	}
+	return customers || [];
+};
+
+export const CustomersWidget = ({ kycState, email }) => {
 	const dataColumns = [
 		{
 			title: 'Email',
@@ -51,7 +98,9 @@ export const PendingUserWidget = ({ kycState, showAll = false }) => {
 			align: 'center',
 			key: 'IDVerification',
 			dataIndex: 'KYCState',
-			render: (text, record) => <KycIcon kycState={record.KYCVerification.idVerification} />,
+			render: (text, record) => {
+				return getKycIcon(record.KYCVerification.idVerification);
+			},
 		},
 		{
 			title: 'POA',
@@ -59,7 +108,9 @@ export const PendingUserWidget = ({ kycState, showAll = false }) => {
 			width: 100,
 			key: 'POAVerification',
 			dataIndex: 'KYCState',
-			render: (text, record) => <KycIcon kycState={record.KYCVerification.poaVerification} />,
+			render: (text, record) => {
+				return getKycIcon(record.KYCVerification.poaVerification);
+			},
 		},
 		{
 			title: 'Finance',
@@ -67,7 +118,9 @@ export const PendingUserWidget = ({ kycState, showAll = false }) => {
 			width: 100,
 			key: 'FinanceVerification',
 			dataIndex: 'KYCState',
-			render: (text, record) => <KycIcon kycState={record.KYCVerification.financeVerification} />,
+			render: (text, record) => {
+				return getKycIcon(record.KYCVerification.financeVerification);
+			},
 		},
 		{
 			title: 'Country',
@@ -120,37 +173,16 @@ export const PendingUserWidget = ({ kycState, showAll = false }) => {
 	];
 	const [users, setUsers] = useState([]);
 	const [loading, setLoading] = useState(false);
-	const hasKYCStatus = (verification) => {
-		return (
-			verification.financeVerification === kycState ||
-			verification.poaVerification === kycState ||
-			verification.idVerification === kycState
-		);
-	};
 
 	useEffect(() => {
 		setLoading(true);
 		let canceled = false;
-		API.graphql(graphqlOperation(listCustomers))
-			.then(
-				({
-					data: {
-						listCustomers: { items },
-					},
-				}) => {
-					if (!canceled) {
-						if (showAll === true) {
-							setUsers(items);
-						} else {
-							setUsers(
-								items.filter((customer) => {
-									return hasKYCStatus(customer.KYCVerification);
-								})
-							);
-						}
-					}
+		listRegisteredCustomers(kycState, email)
+			.then((items) => {
+				if (!canceled) {
+					setUsers(items);
 				}
-			)
+			})
 			.catch((err) => console.error(err))
 			.finally(() => setLoading(false));
 		return () => (canceled = true);

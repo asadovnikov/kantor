@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import { Layout, Menu, Row, Col } from 'antd';
+import { Auth } from 'aws-amplify';
+import { useLocation, Link, useHistory } from 'react-router-dom';
+import { Layout, Menu, Row, Col, Typography, Input } from 'antd';
 import { motion, AnimatePresence } from 'framer-motion';
 import styled from 'styled-components';
 import Icon, { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
@@ -13,6 +13,7 @@ import {
 	KycPendingFilesIcon,
 	TransactionIcon,
 	KycPendingCustomersIcon,
+	DashboardIcon,
 } from './assets';
 
 import { CurrentUser } from './Components';
@@ -20,6 +21,8 @@ import { CurrentUser } from './Components';
 import { BaseRoutes } from './Routing';
 
 const { Header, Content, Sider } = Layout;
+const { Search } = Input;
+const { Text } = Typography;
 
 const FixedHeader = styled(Header)`
 	position: fixed;
@@ -49,34 +52,57 @@ const SiteContent = styled(Content)`
 	background: #fff;
 `;
 
+const MenuTitle = styled.span`
+	font-size: 16px;
+`;
+
+const NavItem = ({ title, icon, routePath, ...rest }) => (
+	<Menu.Item {...rest} key={routePath} icon={<Icon style={{ fontSize: '18px' }} component={icon} />}>
+		<MenuTitle>
+			{title}
+			<Link to={routePath} />
+		</MenuTitle>
+	</Menu.Item>
+);
+
+const MenuDivider = styled(Menu.Divider)`
+	opacity: 0.2;
+`;
+
 export const AdminAppLayout = () => {
 	const [collapsed, setCollapsed] = useState(false);
 	let location = useLocation();
-	console.log(location);
+	const history = useHistory();
+
+	const handleCustomerSearch = (searchString) => {
+		history.push(`/customers/${searchString}`);
+	};
+
 	return (
 		<Layout>
 			<FixedSider width={300} trigger={null} collapsible collapsed={collapsed ? true : undefined}>
-				<div className='logo' />
+				<div className='logo'>
+					<Search placeholder='enter customer email' size='medium' onSearch={handleCustomerSearch} />
+				</div>
 				<Menu theme='dark' mode='inline' selectedKeys={[location.pathname]}>
-					<Menu.Item key='/' icon={<Icon component={UsersIcon} />}>
-						Customers
-						<Link to='/' />
-					</Menu.Item>
-					<Menu.Item key='/pending' icon={<Icon component={KycPendingCustomersIcon} />}>
-						KYC Pending customers
-						<Link to='/pending' />
-					</Menu.Item>
-					<Menu.Item key='/pendingfiles' icon={<Icon component={KycPendingFilesIcon} />}>
-						KYC Pending files
-						<Link to='/pendingfiles' />
-					</Menu.Item>
-					<Menu.Item key='/transactions' icon={<Icon component={TransactionIcon} />}>
-						Transactions
-						<Link to='/transactions' />
-					</Menu.Item>
-					<Menu.Item key='/kycbulk' icon={<Icon component={BulkUploadIcon} />}>
-						Bulk KYC
-						<Link to='/kycbulk' />
+					<NavItem title='Dashboard' icon={DashboardIcon} routePath='/' />
+					<NavItem title='Customers' icon={UsersIcon} routePath='/customers' />
+					<NavItem title='KYC Pending customers' icon={KycPendingCustomersIcon} routePath='/pending' />
+					<NavItem title='KYC Pending files' icon={KycPendingFilesIcon} routePath='/pendingfiles' />
+					<NavItem title='Transactions' icon={TransactionIcon} routePath='/transactions' />
+					<NavItem title='Bulk KYC' icon={BulkUploadIcon} routePath='/kycbulk' />
+					<MenuDivider />
+					<Menu.Item
+						key='logout'
+						onClick={() => {
+							Auth.signOut()
+								.then((data) => {
+									window.location.reload();
+								})
+								.catch((err) => console.log(err));
+						}}
+						icon={<Icon component={LogoutIcon} />}>
+						Logout
 					</Menu.Item>
 				</Menu>
 			</FixedSider>

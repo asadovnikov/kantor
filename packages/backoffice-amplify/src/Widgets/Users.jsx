@@ -75,7 +75,6 @@ export const UserWidget = ({ kycState, showAll = false }) => {
 			fixed: 'right',
 			width: 100,
 			render: (text, record) => {
-				console.log(record);
 				return <Link to={`/customer/${record.id}`}>Details</Link>;
 			},
 		},
@@ -101,7 +100,6 @@ export const UserWidget = ({ kycState, showAll = false }) => {
 					},
 				}) => {
 					if (!canceled) {
-						console.log(items);
 						if (showAll === true) {
 							setUsers(items);
 						} else {

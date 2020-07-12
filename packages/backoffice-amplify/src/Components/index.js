@@ -5,3 +5,4 @@ export { DocumentPreview } from './DocumentPreview';
 export { DocumentsGallery } from './DocumentsGallery';
 export { CurrentUser } from './CurrentUser';
 export { ImagePreview } from './ImagePreview';
+export {ItemsList} from './ItemsList';

@@ -41,8 +41,7 @@ export const PendingJumioFilesWidget = () => {
 			fixed: 'right',
 			width: 100,
 			render: (text, record) => {
-				console.log(record);
-				return <Link to={`/customer/${record.customerId}/${record.jumioIdScanReference}`}>Review</Link>;
+				return <Link to={`/customer/${record.customerId}/${record.jumioLogId}`}>Review</Link>;
 			},
 		},
 	];
@@ -59,11 +58,10 @@ export const PendingJumioFilesWidget = () => {
 				setFiles(
 					items
 						.map((logItem) => {
-							return { createdOn: logItem.createdOn, ...JSON.parse(logItem.dataInput) };
+							return { createdOn: logItem.createdOn, jumioLogId: logItem.id, ...JSON.parse(logItem.dataInput) };
 						})
 						.filter((logItem) => logItem.callBackType && logItem.callBackType.length > 0)
 				);
-				console.log(result);
 			}
 		);
 		return () => (isCancelled = true);
@@ -77,7 +75,6 @@ export const PendingJumioFilesWidget = () => {
 					bordered={true}
 					size='small'
 					data={files.map((item) => {
-						// console.log(item);
 						return {
 							...item,
 							key: item.scanReference || item.jumioIdScanReference,

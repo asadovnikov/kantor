@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Auth } from 'aws-amplify';
 import { Comment, Tooltip, List, Input, Row, Col, Button } from 'antd';
 import { v4 as uuid } from 'uuid';
@@ -7,6 +7,7 @@ import Avatar from 'react-avatar';
 
 import { API, graphqlOperation } from 'aws-amplify';
 import { createComment } from '../backGraph/mutations';
+import { onCreateComment } from '../backGraph/subscriptions';
 
 const { TextArea } = Input;
 
@@ -25,12 +26,13 @@ const AddComment = ({ person }) => {
 					input: {
 						id: uuid(),
 						content: comment,
-						commentCustomerId: person.id,
+						customerID: person.id,
 						Author: 'Back Admin',
 						AuthorEmail: email,
 					},
 				})
 			);
+			setComment('');
 		} catch (error) {
 			console.error(error);
 		} finally {
@@ -66,14 +68,25 @@ const AddComment = ({ person }) => {
 export const PersonCommentsWidget = ({ person = {} }) => {
 	const { comments = {} } = person;
 	const { items = [] } = comments;
+	const [customerComments, setCustomerComments] = useState(items);
+	useEffect(() => {
+		const subscription = API.graphql(graphqlOperation(onCreateComment)).subscribe({
+			next: ({
+				value: {
+					data: { onCreateComment },
+				},
+			}) => setCustomerComments([onCreateComment, ...customerComments]),
+		});
+		return () => subscription.unsubscribe();
+	}, []);
 	return (
 		<>
 			<List
 				className='comment-list'
 				itemLayout='horizontal'
-				dataSource={items}
+				dataSource={customerComments}
 				renderItem={(item) => (
-					<li>
+					<li key={item.id}>
 						<Comment
 							author={item.AuthorEmail}
 							avatar={<Avatar round={true} size={45} name={item.Author} />}

@@ -80,7 +80,6 @@ export const DocumentPreview = ({ document = {} }) => {
 				})
 				.then((result) => {
 					if (!isCancelled) {
-						console.log(result);
 						const uri = URL.createObjectURL(result.data);
 						setImgData(uri);
 					}
@@ -126,7 +125,6 @@ export const DocumentPreview = ({ document = {} }) => {
 									value={documentClassification}
 									style={{ width: 120 }}
 									onChange={(e) => {
-										// console.log(e);
 										setDocumentClassification(e);
 									}}>
 									<Option value='UNKNOWN'>Unknown</Option>

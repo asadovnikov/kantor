@@ -57,7 +57,6 @@ const UserView = ({ user }) => {
 			window.location.reload();
 		});
 	};
-	console.log(user);
 	const menu = (
 		<Menu mode='inline'>
 			<VerticalOutline />

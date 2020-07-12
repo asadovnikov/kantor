@@ -18,3 +18,17 @@ export const onCreateKycDocument = /* GraphQL */ `
     }
   }
 `;
+
+export const onCreateComment = /* GraphQL */ `
+  subscription OnCreateComment {
+    onCreateComment {
+      id
+      content
+      customerID
+      Author
+      AuthorEmail
+      createdOn
+      updatedOn
+    }
+  }
+`;

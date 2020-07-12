@@ -71,7 +71,6 @@ export const TransactionsWidget = () => {
 					},
 				}) => {
 					if (!canceled) {
-						console.log(items);
 						setTransactions(items);
 					}
 				}

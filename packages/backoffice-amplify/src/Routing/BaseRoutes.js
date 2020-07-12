@@ -8,7 +8,9 @@ import {
 	PendingCustomersPage,
 	CustomerDetailsPage,
 	JumioDetailsPage,
-	PendingJumioFilesPage
+	PendingJumioFilesPage,
+	DashboardPage,
+	CustomersLookupPage
 } from '../Pages';
 
 import { TestPage } from '../Pages/TestPage';
@@ -17,22 +19,24 @@ export const BaseRoutes = () => {
 	return (
 		<Switch>
 			<Route exact path='/'>
-				<HomePage />
+				<DashboardPage />
 			</Route>
 			<Route path='/transactions'>
 				<TransactionsPage />
 			</Route>
-			<Route path='/customers'>
+			<Route exact path='/customers'>
 				<CustomersPage />
+			</Route>
+			<Route exact path='/customers/:email'>
+				<CustomersLookupPage />
 			</Route>
 			<Route path='/pendingfiles'>
 				<PendingJumioFilesPage />
-			</Route>
-			
+			</Route>			
 			<Route exact path='/customer/:customerId'>
 				<CustomerDetailsPage />
 			</Route>
-			<Route exact path='/customer/:customerId/:scanReference'>
+			<Route exact path='/customer/:customerId/:jumioLogId'>
 				<JumioDetailsPage />
 			</Route>
 			<Route path='/pending'>

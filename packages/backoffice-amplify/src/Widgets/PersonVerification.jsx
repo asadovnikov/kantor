@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { ItemDetails } from '../Components';
 import { Row, Col, Space, Typography, Button, Modal } from 'antd';
 import { KYCValidationWidget } from './KYCValidation';
-import { UserSwitchOutlined, MinusSquareOutlined, CheckOutlined } from '@ant-design/icons';
-
+import Icon from '@ant-design/icons';
+import { PendingVerificationIcon, NotRequiredVerificationIcon, DocumentVerifiedIcon } from '../assets';
 import { API, graphqlOperation } from 'aws-amplify';
 import { updateVerification } from '../backGraph/mutations';
 
@@ -13,24 +13,26 @@ const ActionContainer = styled.div`
 	padding: 25px 0;
 `;
 
+const StatusIcon = ({ icon }) => <Icon style={{ fontSize: '18px' }} component={icon} />;
+
 const VerificationState = ({ state }) => {
 	return (
 		<>
 			{state === 'NOT_REQUIRED' && (
 				<Space direction='horizontal'>
-					<MinusSquareOutlined />
+					<StatusIcon icon={NotRequiredVerificationIcon} />
 					<Typography.Text strong> Not Required</Typography.Text>
 				</Space>
 			)}
 			{state === 'FAILED' && (
 				<Space direction='horizontal'>
-					<UserSwitchOutlined />
+					<StatusIcon icon={PendingVerificationIcon} />
 					<Typography.Text strong>Pending</Typography.Text>
 				</Space>
 			)}
 			{state === 'VALIDATED' && (
 				<Space direction='horizontal'>
-					<CheckOutlined />
+					<StatusIcon icon={DocumentVerifiedIcon} />
 					<Typography.Text strong>Verified</Typography.Text>
 				</Space>
 			)}
@@ -91,7 +93,6 @@ export const PersonVerificationWidget = ({ person = {} }) => {
 							},
 						})
 					);
-					console.log(result);
 					setChangeVerification(false);
 				}}
 				onCancel={() => setChangeVerification(false)}>

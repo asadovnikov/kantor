@@ -408,3 +408,203 @@ export const listJumioVerifyMetaDatas = /* GraphQL */ `
     }
   }
 `;
+
+export const getJumioVerifyMetaData = /* GraphQL */ `
+  query GetJumioVerifyMetaData($id: ID!) {
+    getJumioVerifyMetaData(id: $id) {
+      id
+      dataInput
+      verificationID
+      inputType
+      metaInfo
+      JumioVerifyStatus
+      createdOn
+      updatedOn
+    }
+  }
+`;
+
+export const searchCustomers = /* GraphQL */ `
+    query SearchCustomers(
+    $filter: SearchableCustomerFilterInput
+    $sort: SearchableCustomerSortInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    searchCustomers(
+      filter: $filter
+      sort: $sort
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        Firstname
+        Surname
+        DateOfBirth
+        StreetLine1
+        StreetLine2
+        City
+        PostalCode
+        StateProvince
+        Country
+        Email
+        Telephone
+        FiatTotalAmount
+        FiatDailyAmount
+        FiatMonthlyAmount
+        FiatCurrency
+        Tier
+        KYCState
+        VerificationID
+        kycVerificationID
+        EmploymentStatus
+        SourceOfFunds
+        Occupation
+        AnnualDeposit
+        State
+        createdOn
+        updatedOn
+        owner
+        KYCVerification {
+          id
+          idVerification
+          poaVerification
+          financeVerification
+          customerID
+          createdOn
+          updatedOn
+          jumioVerifications {
+            items {
+              id
+              dataInput
+              verificationID
+              inputType
+              metaInfo
+              JumioVerifyStatus
+              createdOn
+              updatedOn
+            }
+            nextToken
+          }
+          owner
+        }
+      }
+      nextToken
+      total
+    }
+  }
+`;
+
+export const listVerificationsCount = /* GraphQL */ `
+    query ListVerifications(
+    $filter: ModelVerificationFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listVerifications(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        idVerification
+        poaVerification
+        financeVerification
+        owner
+      }
+      nextToken
+    }
+  }
+`;
+
+export const listPendingJumioCount = /* GraphQL */ `
+query ListJumioVerifyMetaDatas(
+  $filter: ModelJumioVerifyMetaDataFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listJumioVerifyMetaDatas(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+    }
+    nextToken
+  }
+}
+`;
+
+export const filterJumioVerifyMeta = /* GraphQL */ `
+    query ListJumioVerifyMetaDatas(
+    $filter: ModelJumioVerifyMetaDataFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listJumioVerifyMetaDatas(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        dataInput
+        verificationID
+        inputType
+        metaInfo
+        JumioVerifyStatus
+        createdOn
+        updatedOn
+        verification {
+          id
+          idVerification
+          poaVerification
+          financeVerification
+          customerID
+          createdOn
+          updatedOn
+          customer {
+            id
+            Firstname
+            Surname
+            DateOfBirth
+            StreetLine1
+            StreetLine2
+            City
+            PostalCode
+            StateProvince
+            Country
+            Email
+            Telephone
+            FiatTotalAmount
+            FiatDailyAmount
+            FiatMonthlyAmount
+            FiatCurrency
+            Tier
+            KYCState
+            VerificationID
+            kycVerificationID
+            EmploymentStatus
+            SourceOfFunds
+            Occupation
+            AnnualDeposit
+            State
+            KYCVerification {
+              id
+              idVerification
+              poaVerification
+              financeVerification
+              customerID
+              createdOn
+              updatedOn
+            }
+            createdOn
+            updatedOn
+            owner
+          }
+          owner
+        }
+      }
+      nextToken
+    }
+  }
+`;
