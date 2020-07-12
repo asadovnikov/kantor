@@ -161,7 +161,8 @@ type Customer
 			{ allow: public, provider: apiKey }
 			{ allow: groups, groups: ["Customers"], operations: [read] }
 		]
-	) {
+	)
+	@searchable {
 	id: ID!
 	Firstname: String!
 	Surname: String!
@@ -195,12 +196,13 @@ type Customer
 type JumioVerifyMetaData
 	@model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
 	@auth(rules: [{ allow: groups, groups: ["Admins"] }, { allow: public, provider: apiKey }])
-	@key(name: "byJumioVerification", fields: ["verificationID", "inputType", "JumioVerifyStatus"]) {
+	@key(name: "byJumioVerification", fields: ["verificationID"]) {
 	id: ID!
 	dataInput: String!
 	verificationID: ID!
 	inputType: String!
 	metaInfo: String!
+	verification: Verification @connection(fields: ["verificationID"])
 	JumioVerifyStatus: JumioVerifyStatus!
 }
 
