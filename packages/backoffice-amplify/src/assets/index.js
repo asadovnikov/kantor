@@ -8,5 +8,6 @@ import { ReactComponent as DashboardIcon } from './icons8-combo-chart.svg';
 import { ReactComponent as DocumentVerifiedIcon } from './icons8-id-verified.svg';
 import { ReactComponent as NotRequiredVerificationIcon } from './icons8-client-management.svg';
 import { ReactComponent as PendingVerificationIcon } from './icons8-facial-recognition.svg';
+import { ReactComponent as ViewDocIcon } from './icons8-view.svg';
 
-export { PendingVerificationIcon, NotRequiredVerificationIcon, DocumentVerifiedIcon, DashboardIcon, UsersIcon, BulkUploadIcon, LogoutIcon, KycPendingFilesIcon, TransactionIcon, KycPendingCustomersIcon };
+export { ViewDocIcon, PendingVerificationIcon, NotRequiredVerificationIcon, DocumentVerifiedIcon, DashboardIcon, UsersIcon, BulkUploadIcon, LogoutIcon, KycPendingFilesIcon, TransactionIcon, KycPendingCustomersIcon };

@@ -1,9 +1,10 @@
 import React from 'react';
 import { ItemsList } from '../Components';
-import { Link } from 'react-router-dom';
-import { KycIcon } from '../Utils';
+import { useHistory } from 'react-router-dom';
+import { KycIcon, ViewDetailsIcon } from '../Utils';
 
 export const CustomersListWidget = ({ data = [], loading, ...rest }) => {
+	const history = useHistory();
 	const dataColumns = [
 		{
 			title: 'Email',
@@ -33,6 +34,14 @@ export const CustomersListWidget = ({ data = [], loading, ...rest }) => {
 			align: 'center',
 			key: 'IDVerification',
 			dataIndex: 'KYCState',
+			filters: [
+				{ text: 'Not required', value: 'NOT_REQUIRED' },
+				{ text: 'Pending', value: 'FAILED' },
+				{ text: 'Validated', value: 'VALIDATED' },
+			],
+			onFilter: (value, record) => {
+				return record.KYCVerification.idVerification.includes(value);
+			},
 			render: (text, record) => <KycIcon kycState={record.KYCVerification.idVerification} />,
 		},
 		{
@@ -41,6 +50,14 @@ export const CustomersListWidget = ({ data = [], loading, ...rest }) => {
 			width: 100,
 			key: 'POAVerification',
 			dataIndex: 'KYCState',
+			filters: [
+				{ text: 'Not required', value: 'NOT_REQUIRED' },
+				{ text: 'Pending', value: 'FAILED' },
+				{ text: 'Validated', value: 'VALIDATED' },
+			],
+			onFilter: (value, record) => {
+				return record.KYCVerification.poaVerification.includes(value);
+			},
 			render: (text, record) => <KycIcon kycState={record.KYCVerification.poaVerification} />,
 		},
 		{
@@ -49,12 +66,21 @@ export const CustomersListWidget = ({ data = [], loading, ...rest }) => {
 			width: 100,
 			key: 'FinanceVerification',
 			dataIndex: 'KYCState',
+			filters: [
+				{ text: 'Not required', value: 'NOT_REQUIRED' },
+				{ text: 'Pending', value: 'FAILED' },
+				{ text: 'Validated', value: 'VALIDATED' },
+			],
+			onFilter: (value, record) => {
+				return record.KYCVerification.financeVerification.includes(value);
+			},
 			render: (text, record) => <KycIcon kycState={record.KYCVerification.financeVerification} />,
 		},
 		{
 			title: 'Country',
 			dataIndex: 'Country',
 			key: 'Country',
+			width: 100,
 			sorter: {
 				compare: (a, b) => (a.Country > b.Country) - (a.Country < b.Country),
 				multiple: 1,
@@ -65,18 +91,34 @@ export const CustomersListWidget = ({ data = [], loading, ...rest }) => {
 			title: 'City',
 			dataIndex: 'City',
 			key: 'City',
+			width: 200,
+			sorter: {
+				compare: (a, b) => (a.Country > b.Country) - (a.Country < b.Country),
+				multiple: 1,
+			},
 			ellipsis: true,
 		},
 		{
 			title: 'Area',
 			dataIndex: 'StateProvince',
 			key: 'StateProvince',
+			width: 100,
+			sorter: {
+				compare: (a, b) => (a.Country > b.Country) - (a.Country < b.Country),
+				multiple: 1,
+			},
 			ellipsis: true,
 		},
 		{
 			title: 'Zip',
 			dataIndex: 'PostalCode',
 			key: 'PostalCode',
+			width: 100,
+			align: 'right',
+			sorter: {
+				compare: (a, b) => (a.Country > b.Country) - (a.Country < b.Country),
+				multiple: 1,
+			},
 			ellipsis: true,
 		},
 		{
@@ -90,13 +132,15 @@ export const CustomersListWidget = ({ data = [], loading, ...rest }) => {
 			},
 		},
 		{
-			title: 'Action',
+			title: '',
 			dataIndex: 'id',
 			key: 'id',
 			fixed: 'right',
-			width: 100,
+			align: 'right',
+			width: 40,
+			noFilter: true,
 			render: (text, record) => {
-				return <Link to={`/customer/${record.id}`}>Details</Link>;
+				return <ViewDetailsIcon onClick={() => history.push(`/customer/${record.id}`)} />;
 			},
 		},
 	];
